@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +18,7 @@
     "@angular/core": "~12.2.0",
     "@angular/fire": "^7.4.1",
     "@angular/forms": "~12.2.0",
-    "@angular/material": "^11.2.13",
+    "@angular/material": "^12.2.13",
     "@angular/platform-browser": "^12.2.16",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
