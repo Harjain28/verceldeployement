@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="kite.css">
+</head>
+<body>
+    <!-- <div id="background-wrap">
+        <div class="x1">
+            <div class="cloud"></div>
+        </div>
+    
+        <div class="x2">
+            <div class="cloud"></div>
+        </div>
+    
+        <div class="x3">
+            <div class="cloud"></div>
+        </div>
+    
+        <div class="x4">
+            <div class="cloud"></div>
+        </div>
+    
+        <div class="x5">
+            <div class="cloud"></div>
+        </div>
+    </div>
+    
+    <div class="kite"> 
+         <div class="tail">
+            
+         </div>
+         <p style="font-size:20px">Kuldeep ye teri</p>
+
+    </div>
+    <div class="kite1"> 
+        <div class="tail">
+        </div>
+        <p style="font-size:20px">Harshit ye teri</p>
+
+    </div>
+    
+    <div class="wish">
+    	<img src="https://freepngimg.com/thumb/makar_sankranti/96848-makar-sankranti-text-for-happy-party-2020.png">
+        <h1 class="heading">happy makar sankranti</h1>
+    </div> -->
+<p>check</p>
+
+    <script>
+const players = [
+  {
+    name: "David",
+    role: "Batter",
+    count: 2,
+  },
+  {
+    name: "Johnny",
+    role: "WicketKeeper",
+    count: 5,
+  },
+  {
+    name: "Zampa",
+    role: "Bowler",
+    count: 6,
+  },
+  {
+    name: "Virat",
+    role: "Batter",
+    count: 7,
+  },
+  {
+    name: "Willey",
+    role: "Bowler",
+    count: 8,
+  },
+];
+
+// Method-1
+// const sumUp = [
+//     { role: "Batter", names: [], sum: 0 },
+//     { role: "WicketKeeper", names: [], sum: 0 },
+//     { role: "Bowler", names: [], sum: 0 },
+//   ];
+
+// function playersGroup(players) {
+//   players.forEach((player) => {
+//     if (player.role == "Batter") {
+//         sumUp[0].names.push(player.name);
+//         sumUp[0].sum += player.count;
+//     } else if (player.role == "Bowler") {
+//         sumUp[2].names.push(player.name);
+//         sumUp[2].sum += player.count;
+//     } else {
+//         sumUp[1].names.push(player.name);
+//         sumUp[1].sum += player.count;
+//     }
+//   });
+// }
+// playersGroup(players);
+// console.log("Sum", sumUp);
+
+// const sumUp = [];
+// function playersGroup(players) {
+//     players.forEach((player) => {
+//       let playerObj = sumUp.findIndex((name) => name.role == player.role);
+//     //   console.log(playerObj);
+//       if(playerObj != -1){
+//         sumUp[playerObj].names.push(player.name);
+//         sumUp[playerObj].sum += player.count;
+//       } 
+//       else{
+//         let obj = {};
+//         obj["role"] = player.role;
+//         obj["names"] = [player.name];
+//         obj["sum"] = player.count;
+//         console.log(obj);
+//         sumUp.push(obj);
+//       }
+//     });
+//   }
+//   playersGroup(players);
+//   console.log("players: ", sumUp);
+
+
+var sets = [ {n: [1,2,3,4], bools: 0},  {n: [1,2,5,6], bools: 0} ,  {n: [1,2,7,8], bools: 0}];
+
+var number = prompt("Enter a number:");
+
+var n = sets.length;
+let bool;
+var result = new Array(n);
+
+ for(j = 0; j <= sets.length; j++) {
+  for (let i = 0; i <= sets[j].n.length; i++) {
+    if (sets[j]?.n.includes(number)) {
+      sets[j].bools = 1;
+    } else {
+      sets[j].bools = 0;
+    }
+   }
+   console.log(sets);
+ }
+  
+
+
+// for (var i = 0; i < n; i++) {
+//     result[i] = new Array(1);
+// }
+
+// for (var i = 0; i < n; i++) {
+//     if (sets[i].includes(number)) {
+//         result[i][0] = 1;
+//     } else {
+//         result[i][0] = 0;
+//     }
+// }
+
+// for (var i = 0; i < n; i++) {
+//     console.log(result[i][0]);
+// }
+    </script>
+</body>
+</html>
