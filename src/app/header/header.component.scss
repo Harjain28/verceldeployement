@@ -1,0 +1,7 @@
+button:disabled{
+    cursor: not-allowed;
+  }
+  ::ng-deep .mat-checkbox-label{
+    white-space: normal !important;
+    font-size: 13px;
+  }

@@ -1,0 +1,410 @@
+   <app-header></app-header>
+   <!-- banner part here -->
+   <section class="find_infulencer section">
+    <div class="container">
+       <div class="row justify-content-center align-items-center">
+          <div class="col-lg-12 second">
+             <div class="banner_iner text-center">
+                <div class="overlay_effect is_show">
+                   <h2 class="overlay_effect_in infu">Profile Setup</h2>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <section class="profile_setup py-5 mb-md-5">
+    <div class="container pb-lg-4">
+             <div class="profile_tabs_btn">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <mat-tab-group [@.disabled]="true" [(selectedIndex)]="selectedTab">
+                        <mat-tab class="row">
+                           <ng-template mat-tab-label class="col-lg-4">
+                              <li role="presentation">
+                                  <a class="nav-link ">
+                                     <span class="tab_top-left d-flex justify-content-start align-items-center">
+                                        <img src="assets/images/profile-setup/PS-Icons-12.svg" alt="">
+                                        Getting Started</span>
+                                        <mat-icon [ngStyle]="{'color': this.userData?.photo !== ''?'rgb(104, 211, 113)' : '' }" [ngClass]="{'myClass': isClassOneActive[0]}">done</mat-icon>
+                                  </a>
+                               </li>
+                           </ng-template>
+                           <div class="profile_tabs_inner col">
+                             <div class="getting-started_box">
+                              <img class="" src="assets/images/profile-setup/getting.jpg" alt="">
+                              <div class="getting-started_box_text mt-md-5 mt-4">
+                                 <h3>Join Gramgenie as an Influencer</h3>
+                                 <p>Hi ({{this.userData?.name === '' || 'null' ? this.userData?.name : 'username'}}), </p>
+                                 <p>Thanks for your interest in Gramgenie! The sole purpose of Gramgenie, is to connect
+                                    influencers like yourself to business owners who are seeking to promote their
+                                    products and services.
+                                 </p>
+                                 <p>Please fill in the profile to start earning money.</p>
+                                 <strong class="d-block">It is important that once your profile is completed, create a
+                                    listing with
+                                    sufficient information about your social platforms and pricing, this will provide
+                                    detailed information to potential business owners who may want to advertise on your
+                                    pages.
+                                 </strong>
+                                 <p>Here’s how it works:</p>
+                                 <ul class="list_count">
+                                    <li>
+                                       <p> Once your profile is completed, you can create a listing where you list all
+                                          your promotional charges.
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <p> Fill out your listings thoroughly and precisely, ensure that the information
+                                          of your social accounts are correct, fill in every section adequately.
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <p> You can also browse existing jobs which are created by business owners who
+                                          are seeking influ encers/advertisers to work with them.
+                                       </p>
+                                    </li>
+                                    <li>
+                                       <p> Lastly, our platform will provide a personalised link specially linked to
+                                          your profile. You can use this link and insert it into the description of your
+                                          social platforms. Business owners can easily place an order, you will be
+                                          notified once a transaction is created and keep track of the order.
+                                       </p>
+                                    </li>
+                                 </ul>
+                                 <a mat-raised-button class="Profile_step_btns" (click)="next()" >Continue</a>
+                              </div>
+                             </div>
+                           </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <li role="presentation">
+                                    <a class="nav-link "> <span class="tab_top-left d-flex justify-content-start align-items-center">
+                                       <img src="assets/images/profile-setup/PS-Icons-06.svg" alt=""> Profile Photo</span>
+                                       <mat-icon [ngStyle]="{'color': this.userData?.photo !== ''? 'rgb(104, 211, 113)' : ''}" [ngClass]="{'myClass': isClassOneActive[1]}">done</mat-icon>
+                                    </a>               
+                                 </li>       
+                            </ng-template>
+                            <div id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="profile_tabs_inner">
+                                   <div class="profile_upload_box">
+                                      <p><img src="assets/images/profile-setup/PS-Icons-05.svg" alt=""> Please upload a photo
+                                         which summarises your page, or a professional
+                                         portrait of your face.
+                                      </p>
+                                      <form class="pic_upload" action="" [formGroup]="imgUpload">
+                                         <div class="form-group">
+                                            <input type="file" id="upload_pic" class="d-none" (change)="imagePreview($event)">
+                                            <label class="uploaded_pic" for="upload_pic">
+                                               <img [src]="filePath || this.userData?.photo" alt="" class="rounded-circle"></label>
+                                            <label mat-raised-button class="add_pic" for="upload_pic" >Add Profile Photo</label>
+                                            <a class="skip_button" (click)="next();" href="javascript:;">Skip this step <img
+                                                  src="assets/images/profile-setup/angel_left.png" alt="">
+                                             </a>
+                                         </div>
+                                      </form>
+                                    </div>
+                                 </div>
+                              </div>
+                           </mat-tab>
+                           <mat-tab>
+                              <ng-template mat-tab-label>
+                                 <li class="nav-item" role="presentation" id="profile1">
+                                    <a class="nav-link"> 
+                                        <span class="tab_top-left float-left d-flex justify-content-start align-items-center">
+                                           <img src="assets/images/profile-setup/PS-Icons-07.svg" alt=""> Phone
+                                        </span>
+                                        <mat-icon [ngStyle]="{'color': this.userData?.phone !== ''? 'rgb(104, 211, 113)': '' }" [ngClass]="{'myClass': isClassOneActive[2]}">done</mat-icon>
+                                    </a>
+                                 </li>
+                              </ng-template>
+                              <div  id="profile1" role="tabpanel" aria-labelledby="profile1-tab">
+                                 <div class="profile_tabs_inner">
+                                    <div id="NUMBER" class="verification_purpose_box" *ngIf="!otpForm">
+                                       <h3>Add your phone number for verification purposes.</h3>
+                                       <form class="py-4" action="">
+                                          <div class="form-group full-width" style="position: relative;">
+                                             <ngx-mat-intl-tel-input class="country-selector d-grid"
+                                                   [enablePlaceholder]="true"
+                                                   [enableSearch]="true" name="phone" formControlName="phone"           
+                                                   [enablePlaceholder]="true" [enableSearch]="true"
+                                                   [preferredCountries]="['in']" name="phone">
+                                                 </ngx-mat-intl-tel-input>
+                                             <input  id="phone" maxlength="10" [(ngModel)]="phone" name="phone" type="tel" value="" class="form-control-custom"
+                                                placeholder="+44 Enter Your Number" autocomplete="off"
+                                                data-intl-tel-input-id="0" [value]="this.userData?.phone !== ''?this.userData?.phone :  '' ">
+                                          </div>
+                                       </form>
+                                       <p>You'll receive a text message with a verification code you can enter on the next step.
+                                          Messaging rates may apply. Your phone number will not be shared with clients.
+                                       </p>
+                                       <p>It is important to add your phone number in order to keep track of customer orders and
+                                          other important notifications.
+                                       </p>
+                                       <div class="profile_tab_bttn_part mt-4 pt-0">
+                                          <button mat-raised-button id="verify" class="profile_tab_bttn"  (click)="addPhone()">Enter Code</button>
+                                          <a class="skipp" href="javascript:;" (click)="back()">
+                                             <img src="assets/images/profile-setup/angel_left.png" alt=""> Back
+                                          </a>
+                                       </div>
+                                    </div>
+                                    <div id="verified" class="verification_part" *ngIf="otpForm">
+                                       <h3>Enter verification code</h3>
+                                       <span>We’ve sent a text message to:</span>
+                                       <a href="javascript:;" class="number_a">{{this.phone}}</a>
+                                       <form class="my-md-5 my-4" action="">
+                                          <div class="form-group">
+                                             <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:4}"></ng-otp-input>
+                                          </div>
+                                       </form>
+                                       <div class="verification_part_bottom">
+                                          <span class="mb-md-2 mb-1">Didn’t receive a code? <a
+                                                href="javascript:;" (click)="resend()">Resend</a></span>
+                                          <span class="mb-md-2 mb-1">Entered the wrong phone number? <a
+                                                href="javascript:;" (click)="change()">Change</a></span>
+                                       </div>
+                                       <div class="profile_tab_bttn_part mt-4 pt-md-3">
+                                          <button class="profile_tab_bttn" (click)="verifyOtp()">Next</button>
+                                          <a class="skipp" href="javascript:;" (click)="back()"><img
+                                                src="assets/images/profile-setup/angel_left.png" alt=""> Back</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </mat-tab>
+                           <mat-tab>
+                              <ng-template mat-tab-label>
+                                 <li class="nav-item" role="presentation">
+                                     <a class="nav-link"><span class="tab_top-left d-flex justify-content-start align-items-center">
+                                        <img src="assets/images/profile-setup/PS-Icons-08.svg" alt=""> Location</span>
+                                        <mat-icon [ngStyle]="{'color': this.userData?.address !== ''? 'rgb(104, 211, 113)' : '' }" [ngClass]="{'myClass': isClassOneActive[3]}">done</mat-icon>
+                                     </a>
+                                  </li>
+                             </ng-template>
+                              <div id="profile2" role="tabpanel" aria-labelledby="profile2-tab">
+                                <div class="profile_tabs_inner">
+                                   <div class="verification_part locations_part">
+                                      <h3>Verify your identity to create a trusted GramGenie marketplace!</h3>
+                                      <p>We use your street address and phone number to verify your identity, and your zip code
+                                         to show relevant jobs. Only your city will be shown to business owners.
+                                      </p>
+                                      <form class="locations_part_form mt-4" action="">
+                                       <div class="form-group half-width">
+                                          <label class="d-block" for="cars">Country:</label>
+                                          <select class="form-control-custom select-form" [(ngModel)]="country" name="cars" id="cars" [value]="this.userData?.country !== ''?  this.userData?.country : 'Select Country'">
+                                             <option selected hidden [value]="this.userData?.country !== ''?this.userData?.country : 'Select Country'">{{this.userData?.country !== ''? this.userData?.country : 'Select Country'}}</option>
+                                             <option value="United Kingdom">United Kingdom</option>
+                                             <option value="India">India</option>
+                                             <option value="Russia">Russia</option>
+                                             <option value="France">France</option>
+                                          </select>
+                                       </div>
+                                       <div class="form-group full-width">
+                                          <input type="text" name="street" class="form-control-custom search_input"
+                                             placeholder="Enter street adress" [(ngModel)]="street" [value]="this.userData?.address !== ''? this.userData?.address : ''">
+                                       </div>
+                                       <div class="form-group half-width">
+                                          <input type="text" name="Apt" class="form-control-custom" [(ngModel)]="Apt" placeholder="Apt/Suite" [value]="this.userData?.apt_suite !== ''? this.userData?.apt_suite : ''">
+                                       </div>
+                                       <div class="form-group half-width">
+                                          <label class="d-block" for="cars">City:</label>
+                                          <select class="form-control-custom select-form search_input1" [(ngModel)]="city" name="cars" id="cars" [value]="this.userData?.city !== ''?this.userData?.city : 'Select City'">
+                                             <option selected hidden [value]="this.userData?.city !== ''?this.userData?.city : 'Select City'">{{this.userData?.city !== ''? this.userData?.city : 'Select City'}}</option>
+                                             <option value="London">London</option>
+                                             <option value="Paris">Paris</option>
+                                             <option value="Goa">Goa</option>
+                                             <option value="Delhi">Delhi</option>
+                                          </select>
+                                       </div>
+                                       <div class="form-group half-width">
+                                          <label class="d-block" for="cars">ZIP/Postal Code:</label>
+                                          <select class="form-control-custom select-form" name="cars" [(ngModel)]="zip" id="cars" [value]="this.userData?.zip_postal_code !== ''?this.userData?.zip_postal_code : 'Select Zip'">
+                                             <option selected hidden [value]="this.userData?.zip_postal_code !== ''?  this.userData?.zip_postal_code : 'Select Zip'">{{this.userData?.zip_postal_code !== ''? this.userData?.zip_postal_code : 'Select Zip'}}</option>
+                                             <option value="12345">12345</option>
+                                             <option value="67895">67895</option>
+                                             <option value="63378">63378</option>
+                                             <option value="12563">12563</option>
+                                          </select>
+                                       </div>
+                                    </form>
+                                      <div class="profile_tab_bttn_part mt-4 pt-md-3">
+                                         <button class="profile_tab_bttn" (click)="addLocation()" (click)="next()">Next</button>
+                                         <a class="skipp" (click)="back()"><img
+                                               src="assets/images/profile-setup/angel_left.png" alt=""> Back</a>
+                                      </div>
+                                   </div>
+                                </div>
+                              </div>
+                           </mat-tab>
+                           <mat-tab>
+                            <ng-template mat-tab-label>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link"> <span class="tab_top-left d-flex justify-content-start align-items-center">
+                                       <img src="assets/images/profile-setup/PS-Icons-9.svg" alt=""> Languages</span>
+                                       <mat-icon  [ngClass]="{'myClass': isClassOneActive[4]}">done</mat-icon>
+                                    </a>
+                                 </li>
+                            </ng-template>
+                            <div id="profile3" role="tabpanel" aria-labelledby="profile3-tab">5</div>
+                           </mat-tab>
+                           <mat-tab>
+                            <ng-template mat-tab-label>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link"> <span class="tab_top-left d-flex justify-content-start align-items-center">
+                                       <img src="assets/images/profile-setup/PS-Icons-10.svg" alt=""> Influencer
+                                          Verfication</span>
+                                       <mat-icon [ngStyle]="{'color': this.userData?.insta_username !== ''? 'rgb(104, 211, 113)' : '' }" [ngClass]="{'myClass': isClassOneActive[5]}">done</mat-icon>
+                                    </a>
+                                 </li>
+                            </ng-template>
+                            <div id="profile4" role="tabpanel" aria-labelledby="profile4-tab">
+                                <div class="profile_tabs_inner">
+                                   <div id="verification_part-1" class="verification_part locations_part verify_user_outer">
+                                      <h3>Verify your instagram acount below!</h3>
+                                      <p>This will provide certainty that you have ownership of the account. Proving ownership
+                                         of accounts will increase likeliness of collaborating with potential business owners.
+                                      </p>
+                                      <a class="" href="javascript:;">Don’t forget to set your account
+                                         public!</a>
+                                      <form class="pt-4" action="">
+                                         <div class="form-group instagram_acct mb-4">
+                                            <input type="text" name="username" id="" placeholder="Verify Instagram Account">
+                                            <button class="Verified_btnn"><img src="assets/images/profile-setup/PS-Icons-04.svg"
+                                                  alt=""></button>
+                                         </div>
+                                      </form>
+                                      <div class="profile_tab_bttn_part">
+                                         <button onClick="verify('verification_part-1')"
+                                            class="profile_tab_bttn">Continue</button>
+                                         <a class="skip_button pl-0" href="javascript:;" (click)="next()">Skip The Step <img class="mr-0 ml-2"
+                                               src="assets/images/profile-setup/angel_left.png" alt=""> </a>
+                                      </div>
+                                   </div>
+                                   <div id="verification_part-2" class="verification_part locations_part verify_user_outer"
+                                      style="display: none;">
+                                      <h3>Verify your instagram acount below!</h3>
+                                      <p>This will provide certainty that you have ownership of the account. Proving ownership
+                                         of accounts will increase likeliness of collaborating with potential business owners.
+                                      </p>
+                                      <a class="" href="javascript:;">Don’t forget to set your account
+                                         public!</a>
+                                      <form class="pt-4 instauser_name">
+                                         <div class="form-group full-width position-relative mb-4">
+                                            <input type="text" name="username" id="" class="form-control-custom" [(ngModel)]="username"
+                                               placeholder="Instagram Username" [value]="this.userData?.insta_username !== ''?this.userData?.insta_username : ''">
+                                            <label class="insta_ico" for=""><img
+                                                  src="assets/images/profile-setup/Instagrama-01.svg" alt=""></label>
+                                         </div>
+                                         <div class="form-group">
+                                            <div class="g-recaptcha" data-sitekey="6Lel4Z4UAAAAAOa8LO1Q9mqKRUiMYl_00o5mXJrR">
+                                            </div>
+                                         </div>
+                                      </form>
+                                      <div class="profile_tab_bttn_part mt-4">
+                                         <button onClick="verify('verification_part-2')" (click)="instaData()" class="profile_tab_bttn">Find</button>
+                                      </div>
+                                   </div>
+                                   <div id="verification_part-3" class="verification_part locations_part verify_user_outer"
+                                      style="display: none;">
+                                      <h3>Verify your instagram acount below!</h3>
+                                      <p>This will provide certainty that you have ownership of the account. Proving ownership
+                                         of accounts will increase likeliness of collaborating with potential business owners.
+                                      </p>
+                                      <a class="" href="javascript:;">Don’t forget to set your account
+                                         public!</a>
+                                      <div class="verify_user">
+                                         <h3>Verify {{this.userData?.insta_username  != ''?this.userData?.insta_username : 'instauser'}} listing</h3>
+                                         <div class="verify_user_inner">
+                                            <span><img src="assets/images/profile-setup/PS-Icons-13.svg" alt=""></span>
+                                            <h4>{{this.userData?.insta_username !== ''? this.userData?.insta_username : 'instauser'}}</h4>
+                                            <label for="">{{this.userData?.insta_followers != ''? this.userData?.insta_followers : 'Your' }} Followers</label>
+                                            <div class="verify_warning text-left">
+                                               Please verify you have access to this
+                                               account by placing "Qa4sRa" in your
+                                               instagram bio section, then click Verify.
+                                            </div>
+                                         </div>
+                                      </div>
+                                      <div class="profile_tab_bttn_part mt-2">
+                                         <button onClick="verify('verification_part-3')"
+                                            class="profile_tab_bttn">Verify</button>
+                                         <a class="skipp" href="javascript:;">Cancel <img class="mr-0 ml-2"
+                                               src="assets/images/profile-setup/angel_left.png" alt=""> </a>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                        </mat-tab>
+                        <mat-tab>
+                            <ng-template mat-tab-label>
+                                <li class="nav-item " role="presentation">
+                                    <a class="nav-link"> <span class="tab_top-left d-flex justify-content-start align-items-center">
+                                       <img src="assets/images/profile-setup/PS-Icons-11.svg" alt=""> Completion</span>
+                                       <mat-icon [ngClass]="{'myClass': isClassOneActive[6]}">done</mat-icon>
+                                    </a>
+                                 </li>
+                            </ng-template>
+                            <div id="profile5" role="tabpanel" aria-labelledby="profile5-tab">
+                                <div class="profile_tabs_inner">
+                                   <div class="getting-started_box">
+                                      <img class="" src="assets/images/profile-setup/completion-img.jpg" alt="">
+                                      <div class="getting-started_box_text mt-4">
+                                         <h3>Congratulation, you are now a Gramgenie member.
+                                         </h3>
+                                         <p class="text-black font-weight-bold">Top tips to maximise sales on our Gramgenie
+                                            platform:
+                                         </p>
+                                         <ul class="list_count">
+                                            <li>
+                                               <p> When you are creating a listing, ensure that you provide substantial amount
+                                                  of information which covers your account information, promotional costs and
+                                                  description. This will increase the chance of collaboration with business
+                                                  owners.
+                                               </p>
+                                            </li>
+                                            <li>
+                                               <p>
+                                                  Apply to jobs on the Gramgenie marketplace which are listed by business
+                                                  owners, ensure that you meet their requirements for higher job acceptance.
+                                               </p>
+                                            </li>
+                                            <li>
+                                               <p> Lastly, use the personalised link which is provided by Gramgenie, to use on
+                                                  your social media platforms. This will allow customers to view and purchase
+                                                  your advertisement packages and easier for you to track the order.
+                                               </p>
+                                            </li>
+                                            <li>
+                                               <p>Be professional and honest with your business.
+                                               </p>
+                                            </li>
+                                            <li>
+                                               <p>Be attentive to the business owners needs and go beyond their expectation when
+                                                  promoting their products and services.
+                                               </p>
+                                            </li>
+                                         </ul>
+                                         <h4>Thanks for registering with Gramgenie, you can now continue and start your journey
+                                            with Gramgenie.
+                                         </h4>
+                                         <a class="Profile_step_btns" href="javascript:;">Continue</a>
+                                      </div>
+                                   </div>
+                                </div>
+                             </div>
+                        </mat-tab>
+                    </mat-tab-group>             
+                </ul>
+           </div>
+       </div>
+   </section>
+ <app-footer></app-footer>
+ <!-- <input type="date" (change)='onOptionsSelected($event.target.valueAsDate)' [valueAsDate]="dateObj">
+ <select class="form-control" id="exampleFormControlSelect1" >
+   <option [value]="30">1 Month (30th January 2020) ({{this.onemonth | date }})</option>
+   <option [value]="120">1 Qtr (30th March 2020) ({{this.qtr | date }})</option>
+   <option [value]="180">6 Months (30th June 2020) ({{this.half | date }})</option>
+   <option [value]="365">12 Months (31th December 2020) ({{this.full | date }})</option>
+   <option>Specific Date </option>
+   <option>Yearly</option>
+ </select> -->

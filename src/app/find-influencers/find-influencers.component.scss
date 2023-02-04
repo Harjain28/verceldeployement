@@ -1,0 +1,172 @@
+header.header_part.classic_header.menu_item_padding.position_abs {
+    background: white;
+}
+
+section.find_infulencer.section {
+    background: #587bf7;
+    margin-top: 113px;
+    height: 200px;
+    padding: 69px;
+}
+
+.infu{
+    font-size: 50px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    color: white;
+}
+
+.home-newsletter {
+    padding: 80px 0;
+    }
+    
+    .home-newsletter .single {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2; }
+   
+    .home-newsletter .single .form-control {
+    height: 50px;
+    background: #f1f1f1;
+    border-color: transparent;
+    border-radius: 25px 0 0 25px; }
+    .home-newsletter .single .form-control:focus {
+    box-shadow: none;
+    border-color: #243c4f; }
+    .home-newsletter .single .btn {
+    min-height: 50px; 
+    border-radius: 0 25px 25px 0;
+    background: #587cf7;
+    color: #fff;
+    font-weight: 700;
+    }
+    .copyright_part p a {
+      color: #ffffff;
+  }
+  .border-top {
+    border-top: 2px solid #4d4dc1 !important;
+    width: 22%;
+  }
+
+  .services-caption:hover {
+    background: #587bf7 !important;
+}
+
+.service-area .services-caption {
+    background: #f0f0f0;
+    padding: 29px 27px;
+    border-radius: 12px;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+.service-icon {
+    height: 94px;
+    width: 90px;
+    display: block;
+    /* line-height: 105px; */
+    text-align: center;
+    /* margin-bottom: 42px; */
+    transition: 0.5s;
+    background: url(../../assets/images/FindInfluencers/ble-2.svg);
+    background-repeat: no-repeat;
+}
+.service-icon2 {
+    height: 94px;
+    width: 90px;
+    display: block;
+    /* line-height: 105px; */
+    text-align: center;
+    /* margin-bottom: 42px; */
+    transition: 0.5s;
+    background: url(../../assets/images/FindInfluencers/Icon_black_2.svg);
+    background-repeat: no-repeat;
+}
+
+.service-icon {
+    text-align: right;
+    display: block;
+}
+
+
+.service-area .services-caption:hover .service-cap  h4  {
+    color: #fff !important;
+}
+.service-area .services-caption:hover .service-cap span {
+    color: #fff !important;
+}
+
+.service-area .services-caption:hover .service-cap p {
+    color: #fff !important;
+}
+
+.service-area .services-caption:hover .service-icon {
+    background: url(../..//assets/images/FindInfluencers/Icon_white_1.svg);
+    background-repeat: no-repeat;
+}
+.service-area .services-caption:hover .service-icon2 {
+    background: url(../../assets/images/FindInfluencers/Icon_white_2.svg);
+    background-repeat: no-repeat;
+}
+
+.ner{
+    display: flex;
+    justify-content: flex-end;
+}
+.service-cap a{
+    color: #587bf7;
+}
+
+i.fa.fa-chevron-right {
+    margin-left: 7px;
+    margin-top: -1px;
+}
+
+.service-area .services-caption:hover .service-cap a {
+ color:white;
+}
+
+.pt-50{
+    padding-top: 100px;
+}
+.preloader-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #587bf7;
+    z-index: 9999;
+    display: none;
+}
+
+@media only screen and (min-width: 250px) and (max-width: 767px){
+    section.find_infulencer.section {
+        background: #587bf7;
+        margin-top: 113px;
+        height: 169px;
+        padding: 69px;
+    }
+    a.cu_btn.btn_3.wow.fadeInLeft {
+        display: none;
+    }
+}
+.header_part .cu_btn{
+    position: unset;
+}
+
+.copyright_part p a {
+    color: #ffffff;
+}
+.mode{
+    background-color: black;
+  }
+  img.foot_pay {
+    width: 40px;
+}

@@ -1,0 +1,38 @@
+// ::ng-deep .mat-input-element{
+//     color: #608ab4 !important;
+//   }
+//   ::ng-deep .mat-label{
+//     color: #1b82e9 !important;
+//   }
+::ng-deep .mat-option{
+    color: #a3a3a3 !important;
+}
+::ng-deep .mat-select-option{
+    color: #a3a3a3 !important;
+}
+::ng-deep .mat-select {  
+    height: 35px !important;
+}
+::ng-deep .mat-select-arrow { 
+    opacity: 0 !important;
+    
+}
+::ng-deep .select-form { 
+    background-size: 10px !important; 
+    background-position: 92% center !important;
+}
+::ng-deep .mat-select-value {
+    color: #a3a3a3  !important;
+}
+::ng-deep .main-responsive-category .mat-select-trigger {
+    height: 32px;
+    padding: 0;
+}
+::ng-deep .mat-select {
+    display: inline-block;
+    width: 100%;
+    outline: none;
+    padding: 6px 11px;
+    font-size: 15px;
+    border-radius: 8px !important;
+}

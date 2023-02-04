@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+
+  <!-- banner part here -->
+  <section class="find_infulencer section">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-12 second">
+          <div class="banner_iner text-center">
+            <div class="overlay_effect is_show">
+              <h2 class="overlay_effect_in infu">Categories</h2> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- banner part end -->
+ 
+
+  <section class="register_with py-lg-5 py-md-4 py-0">
+    <div class="container">
+      <div class="row"> 
+        <div class="col-md-3 d-flex align-items-stretch wow fadeInDown mb-mb-0 mb-4 cursor-pointer" data-wow-delay=".3s"
+          style=" visibility: visible; animation-delay: 0.3s;  animation-name: fadeInDown; " *ngFor="let data of categoryList">
+          <div class="our_platform_box w-100">
+            <img src="{{data.image}}" alt="" />
+            <span>{{data.name}}</span>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </section> 
+
+<app-footer></app-footer>

@@ -1,0 +1,77 @@
+<app-header></app-header>
+<!-- banner part here -->
+<section class="find_infulencer section">
+    <div class="container">
+       <div class="row justify-content-center align-items-center">
+          <div class="col-lg-12 second">
+             <div class="banner_iner text-center">
+                <div class="overlay_effect is_show">
+                   <h2 class="overlay_effect_in infu">{{this.type}} Sign-up</h2>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <!-- banner part end -->
+ <section class="verify-email py-md-5 py-4">
+    <div class="container py-lg-4">
+       <div class="row justify-content-center">
+          <div class="col-md-6">
+             <div class="verify-email-main">
+                <img src="assets/images/influencers-sign-up/sign-up.svg" alt="">
+                <div class="verify-email_text text-center">
+                   <h2 class="text-black">Verify your email to proceed!</h2>
+                   <p>
+                      We just sent an email to the address: <a  href="mailto:{{this.values['email']}}">{{this.values['email']}}</a> <br>
+                      Please check your email and click on the link provided to verify your address. <br>
+                      Also check your junk mail for the verification link.
+                   </p>
+                   <a class="verify-email-anchor" href="javascript:;">
+                      <div data-toggle="modal" data-target="#resendModal">
+                         <img src="assets/images/influencers-sign-up/angel_left.png" alt="">Change
+                         Email
+                      </div>
+                   </a>
+                   <a class="resend_btn" href="javascript:;" (click)="resend()">Resend Verification Email</a><br>
+                   <a class="resend_btn" href="javascript:;" routerLink="/login">Continue</a>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="modal fade" id="resendModal" tabindex="-1" aria-labelledby="resendModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="resendModalLabel">Change E-mail</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="resendForm">
+               <div class="form-group row mb-md-4">
+                  <div class="col-md-12 mb-md-0 mb-3">
+                     <mat-form-field  floatLabel="never">
+                        <input matInput type="email" id="email" formControlName="email" placeholder="Email" class="form-control-custom w-100">
+                        <mat-error *ngIf="resendForm.get('email').hasError('email') && !resendForm.get('email').hasError('required')">
+                           Invalid input format.
+                        </mat-error>
+                        <mat-error *ngIf="resendForm.get('email').hasError('required')">
+                           E-mail is required. 
+                        </mat-error>
+                     </mat-form-field>
+                  </div> 
+               </div>
+            </form>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <a class="resend_btn text-white" (click)="change()">Save changes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+ </section>
+
+<app-footer></app-footer>

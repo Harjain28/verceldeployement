@@ -1,0 +1,15 @@
+::ng-deep .mat-input-element{
+    height: 50px !important;
+    border-radius: 7px !important;
+    border: 0;
+    background-color: #f1f1f1 !important;
+    padding: 0 15px !important;
+  }
+  ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    color:#a3a3a3 !important;
+    font-size: 17px !important;
+  }
+  ::ng-deep .mat-error{
+      margin-top: 12px;
+      margin-left: 15px;
+  }

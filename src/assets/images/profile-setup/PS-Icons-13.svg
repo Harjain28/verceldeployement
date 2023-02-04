@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#587BF7;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#FF0000;}
+	.st4{fill:#F00044;}
+	.st5{fill:#08FFF9;}
+	.st6{fill:#A0A0A0;}
+	.st7{fill:#41479B;}
+	.st8{fill:#F5F5F5;}
+	.st9{fill:#FF4B55;}
+	.st10{fill:#CFCFCF;}
+	.st11{fill:#F8F8F8;stroke:#CFCFCF;stroke-width:0.6081;stroke-miterlimit:10;}
+	.st12{fill:#B4B6B9;}
+	.st13{fill:#3791FF;}
+	.st14{fill:#1432B9;}
+	.st15{fill:#8C9196;}
+	.st16{fill:#FFFFFF;stroke:#CFCFCF;stroke-width:2.8378;stroke-miterlimit:10;}
+	.st17{fill:#2387F5;}
+	.st18{fill:#071EA0;}
+</style>
+<g>
+	<circle class="st6" cx="256" cy="256" r="256"/>
+	<circle class="st2" cx="256" cy="152.2" r="99.5"/>
+	<path class="st2" d="M256,277.6c-71.5,0-136.6,27.6-185.1,72.8c34.9,66.7,104.6,112.3,185.1,112.3s150.3-45.6,185.1-112.3
+		C392.6,305.2,327.5,277.6,256,277.6z"/>
+</g>
+</svg>

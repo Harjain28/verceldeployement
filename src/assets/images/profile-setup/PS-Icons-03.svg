@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="light" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#587BF7;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#FF0000;}
+	.st4{fill:#F00044;}
+	.st5{fill:#08FFF9;}
+	.st6{fill:#A0A0A0;}
+	.st7{fill:#41479B;}
+	.st8{fill:#F5F5F5;}
+	.st9{fill:#FF4B55;}
+	.st10{fill:#CFCFCF;}
+	.st11{fill:#F8F8F8;stroke:#CFCFCF;stroke-width:0.6081;stroke-miterlimit:10;}
+	.st12{fill:#B4B6B9;}
+	.st13{fill:#3791FF;}
+	.st14{fill:#1432B9;}
+	.st15{fill:#8C9196;}
+	.st16{fill:#FFFFFF;stroke:#CFCFCF;stroke-width:2.8378;stroke-miterlimit:10;}
+	.st17{fill:#2387F5;}
+	.st18{fill:#071EA0;}
+</style>
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="74.9668" y1="436.9925" x2="437.0146" y2="74.9889">
+		<stop  offset="0" style="stop-color:#FFDD55"/>
+		<stop  offset="0.5" style="stop-color:#FF543E"/>
+		<stop  offset="1" style="stop-color:#C837AB"/>
+	</linearGradient>
+	<path class="st1" d="M256,512L256,512C114.6,512,0,397.4,0,256v0C0,114.6,114.6,0,256,0h0c141.4,0,256,114.6,256,256v0
+		C512,397.4,397.4,512,256,512z"/>
+	<path class="st2" d="M256,110.2c-59.7,0-116.5-5.3-138.1,50.3c-8.9,23-7.7,52.8-7.7,95.5c0,37.5-1.2,72.7,7.7,95.5
+		c21.6,55.6,78.8,50.3,138.1,50.3c57.2,0,116.2,6,138.1-50.3c9-23.2,7.7-52.6,7.7-95.5c0-57,3.1-93.7-24.5-121.3
+		C349.2,106.7,311.4,110.2,256,110.2L256,110.2z M242.9,136.5c124.6-0.2,140.5-14.1,131.7,178.4c-3.1,68.1-54.9,60.6-118.6,60.6
+		c-116.2,0-119.5-3.3-119.5-119.5C136.5,138.4,145.7,136.6,242.9,136.5L242.9,136.5z M333.8,160.7c-9.7,0-17.5,7.8-17.5,17.5
+		c0,9.7,7.8,17.5,17.5,17.5s17.5-7.8,17.5-17.5C351.3,168.5,343.4,160.7,333.8,160.7z M256,181.2c-41.3,0-74.9,33.5-74.9,74.9
+		s33.5,74.9,74.9,74.9s74.8-33.5,74.8-74.9S297.3,181.2,256,181.2L256,181.2z M256,207.4c64.2,0,64.3,97.2,0,97.2
+		C191.7,304.6,191.6,207.4,256,207.4z"/>
+</g>
+</svg>

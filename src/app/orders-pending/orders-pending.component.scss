@@ -1,0 +1,27 @@
+:host ::ng-deep .mat-header-cell {
+    color: #587bf7;
+    font-size: 15px;
+    text-align: start;
+  }
+  :host ::ng-deep .mat-cell, ::ng-deep .mat-footer-cell {
+    color: #a3a3a3;
+    font-size: 11px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    vertical-align: top !important;
+  }
+  ::ng-deep .mat-row {
+    align-items: flex-start;
+  }
+  ::ng-deep .mat-table {
+    box-shadow: none;
+    background-color: inherit;
+  }
+  .listing_list li a {
+     font-size: 15px; 
+     line-height: 1.6em;
+  }
+  ::ng-deep .mat-paginator-container {
+    background-color: #f1f1f1;
+    color: #a3a3a3;
+}
