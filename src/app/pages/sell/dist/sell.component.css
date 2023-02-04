@@ -1,0 +1,160 @@
+::ng-deep mat-form-field {
+  width: 100%;
+}
+::ng-deep mat-form-field .mat-form-field-flex {
+  background-color: var(--main5) !important;
+  border-color: var(--main5);
+  height: 50px;
+  border-radius: 6px;
+  box-shadow: 0 3px 7px -1px #ccc !important;
+  padding: 0 15px 0 15px !important;
+  font-family: "Open Sans", sans-serif !important;
+}
+::ng-deep mat-form-field .mat-form-field-underline {
+  display: none;
+}
+::ng-deep mat-form-field .mat-form-field-infix {
+  border-top: 8px solid transparent;
+}
+
+.imgUpload {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin: 0px -10px;
+  width: 100%;
+}
+.imgUpload li {
+  flex: 25% 0 auto;
+  width: 20%;
+  margin: 0px 10px;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #878d9f;
+  border-radius: 5px;
+  height: 60px;
+  line-height: 53px;
+  text-align: center;
+  position: relative;
+}
+.imgUpload li img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover;
+}
+.imgUpload li .mat-icon {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  cursor: pointer;
+}
+.imgUpload li input[type=file] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.labelForm h5 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  margin-top: 5px;
+}
+
+.priceBox {
+  display: flex;
+  margin-bottom: 60px;
+}
+.priceBox .checkbox {
+  padding: 0;
+  width: 110px;
+}
+.priceBox .checkbox .checkmark {
+  width: auto;
+  height: auto;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: #F3F4F9;
+  border-color: #F3F4F9;
+}
+.priceBox .checkbox input:checked ~ .checkmark {
+  background-color: var(--main1);
+  border: 1px solid var(--main1);
+  color: #fff;
+}
+.priceBox .checkbox input:checked ~ .checkmark:after {
+  display: none;
+}
+
+.priceTextbox .symbol {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translate(0%, -50%);
+  font-size: 18px;
+}
+.priceTextbox .form-control {
+  padding-left: 30px;
+}
+
+.descriptionBox {
+  padding: 10px 12px !important;
+  height: 120px !important;
+}
+
+.top-nav-2 {
+  display: flex;
+}
+
+::ng-deep .multiselect-dropdown ::ng-deep .dropdown-btn {
+  background-color: var(--main5);
+  border-color: var(--main5) !important;
+  min-height: 50px;
+  border-radius: 6px;
+  box-shadow: 0 3px 7px -1px #cccccc;
+  padding: 0px 10px 0px 43px;
+  line-height: 36px !important;
+}
+::ng-deep .multiselect-dropdown ::ng-deep .dropdown-btn ::ng-deep .dropdown-multiselect__caret:before {
+  top: 96% !important;
+}
+::ng-deep .multiselect-dropdown ::ng-deep .selected-item {
+  border: 1px solid #f9560f !important;
+  margin-right: 4px !important;
+  background: #f9560f !important;
+  padding: 0 8px !important;
+  color: #fff;
+  border-radius: 5px !important;
+  line-height: 25px;
+  margin: 3px 0px;
+}
+
+.error {
+  color: red;
+  margin-bottom: 5px;
+  font-size: 12px;
+  position: relative;
+}
+
+.businessInbox_section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .sellSection {
+    padding: 50px 0px;
+  }
+
+  .imgUpload li {
+    height: 150px;
+    line-height: 125px;
+  }
+  .imgUpload li img {
+    height: 40px;
+  }
+}

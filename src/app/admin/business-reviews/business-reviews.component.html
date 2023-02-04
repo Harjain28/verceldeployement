@@ -1,0 +1,112 @@
+<div class="mainBody">
+    <app-admin-header></app-admin-header>
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+
+            <div class="col-3">
+                <a class="backArrow" (click)="back()">
+                    <img class="catImg" src="./assets/images/icons/back.svg" />
+                </a>
+            </div>
+            <div class="col-6 text-center">
+                <h5 class="pgTitle">Business Reviews</h5>
+            </div>
+            <div class="col-3">
+
+                <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" src="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+            </div>
+        </div>
+    </div>
+    <div class="container businessReviews_section mainSpaceN">
+
+        <div class="row">
+            <app-adminbusiness-left-sidebar class="businessLeft"></app-adminbusiness-left-sidebar>
+
+
+            <div class="bussinessCenter">
+                <div class="branchesList">
+                    <h2>
+                        Reviews
+                    </h2>
+                    <ul class="reviewList">
+                        <li *ngFor="let review of allreviews">
+                            <div class="reviewImg">
+                                <img class="catImg" *ngIf="review?.image" [lazyLoad]="review?.image" />
+                                <img class="catImg" *ngIf="!review?.image" lazyLoad="./assets/images/user.png" />
+                                <div class="reviewImgBody">
+                                    <h5>{{review?.title}}</h5>
+                                    <p><span class="me-4">By : {{review.userId?.name}}</span> {{review?.branchName}}
+                                        Branch</p>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <ul class="rating-list">
+                                    <li *ngFor="let star of stars" [ngClass]="{'selected': (star <= review.rating)}">
+                                        <mat-icon>star</mat-icon>
+                                    </li>
+                                </ul>
+                                <div class="rating-total"> {{review?.createdAt | dateAgo}}</div>
+                            </div>
+                            <p>
+                                {{review.review}}...
+                                <!-- <a style="cursor: pointer">Read more</a> -->
+                            </p>
+                            <div class="replayBox" *ngIf="review?.replyreview?.review">
+                                <div class="reviewImg" *ngIf="review?.replyreview?.review">
+                                    <img style="width: 35px; height: 35px;" class="catImg"
+                                        src="https://klassbook.s3.us-east-2.amazonaws.com/category/1649863983894-Test%20one.jpg" />
+                                    <div class="reviewImgBody">
+                                        <h5>Response by {{review?.classId?.businessName}}</h5>
+                                        <p>
+                                            {{review?.replyreview?.review}}
+                                            <!-- <a style="cursor: pointer">Read more</a> -->
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div *ngIf="!showAddreview">
+                                <a style="cursor: pointer;" class="replyBtn" *ngIf="!review.replyreview"
+                                    (click)="reviewReply(review._id)">Reply</a>
+                                <div *ngIf="replyBox">
+                                    <div class="replayBox" *ngIf="reveiewId === review._id">
+                                        <textarea class="form-control" [(ngModel)]="replyvalue"
+                                            placeholder="Reply"></textarea>
+                                        <button type="submit" (click)="SendReply(review._id)"
+                                            class="btn sendBtn">Send</button>
+                                    </div>
+                                </div>
+
+                                <div class="replayBox">
+                                    <div class="reviewImg">
+                                        <img style="width: 35px; height: 35px;" class="catImg"
+                                            src="https://klassbook.s3.us-east-2.amazonaws.com/category/1649863983894-Test%20one.jpg" />
+                                        <div class="reviewImgBody">
+                                            <h5>Response by {{review?.classId?.businessName}}</h5>
+                                            <p>
+                                                {{review?.replyreview?.review}}
+                                                <!-- <a style="cursor: pointer">Read more</a> -->
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <app-adminbusiness-right-sidebar class="businessLeft"></app-adminbusiness-right-sidebar>
+        </div>
+
+    </div>
+
+</div>

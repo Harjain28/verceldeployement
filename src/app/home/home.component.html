@@ -1,307 +1,834 @@
-<app-header></app-header> 
+<div class="pageMarginTop">
+  <div class="mainBody space bottomSpace">
+    <div class="container">
+      <div class="homeSlider">
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let bannerdata of bannerImage">
+            <ng-template carouselSlide>
+              <img class="image" (click)="redirectionBanner(bannerdata)" [src]="bannerdata.image" />
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+    </div>
+    
+    <!-- <div class="homeSlider display-show-mobile">
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let mobileimage of bannerImage">
+          <ng-template carouselSlide>
+            <img [lazyLoad]="mobileimage.image" />
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div> -->
 
-   <!-- banner part here -->
-   <section class="img_banner_section">
-      <div class="container">
-         <div class="row justify-content-center align-items-center">
-            <div class="col-lg-5 second order-lg-0 order-md-1 order-1">
-               <div class="banner_iner">
-                  <div class="overlay_effect is_show">
-                     <h2 class="overlay_effect_in">A Great Way</h2>
+
+    <!-- <a style="cursor: pointer" class="bussiness display-show-mobile" routerLink="auth/register">
+      Are you a business owner? <br />List your class here.
+    </a> -->
+    <div class="container my-3">
+
+      <div class="btns_box display-show-mobile loginSignup" *ngIf="!loginShow">
+        <button class="bussiness1" (click)="redirection('business')">For Business Owner</button>
+        <button class="bussiness2" (click)="redirection('student')"> Login / Sign Up</button>
+      </div>
+
+      <div class="title">
+        <h3>Find Classes</h3>
+      </div>
+      <div class="container homeClassBar">
+        <button class="btn homeBtn" style="min-width: 169px;" (click)="redirecttoSearch('Online' , 'Online')">Online
+          Classes</button>
+        <button class="btn homeBtn mx-2" style="min-width: 130px;" (click)="redirecttoSearch('nearme' , 'nearme')">Near
+          me</button>
+        <div class="location">
+          <div class="LocationSearch">
+            <div class="searchbox">
+              <img class="icon" lazyLoad="./assets/images/icons/icon-searchn.svg" style="height: 37px;" />
+              <input ngx-google-places-autocomplete [(ngModel)]="locationKey" [options]='options'
+                (input)="locationInput()" (onAddressChange)="handleAddressChange($event)" type="search"
+                class="form-control" style="height: 38px;" placeholder="Search by Location" />
+            </div>
+          </div>
+        </div>
+        <ul class="menuList">
+          <div class="formBox homeDropdownCategory mainBody">
+            <mat-form-field>
+              <mat-select [placeholder]="selectedCategoryLevel.length > 0 ? '' :  'Select Subjects'"
+                (selectionChange)="getSelectedCategory($event.value)" [(ngModel)]="selectedCategoryLevel"
+                [(value)]="selectedCategoryLevel">
+                <div class="searchDropdown">
+                  <div class="position-relative">
+                    <input placeholder="Search Category" [(ngModel)]="catSearchKey"
+                      [ngModelOptions]="{standalone: true}" type="text" (keyup)="onKeySearchCategory()"
+                      class="example-input">
+                    <mat-icon class="icon" style="cursor: pointer; top: 11px;">close
+                    </mat-icon>
                   </div>
-                  <!-- <div class="overlay_effect is_show">
-                        <h2 class="overlay_effect_in"><span>anything </span>&nbsp;possible</h2>
-                        </div> -->
-                  <div class="subtitle_2">
-                     <p>Of finding your ideal influencers <br>
-                        for your business
-                     </p>
-                     <div class="border-top2"></div>
+                </div>
+                <mat-option *ngFor="let data of optionsClasses" [value]="data?.subcategoryName">
+                  {{data?.subcategoryName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </ul>
+      </div>
+      <hr>
+    </div>
+
+    <div class="container">
+
+      <div class="title">
+        <h3>Explore By Subjects</h3>
+        <a class="link" style="cursor: pointer" routerLink="/view/category" *ngIf="subCategories.length >= 11">More</a>
+      </div>
+      <div class="display-show-mobile">
+        <div class="row categoryList">
+          <a style="cursor: pointer" class="col-3 col-md-3 categoryBox"
+            *ngFor="let subCategory of subCategories | slice: 0:8"
+            (click)="redirecttoSearch(subCategory?.subCategoryName , 'category')">
+            <img class="catImg" lazyLoad="{{ subCategory?.subCategoryImage }}" />
+            <h6 (click)="getClassCategory(subCategory.subCategoryId)">{{ subCategory?.subCategoryName }}</h6>
+          </a>
+        </div>
+      </div>
+
+      <div class="categorySlider display-show-desktop mb-4">
+        <div class="owlSLider categoryList" *ngIf="subCategories.length >= 11">
+          <owl-carousel-o [options]="customOptions4">
+            <ng-template *ngFor="let subCategory of subCategories" carouselSlide [id]="subCategory.subCategoryId">
+              <a style="cursor: pointer" class="categoryBox categoryBoxDesktop"
+                (click)="redirecttoSearch(subCategory?.subCategoryName , 'category')">
+                <img class="catImg" lazyLoad="{{ subCategory?.subCategoryImage }}" />
+                <h6 (click)="redirecttoSearch(subCategory?.subCategoryName , 'category')">{{
+                  subCategory?.subCategoryName }}</h6>
+              </a>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+
+        <!-- <ul class="cateSliderDesktop categoryList" *ngIf="subCategories.length < 11">
+          <li *ngFor="let subCategory of subCategories |slice:0:10">
+            <a style="cursor: pointer" class="categoryBox" (click)="getClassCategory(subCategory.subCategoryId)">
+              <img class="catImg" lazyLoad="{{ subCategory?.subCategoryImage }}" />
+              <h6 (click)="getClassCategory(subCategory.subCategoryId)">{{ subCategory?.subCategoryName }}</h6>
+            </a>
+          </li>
+        </ul> -->
+      </div>
+    </div>
+
+    <div *ngFor="let section of sections | slice:0:2" class="container">
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Group'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+        <div class="row eventSection">
+          <ng-container *ngFor="let group of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection">
+                <div class="classSectionImg">
+                  <img class="catImg" (click)="getGroupDetails(group._id)" lazyLoad="{{ group.image }}" />
+                  <!-- <a class="fav"  (click) = "checkLoginorNot()">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a (click)="getGroupDetails(group._id)" class="titleName">
+                    {{ group.groups }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="articlesSlider display-show-mobile">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let group of section.sectionValue">
+              <ng-template style="width: 10px" carouselSlide>
+                <div class="classSection">
+                  <div class="classSectionImg">
+                    <img class="catImg" (click)="getGroupDetails(group._id)" lazyLoad="{{ group.banner }}" />
+                    <!-- <a (click) = "checkLoginorNot()" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
                   </div>
-                  <p class="wow fadeInLeft" data-wow-delay=".5s">Want to find your next business partner, or earn some
-                     <br>
-                     extra income<span style="font-family: Arial, Helvetica, sans-serif;">?</span> Start right away with Gramgenie, a unique <br> marketplace which allows buyers to
-                     find
-                     their ideal <br> influencer with the help of smart filtering, user <br> engagement viewer and
-                     feedback.
+                  <div class="classSectionBody">
+                    <a (click)="getGroupDetails(group._id)" class="titleName">
+                      {{ group.groups }}
+                    </a>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Classes'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+        <div class="row eventSection">
+          <ng-container *ngFor="let class of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection owlSLiderSpace">
+                <div class="classSectionImg">
+                  <img *ngIf="class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="{{ class.image[0] }}" />
+                  <img *ngIf="!class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="./assets/images/classImg.svg" />
+                  <!-- <a style="cursor: pointer" class="fav" (click) = "checkLoginorNot()">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody" (click)="getClassDetails(class._id)">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ class.businessName }}
+                  </a>
+                  <div class="row m-0 mt-2">
+                    <div class="col-md-2 category"
+                      *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last">
+                      {{category.subCategory}}{{isLast ? '' : ', '}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="owlSLider display-show-mobile">
+          <owl-carousel-o [options]="customOptions2">
+            <ng-template style="width: 10px" *ngFor="let class of section.sectionValue" carouselSlide>
+              <div class="classSection owlSLiderSpace">
+                <div class="classSectionImg">
+                  <img *ngIf="class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="{{ class.image[0] }}" />
+                  <img *ngIf="!class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="./assets/images/classImg.svg" />
+                  <!-- <a
+                    style="cursor: pointer" (click) = "checkLoginorNot()" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody" (click)="getClassDetails(class._id)">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ class.businessName }}
+                  </a>
+                  <div class="row m-0 mt-2">
+                    <div class="category"
+                      *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last">
+                      <!-- {{category.subCategory}}{{i === class.businesssubCategory.length - 2 ? '' : ', '}} -->
+                      {{category.subCategory}}{{isLast ? '' : ', '}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
+
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Event'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+
+        <div class="row eventSection">
+          <ng-container *ngFor="let event of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection owlSLiderSpace">
+                <div class="classSectionImg">
+                  <img class="catImg" (click)="getEventsDetails(event._id)" [lazyLoad]="event?.image[0]" />
+                  <!-- <span (click)="getEventsDetails(event._id)"> {{
+                    event.title
+                    }}</span> -->
+                  <!-- <a style="cursor: pointer" class="fav"  (click) = "checkLoginorNot()">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a (click)="getEventsDetails(event._id)" style="cursor: pointer" class="titleName">
+                    {{ event.title }}
+                  </a>
+                  <p (click)="getEventsDetails(event._id)">
+                    {{ event.Date | date }}
                   </p>
-                  <div class="banner_btn">
-                     <a routerLink="/find_infulencers" class="cu_btn btn_3 wow fadeInLeft"
-                        data-wow-delay=".5s">Find influencers</a>
-                     <a routerLink="/sign_up" data-wow-delay=".5s" class="cu_btn btn_4 wow fadeInLeft"
-                        style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">Get Started</a>
-                  </div>
-               </div>
+                  <!-- <p>
+                    <span><img class="catImg" lazyLoad="./assets/images/icons/class2.svg" /></span>
+                    {{ event.address1 }}
+                  </p> -->
+                </div>
+              </div>
             </div>
-            <div class="first col-lg-7 wow fadeInDown" data-wow-delay=".5s">
-               <div class="banner_img">
-                  <img src="assets/images/Home_page/Slider Artwork.svg" alt="javascript:;" class="img-fluid">
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!-- banner part end -->
-   <!-- our services part -->
-   <section class="single_page_service ft_font single_service_padding service-area">
-      <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-sm-12">
-               <div class="non">
-                  <p>For Businesses</p>
-                  <div class="border-top_1 "></div>
-               </div>
-               <div class="section_tittle style_2 wow fadeInDown" data-wow-delay=".5s"
-                  style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                  <h2>Find influencers your way!
-                  </h2>
-                  <h5 class="base_color">With our Gramgenie marketplace have an option to post a job and hire your
-                     appropriate influencer or browse through the marketplace and filter your way through in selecting
-                     your ideal influencer.
-                  </h5>
-               </div>
-            </div> 
-         </div>
-         <div class="row">
-            <div class="col-lg-6 col-sm-6 pt-2 wow fadeInDown" data-wow-delay=".3s"
-               style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">
-               <div class="services-caption text-left mb-30">
-                  <div class="service-cap">
-                     <span class="">Post a job and</span>
-                     <h4>hire an influencer</h4>
-                     <p>Have the option to hire influencers or post your job on our marketplace for influencers to find
-                        you.
-                     </p>
-                     <a  routerLink="/post_and_hire_influencer">Gramgenie Marketplace<i class="fa fa-chevron-right"></i></a>
-                  </div>
-                  <div class="ner">
-                     <div class="service-icon2 text-left"></div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-6 col-sm-6 wow fadeInDown pt-2" data-wow-delay=".3s"
-               style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">
-               <div class="services-caption text-left mb-30">
-                  <div class="service-cap">
-                     <span class="">Browse and buy</span>
-                     <h4>advertisement services</h4>
-                     <p>Looking to earn money<span style="font-family: Arial, Helvetica, sans-serif;">?</span> Post details about your promotions or find customers on our marketplace.
-                     </p>
-                     <a  routerLink="/how_to_buy">Gramgenie Marketplace<i class="fa fa-chevron-right"></i></a>
-                  </div>
-                  <div class="ner">
-                     <div class="service-icon text-left"></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!--  -->
-   <!-- our services part -->
-   <section class="single_page_service single_page_1 ft_font single_service_padding">
-      <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-sm-12">
-               <div class="section_tittle style_2 wow fadeInDown" data-wow-delay=".5s"
-                  style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                  <h2>How we do it!</h2>
-                  <h5 class="base_color">The unparalleled marketplace is powered by the following Gramgenie services
-                  </h5>
-               </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="dsa text-center wow fadeInDown" data-wow-delay=".5s"
-               style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-               <img src="assets/images/work_new.svg" alt="" class="img-fluid">
-            </div>
-         </div>
-      </div>
-   </section>
-   <!-- end services part -->
-   <section class="about_section padding_top sp_font">
-      <div class="container">
-         <div class="row home_center">
-            <div class="col-lg-6 First">
-               <div class="about_section_content">
-                  <div class="section_tittle text-left style_2 wow fadeInDown" data-wow-delay=".5s"
-                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                     <h2>Buy advertisements<br />
-                        and boost your business sales
-                     </h2>
-                     <div class="border-top my-3"></div>
-                     <div class="subtitle_5">
-                        <p>Business owners</p>
-                        <span>
-                           Want to find your next business partner, or earn some extra income<span style="font-family: Arial, Helvetica, sans-serif;">?</span> Start right away with
-                           Gramgenie, a unique marketplace which allows buyers to find their ideal influencer with the
-                           help of smart filtering, user engagement viewer and feedback.
-                        </span>
-                     </div>
-                     <div class="subtitle_5 pt-md-5 pt-3">
-                        <p>Benefits for users</p>
-                        <ul>
-                           <li>• You only pay once influencer publishes content</li>
-                           <li>• Pay with many payment methods</li>
-                           <li>• Smart filter allows to find your ideal influencer</li>
-                           <li>• 100% protected payment and security</li>
-                           <li>• Communication with the influencer</li>
-                           <li>• Can view influencers engagement on Instagram</li>
-                           <li>• Customer support</li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-6 Second">
-               <div class="img_section">
-                  <img src="assets/images/Home_page/Buyers Artwork.svg" alt="deep">
-                  <div class="round_shape_animation"></div>
-               </div>
-            </div>
-         </div>
-         <div class="row home_center">
-            <div class="col-lg-6 second order-lg-0 order-md-1 order-1">
-               <div class="img_section">
-                  <img src="assets/images/Home_page/Seller_Artwork.svg" alt="deep">
-                  <div class="round_shape_animation"></div>
-               </div>
-            </div>
-            <div class="col-lg-6 first">
-               <div class="about_section_content">
-                  <div class="section_tittle style_2 wow fadeInDown" data-wow-delay=".5s"
-                     style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                     <h2>Sell your advertisements<br />
-                        and boost your income
-                     </h2>
-                     <div class="border-top my-3"></div>
-                     <div class="subtitle_5">
-                        <p>Influencers</p>
-                        <span>
-                           Want to find your next business partner, or earn some extra income<span style="font-family: Arial, Helvetica, sans-serif;">?</span> Start right away with
-                           Gramgenie, a unique marketplace which allows buyers to find their ideal influencer with the
-                           help of smart filtering, user engagement viewer and feedback.
-                        </span>
-                     </div>
-                     <div class="subtitle_5 pt-md-5 pt-3">
-                        <p>Benefits for users</p>
-                        <ul>
-                           <li>• You only pay once influencer publishes content</li>
-                           <li>• Pay with many payment methods</li>
-                           <li>• Smart filter allows to find your ideal influencer</li>
-                           <li>• 100% protected payment and security</li>
-                           <li>• Communication with the influencer</li>
-                           <li>• Can view influencers engagement on Instagram</li>
-                           <li>• Customer support</li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!-- our services part -->
-   <section class="single_page_service ft_font single_service_padding">
-      <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-sm-12">
-               <div class="section_tittle style_2 wow fadeInDown" data-wow-delay=".5s"
-                  style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-                  <h2>Gramgenie Marketplace Features</h2>
-                  <h5 class="base_color">The unparalleled Gramgenie marketplace is powered by the following services:
-                  </h5>
-               </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-lg-4 col-sm-6 wow fadeInDown" data-wow-delay=".3s"
-               style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInDown;">
-               <div class="single_services_part style_2">
-                  <div class="mob_1">
-                     <a href="services_details_1.html">
-                        <img src="assets/images/Home_page/Icons/Icons-01.svg" class="service_icon"
-                           alt="services_icon"></a>
-                     <div class="spare1"></div>
-                     <h4> <a href="services_details_1.html"> Find more customers </a></h4>
-                     <p>Our marketplace will enable influencers to reach out to customers from different geographic
-                        locations
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 wow fadeInDown" data-wow-delay=".4s"
-               style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInDown;">
-               <div class="single_services_part style_2">
-                  <div class="mob_1">
-                     <a href="services_details_1.html"><img src="assets/images/Home_page/Icons/Icons-02.svg"
-                           class="service_icon" alt="services_icon"></a>
-                     <div class="spare1"></div>
-                     <h4> <a href="services_details_1.html"> Payment protection</a></h4>
-                     <p>Payments are protected using escrow, which allows customers to have full confidence in
-                        purchasing an advertisement service. Customers will release payments once the job is delivered.
-                        
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 wow fadeInDown" data-wow-delay=".5s"
-               style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
-               <div class="single_services_part style_2">
-                  <div class="mob_1">
-                     <a href="services_details_1.html"><img src="assets/images/Home_page/Icons/Icons-03.svg"
-                           class="service_icon" alt="services_icon"></a>
-                     <div class="spare1"></div>
-                     <h4> <a href="services_details_1.html"> Reputation & Feedback</a></h4>
-                     <p>Our marketplace is integrated with rating systems which allows buyers and sellers to give each
-                        other feedback through the options of using a star and providing feedback text.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 wow fadeInDown" data-wow-delay=".6s"
-               style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInDown;">
-               <div class="single_services_part style_2">
-                  <div class="mob_1">
-                     <a href="services_details_1.html"><img src="assets/images/Home_page/Icons/Icons-04.svg"
-                           class="service_icon" alt="services_icon"></a>
-                     <div class="spare1"></div>
-                     <h4> <a href="services_details_1.html">Automated payouts</a></h4>
-                     <p>Our marketplace ensures that sellers get paid on time without any hassle, all automate payouts.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 wow fadeInDown" data-wow-delay=".7s"
-               style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInDown;">
-               <div class="single_services_part style_2">
-                  <div class="mob_1">
-                     <a href="services_details_1.html"><img src="assets/images/Home_page/Icons/Icons-05.svg"
-                           class="service_icon" alt="services_icon"></a>
-                     <div class="spare1"></div>
-                     <h4> <a href="services_details_1.html">Instagram account Analyzer </a></h4>
-                     <p>Our marketplace gives customers an option to use our smart Instagram account analyzer to view
-                        the engagement.
-                     </p>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 wow fadeInDown" data-wow-delay=".8s"
-               style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInDown;">
-               <div class="single_services_part style_2">
-                  <div class="mob_1">
-                     <a href="services_details_1.html"><img src="assets/images/Home_page/Icons/Icons-06.svg"
-                           class="service_icon" alt="services_icon"></a>
-                     <div class="spare1"></div>
-                     <h4> <a href="services_details_1.html">Track results</a></h4>
-                     <p>Influencers can track results of their campaign with the help of analytics table.</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!-- our services part end -->
+          </ng-container>
+        </div>
 
-<app-footer></app-footer>
+        <div class="owlSLider eventSection display-show-mobile" *ngIf="section.sectionValue.length >= 5">
+          <owl-carousel-o [options]="customOptions5">
+            <ng-container *ngFor="let event of section.sectionValue">
+              <ng-template style="width: 10px" [id]="event._id" carouselSlide>
+                <div class="classSection owlSLiderSpace">
+                  <div class="classSectionImg">
+                    <img class="catImg" (click)="getEventsDetails(event._id)" [lazyLoad]="event.image[0]" />
+                    <!-- <span (click)="getEventsDetails(event._id)">{{
+                      event.title
+                      }}</span> -->
+                    <!-- <a style="cursor: pointer" (click) = "checkLoginorNot()" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a (click)="getEventsDetails(event._id)" style="cursor: pointer" class="titleName">
+                      {{ event?.title }}
+                    </a>
+                    <p (click)="getEventsDetails(event._id)">
+                      {{ event.Date | date }}
+                    </p>
+                    <!-- <p>
+                      <span><img class="catImg" lazyLoad="./assets/images/icons/class2.svg" /></span>
+                      {{ event.address1 }}
+                    </p> -->
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+
+      </div>
+
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Articles'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+
+        <div class="row eventSection">
+          <ng-container *ngFor="let article of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection">
+                <div class="classSectionImg">
+                  <img class="catImg" (click)="getArticeDetails(article._id)" lazyLoad="{{ article.banner }}" />
+                  <!-- <a  (click) = "checkLoginorNot()" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a (click)="getArticeDetails(article._id)" class="ellipsesTitle2">
+                    {{ article.title }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="articlesSlider owlSLider display-show-mobile">
+          <owl-carousel-o [options]="customOptions2">
+            <ng-container *ngFor="let article of section.sectionValue">
+              <ng-template style="width: 10px" carouselSlide>
+                <div class="classSection owlSLiderSpace">
+                  <div class="classSectionImg">
+                    <img class="catImg" (click)="getArticeDetails(article._id)" lazyLoad="{{ article.banner }}" />
+                    <a (click)="checkLoginorNot()" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a>
+                  </div>
+                  <div class="classSectionBody">
+                    <a (click)="getArticeDetails(article._id)" class="ellipsesTitle2">
+                      {{ article.title }}
+                    </a>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <ng-container *ngFor="let section of sections |slice:2:4">
+
+          <ng-container *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Articles'">
+            <div class="col-md-6">
+              <div class="title">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer" *ngIf="section.sectionValue.length > 3"
+                  routerLink="/articles">All</a>
+              </div>
+
+              <owl-carousel-o [options]="customOptions6">
+                <ng-template carouselSlide>
+                  <ul class="topicList">
+                    <li *ngFor="let article of section.sectionValue | slice: 0:3; let i = index">
+                      <a style="cursor: pointer" (click)="getArticeDetails(article._id)">
+                        <img class="tpsImg" lazyLoad="{{ article.banner }}" /></a>
+                      <div class="trendingBody">
+                        <a (click)="getArticeDetails(article._id)" style="cursor: pointer" class="ellipsesTitle2">{{
+                          article.title
+                          }}</a>
+                        <!-- [innerHTML]="article.description | sanitizeHtml" -->
+                        <p (click)="getArticeDetails(article._id)" class="ellipses">
+                          {{ article.articledescription }}
+                          <a style="cursor: pointer">See more</a>
+                        </p>
+                        <div class="time">
+                          <span>{{ article.updatedAt | date }}</span>
+                          <!-- <a style="cursor: pointer"  (click) = "checkLoginorNot()" class="fav">
+                            <mat-icon class="like">favorite_border</mat-icon>
+                          </a> -->
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Group'">
+            <div class="col-md-6">
+              <div class="title">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer" *ngIf="section.sectionValue.length > 3"
+                  routerLink="/group">All</a>
+              </div>
+
+              <owl-carousel-o [options]="customOptions6">
+                <ng-template carouselSlide>
+                  <ul class="topicList">
+                    <li *ngFor="let group of section.sectionValue | slice: 0:3; let i = index">
+                      <a style="cursor: pointer"><img *ngIf="!group.image" (click)="getGroupDetails(group._id)"
+                          class="tpsImg" lazyLoad="./assets/images/tr1.svg" />
+                        <img *ngIf="group.image" (click)="getGroupDetails(group._id)" class="tpsImg"
+                          lazyLoad="{{group.image}}" />
+                      </a>
+
+                      <div class="trendingBody">
+                        <a style="cursor: pointer" routerLink="/group-details" class="titleName"
+                          (click)="getGroupDetails(group._id)">{{group.groups}}</a>
+                        <p class="ellipses" [innerHTML]="group?.groupDescription | sanitizeHtml">
+
+                          <a style="cursor: pointer">See more</a>
+                        </p>
+                        <div class="time">
+                          <!-- <span (click)="getGroupDetails(group._id)">{{group.updatedAt | date}}</span> -->
+                          <!-- <a style="cursor: pointer"  class="fav"  (click) = "checkLoginorNot()">
+                            <mat-icon class="like">favorite_border</mat-icon>
+                          </a> -->
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Event'">
+            <div class="col-md-6">
+              <div class="title">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer" *ngIf="section.sectionValue.length > 3"
+                  routerLink="/view/events">All</a>
+              </div>
+
+              <owl-carousel-o [options]="customOptions6">
+                <ng-template carouselSlide>
+                  <ul class="topicList">
+                    <li *ngFor="let events of section.sectionValue | slice: 0:3; let i = index">
+                      <a style="cursor: pointer">
+                        <img *ngIf="!events.image" (click)="getEventsDetails(events?._id)" class="tpsImg"
+                          lazyLoad="./assets/images/tr1.svg" />
+                        <img *ngIf="events.image" (click)="getEventsDetails(events._id)" class="tpsImg"
+                          [lazyLoad]="events?.image[0]" />
+                      </a>
+
+                      <div class="trendingBody" (click)="getEventsDetails(events._id)">
+                        <a style="cursor: pointer" class="titleName">{{events.title}}</a>
+                        <p class="ellipses events" [innerHTML]="events?.smallDescription | sanitizeHtml">
+
+                          <a style="cursor: pointer">See more</a>
+                        </p>
+                        <p class="limit1">
+                          <!-- <img lazyLoad="./assets/images/icons/icon-location.svg"
+                            class="icon">  -->
+                          {{events?.address1}}
+                        </p>
+                        <a class="fav">
+                          <!-- <mat-icon class="like">favorite_border</mat-icon> -->
+                        </a>
+                        <!-- <span (click)="getEventsDetails(events._id)">{{events?.address1}}</span> -->
+                        <!-- <a style="cursor: pointer"  class="fav"  (click) = "checkLoginorNot()">
+                            <mat-icon class="like">favorite_border</mat-icon>
+                          </a> -->
+                      </div>
+                    </li>
+                  </ul>
+                </ng-template>
+              </owl-carousel-o>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+
+
+    <!-- <div class="display-show-mobile">
+      <div class="title mt-0">
+        <h3>Trending topics</h3>
+        <a class="link" href="javascript:void(0);" routerLink="group/articles">More</a>
+      </div>
+  
+      <ul class="trendingList">
+        <li *ngFor="let article of articles | slice: 0:3; let i = index">
+          <a href="javascript:void(0);" (click)="getArticeDetails(article._id)">
+            <img *ngIf="article.banner" class="tpsImg" lazyLoad="{{article.banner}}" />
+            <img *ngIf="!article.banner" class="tpsImg" lazyLoad="./assets/images/tr2.svg" />
+          </a>
+          <div class="trendingBody">
+            <a href="javascript:void(0);" (click)="getArticeDetails(article._id)" class="titleName">{{article.title}}</a>
+            <p (click)="getArticeDetails(article._id)"> <span class="ellipses"
+                [innerHTML]="article.description[0] | sanitizeHtml"></span> <span>|</span> {{ article.createdDate | date
+              }}</p>
+            <a href="javascript:void(0);" class="fav">
+              <mat-icon class="like">favorite_border</mat-icon>
+            </a>
+          </div>
+        </li>
+      </ul>
+  
+      <div class="title">
+        <h3>Events</h3>
+        <a class="link" style="cursor: pointer;" routerLink="group/event-details">More</a>
+      </div>
+      <div class="eventList" *ngFor="let event of events | slice: 0:2">
+        <div class="eventDate">
+          <h3 (click)="getEventsDetails(event._id)">{{ event.updatedAt | date: "dd" }}</h3>
+          <h5 (click)="getEventsDetails(event._id)"> {{ event.updatedAt | date: "MMM" }} {{ event.updatedAt | date: "yy"
+            }}</h5>
+        </div>
+        <div class="eventBody">
+          <a href="javascript:void(0);" class="tt" (click)="getEventsDetails(event._id)">
+            {{ event.title }}
+          </a>
+          <p (click)="getEventsDetails(event._id)">
+            <img lazyLoad="./assets/images/icons/icon-location.svg" class="icon" />
+            {{ event.address1 }}
+          </p>
+          <a href="javascript:void(0);" class="fav">
+            <mat-icon class="like">favorite_border</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div> -->
+
+    <div *ngFor="let section of sections |slice:4:12" class="container">
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Group'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+        <div class="row eventSection">
+          <ng-container *ngFor="let group of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection">
+                <div class="classSectionImg">
+                  <img class="catImg" (click)="getGroupDetails(group._id)" lazyLoad="{{ group.image }}" />
+                  <!-- <a (click) = "checkLoginorNot()" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a (click)="getGroupDetails(group._id)" class="titleName">
+                    {{ group.groups }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="articlesSlider display-show-mobile">
+          <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let group of section.sectionValue">
+              <ng-template style="width: 10px" carouselSlide>
+                <div class="classSection">
+                  <div class="classSectionImg">
+                    <img class="catImg" (click)="getGroupDetails(group._id)" lazyLoad="{{ group.banner }}" />
+                    <!-- <a (click) = "checkLoginorNot()" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a href="javascript:void(0);" (click)="getGroupDetails(group._id)" class="titleName">
+                      {{ group.groups }}
+                    </a>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Classes'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+        <div class="row eventSection">
+          <ng-container *ngFor="let class of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection owlSLiderSpace">
+                <div class="classSectionImg">
+                  <img *ngIf="class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="{{ class.image[0] }}" />
+                  <img *ngIf="!class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="./assets/images/classImg.svg" />
+                  <!-- <a style="cursor: pointer" (click) = "checkLoginorNot()" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody" (click)="getClassDetails(class._id)">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ class.businessName }}
+                  </a>
+                  <!-- <div class="row">
+                    <div class="col-md-4">Branch 1 </div>
+                    <div class="col-md-4">Branch 1 </div>
+                    <div class="col-md-4">More </div>
+                </div> -->
+                  <div class="row m-0 mt-2">
+                    <div class="col-md-2 category"
+                      *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last">
+                      {{category.subCategory}}{{isLast ? '' : ', '}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="owlSLider display-show-mobile" *ngIf="section.sectionValue.length >= 5">
+          <owl-carousel-o [options]="customOptions2">
+            <ng-template style="width: 10px" *ngFor="let class of section.sectionValue" carouselSlide>
+              <div class="classSection owlSLiderSpace">
+                <div class="classSectionImg">
+                  <img *ngIf="class.image" (click)="getClassDetails(class._id)" class="catImg"
+                    lazyLoad="{{ class.image }}" />
+                  <img *ngIf="!class.image" class="catImg" lazyLoad="./assets/images/classImg.svg" />
+                  <!-- <a
+                    style="cursor: pointer" (click) = "checkLoginorNot()"  class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody" (click)="getClassDetails(class._id)">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ class.businessName }}
+                  </a>
+                  <div class="row m-0 mt-2">
+                    <div class="col-md-2 category"
+                      *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last">
+                      {{category.subCategory}}{{isLast ? '' : ', '}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
+
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Event'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+
+        <div class="row eventSection">
+          <ng-container *ngFor="let event of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection owlSLiderSpace" (click)="getEventsDetails(event._id)">
+                <div class="classSectionImg">
+                  <img class="catImg" [lazyLoad]="event?.image[0]" />
+                  <!-- <span (click)="getEventsDetails(event._id)">{{
+                    event.title
+                    }}</span> -->
+                  <!-- <a style="cursor: pointer" (click) = "checkLoginorNot()" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ event?.title }}
+                  </a>
+                  <p (click)="getEventsDetails(event._id)">
+                    {{ event.Date | date }}
+                  </p>
+                  <!-- <p>
+                    <span><img class="catImg" lazyLoad="./assets/images/icons/class2.svg" /></span>
+                    {{ event.address1 }}
+                  </p> -->
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="owlSLider eventSection display-show-mobile">
+          <owl-carousel-o [options]="customOptions5">
+            <ng-container *ngFor="let event of section.sectionValue">
+              <ng-template style="width: 10px" [id]="event._id" carouselSlide>
+                <div class="classSection owlSLiderSpace">
+                  <div class="classSectionImg" (click)="getEventsDetails(event._id)">
+                    <img class="catImg" [lazyLoad]="event.image[0]" />
+                    <!-- <span (click)="getEventsDetails(event._id)">{{
+                      event.title
+                      }}</span> -->
+                    <!-- <a style="cursor: pointer" (click) = "checkLoginorNot()" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+                  </div>
+                  <div class="classSectionBody" (click)="getEventsDetails(event._id)">
+                    <a style="cursor: pointer" class="titleName">
+                      {{ event?.title }}
+                    </a>
+                    <p>
+                      {{ event.Date | date }}
+                    </p>
+                    <!-- <p>
+                      <span><img class="catImg" lazyLoad="./assets/images/icons/class2.svg" /></span>
+                      {{ event.address1 }}
+                    </p> -->
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+
+      </div>
+
+      <div class="" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Articles'">
+        <div class="title m-0">
+          <h3>{{section.title}}</h3>
+          <a class="link" style="cursor: pointer;" *ngIf="section.sectionValue.length >= 5"
+            (click)="showAllData(section.title)">More</a>
+        </div>
+
+        <div class="row eventSection">
+          <ng-container *ngFor="let article of section.sectionValue | slice:0:4">
+            <div class="col-md-3 display-show-desktop">
+              <div class="classSection">
+                <div class="classSectionImg">
+                  <img class="catImg" (click)="getArticeDetails(article._id)" lazyLoad="{{ article.banner }}" />
+                  <!-- <a class="fav"  (click) = "checkLoginorNot()">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a (click)="getArticeDetails(article._id)" class="ellipsesTitle2">
+                    {{ article.title }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="articlesSlider owlSLider display-show-mobile">
+          <owl-carousel-o [options]="customOptions2">
+            <ng-container *ngFor="let article of section.sectionValue">
+              <ng-template style="width: 10px" carouselSlide>
+                <div class="classSection owlSLiderSpace">
+                  <div class="classSectionImg">
+                    <img class="catImg" (click)="getArticeDetails(article._id)" lazyLoad="{{ article.banner }}" />
+                    <!-- <a (click) = "checkLoginorNot()" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a (click)="getArticeDetails(article._id)" class="ellipsesTitle2">
+                      {{ article.title }}
+                    </a>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+
+    <section class="downloadSection display-show-desktop" *ngIf="AppDescription?.description">
+      <img lazyLoad="./assets/images/download-bg.png" class="backgroundImg" />
+      <div class="containerBox" *ngIf="AppTitle?.description">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-md-6 leftContent">
+              <p class="textLimit2 title" [innerHTML]="AppTitle?.description | sanitizeHtml"></p>
+              <p class="textLimit3" [innerHTML]="AppDescription?.description | sanitizeHtml">
+              </p>
+              <ul>
+                <li *ngIf="googlePlayLink?.status == true">
+                  <a style="cursor: pointer" href="{{googlePlayLink?.Link}}" target="_blank">
+                    <img lazyLoad="./assets/images/google-play.svg" />
+                  </a>
+                </li>
+                <li *ngIf="appleStore?.status == true">
+                  <a style="cursor: pointer" href="{{appleStore?.Link}}" target="_blank">
+                    <img lazyLoad="./assets/images/app-store.svg" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6" style="text-align: right;">
+              <img lazyLoad="./assets/images/download-img.png" class="mobileImg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="aboutSection display-show-desktop" *ngIf="sectionInfo && sectionInfo.length > 0">
+      <!-- <img lazyLoad="./assets/images/pol.svg" class="pol1" />
+      <img lazyLoad="./assets/images/pol.svg" class="pol2" /> -->
+      <div class="container">
+        <div class="title" *ngIf="aboutUs?.status == true">
+          <h3>About Us:</h3>
+          <p class="textLimit4" [innerHTML]="aboutUs?.description | sanitizeHtml">
+            <img lazyLoad="./assets/images/drop.svg" class="drops" />
+          </p>
+          <span>
+            <a style="cursor: pointer" [routerLink]="['/view/about/']">See more</a>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <app-bottom-bar></app-bottom-bar>
+
+  </div>
+
+</div>

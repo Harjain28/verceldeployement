@@ -1,0 +1,161 @@
+@charset "UTF-8";
+.reviewImg {
+  display: flex;
+}
+
+.reviewImg .catImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.rating-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.rating-list li {
+  color: #ddd;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.rating-list li.selected {
+  color: var(--main1);
+}
+
+.catImg {
+  margin-right: 5px;
+}
+
+.reviewList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.reviewList li {
+  display: block;
+  padding: 10px 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.reviewList li .rating-list li {
+  border: none;
+  margin: 0;
+}
+.reviewList li h5 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.reviewList li p {
+  font-size: 14px;
+  color: var(--main4);
+  margin: 0;
+}
+.reviewList li p a {
+  text-decoration: none;
+  color: var(--main4);
+  font-weight: 500;
+}
+.reviewList li:last-child {
+  border: none;
+}
+.reviewList.programs li {
+  display: block;
+  padding: 10px 0px;
+  border-bottom: none;
+}
+.reviewList.programs li h5 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.reviewList.programs li:last-child {
+  border: none;
+}
+
+.branchesList h2 .btnAddbranch {
+  background-color: #f9560f;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 0px 15px;
+  display: inline-block;
+  float: right;
+  border-radius: 50px;
+}
+
+.replayBox {
+  margin-top: 15px;
+}
+
+.replayBox .sendBtn {
+  background: #f9560f;
+  color: #fff;
+  min-width: 100px;
+  padding: 8px 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.businessReviews_section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.review-rating {
+  display: flex;
+  align-items: center;
+}
+.review-rating .review-stars {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  vertical-align: middle;
+  font-size: 20px;
+  color: #d7d7d7;
+}
+.review-rating .review-stars:before {
+  content: "★★★★★";
+  font-weight: 600;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+.review-rating .review-stars .review-stars-range {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.review-rating .review-stars .review-stars-range:before {
+  content: "★★★★★";
+  font-weight: 600;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  line-height: 1;
+  color: var(--main1);
+  position: absolute;
+}
+.review-rating .rating-total {
+  font-size: 11px;
+}

@@ -1,0 +1,133 @@
+<section class="loginSection">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-7 imgBox p-0 display-show-desktop">
+        <img lazyLoad="./assets/images/loginImg.png">
+      </div>
+
+      <div class="col-md-5 contentBox">
+        <div class="backgound display-show-desktop">
+          <img lazyLoad="./assets/images/shape1.svg" class="shape1">
+          <img lazyLoad="./assets/images/shape2.svg" class="shape2">
+          <img lazyLoad="./assets/images/shape3.svg" class="shape3">
+        </div>
+        <div class="mainBody bottomSpace">
+
+          <div class="pageTopBar row">
+            <div class="col-3">
+              <a class="backArrow" (click)="back()">
+                <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+              </a>
+            </div>
+            <div class="col-6 text-center">
+              <h5 class="pgTitle">Contact Klassbook</h5>
+            </div>
+            <div class="col-3"></div>
+          </div>
+
+          <div class="contactDesktop">
+
+            <div class="space contacttUs">
+              <div class="title mt-0 d-block" *ngIf="contact?.status == true">
+                <p [innerHTML]="contact?.description | sanitizeHtml"></p>
+              </div>
+              <div class="connect">
+                <h5>Connect with us:</h5>
+                <a *ngIf="faceBookLink?.status == true" href="{{faceBookLink?.Link}}" target="_blank">
+                  <img class="catImg" lazyLoad="./assets/images/icons/icon-f.svg" />
+                </a>
+                <a *ngIf="instagramLink?.status == true" href="{{instagramLink?.Link}}" target="_blank">
+                  <img class="catImg" lazyLoad="./assets/images/icons/icon-i.svg" />
+                </a>
+              </div>
+              <div class="connect">
+                <h5>Reach out to us:</h5>
+                <a>support@klassbook.com</a>
+              </div>
+              <div class="or">
+                <span>or</span>
+              </div>
+              <div class="title mb-2">
+                <h3>Contact us</h3>
+              </div>
+              <form [formGroup]="contactForm">
+                <div class="row">
+                  <div class="formCmg labelForm col-12 col-md-12">
+                    <input name="name" formControlName="name" type="text" class="form-control" placeholder="Name*" />
+                  </div>
+                  <div class="error" *ngIf="
+                        contactForm.controls.name.touched &&
+                        contactForm.controls.name.hasError('required')
+                      ">
+                    Name is required.
+                  </div>
+                  <div class="formCmg labelForm col-12 col-md-12">
+                    <input type="email" name="email" formControlName="email" class="form-control"
+                      placeholder="Email*" />
+                  </div>
+                  <div class="error" *ngIf="
+                        contactForm.controls.email.touched &&
+                        contactForm.controls.email.hasError('required')
+                      ">
+                    Email address is required.
+                  </div>
+                  <div class="error" *ngIf="
+                    contactForm.controls.email.dirty &&
+                    contactForm.controls.email.hasError('pattern')
+                      ">
+                    Enter valid email address.
+                  </div>
+                  <div class="formCmg labelForm col-12 col-md-12">
+                    <img class="icon" src="./assets/images/icons/icon-phone.svg" style="height: 19px" />
+                    <!-- <span class="staticCode"> +65 </span> -->
+                    <input type="text" ng2TelInput (ng2TelOutput)="getNumber($event)"
+                      [ng2TelInputOptions]="{initialCountry: 'in' , separateDialCode:true}"
+                      (intlTelInputObject)="telInputObject($event)" (countryChange)="onCountryChange($event)"
+                      (hasError)="hasError($event)" (keypress)="numberOnly($event, 'mobile')" class="form-control"
+                      name="phone" formControlName="phone" placeholder="Mobile Number" name="phone"
+                      formControlName="phone" class="form-control" placeholder="Mobile" />
+                  </div>
+                  <div class="error" *ngIf="
+                        contactForm.controls.phone.touched &&
+                        contactForm.controls.phone.hasError('required')
+                      ">
+                    Mobile number is required.
+                  </div>
+                  <div class="formCmg labelForm col-12 col-md-12">
+                    <textarea class="form-control" maxlength="1000" name="message" formControlName="message"
+                      placeholder="Type your message with max characters 1000."></textarea>
+                  </div>
+                  <div class="error" *ngIf="
+                        contactForm.controls.message.touched &&
+                        contactForm.controls.message.hasError('required')
+                      ">
+                    Message is required.
+                  </div>
+
+                  <div class="formCmg">
+                    <re-captcha formControlName="reCaptcha"></re-captcha>
+                  </div>
+                  <div class="error"
+                    *ngIf="contactForm.controls.reCaptcha.touched && contactForm.controls.reCaptcha.hasError('required')">
+                    reCaptcha verification failed
+                  </div>
+                </div>
+                <div class="col-md-12 sellBtnBox">
+                  <button class="btn sellBtn" [disabled]="isSubmit" type="submit" (click)="sendToSupport()">
+                    Send
+                  </button>
+                </div>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>

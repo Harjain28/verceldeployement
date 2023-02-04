@@ -1,0 +1,112 @@
+.editProfile {
+  .changePassword {
+    color: var(--main4);
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .addChildren {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-style: dotted;
+    border-width: 2px;
+    text-decoration: none;
+    color: var(--main4);
+    border-radius: 10px;
+    padding: 14px 15px;
+    font-weight: 500;
+    margin-top: 30px;
+  }
+  .checkboxFrom {
+    .tt {
+      margin-right: 15px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    .radio {
+      margin-right: 15px;
+      color: var(--main4);
+    }
+  }
+  .error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 12px;
+    position: relative;
+    top: -8px;
+  }
+}
+
+.profileImg {
+  width: 90px;
+height: 90px;
+margin: 5px auto 15px auto;
+position: relative;
+
+.closeIcon {
+  position: absolute;
+  right: 2px;
+  top: 0px;
+  background: #e9ecef;
+  font-size: 16px;
+  border-radius: 50px;
+  line-height: 25px;
+  cursor: pointer;
+  text-align: center;
+}
+
+  .catImg {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  .uploadIcon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 26px;
+    overflow: hidden;
+
+    input[type="file"] {
+      position: absolute;
+      right: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.businessProfile_section {
+    padding-top:20px;
+    padding-bottom:60px;
+}
+
+.staticCode {
+font-size: 16px;
+left: 13px;
+z-index: 99999;
+border-right: 1px solid #000;
+padding-right: 10px;
+top: 25px;
+transform: translate(0%, -50%);
+position: absolute;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .editProfileSection {
+    padding: 50px 0px;
+  }
+}
+
+
+.editBtn.btn {
+  background: #f9560f;
+  color: #fff;
+  min-width: 80px;
+  margin-left: 10px !important;
+  border-radius: 5px !important;
+}

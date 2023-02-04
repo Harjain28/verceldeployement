@@ -1,0 +1,22 @@
+
+.businessBox {
+
+    textarea {
+        height: auto;
+        padding: 8px 12px;
+        min-height: 120px;
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+.businessUpdate {
+    padding: 50px 0px;
+
+    .mainBusinessRow{
+       margin: 0px -15px !important; 
+    }
+}
+
+}

@@ -1,0 +1,51 @@
+.addBusinessMain_section {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.formBox  {
+    margin-bottom: 18px;
+
+    .form-control {
+        background-color: #f0f0f0;
+        border:1px solid  #f0f0f0;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 500;
+
+        &:focus {
+            box-shadow:none;
+            border: 1px solid #f9560f;
+        }
+    }
+    .form-label {
+        font-weight: 500;
+    }
+}
+.btnSubmit {
+    width: 100%;
+    background: #f9560f;
+    color: #fff;
+    padding: 10px 15px;
+    font-weight: 500;
+    border-radius: 50px;
+}
+.staticCode {
+    font-size: 16px;
+    left: 13px;
+    z-index: 99999;
+    border-right: 1px solid #000;
+    padding-right: 10px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    position: absolute;
+    top: 50%;
+  }
+
+.error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 12px;
+    position: relative;
+    top: -8px;
+}

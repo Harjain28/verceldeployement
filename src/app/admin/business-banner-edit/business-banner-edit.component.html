@@ -1,0 +1,53 @@
+<div class="mainBody">
+  <app-admin-header></app-admin-header>
+  <form [formGroup]="myForm">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" src="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Banner</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+  </form>
+  <div class="space">
+    <div class="container businessBannerEdit">
+      <div class="bridTitle display-show-desktop">
+          <h3 class="bridT">Banner</h3>
+      </div>
+      <div class="row">
+        <div class="col-6 col-md-4">
+          <div class="imgBox">
+            <img class="icon2" src="./assets/images/icons/icon-camera.svg" />
+            <span>Upload Image</span>
+            <input
+              type="file"
+              multiple="multiple"
+              name="images"
+              accept="image/*"
+              (change)="onFileChange($event)"
+            />
+          </div>
+        </div>
+
+        <div class="col-6 col-md-4" *ngFor="let url of images">
+          <div class="imgBox">
+            <mat-icon class="closeIcon">close</mat-icon>
+            <img [src]="url" class="image" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+          <div class="col-12">
+              <button class="btn">Save Image</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>

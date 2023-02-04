@@ -1,0 +1,31 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a class="backArrow" routerLink="/profile/profile">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">About Klassbook</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <div class="container aboutSection">
+      <div class="bridTitle display-show-desktop">
+        <h3 class="bridT">Privacy-Policy</h3>
+      </div>
+
+      <div class="space aboutUs" *ngIf="privcypolicy?.status == true">
+        <div class="title mt-0 d-block">
+          <p [innerHTML]="privcypolicy?.description | sanitizeHtml"></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

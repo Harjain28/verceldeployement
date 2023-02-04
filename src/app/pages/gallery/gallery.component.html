@@ -1,0 +1,108 @@
+<div class="pageMarginTop">
+    <div class="mainBody">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+
+                <div class="col-3">
+                    <a class="backArrow" (click)="back()">
+                        <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Photos</h5>
+                </div>
+                <div class="col-3">
+
+                    <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="container gallery_section mainSpaceN">
+
+            <app-business-right-sidebar class=" businessRight display-show-mobile"></app-business-right-sidebar>
+
+            <div class="row">
+                <div class="branchesList1">
+                    <h2 class="banchbtnMob display-show-mobile">
+                        <a class="btnAddbranch" routerLink="/pages/add-gallery">
+                            Add New Photo
+                        </a>
+                    </h2>
+                </div>
+                <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+                <div class="bussinessCenter">
+                    <div class="branchesList">
+                        <h2 class="display-show-desktop">
+                            Photos
+                            <a class="btnAddbranch" routerLink="/pages/add-gallery">
+                                Add New Photo
+                            </a>
+                        </h2>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 col-xl-4" *ngFor="let album of albumData; let i = index;">
+                                <div class="branchBox">
+                                    <div class="action">
+                                        <mat-icon class="editIcon" *ngIf="!album.isDisabled"
+                                            (click)="deleteItem(album.id)">
+                                            delete</mat-icon>
+                                        <!-- <mat-icon class="editIcon" *ngIf="album.isDisabled">delete</mat-icon> -->
+                                        <mat-icon class="editIcon" *ngIf="!album.isDisabled"
+                                            (click)="editalbumDetails(album.id)">edit</mat-icon>
+                                        <!-- <mat-icon class="editIcon" *ngIf="album.isDisabled">edit</mat-icon> -->
+                                    </div>
+                                    <img class="profileImg" *ngIf="album?.image && album?.image !== 'undefined'"
+                                        lazyLoad="{{album?.image}}" />
+                                    <img class="profileImg" *ngIf="!album?.image || album?.image === 'undefined'"
+                                        lazyLoad="./assets/images/user.png" />
+                                    <div class="branchBoxBody">
+                                        <h3>{{album.albumName}}
+                                        </h3>
+                                        <h5 class="m-0" *ngIf="album.albumbybranchName">Created By :
+                                            {{album.albumbybranchName}} Branch
+                                            <!--  {{album.albumbybranchName}} -->
+                                        </h5>
+                                        <h5 class="m-0" *ngIf="!album.albumbybranchName">Created By : {{userName}}
+                                            <!--  {{album.albumbybranchName}} -->
+                                        </h5>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal DeletePopup" [ngClass]="{'d-block' : showDeleteModal}"
+                            id="DeleteCategoriesData">
+                            <div class="bg_popup"></div>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="">
+                                                    <p>Do you want to delete this Photo listing?</p>
+                                                    <button type="button" class="btn btn-danger CancelBtn"
+                                                        (click)="hideModal()">Cancel</button>
+                                                    <button type="submit" class="btn btn-ok"
+                                                        (click)="deleteAlbumDetails()">Ok</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <app-business-right-sidebar class=" businessRight display-show-desktop"></app-business-right-sidebar>
+            </div>
+
+        </div>
+
+    </div>
+</div>

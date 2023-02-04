@@ -1,0 +1,88 @@
+.aboutUs h3 {
+  color: var(--main1);
+}
+.aboutUs p {
+  color: var(--main4);
+  font-size: 15px;
+}
+
+.downloadSection {
+  position: relative;
+  margin-bottom: 50px;
+}
+.downloadSection .backgroundImg {
+  width: 100%;
+}
+.downloadSection .containerBox {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  transform: translate(0%, -50%);
+  padding: 0px 150px;
+}
+.downloadSection .containerBox .leftContent h2 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  background-image: linear-gradient(45deg, #ECA363, #E05E80);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+.downloadSection .containerBox .leftContent p {
+  color: #fff;
+  font-size: 18px;
+  line-height: 32px;
+  margin-bottom: 25px;
+}
+.downloadSection .containerBox .leftContent ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.downloadSection .containerBox .leftContent ul li a img {
+  height: 65px;
+}
+.downloadSection .containerBox .mobileImg {
+  width: 100%;
+  margin-top: 0px;
+  padding: 0px 20px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .aboutSection {
+    padding: 50px 0px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .downloadSection .containerBox {
+    padding: 0px 50px;
+  }
+
+  .downloadSection .containerBox .leftContent h2 {
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+
+  .downloadSection .containerBox .leftContent p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 25px;
+  }
+
+  .downloadSection .containerBox .leftContent ul li a img {
+    height: 55px;
+  }
+
+  .aboutSection {
+    padding: 0px 80px;
+  }
+}

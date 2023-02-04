@@ -1,0 +1,227 @@
+<div class="mainBody">
+
+  <app-admin-header></app-admin-header>
+
+  <div class="display-show-mobile">
+    <div class="pageTopBar row">
+      <div class="col-3">
+        <a (click)="back()" class="backArrow">
+          <img class="catImg" src="./assets/images/icons/back.svg" />
+        </a>
+      </div>
+      <div class="col-6 text-center">
+        <h5 *ngIf="id" class="pgTitle">Edit Branch</h5>
+        <h5 *ngIf="!id" class="pgTitle">Add New Branch</h5>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+
+  <div class="container addProgram_section mainSpaceN">
+
+    <div class="row">
+      <app-adminbusiness-left-sidebar class="businessLeft"></app-adminbusiness-left-sidebar>
+
+      <div class="bussinessCenter">
+        <div class="infor">
+          <div class="alert" *ngIf = "infoTextData && infoTextData.length > 0">
+            <!-- <h5>Update Your Profile</h5> -->
+            <p [innerHTML]="infoTextData[5]?.description | sanitizeHtml"></p>
+            <!-- <button class="close">✖</button> -->
+          </div>
+        </div>
+        <div class="branchesList">
+          <!-- <h2 *ngIf="id">
+            Edit Branch
+          </h2> -->
+          <h2 *ngIf="!id">
+            Add Branch
+          </h2>
+          <div class="infor">
+            <div class="alert" *ngIf = "infoTextData && infoTextData.length > 0">
+              <h5>Update Your Profile</h5>
+              <p [innerHTML]="infoTextData[6]?.description | sanitizeHtml"></p>
+              <!-- <button class="close">✖</button> -->
+            </div>
+          </div>
+          <form [formGroup]="myform">
+            <div class="row mainBusinessRow">
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Branch Name</label>
+                <input type="text" class="form-control" [readonly]="disabledBranchName" formControlName="branchName"
+                  [(ngModel)]="editbranchName" placeholder={{labelBranchname}} required />
+                <div class="error" *ngIf="
+                  myform.controls.branchName.touched &&
+                  myform.controls.branchName.hasError('required')
+                ">
+                  Branch Name is required.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6" *ngIf="branchOfflinestatus && branchOnlinestatus">
+                <label class="form-label">Postal Code</label>
+                <input type="text" class="form-control" (keyup.enter) = "geocodeAddress()" (input)="geocodeAddress()"
+                 formControlName="postalcode" [(ngModel)]="postalcode"
+                  placeholder="Postal Code" />
+                <div class="error" *ngIf="
+                  myform.controls.postalcode.dirty &&
+                  myform.controls.postalcode.hasError('pattern')
+                    ">
+                  Postal Code should be of 6 characters.
+                </div>
+                <div class="error" *ngIf="
+              myform.controls.postalcode.touched &&
+              myform.controls.postalcode.hasError('required')
+            ">
+                  Postal Code is required.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6" *ngIf="branchOfflinestatus && branchOnlinestatus">
+                <label class="form-label">Address 1</label>
+                <input type="text" class="form-control"  formControlName="address1" (input)="geocodeAddressByName()" [(ngModel)]="address1" placeholder="Address 1" />
+              </div>
+              <div class="error" *ngIf="
+              myform.controls.address1.touched &&
+              myform.controls.address1.hasError('required')
+            ">
+            Address 1 is required.
+                </div>
+              <div class="formCmg labelForm col-md-6" *ngIf="branchOfflinestatus && branchOnlinestatus">
+                <label class="form-label">Address 2</label>
+                <input type="text" class="form-control" formControlName="address2" [(ngModel)]="address2"
+                  placeholder="Address 2" />
+              </div>
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Country</label>
+                <input type="text" class="form-control" placeholder="Singapore" value="Singapore" disabled />
+              </div>
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="number" class="form-control" formControlName="phonenumber" [(ngModel)]="mobileNo"
+                  placeholder="Phone Number">
+                <!-- <div class="error" *ngIf="
+                myform.controls.phonenumber.touched &&
+                myform.controls.phonenumber.hasError('required')
+              ">
+                  Phone Number is required.
+                </div> -->
+                <div class="error" *ngIf="
+            myform.controls.phonenumber.dirty &&
+            myform.controls.phonenumber.hasError('pattern')
+              ">
+                  Please enter valid phone number
+                </div>
+              </div>
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Email</label>
+                <input type="email" formControlName="email" class="form-control" [(ngModel)]="email"
+                  placeholder="Email" />
+                <!-- <div class="error" *ngIf="
+                      myform.controls.email.touched &&
+                      myform.controls.email.hasError('required')
+                    ">
+                  Email address is required.
+                </div> -->
+                <div class="error" *ngIf="
+                      myform.controls.email.dirty &&
+                      myform.controls.email.hasError('pattern')
+                    ">
+                  Enter valid email address.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Web Address (Optional)</label>
+                <input type="text" formControlName="Website" class="form-control" [(ngModel)]="webAddress"
+                  placeholder="https://yoursite..." />
+              </div>
+              <div class="infor">
+                <div class="alert" *ngIf = "infoTextData && infoTextData.length > 0">
+                  <!-- <h5>Update Your Profile</h5> -->
+                  <p [innerHTML]="infoTextData[7]?.description | sanitizeHtml"></p>
+                  <!-- <button class="close">✖</button> -->
+                </div>
+              </div>
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Branch Admin Name</label>
+                <input type="text" formControlName="adminName" class="form-control" [readonly]="diabledFeilds"
+                  [(ngModel)]="adminnName" placeholder="Branch Admin Name" />
+                <div class="error" *ngIf="
+                      myform.controls.adminName.touched &&
+                      myform.controls.adminName.hasError('required')
+                    ">
+                  Branch Admin Name is required.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Branch Admin Email</label>
+                <input type="email" formControlName="adminEmail" class="form-control" [readonly]="diabledFeilds"
+                  [(ngModel)]="adminnEmail" placeholder="Branch Admin Email" />
+                <div class="error" *ngIf="
+                      myform.controls.adminEmail.touched &&
+                      myform.controls.adminEmail.hasError('required')
+                    ">
+                  Branch Admin Email address is required.
+                </div>
+                <div class="error" *ngIf="
+                      myform.controls.adminEmail.dirty &&
+                      myform.controls.adminEmail.hasError('pattern')
+                    ">
+                  Branch Admin Enter valid email address.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Branch Admin Mobile</label>
+                <input type="number" formControlName="adminPhoneno" class="form-control" [(ngModel)]="adminPhoneno"
+                  placeholder="Branch Admin Mobile" />
+                <div class="error" *ngIf="
+                myform.controls.adminPhoneno.touched &&
+                myform.controls.adminPhoneno.hasError('required')
+              ">
+                  Branch Admin Mobile Number is required.
+                </div>
+                <div class="error" *ngIf="
+            myform.controls.adminPhoneno.dirty &&
+            myform.controls.adminPhoneno.hasError('pattern')
+              ">
+                  Please enter valid Branch Admin mobile number.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6" *ngIf="!showpassword">
+
+              </div>
+
+              <!-- <div class="formCmg labelForm col-md-6 mt-4" *ngIf="!showpassword && userId && token">
+                <label class="form-label">Branch Admin Password</label>
+                <input type="password" formControlName="adminPassword" class="form-control" [(ngModel)]="adminPassword"
+                  placeholder="Branch Admin Password" />
+                <div class="error" *ngIf="
+                      myform.controls.adminPassword.touched &&
+                      myform.controls.adminPassword.hasError('required')
+                    ">
+                  Branch Admin Password is required.
+                </div>
+              </div>
+
+              <div class="formCmg labelForm col-md-6 mt-5" *ngIf="showpassword && userId && token">
+                <input type="password" class="form-control" name="password" value="********" disabled />
+                <a style="cursor: pointer;" routerLink="/change-password" class="form-label">Branch Admin Password</a>
+              </div> -->
+
+              <div class="formCmg labelForm col-md-12" style="margin: 0 auto;">
+                <button type="submit" (click)="submitAddbranch()" class="submitBtn">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <app-adminbusiness-right-sidebar class="businessRight"></app-adminbusiness-right-sidebar>
+    </div>
+  </div>
+
+</div>

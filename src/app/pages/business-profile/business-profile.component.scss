@@ -1,0 +1,243 @@
+
+
+.popupBox {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -0%);
+    z-index: 9999;
+
+    .bg {
+         padding: 0px 30px;
+         position: absolute;
+         z-index: 99999;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+         
+
+        .popupBody {
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            padding-top: 20px;
+
+            h5 {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 500;
+            }
+            p {
+                text-align: center;
+                margin: 5px 0px 20px 0px;
+                color: var(--main4);
+            }
+            .btn {
+                width: 50%;
+                border-top: 1px solid #d9d9d9;
+                border-radius: 0px;
+                padding: 15px 15px;
+                font-size: 15px;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &:nth-child(1) {
+                    border-right: 1px solid #d9d9d9;
+                }
+            }
+        }
+    }
+}
+
+.theme_color {
+    color: var(--main1);
+}
+
+
+.chat {
+    float: right;
+    position: relative;
+    display: inline-block;
+
+    .icon {
+        height: 28px;
+    }
+    span {
+        position: absolute;
+        right: -2px;
+        background: #f9560f;
+        color: #fff;
+        font-size: 12px;
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        text-align: center;
+        border-radius: 50px;
+        bottom: 2px;
+    }
+
+}
+
+/* 30-3-2022 */
+
+.loginDetails h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.loginDetails p {
+    font-size: 18px;
+    font-weight: 500;
+}
+.cardBox {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ada6a3;
+    border-radius: 5px;
+    padding: 10px 20px;
+    position: relative;
+}
+.profileBoxEdit ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.profileBoxEdit ul li {
+    line-height:25px;
+    color: #6e7072;
+}
+.profileBoxEdit ul li.bold {
+    font-weight: 600;
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.btn.editProfile {
+    background: #f9560f;
+    height: 32px;
+    font-size: 14px;
+    color: #fff;
+    padding: 0px 18px;
+    border-radius: 50px;
+    line-height: 0px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.imgUpload {
+    list-style: none;
+    margin:0;
+    padding: 0;
+    display: flex;
+    margin: 0px -10px;
+    width: 100%;
+    margin-bottom: 10px;
+    position: relative;
+
+
+    li {
+        width: 100px;
+        border: 1px solid #cececf;
+        border-radius: 10px;
+        height: 100px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 8px;
+
+         img {
+            height: 100%;
+            width: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+         }
+
+         input[type="file"] {
+             position: absolute;
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             opacity: 0;
+             cursor: pointer;
+         }
+
+    }
+
+ }
+
+ .infor {
+
+    .alert {
+        border-radius: 8px;
+        border: 1px solid #fdefe9;
+        border-left: 7px solid #f9560f;
+        padding: 15px 15px;
+        font-size: 16px;
+        padding-right: 45px;
+        margin-bottom: 20px;
+
+        h5 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        p {
+            margin: 0;
+            color: #6e7072;
+            font-weight: 500;
+        }
+        .close {
+            background: transparent;
+            border: none;
+            font-size: 18px;
+            position: absolute;
+            right: 0;
+            padding: 0px 3px;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+ }
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+ 
+     .profile_section {
+         padding-top: 20px;
+         padding-bottom: 50px;
+     }
+     
+     
+    .popupBox {
+
+        .bg {
+
+            .popupBody {
+                width:400px;
+                margin: 0 auto;
+            }
+        }
+    }
+    
+.classSection {
+
+    .classSectionImg {
+
+        .deleteIcon {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            bottom: auto;
+            left: 10px;
+            display: block;
+        }
+    }
+}
+}

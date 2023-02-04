@@ -1,0 +1,208 @@
+<div class="mainBody">
+  <div class="display-show-mobile">
+    <div class="pageTopBar row">
+
+      <div class="col-3">
+        <a class="backArrow" (click)="back()">
+          <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+        </a>
+      </div>
+      <div class="col-6 text-center">
+        <h5 class="pgTitle">Sell</h5>
+      </div>
+      <div class="col-3">
+
+        <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+              <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+              <span>5</span>
+          </a> -->
+      </div>
+    </div>
+  </div>
+  <div class="container businessInbox_section mainSpaceN">
+
+    <div class="row">
+      <app-business-left-sidebar *ngIf = "userType !== 'student'" class="businessLeft"></app-business-left-sidebar>
+
+
+      <div class="bussinessCenter">
+        <div class="branchesList">
+          <h2>
+            Sell
+
+          </h2>
+          <form [formGroup]="myForm">
+            <div class="space">
+              <div class="formCmg labelForm">
+                <label class="form-label">Photos:</label>
+
+                <ul class="imgUpload">
+                  <li class="camera">
+                    <img class="icon2" style="height: 40px !important;width:auto !important;"
+                      lazyLoad="./assets/images/icons/icon-camera.svg" />
+                    <input [id]="'upLoader' + index" accept="image/*" type="file" multiple="multiple" formControlName="file" name="file"
+                      (change)="onFileChange($event)" />
+                  </li>
+                  <li *ngFor="let url of images; let i = index">
+                    <img class="img" [lazyLoad]="url" />
+                    <mat-icon class="closeIcon" (click)="deleteImage(i)">close</mat-icon>
+                  </li>
+                  <div class="error" *ngIf="
+                            myForm.controls.file.touched &&
+                            myForm.controls.file.hasError('required')
+                          ">
+                    Upload Image
+                  </div>
+
+                </ul>
+              </div>
+              <div class="formCmg labelForm">
+                <label class="form-label">Title:</label>
+
+                <input type="text" formControlName="title" name="title" class="form-control" placeholder="Listing title"
+                  required />
+              </div>
+              <div class="row">
+                <div class="col-md-6 formCmg labelForm">
+                  <label class="form-label">Product Categories:</label>
+                  <div class="formBox">
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Categories'"
+                      [errorMsg]="errorMessageCategories" [showErrorMsg]="showErrorCategories"
+                      [options]="optionsCategories" [display]="'display'" [value]="'value'" [multiple]="true"
+                      [labelCount]="2" [selectedOptions]="selectedOptionsCategories" ngDefaultControl
+                      (selectionChange)="getSelectedOptionsCategories($event)"
+                      [formControl]="myForm.controls['SelectedCategories']">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                      myForm.controls.SelectedCategories.touched &&
+                      myForm.controls.SelectedCategories.hasError('required')
+                    ">
+                      Select Product Categories
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 formCmg labelForm">
+                  <label class="form-label">Groups:</label>
+
+                  <div class="formBox">
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Groups'" [errorMsg]="errorMessage"
+                      [showErrorMsg]="showError" [options]="options" [display]="'display'" [value]="'value'"
+                      [multiple]="true" [labelCount]="2" [selectedOptions]="selectedOptions" ngDefaultControl
+                      (selectionChange)="getSelectedOptions($event)" [formControl]="myForm.controls['Selected']">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                      myForm.controls['Selected'].touched &&
+                      myForm.controls['Selected'].hasError('required')
+                    ">
+                      Select Groups
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="formCmg labelForm ">
+                <label class="form-label">Price:</label>
+
+                <div class="priceBox">
+                  <label class="checkbox">
+                    <input type="radio" formControlName="price" name="price" value="forsale">
+                    <span class="checkmark">For Sale</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="radio" formControlName="price" value="forfree" name="price">
+                    <span class="checkmark">For Free</span>
+                  </label>
+                </div>
+                <div class="position-relative priceTextbox" *ngIf="myForm.value.price === 'forsale'">
+                  <span class="symbol">$</span>
+                  <input type="number" class="form-control" formControlName="pricebox"
+                    placeholder="Price of your listing" />
+                </div>
+                <div class="error" *ngIf="
+                       myForm.controls.price.touched &&
+                       myForm.controls.price.hasError('required')
+                     ">
+                  Select Price
+                </div>
+              </div>
+
+              <div class="formCmg labelForm">
+                <label class="form-label">Condition:</label>
+                <div class="priceBox">
+                  <label class="checkbox" style="width: 85px;">
+                    <input type="radio" formControlName="condition" value="new" name="condition" checked>
+                    <span class="checkmark">New</span>
+                  </label>
+                  <label class="checkbox" style="width: 85px;">
+                    <input type="radio" formControlName="condition" value="used" name="condition">
+                    <span class="checkmark">Used</span>
+                  </label>
+                </div>
+                <div class="error" *ngIf="
+                      myForm.controls.condition.touched &&
+                      myForm.controls.condition.hasError('required')
+                    ">
+                  Select Conditon
+                </div>
+                <label class="form-label mb-3">Location:</label>
+
+                <div class="row">
+                  <div class="col-md-6 formBox mb-3">
+                    <label class="form-label">Postal Code</label>
+                    <input type="number" class="form-control" (input)="getAddressByPostalcode()"
+                      (keyup.enter)="getAddressByPostalcode()" formControlName="postalcode" [(ngModel)]="postalcode"
+                      placeholder="Postal Code" />
+
+                    <div class="error" *ngIf="
+                                myForm.controls.postalcode.dirty &&
+                                myForm.controls.postalcode.hasError('pattern')
+                                  ">
+                      Postal Code should be of 6 characters.
+                    </div>
+                    <div class="error" *ngIf="
+                                    myForm.controls.postalcode.touched &&
+                                    myForm.controls.postalcode.hasError('required')
+                                  ">
+                      Postal Code is required.
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 formBox mb-3">
+                    <label class="form-label">Country</label>
+                    <input type="text" class="form-control" placeholder="Country" value="Singapore" disabled />
+                  </div>
+                  <div class="col-md-6 formBox mb-3">
+                    <label class="form-label">Address 1</label>
+                    <input type="text" class="form-control" [value]="address1" placeholder="Address 1" />
+                  </div>
+
+                  <div class="col-md-6 formBox mb-3">
+                    <label class="form-label">Address 2</label>
+                    <input type="text" class="form-control" formControlName="address2" placeholder="Address 2" />
+                  </div>
+
+                </div>
+
+                <label class="form-label">Description:</label>
+                <div class="">
+                  <textarea type="text" formControlName="description" class="form-control descriptionBox"
+                    placeholder="Description (optional)"></textarea>
+                </div>
+              </div>
+
+
+
+              <div class="formCmg labelForm">
+                <button [disabled] = "isSubmit" (click)="SubmitMarketPlaceProducListing()" type="submit" class="btn submitBtn">Upload</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <app-business-right-sidebar *ngIf = "userType !== 'student'" class="businessRight"></app-business-right-sidebar>
+    </div>
+
+  </div>
+
+</div>

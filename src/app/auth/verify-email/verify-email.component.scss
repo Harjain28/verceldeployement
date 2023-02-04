@@ -1,0 +1,196 @@
+
+.verifyEmail {
+
+    .terms {
+
+        font-size: 12px;
+        color: var(--main4);
+
+        a {
+            color: var(--main1);
+        }
+    }
+    .terms2 {
+        margin-top: 90px;
+    }
+
+    .agree {
+        color: var(--main4);
+    }
+    ul {
+        list-style: none;
+        margin:0;
+        padding: 0;
+
+        li {
+
+            small {
+                text-align: center;
+                text-align: center;
+                color: var(--main4);
+                display: block;
+                margin-top: 5px;
+            }
+
+            .verifyDetails {
+                display: none;
+            }
+            .selectAction {
+                display: flex;
+                padding: 20px 10px;
+                border: 1px solid rgb(235, 233, 233);
+                border-radius: 5px;
+                margin: 10px 0px 0px 0px;
+                cursor: pointer;
+                color:var(--main3);
+                text-decoration: none;
+
+                span {
+                    display: block;
+                    width: 70px;
+                    text-align: center;
+                    
+                    .icon {
+                        height: 22px;
+                        filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(24%) contrast(0%);
+                    }
+                }
+                .body {
+
+                    h5 {
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 5px;
+                    }
+                    p {
+                        margin: 0;
+                        color:var(--main4)
+                    }
+                    .resendOtp {
+                        font-size: 12px;
+                        margin-top: 8px;
+                        display: none;
+
+                        a {
+                            text-decoration: none;
+                            color:var(--main4);
+                            color:var(--main1);
+                            font-weight: 500;
+                        }
+                    }
+                    .otpBox {
+                        display: flex;
+                        margin:0px -5px;
+                        margin-top: 10px;
+                        display: none;
+                        align-items: center;
+                    
+                        .number {
+                            flex: 0 0 auto;
+                            width: 45px;
+                            height: 45px;
+                            margin: 0px 5px;
+                            border-radius: 5px;
+                            border: 1px solid #afafaf;
+                            text-align: center;
+                            padding: 10px;
+                    
+                            &:focus, &:focus-visible {
+                                border-color: var(--main1);
+                                outline: none;
+                            }
+                        }
+                        .otpaction {
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            text-align: center;
+                            line-height: 52px;
+                            margin-left: 5px;
+
+                            &.success {
+                                background-color: #11a100;
+                                color: #fff;
+                            }
+                            &.cancel {
+                                background-color: #cd1414;
+                                color: #fff;
+                                line-height: 45px;
+
+                                .mat-icon {
+                                    font-size: 18px;
+                                }
+                            }
+                        }
+                        input[type=number] {
+                            -moz-appearance: textfield;
+                        }
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+                    }
+                }
+
+            }
+            
+            &.active {
+
+                .selectAction {
+                    // border: 1px solid var(--main1);
+
+                    span {
+                        
+                        .icon {
+                            filter:none;
+                        }
+                    }
+                }
+                .verifyDetails {
+                    display: block;
+                }
+            }
+
+            &.action {
+
+                .selectAction {
+                    
+                    .resendOtp {
+                        display: block !important;
+                    }
+                    .otpBox {
+                        display: flex !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.desktopContinue {
+    display: block;
+  }
+ .mobileContinue {
+     display: none;
+ }
+
+@media (max-width: 767px) {
+
+     .desktopContinue {
+       display: none;
+     }
+    .mobileContinue {
+        display: block;
+    }
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    ::ng-deep .otp-input {
+        width: 38px !important;
+        height: 38px !important;
+        margin-right: 3px !important;
+    }
+}

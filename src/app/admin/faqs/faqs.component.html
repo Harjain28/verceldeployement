@@ -1,0 +1,94 @@
+<div class="mainBody">
+    <app-admin-header></app-admin-header>
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+
+            <div class="col-3">
+                <a class="backArrow" (click)="back()">
+                    <img class="catImg" src="./assets/images/icons/back.svg" />
+                </a>
+            </div>
+            <div class="col-6 text-center">
+                <h5 class="pgTitle">FAQs</h5>
+            </div>
+            <div class="col-3">
+
+                <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" src="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+            </div>
+        </div>
+    </div>
+    <div class="container businessfaQs_section mainSpaceN">
+
+        <div class="row">
+            <app-adminbusiness-left-sidebar class="businessLeft"></app-adminbusiness-left-sidebar>
+
+
+            <div class="bussinessCenter">
+                <div class="branchesList">
+                    <h2>
+                        FAQs
+                        <a class="btnAddbranch" (click)="handleadminroute('add-faqs')">
+                            Add FAQs
+                        </a>
+                    </h2>
+
+                    <mat-accordion class="faqList">
+                        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+                            *ngFor="let faq of faqs; let i = index">
+                            <mat-expansion-panel-header>
+                                {{i + 1 }}. {{faq.question}}
+                            </mat-expansion-panel-header>
+                            <div class="FaqBody">
+                                <div class="actionFaq">
+                                    <!-- <mat-icon class="editIcon" *ngIf="!faq.isDisabled" (click)="deleteItem(teacher.id)">
+                                                    delete</mat-icon>
+                                                <mat-icon class="editIcon" *ngIf="faq.isDisabled">delete</mat-icon> -->
+                                    <!-- <mat-icon class="editIcon" *ngIf="!teacher.isDisabled"
+                                                    (click)="editTeacherDetails(teacher.id)">edit</mat-icon>
+                                                <mat-icon class="editIcon" *ngIf="teacher.isDisabled">edit</mat-icon> -->
+                                    <mat-icon class="editIcon" (click)="deleteItem(faq.id)">delete</mat-icon>
+                                    <mat-icon class="editIcon" (click)="editFAQDetails(faq.id)">edit</mat-icon>
+                                </div>
+                                <p class="ellipses" [innerHTML]="faq.answers | sanitizeHtml"></p>
+
+                                <h5 class="m-0" *ngIf="faq.faqbybranchName">Created By : {{faq.faqbybranchName}}
+                                </h5>
+                                <h5 class="m-0" *ngIf="!faq.faqbybranchName">Created By : {{userName}}
+                                </h5>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+                    <div class="modal DeletePopup" [ngClass]="{'d-block' : showDeleteModal}" id="DeleteCategoriesData">
+                        <div class="bg_popup"></div>
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <p>Are you sure to delete this FAQ?</p>
+                                                <button type="button" class="btn btn-danger CancelBtn"
+                                                    (click)="hideModal()">Cancel</button>
+                                                <button type="submit" class="btn btn-ok"
+                                                    (click)="deleteFaqsDetails()">Ok</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <app-adminbusiness-right-sidebar class="businessLeft"></app-adminbusiness-right-sidebar>
+        </div>
+
+    </div>
+
+</div>

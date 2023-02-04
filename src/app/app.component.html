@@ -1,10 +1,10 @@
-    
-<div id="overlay" *ngIf="loading || load">
-	<div id="loader">		
-		<div class="loader loaderinner">
-		  <img src="/assets/images/progress.gif" alt="loader images" style="width: 100px;">
-		</div>
-	</div>
-</div>
+<app-header #myHeader   *ngIf = "currentURL !== '/email-verify' && currentURL !== '/change-password' && currentURL !== '/reset-password'
+&& currentURL !== '/login/student' && currentURL !== '/login/business'  && currentURL !== '/register'  && currentURL !== '/register/student'  && currentURL !== '/register/business' && currentURL !== '/view/contact' && showHeader">
+</app-header>
 
 <router-outlet></router-outlet>
+<app-footer  *ngIf = "currentURL !== '/email-verify' && currentURL !== '/change-password' && currentURL !== '/reset-password'  && currentURL !== '/register/student'  && currentURL !== '/register/business'
+&& currentURL !== '/login/student' && currentURL !== '/login/business' && currentURL !== '/register' && currentURL !== '/view/contact'"></app-footer>
+<!-- <app-loader [isButton]="false" [background]="'rgba(0,0,0,.9)'" [fullPage]="true"
+[text]="''">
+</app-loader> -->

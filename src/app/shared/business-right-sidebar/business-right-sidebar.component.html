@@ -1,0 +1,65 @@
+<div class="">
+    <!-- <button [disabled] = "!disbalepreview" class="btn previewBtn" (click)="getClassDetails()">
+        Preview
+    </button> -->
+    <button class="btn statusBtns"  (click)="showPopup()">
+        {{verifiedbuttonName}} </button>
+
+    <div class="modal DeletePopup" [ngClass]="{'d-block' : showDeleteModal}" id="DeleteCategoriesData">
+        <div class="bg_popup"></div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <p>{{showMessageDynamically}}</p>
+                                <button type="button" class="btn btn-danger CancelBtn" (click)="hideModal()">OK</button>
+                                <!-- <button type="submit" class="btn btn-ok" (click)="deleteTeacherDetails()">Ok</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainAddressBox" *ngIf="businessDetails && showSidebar">
+        <h4>Business info <mat-icon class="editIcon" routerLink="/pages/add-business-main-address">edit</mat-icon>
+        </h4>
+        <agm-map 
+        [latitude]="lat"
+         [usePanning]="true"
+         [zoom]="ZoomValue" 
+        [longitude]="lng"
+        (mapClick)="mapClicked($event)">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <!-- <agm-marker latitude]="lat"
+        [longitude]="lng" *ngIf = "locationchoosen"> </agm-marker>             -->
+      </agm-map>
+
+        <ul>
+            <li *ngIf="businessDetails?.postalCode">
+                <h5>Address</h5>
+                <p>{{businessDetails?.address1}} {{businessDetails?.postalCode}}, {{businessDetails?.country}}</p>
+            </li>
+            <li *ngIf="businessDetails?.mobileNo">
+                <h5>Call</h5>
+                <p>65{{businessDetails?.mobileNo.toString().slice(2)}}</p>
+            </li>
+            <li *ngIf="businessDetails?.webAddress">
+                <h5>Website</h5>
+                <p>{{businessDetails?.webAddress}}</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="infor">
+        <div class="alert top" *ngIf="infoTextData">
+            <!-- <h5>Update Your Profile</h5> -->
+            <p [innerHTML]="infoTextData | sanitizeHtml"></p>
+            <!-- <button class="close">✖</button> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,357 @@
+<div class="pageMarginTop">
+    <div class="mainBody bottomSpace">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3">
+                    <a (click)="back()" class="backArrow">
+                        <img class="catImg" src="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Me</h5>
+                </div>
+                <div class="col-3">
+
+                    <!-- <a class="chat" routerLink="pages/inbox">
+                    <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                    <span>5</span>
+                </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="container profile_section">
+
+            <div class="bridTitle display-show-desktop">
+                <h3 class="bridT">Me</h3>
+            </div>
+
+            <div class="space pb-0">
+                <div class="title">
+                    <h3>My Profile</h3>
+                    <a class="link" routerLink="/profile/edit-profile">
+                        <img class="catImg" lazyLoad="./assets/images/icons/icon-edit.svg" />
+                    </a>
+                </div>
+                <div class="profileBox">
+                    <img *ngIf="image === 'blankimage' || !image" class="profileImg" src="./assets/images/user.png" />
+                    <img *ngIf="image !== 'blankimage' && image" class="profileImg" src="{{image}}" />
+                    <div class="body">
+                        <p>{{userName}}</p>
+                        <h3>{{name}}</h3>
+                        <p>{{email}}</p>
+                    </div>
+                </div>
+                <hr />
+
+                <ng-container>
+                    <div>
+                        <div class="title" *ngIf="groupData.length > 0">
+                            <h3>My Groups</h3>
+                            <a *ngIf="groupData.length > 4" class="link"
+                                (click)="redirectionMorepage('mygroup')">More</a>
+                        </div>
+                        <div class="row  info-div groupProfileobile">
+                            <ng-container>
+                                <div class="col-md-3" *ngFor="let groupsdata of  groupData | slice:0:4">
+                                    <div class="classSection groupBox">
+                                        <div class="classSectionImg">
+                                            <a (click)="getGroupDetails(groupsdata._id)">
+                                                <img class="catImg" [lazyLoad]="groupsdata?.image" /></a>
+                                            <!-- <a ><img class="catImg" lazyLoad="./assets/images/group4.svg" /></a> -->
+                                            <div class="groupIcon" (click)="getGroupDetails(groupsdata._id)">
+                                                <img class="icon" lazyLoad="./assets/images/icons/icon-group.svg" />
+                                                {{groupsdata.memberCount}} members
+                                            </div>
+                                            <!-- <a href="javascript:void(0);" class="fav">
+                                        <mat-icon class="like">favorite_border</mat-icon>
+                                    </a> -->
+                                        </div>
+                                        <div class="classSectionBody">
+                                            <div class="groupBody">
+                                                <div class="groupBodyConent" (click)="getGroupDetails(groupsdata._id)">
+                                                    <h3><a>{{groupsdata.groups}}</a></h3>
+                                                    <p class="limit1"
+                                                        [innerHTML]="groupsdata.groupDescription | sanitizeHtml"></p>
+                                                </div>
+                                                <button (click)="getGroupDetails(groupsdata._id);"
+                                                    class="btn joinGroup">
+                                                    Joined
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </ng-container>
+                        </div>
+
+                    </div>
+                </ng-container>
+
+
+                <ng-container>
+                    <div class="title" *ngIf="reviewData.length > 0">
+                        <h3>My Reviews</h3>
+                        <a class="link" *ngIf="reviewData.length > 4"
+                            (click)="redirectionMorepage('myreviews')">More</a>
+                    </div>
+                    <div class="row  info-div reviewsBoxMobile groupProfileobile">
+                        <div class="reviewBox col-md-3" *ngFor="let review of reviewData | slice:0:4">
+                            <div class="reviewBoxTop" (click)="getClassCategory(review?.classId?._id)">
+                                <!-- <img class="catImg" lazyLoad="./assets/images/list2.svg" /> -->
+                                <div class="reviewBoxTopBody">
+                                    <h3>{{review?.classId?.businessName}}</h3>
+                                    <!-- <h5>$40</h5> -->
+                                </div>
+                            </div>
+                            <div class="reviewBoxMain" (click)="getClassCategory(review?.classId?._id)">
+                                <div class="titleN">
+                                    {{review?.title}} <span class="rating"><i>★</i> {{review?.rating}}</span>
+                                </div>
+                                <p class="textLimit2">{{review?.review}}...
+                                    <!-- <a>More</a> -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-container>
+
+                <!-- 
+            <div class="title"  *ngIf="productsData.length > 0">
+                <h3>My Product Listing</h3>
+                <a class="link" *ngIf="productsData.length > 3" (click) = "redirectionMorepage('myproduct')">More</a>
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-3"
+                    *ngFor="let allproduct of productsData | slice:0:4; let i = index">
+                    <div class="classSection">
+                        <div class="classSectionImg">
+                            <a (click)="redirectToMarketplaceDetails(allproduct._id)">
+                                <img class="catImg" *ngIf="!allproduct?.image[0]"
+                                    lazyLoad="./assets/images/list1.svg" />
+                                <img class="catImg" *ngIf="allproduct?.image[0]"
+                                    [lazyLoad]="allproduct?.image[0]" />
+                            </a>
+
+                        </div>
+                        <div class="classSectionBody"
+                            (click)="redirectToMarketplaceDetails(allproduct._id)">
+                            <a class="titleName">
+                                {{allproduct?.title}}
+                            </a>
+                            <div class="profileN">
+                                <div class="profileName">
+                                    <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                    <span>{{allproduct?.userId?.name}}</span>
+                                </div>
+                                <h5 *ngIf="allproduct.price !== 'forfree'">${{allproduct?.price}}</h5>
+                                <h5 *ngIf="allproduct.price === 'forfree'">Free</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> -->
+
+
+                <div class="title" *ngIf="classData.length > 0">
+                    <h3>Shortlisted Classes</h3>
+                    <a class="link" *ngIf="classData.length > 4" (click)="redirectionMorepage('myfavclasses')">More</a>
+                </div>
+                <div class="row  info-div groupProfileobile">
+                    <div class="col-6 col-md-4 col-lg-3 mt-4" *ngFor="let item of classData | slice:0:4">
+                        <div class="classSection classBoxNew">
+                            <div class="classSectionImg">
+                                <img class="catImg" (click)="getClassCategory(item?.wishlistedId?._id)"
+                                    [lazyLoad]="item?.wishlistedId?.image[0]" />
+                                <a style="cursor: pointer;" class="fav">
+                                    <!-- <mat-icon *ngIf="!item.selected" (click)="addtoClassWishList(item?._id);" class="like">favorite_border
+                      </mat-icon> -->
+                                    <!-- <mat-icon *ngIf="item.selected" (click)="deleteClassWishlist(item?._id)">favorite</mat-icon> -->
+                                    <!-- <mat-icon>favorite</mat-icon> -->
+                                </a>
+                            </div>
+                            <div class="classSectionBody" (click)="getClassCategory(item?.wishlistedId?._id)">
+                                <a style="cursor: pointer" class="titleName">
+                                    {{ item?.wishlistedId?.businessName }}
+                                </a>
+                                <div class="row m-0 mt-2" >
+                                    <div class="category" style="padding: 0; width: auto;"
+                                        *ngFor="let category of item?.wishlistedId?.businesssubCategory | slice:0:2 let isLast=last">
+                                        {{category?.subCategory}}{{isLast ? '' : ','}}&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="title" *ngIf="eventData.length > 0">
+                    <h3>Shortlisted Events</h3>
+                    <a class="link" *ngIf="eventData.length > 3" (click)="redirectionMorepage('myfavevents')">More</a>
+                </div>
+
+                <div class="row  info-div groupProfileobile">
+                    <ng-container>
+                        <div class="col-md-4" *ngFor="let eventdata of eventData | slice:0:3" style="padding: 0;">
+                            <div class="eventList" (click)="getEventsDetails(eventdata?.wishlistedId?._id)">
+                                <div class="eventDate p-0">
+
+                                    <a><img class="tpsImg" [lazyLoad]="eventdata?.wishlistedId?.image[0]" /></a>
+
+                                </div>
+                                <div class="eventBody">
+                                    <a class="tt">
+                                        {{eventdata?.wishlistedId?.Date | date:'fullDate'}}
+                                    </a>
+                                    <p class="textLimit1">{{eventdata?.wishlistedId?.title}}</p>
+                                    <p class="limit1"><img lazyLoad="./assets/images/icons/icon-location.svg"
+                                            class="icon">
+                                        {{eventdata?.wishlistedId?.address1}}</p>
+                                    <a class="fav">
+                                        <!-- <mat-icon class="like">favorite</mat-icon> -->
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </ng-container>
+                </div>
+
+                <div class="title" *ngIf="articleData.length > 0">
+                    <h3>Shortlisted Articles</h3>
+                    <a class="link" *ngIf="articleData.length > 4"
+                        (click)="redirectionMorepage('myfavarticles')">More</a>
+                </div>
+
+                <div class="row groupProfileobile info-div">
+                    <div class="col-md-3" *ngFor="let favarticle of articleData | slice:0:4">
+                        <div class="articleBox" (click)="getArticeDetails(favarticle?.wishlistedId?._id)">
+                            <div class="articleImg">
+                                <img *ngIf="!favarticle?.wishlistedId?.banner" class="img"
+                                    src="./assets/images/classImg.svg" />
+                                <img *ngIf="favarticle?.wishlistedId?.banner" class="img"
+                                    (click)="getArticeDetails(favarticle?.wishlistedId?._id)"
+                                    [src]="favarticle?.wishlistedId?.banner" />
+                                <span>{{favarticle?.wishlistedId?.subject}}</span>
+                                <a style="cursor: pointer;" class="fav">
+                                    <!-- <mat-icon *ngIf="favarticle?.wishlistedId?.selected" (click) = "addtoArticleWishList(favarticle?.wishlistedId?._id)" class="like">favorite_border</mat-icon> -->
+                                    <!-- <mat-icon *ngIf="!favarticle?.wishlistedId?.selected" (click) = "deleteArticleWishlist(favarticle?.wishlistedId?._id)">favorite</mat-icon></a> -->
+                                    <!-- <mat-icon>favorite</mat-icon> -->
+                                </a>
+
+                            </div>
+                            <div class="articleBody">
+                                <h3>{{favarticle?.wishlistedId?.title}}</h3>
+                                <ul>
+                                    <li>
+                                        <mat-icon>perm_identity</mat-icon>{{favarticle?.wishlistedId?.authorName}}
+                                    </li>
+                                    <!-- <li><mat-icon>av_timer</mat-icon> March 22, 2022</li> -->
+                                </ul>
+                                <p>{{favarticle?.wishlistedId?.authordescription}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <ul class="menuList display-show-mobile">
+                    <!-- <li>
+                <a href="javascript:void(0);" routerLink = "/add-business">
+                    Become Professional Instructor <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                </a>
+            </li> -->
+                    <li>
+                        <a routerLink="/view/inbox">
+                            Inbox <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a routerLink="/view/change-password">
+                            Change Password <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/view/about">
+                            About us <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/view/contact">
+                            Contact us <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="pb-0" (click)="openToggle()">
+                            Logout <img class="logout" lazyLoad="./assets/images/icons/logout.svg" />
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <app-bottom-bar></app-bottom-bar>
+        </div>
+
+        <!-- <mat-toolbar class="toolbarNav bottomBar">
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-search.svg" />
+                <h5>Explore</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu active" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-group.svg" />
+                <h5>Groups</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-category.svg" style="height: 18px;" />
+                <h5>Categories</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-shortlist.svg" />
+                <h5>Shortlist</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-more.svg" style="height: 24px;" />
+                <h5>More</h5>
+            </a>
+        </mat-icon>
+    </mat-toolbar> -->
+    </div>
+</div>
+
+<div class="popupBox" *ngIf="leaveGroup">
+    <div class="bg">
+
+        <div class="popupBody">
+            <h5>Are you sure you want to logout?</h5>
+            <p>We will miss you here...</p>
+            <div class="bottom">
+                <a href="javascript:void(0);" class="btn theme_color" (click)="openToggle()">Cancel</a>
+                <a href="javascript:void(0);" routerLink="/" class="btn" (click)="logout()">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>

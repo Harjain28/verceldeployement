@@ -1,0 +1,98 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-2">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-8 text-center">
+          <h5 *ngIf="id" class="pgTitle">Edit Photo & Videos</h5>
+          <h5 *ngIf="!id" class="pgTitle">Add Photo & Videos</h5>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+    <div class="container addGalleryBranch_section mainSpaceN">
+      <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+        <div class="bussinessCenter">
+          <div class="branchesList">
+            <h2 *ngIf="id" class="display-show-desktop">
+              Edit Photo & Videos
+            </h2>
+            <h2 *ngIf="!id" class="display-show-desktop">
+              Add Photo & Videos
+            </h2>
+
+            <div class="loginSignup businessBox">
+              <!-- <div class="formCmg labelForm">
+              <label class="form-label theme1">Add Image & Video</label>
+            </div> -->
+              <form [formGroup]="myForm">
+                <div class="formCmg labelForm TeacherForm">
+                  <ul class="imgUpload">
+                    <li class="camera">
+                      <img class="icon2" lazyLoad="./assets/images/icons/icon-camera.svg" />
+                      <input [id]="'upLoader' + index" type="file" multiple="multiple" accept="image/*"
+                        formControlName="file" name="file" (change)="onFileChange($event)" />
+
+                    </li>
+                    <li *ngFor="let url of imagesDefault; let i = index" style="width: 22%; height: 100px;">
+                      <img class="img" [lazyLoad]="url" style="width: 100%; height: 100%;" />
+                      <mat-icon class="closeIcon" (click)="deleteEditImage(i);$event.stopPropagation()"
+                        style="color:'red';position: relative; bottom: 8rem; left: 3.5rem;">close</mat-icon>
+                    </li>
+                    <li *ngFor="let url of images; let i = index" style="width: 22%; height: 100px;">
+                      <img class="img" [lazyLoad]="url" style="width: 100%; height: 100%;" />
+                      <mat-icon class="closeIcon" style="color:'red';position: relative; bottom: 8rem; left: 2.5rem;"
+                        (click)="deleteImage(i)">close</mat-icon>
+                    </li>
+
+                  </ul>
+                  <div class="error" *ngIf="
+                      myForm.controls.file.touched &&
+                      myForm.controls.file.hasError('required')
+                      ">
+                    Image is required.
+                  </div>
+
+                  <input #firstName type="text" class="form-control" formControlName="albumname" name="albumname"
+                    placeholder="Gallery" [(ngModel)]="albumName" />
+                  <div class="error" *ngIf="
+                  myForm.controls.albumname.touched &&
+                  myForm.controls.albumname.hasError('required')
+                  ">
+                    Album Name is required.
+                  </div>
+                  <div class="" *ngIf="!diabledFeilds">
+                    <label class="form-label">Assign Branches</label>
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select'" [errorMsg]="errorMessage"
+                      [showErrorMsg]="showError" [options]="options" [display]="'display'" [value]="'value'"
+                      [multiple]="true" [labelCount]="2" [selectedOptions]="selectedOptions"
+                      (selectionChange)="getSelectedOptions($event)" ngDefaultControl [formControl]="myForm.controls['Selected']">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                  myForm.controls['Selected'].touched &&
+                  myForm.controls['Selected'].hasError('required')
+                ">
+                      Select at least one branch.
+                    </div>
+                  </div>
+                </div>
+                <div class="formCmg labelForm">
+                  <button type="submit" (click)="submit()" [disabled] = "isSubmitBool" class="btn submitBtn">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+      </div>
+    </div>
+  </div>
+
+</div>

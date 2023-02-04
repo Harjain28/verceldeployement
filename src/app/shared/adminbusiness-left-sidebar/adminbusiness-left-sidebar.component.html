@@ -1,0 +1,24 @@
+<div class="">
+    <div class="addressBox">
+        <h5>{{className}}</h5>
+        <!-- <p>{{businessDetails?.address1}}</p>
+        <a *ngIf="!branchStatus" style="cursor: pointer;" class="AddAddress"
+            (click)="handleadminroute('add-business-main-address')">
+            + Add Main Address
+        </a>
+        <a *ngIf="branchStatus" style="cursor: pointer;" class="AddAddress"
+            (click)="handleadminroute('add-business-main-address')">
+            + Edit Main Address
+        </a> -->
+    </div>
+    <ul class="profileMenu">
+        <li *ngFor = "let sidebardata of SideBarData" style="cursor: pointer;">
+            <a [routerLink]="['/admin/' + sidebardata?.url + '/' + BUSINESSADMINID + '/'  + ADMINTOKEN + '/'  + adminId]"  [routerLinkActive]="['active']">
+                <svg width="24" height="24" viewBox="0 0 24 24" class="icon_svg">
+                    <path [attr.d]="sidebardata?.svgImg" >
+                     </path>
+                </svg> {{sidebardata?.label}} 
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,214 @@
+.inboxMenu {
+    list-style: none;
+    margin:0;
+    padding:0;
+
+    li {
+        display: flex;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 15px 15px;
+        margin: 12px 0px;
+        cursor: pointer;
+
+        .checkbox {
+            margin-top: 15px;
+            padding-left: 30px;
+            
+            .checkmark {
+                border-radius: 50px;
+            }
+        }
+
+        .profileImg {
+            width: 45px;
+            height: 45px;
+            border-radius: 50px;
+            object-fit: cover;
+        }
+        .inboxMenuBody {
+            padding-left: 10px;
+            width: 100%;
+
+            h5 {
+                margin: 0;
+                font-size: 16px;
+                font-weight: 500;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+            p {
+                margin: 8px 0px 8px 0px;
+                color: var(--main4);
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+            h6 {
+                margin: 0;
+                font-size: 16px;
+                overflow: hidden;
+                -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
+        }
+        .inboxMenuTime {
+            text-align: right;
+            width: 20%;
+            margin-right: 8px;
+            margin-top: 2px;
+
+            time {
+                font-size: 14px;
+                margin-bottom: 5px;
+                display: block;
+                color: var(--main4);
+            }
+            .inboxImg {
+                position: relative;
+                width: 50px;
+                height: 50px;
+                float: right;
+                border-radius: 5px;
+                overflow: hidden;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+                span {
+                    bottom: 0;
+                    position: absolute;
+                    left: 0;
+                    text-align: center;
+                    display: block;
+                    width: 100%;
+                    background: #7F8699;
+                    color: #efefef;
+                    font-size: 10px;
+                    line-height: 18px;
+                }
+            }
+        }
+
+        &.active {
+            background: #EBECEF;
+        }
+    }
+}
+
+
+.popupBox {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -0%);
+    z-index: 9999;
+
+    .bg {
+        padding: 0px 30px;
+        position: absolute;
+        z-index: 99999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+
+
+        .popupBody {
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            padding-top: 20px;
+
+            h5 {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            p {
+                text-align: center;
+                margin: 5px 0px 20px 0px;
+                color: var(--main4);
+            }
+
+            .btn {
+                width: 50%;
+                border-top: 1px solid #d9d9d9;
+                border-radius: 0px;
+                padding: 15px 15px;
+                font-size: 15px;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &:nth-child(1) {
+                    border-right: 1px solid #d9d9d9;
+                }
+            }
+        }
+    }
+}
+
+.deleteBtn {
+    background: #fff;
+    padding: 15px 15px;
+    margin-top: 15px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    transform: translate(-50%, -0%);
+    border-top: 1px solid #e9e9e9;
+
+    .btn {
+        background: var(--main1);
+        color: #fff;
+        width: 100%;
+        padding: 10px 10px;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .deleteBtn {
+        width: 100%;
+    }
+    
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+    .inboxSection {
+        padding: 15px 0px 50px 0px;
+    
+        .actionIcons {
+            color: #bc0404;
+            margin-left: 5px;
+        }
+    }
+}

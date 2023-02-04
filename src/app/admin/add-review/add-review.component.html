@@ -1,0 +1,63 @@
+<div class="mainBody">
+    <app-admin-header></app-admin-header>
+    
+    <div class="display-show-mobile">
+    <div class="pageTopBar row">
+        <div class="col-3">
+            <a (click)="back()" class="backArrow">
+              <img class="catImg" src="./assets/images/icons/back.svg" />
+            </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Add Review</h5>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    </div>
+
+    <div class="container reviewBoxSection">
+      <div class="col-md-10 mx-auto">
+        <div class="bridTitle display-show-desktop">
+            <h3 class="bridT">Add Review</h3>
+        </div>
+        
+    <div class="space addReviewBox">
+        <div class="addReviewTop">
+            <img class="catImg" src="./assets/images/classImg5.svg" />
+            <div class="addReviewTopBody">
+                <h5>10 Minute School</h5>
+                <p>Topic: Chinese</p>
+            </div>
+        </div>
+
+        <div class="formCmg labelForm">
+            <label class="form-label">Select Your Ratings</label>
+            <ul class="rating-list" >
+                <li *ngFor="let star of stars" (click)="countStar(star)"
+                    [ngClass]="{'selected': (star <= selectedValue)}">
+                    <mat-icon>star</mat-icon>
+                </li> 
+            </ul>
+        </div>
+        <div class="formCmg labelForm">
+            <label class="form-label">What did you like or dislike?</label>
+            <textarea class="form-control" placeholder="Write something here..." ></textarea>
+        </div>
+        <div class="formCmg labelForm">
+            <label class="form-label">Add Photo (Optional)  </label>
+            <div class="position-relative">
+                <input type="text" class="form-control" placeholder="Select File" />
+                <input type="file" class="photoadd" />
+            </div>
+        </div>
+        <div class="formCmg labelForm terms">
+            By continuing, you agree to Our Guidelines, Read our <a href="javascript:void(0);">Review Guidelines.</a> 
+          </div>
+          <div class="formCmg labelForm">
+            <button type="button" class="btn submitBtn">Post Review</button>
+          </div>
+    </div>
+</div>
+</div>
+   
+  </div>

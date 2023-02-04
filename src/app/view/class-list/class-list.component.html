@@ -1,0 +1,232 @@
+<div class="mainBody">
+  <div class="display-show-mobile">
+    <div class="pageTopBar row">
+      <div class="col-3">
+        <a  (click) = "back()" class="backArrow">
+          <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+        </a>
+      </div>
+      <div class="col-6 text-center">
+        <h5 class="pgTitle">{{ subCategoryName }}</h5>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+
+  <div class="container classListingSection" infiniteScroll [infiniteScrollDistance]="4" (scrolled)="onScroll($event)">
+    <div class="bridTitle display-show-desktop">
+      <h3 class="bridT">Classes</h3>
+
+    </div>
+
+    <div class="space pb-0">
+      <div class="topBar">
+
+        
+        <div class="topSearch">
+          <div class="searchbox">
+            <mat-icon *ngIf="clearIcon" class="icon crossIcons" (click)='clearData()'>close</mat-icon>
+            <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+            <input type="search" class="form-control" (keyup)="getClassesbytags()" [(ngModel)]="searchvalue"
+              placeholder="search classes in this category" />
+          </div>
+        </div>
+        
+        <div class="display-show-mobile">
+          <ul class="mobileBtnsFilter">
+            <li (click) = "showAllfilters()"> <mat-icon class="material-icons filterIcon">filter_alt</mat-icon> Filter</li>
+          </ul>
+        </div>
+
+        
+        <form *ngIf = "showFilter" [formGroup]="myForm" class="display-show-mobile">
+          <div class="classesIf=">
+            <ul class="menuList">
+              <li>
+                <div class="formBox" style="margin-right: 12px;">
+                <mat-form-field floatLabel=never>
+                    <mat-select [placeholder]="selectedOptionsLevels.length > 0 ? '' :  'Select Level'"
+                      (selectionChange)="getSelectedlevelOptions($event.value)" [(ngModel)]="selectedOptionsLevels"
+                      [formControl]="myForm.controls['selectedlevel']" [(value)]="selectedOptionsLevels" multiple>
+                      <div class="searchDropdown">
+                        <div class="position-relative">
+                      <input placeholder="Search Level" [(ngModel)]="searchKey" [ngModelOptions]="{standalone: true}"
+                        type="text" (keyup)="onKeySearchLevel($event.target.value)" class="example-input">
+                      <mat-icon *ngIf="allSelected" class="checkDrop" (click)="selectAll()">check_box_outline_blank</mat-icon>
+                      <mat-icon *ngIf="!allSelected"  class="checkDrop"  (click)="unselectAll()">check_box</mat-icon>
+                      <mat-icon class="icon" (click)="clearSearch()"
+                        style="cursor: pointer;">close
+                      </mat-icon>
+                    </div>
+                  </div>
+                      <mat-option value="63242085ed6ecd6708d14352" [disabled]="!selectnew">Not
+                        Applicable</mat-option>
+                      <mat-option *ngFor="let data of optionsLevels" [disabled]="!selectnotApplicable"
+                        [value]="data._id">{{data.level}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Level'" [options]="optionsLevels"
+                    [display]="'display'" [value]="'value'" [multiple]="true" [labelCount]="2"
+                    [selectedOptions]="selectedOptionsLevels" ngDefaultControl
+                    (selectionChange)="getSelectedlevelOptions($event)"
+                    [formControl]="myForm.controls['selectedlevel']">
+                  </mat-select-autocomplete> -->
+                </div>
+              </li>
+              <li>
+                <select class="form-control form-select" (change)="selectFromAge($event.target.value)">
+                  <option value="0" [selected]="isfunctionstart">Age From</option>
+                  <option *ngFor="let select of agefromselect"
+                    [selected]="!isfunctionstart && select?.name == event.AgeFrom" [value]="select.value">
+                    {{select.name}}</option>
+                </select>
+              </li>
+              <li>
+                <select class="form-control form-select" (change)="selectToAge($event.target.value)">
+                  <option value="0" [selected]="isfunctionstart">Age To</option>
+                  <option *ngFor="let select of agetoselect"
+                    [selected]="!isfunctionstart && select?.name == event.Ageto" [value]="select.value">{{select.name}}
+                  </option>
+                </select>
+              </li>
+              <li>
+                <select class="form-control form-select" [(ngModel)]="types" [ngModelOptions]="{standalone: true}"
+                  (ngModelChange)="changesiteType()">
+                  <option value="all">Type-All</option>
+                  <option value="Online">Online</option>
+                  <option value="Face to Face">In-Person</option>
+                </select>
+              </li>
+
+              <a style="cursor: pointer" class="reset" (click)="resetFilter()"> Reset filter </a>
+            </ul>
+
+          </div>
+        </form>
+
+        <form [formGroup]="myForm" class="display-show-desktop">
+          <div class="classesIf=">
+            <ul class="menuList">
+              <li>
+                <div class="formBox" style="margin-right: 12px;">
+                <mat-form-field floatLabel=never>
+                    <mat-select [placeholder]="selectedOptionsLevels.length > 0 ? '' :  'Select Level'"
+                      (selectionChange)="getSelectedlevelOptions($event.value)" [(ngModel)]="selectedOptionsLevels"
+                      [formControl]="myForm.controls['selectedlevel']" [(value)]="selectedOptionsLevels" multiple>
+                      <div class="searchDropdown">
+                        <div class="position-relative">
+                      <input placeholder="Search Level" [(ngModel)]="searchKey" [ngModelOptions]="{standalone: true}"
+                        type="text" (keyup)="onKeySearchLevel($event.target.value)" class="example-input">
+                      <mat-icon *ngIf="allSelected" class="checkDrop" (click)="selectAll()">check_box_outline_blank</mat-icon>
+                      <mat-icon *ngIf="!allSelected"  class="checkDrop"  (click)="unselectAll()">check_box</mat-icon>
+                      <mat-icon class="icon" (click)="clearSearch()"
+                        style="cursor: pointer;">close
+                      </mat-icon>
+                    </div>
+                  </div>
+                      <mat-option value="63242085ed6ecd6708d14352" [disabled]="!selectnew">Not
+                        Applicable</mat-option>
+                      <mat-option *ngFor="let data of optionsLevels" [disabled]="!selectnotApplicable"
+                        [value]="data._id">{{data.level}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Level'" [options]="optionsLevels"
+                    [display]="'display'" [value]="'value'" [multiple]="true" [labelCount]="2"
+                    [selectedOptions]="selectedOptionsLevels" ngDefaultControl
+                    (selectionChange)="getSelectedlevelOptions($event)"
+                    [formControl]="myForm.controls['selectedlevel']">
+                  </mat-select-autocomplete> -->
+                </div>
+              </li>
+              <li>
+                <select class="form-control form-select" (change)="selectFromAge($event.target.value)">
+                  <option value="0" [selected]="isfunctionstart">Age From</option>
+                  <option *ngFor="let select of agefromselect"
+                    [selected]="!isfunctionstart && select?.name == event.AgeFrom" [value]="select.value">
+                    {{select.name}}</option>
+                </select>
+              </li>
+              <li>
+                <select class="form-control form-select" (change)="selectToAge($event.target.value)">
+                  <option value="0" [selected]="isfunctionstart">Age To</option>
+                  <option *ngFor="let select of agetoselect"
+                    [selected]="!isfunctionstart && select?.name == event.Ageto" [value]="select.value">{{select.name}}
+                  </option>
+                </select>
+              </li>
+              <li>
+                <select class="form-control form-select" [(ngModel)]="types" [ngModelOptions]="{standalone: true}"
+                  (ngModelChange)="changesiteType()">
+                  <option value="all">Type-All</option>
+                  <option value="Online">Online</option>
+                  <option value="Face to Face">In-Person</option>
+                </select>
+              </li>
+
+              <a style="cursor: pointer" class="reset" (click)="resetFilter()"> Reset filter </a>
+            </ul>
+
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+
+    <ng-container>
+      <div class="mt-5 mobileSpace">
+        <div class="space pb-0" *ngIf="tagvalue">
+          <div class="title m-0">
+            <h3 style="color: var(--main1)">Tags: {{tagvalue}}</h3>
+          </div>
+        </div>
+
+        <div class="space pb-0 display-show-desktop">
+          <div class="title m-0">
+            <h3>{{ subCategoryName }}</h3>
+          </div>
+        </div>
+
+        <div class="row m-0 pb-3">
+          <div class="col-6 col-md-4 col-lg-3 mt-4" *ngFor="let item of newclassList">
+            <div class="classSection classBoxNew">
+              <div class="classSectionImg">
+                <img class="catImg" (click)="getClassCategory(item?._id)" [lazyLoad]="item?.image[0]" />
+                <a style="cursor: pointer;" class="fav">
+                  <mat-icon *ngIf="!item.selected" (click)="addtoClassWishList(item?._id , true);" class="like">
+                    favorite_border
+                  </mat-icon>
+                  <mat-icon *ngIf="item.selected" (click)="deleteClassWishlist(item?._id)">favorite</mat-icon>
+                </a>
+              </div>
+              <div class="classSectionBody" (click)="getClassCategory(item._id)">
+                <div class="branchs" *ngIf="!tagvalue && !searchvalue && !sortingbool">
+                  <button class="btn" *ngFor="let branch of item?.branchData | slice:0:2 ">{{branch?.branchName |
+                    slice:0:12}}...</button>
+                  <button class="btnmore" *ngIf="item?.branchData.length > 2">More</button>
+                </div>
+                <a style="cursor: pointer" class="titleName">
+                  {{ item?.businessName }}
+                </a>
+                <div class="row m-0 mt-2" *ngIf="!tagvalue && !searchvalue">
+                  <div class="category" *ngFor="let category of item?.subcategory | slice:0:2 let isLast=last">
+                    {{category?.subCategory}}{{isLast ? '' : ', '}}
+                  </div>
+                </div>
+                <div class="row m-0 mt-2" *ngIf="tagvalue || searchvalue || sortingbool">
+                  <div class="category" *ngFor="let category of item?.businesssubCategory | slice:0:2 let isLast=last">
+                    {{category?.subCategory}}{{isLast ? '' : ', '}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+</div>

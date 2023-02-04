@@ -1,0 +1,30 @@
+.form_box {
+    width: 500px;
+    background: #fff;
+    box-shadow: 0 6px 18px 3px #c9c9c9;
+    padding: 30px 30px;
+    margin:100px auto;
+}
+.form_box .btn, .form_box .btn:hover {
+    background: #f9560f;
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+}
+.form_box .form-control {
+    border: 1px solid #cac8c8;
+    padding: 10px 15px;
+}
+.form_box .form-control:focus {
+    box-shadow:none;
+    border: 1px solid #f9560f;
+}
+.form_box h2 {
+    margin-bottom: 25px;
+}
+
+@media (max-width: 767px) {
+    .form_box {
+        width: 100%;
+    }
+}

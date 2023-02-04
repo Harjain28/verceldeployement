@@ -1,0 +1,76 @@
+<div class="mainBody">
+    <app-admin-header></app-admin-header>
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+
+            <div class="col-3">
+                <a class="backArrow" (click)="back()">
+                    <img class="catImg" src="./assets/images/icons/back.svg" />
+                </a>
+            </div>
+            <div class="col-6 text-center">
+                <h5 class="pgTitle">Inbox / Leads</h5>
+            </div>
+            <div class="col-3">
+
+                <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" src="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+            </div>
+        </div>
+    </div>
+    <div class="container businessInbox_section mainSpaceN">
+
+        <div class="row">
+            <app-adminbusiness-left-sidebar class="businessLeft"></app-adminbusiness-left-sidebar>
+
+
+            <div class="bussinessCenter">
+                <div class="branchesList">
+                    <h2>
+                        Inbox
+                    </h2>
+
+                    <ul class="actionIcons" *ngIf="allchatData.length > 0">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <mat-icon>delete</mat-icon>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <img class="edit" src="./assets/images/icons/icon-edit.svg">
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="inboxMenu">
+                        <li class="active" *ngFor="let chatdata of allchatData">
+                            <label class="checkbox">
+                                <input type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <img class="profileImg" [lazyLoad]="chatdata?.receiverUserImage[0]">
+                            <div class="inboxMenuBody"
+                                (click)="redirectTochat(chatdata?.user_id , chatdata?.receiver_id)">
+                                <h5>{{chatdata?.receiverUserName}}</h5>
+                                <p>{{chatdata?.message}}</p>
+                                <!-- <h6>Thanks!</h6> -->
+                            </div>
+                            <div class="inboxMenuTime">
+                                <time>{{chatdata.time | date: 'short'}}</time>
+                                <div class="inboxImg" *ngIf="chatdata?.image">
+                                    <img class="" [lazyLoad]="chatdata?.image">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <app-adminbusiness-right-sidebar class="businessLeft"></app-adminbusiness-right-sidebar>
+        </div>
+
+    </div>
+
+</div>

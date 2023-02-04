@@ -1,0 +1,115 @@
+.editProfile {
+  .changePassword {
+    color: var(--main4);
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  .addChildren {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-style: dotted;
+    border-width: 2px;
+    text-decoration: none;
+    color: var(--main4);
+    border-radius: 10px;
+    padding: 14px 15px;
+    font-weight: 500;
+    margin-top: 30px;
+  }
+  .checkboxFrom {
+    .tt {
+      margin-right: 60px;
+      display: inline-block;
+      font-weight: 500;
+    }
+    .radio {
+      margin-right: 35px;
+      color: var(--main4);
+    }
+  }
+  .error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 12px;
+    position: relative;
+    top: 4px;
+  }
+}
+
+::ng-deep .iti {
+  width: 100%;
+}
+
+.profileImg {
+  width: 90px;
+  height: 90px;
+  margin: 15px auto 30px auto;
+  position: relative;
+
+  .closeIcon {
+    position: absolute;
+    right: 2px;
+    top: 0px;
+    background: #e9ecef;
+    font-size: 16px;
+    border-radius: 50px;
+    line-height: 25px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .catImg {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: contain;
+  }
+  .uploadIcon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 26px;
+    overflow: hidden;
+
+    input[type="file"] {
+      position: absolute;
+      right: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+  .changePassword {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+  }
+  .editProfileSection {
+    padding: 15px 0px 50px 0px;
+  }
+
+  .profileImg {
+
+    .uploadIcon {
+
+     .redImage{
+       border: none !important;
+     }
+    }
+
+  }
+
+}
+.editBtn.btn {
+  background: #f9560f;
+  color: #fff;
+  min-width: 80px;
+  margin-left: 10px !important;
+  border-radius: 5px !important;
+}

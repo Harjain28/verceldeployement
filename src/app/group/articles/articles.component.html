@@ -1,0 +1,289 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <div class="col-3">
+            <a (click)="back()" class="backArrow">
+              <img class="catImg" src="./assets/images/icons/back.svg" />
+            </a>
+          </div>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Articles</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <div class="container articleSectionDesktop" infiniteScroll [infiniteScrollDistance]="10"
+      (scrolled)="onScroll($event)">
+      <div class="bridTitle display-show-desktop">
+        <h3 class="bridT">Articles</h3>
+      </div>
+
+      <div class="space pb-0">
+        <div class="topBar">
+          <div class="topSearch">
+            <div class="searchbox">
+              <mat-icon *ngIf="clearIcon" class="icon crossIcons" (click)='clearData()'>close</mat-icon>
+              <img class="icon" src="./assets/images/icons/icon-search.svg" />
+              <input type="search" class="form-control" [(ngModel)]="searchvalue" (keyup)="getArticlebytags()"
+                placeholder="Search Article by Title" value="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mainRow">
+          <div class="col-md-9 articlesLeftBox">
+            <mat-tab-group (selectedTabChange)="selectedTabChange($event)" [(selectedIndex)]="selectedIndex" #tabs>
+              <mat-tab label="All Articles">
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let article of newArticledata; let i = index">
+                    <div class="articleBox">
+                      <div class="articleImg">
+                        <img *ngIf="!article.banner" (click)="getArticeDetails(article._id)" class="img"
+                          src="./assets/images/classImg.svg" />
+                        <img *ngIf="article.banner" (click)="getArticeDetails(article._id)" class="img"
+                          src="{{article.banner}}" />
+                        <span (click)="filterBySubject(article.subject)">{{article.subject}}</span>
+                        <a style="cursor: pointer" class="shareIcon" (click)="copyToClipboard(article?._id)">
+                          <img class="catImg"  lazyLoad="./assets/images/icons/icon-share.svg" />
+                        </a>
+                        <a style="cursor: pointer;" class="fav">
+                          <mat-icon *ngIf="!article.selected"
+                            (click)="addtoArticleWishList(article?._id , true); checkLoginorNot()" class="like">
+                            favorite_border</mat-icon>
+                          <mat-icon *ngIf="article.selected"
+                            (click)="deleteArticleWishlist(article?._id , false) ; checkLoginorNot()">favorite
+                          </mat-icon>
+                        </a>
+                      </div>
+                      <div class="articleBody">
+                        <h3 (click)="getArticeDetails(article._id)">{{article.title}}</h3>
+                        <ul>
+                          <li (click)="getArticeDetails(article._id)">
+                            <mat-icon>perm_identity</mat-icon>{{article.authorName}}
+                          </li>
+                          <!-- <li><mat-icon>av_timer</mat-icon> March 22, 2022</li> -->
+                        </ul>
+                        <p (click)="getArticeDetails(article._id)">{{article.articledescription}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab label="Trending Articles">
+                <div class="row">
+                  <div class="col-md-4" *ngFor="let article of newTrendingData">
+                    <div class="articleBox">
+                      <div class="articleImg">
+                        <img *ngIf="!article.banner" (click)="getArticeDetails(article._id)" class="img"
+                          src="./assets/images/classImg.svg" />
+                        <img *ngIf="article.banner" (click)="getArticeDetails(article._id)" class="img"
+                          src="{{article.banner}}" />
+                        <span (click)="filterBySubject(article.subject)">{{article.subject}}</span>
+                        <a style="cursor: pointer" class="shareIcon" (click)="copyToClipboard(article?._id)">
+                          <img class="catImg" lazyLoad="./assets/images/icons/icon-share.svg" />
+                        </a>
+                        <a style="cursor: pointer;" class="fav">
+                          <mat-icon *ngIf="!article.selected" (click)="addtoArticleWishList(article?._id , true)"
+                            class="like">favorite_border</mat-icon>
+                          <mat-icon *ngIf="article.selected" (click)="deleteArticleWishlist(article?._id , false)">
+                            favorite</mat-icon>
+                        </a>
+                      </div>
+                      <div class="articleBody">
+                        <h3 (click)="getArticeDetails(article._id)">{{article.title}}</h3>
+                        <ul>
+                          <li (click)="getArticeDetails(article._id)">
+                            <mat-icon>perm_identity</mat-icon>{{article.authorName}}
+                          </li>
+                          <!-- <li><mat-icon>av_timer</mat-icon> March 22, 2022</li> -->
+                        </ul>
+                        <p (click)="getArticeDetails(article._id)">{{article.articledescription}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <ng-container *ngIf="loginOrNot">
+                <mat-tab label="Article from my Group">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let articlefromgroup of articleWithGroup">
+                      <div class="articleBox">
+                        <div class="articleImg">
+                          <img *ngIf="!articlefromgroup.banner" (click)="getArticeDetails(articlefromgroup._id)"
+                            class="img" src="./assets/images/classImg.svg" />
+                          <img *ngIf="articlefromgroup.banner" (click)="getArticeDetails(articlefromgroup._id)"
+                            class="img" src="{{articlefromgroup.banner}}" />
+                          <span (click)="filterBySubject(articlefromgroup.subject)">{{articlefromgroup?.subject}}</span>
+                          <a style="cursor: pointer" class="shareIcon" (click)="copyToClipboard(article?._id)">
+                            <img class="catImg" lazyLoad="./assets/images/icons/icon-share.svg" />
+                          </a>
+                          <a style="cursor: pointer;" class="fav">
+                            <mat-icon *ngIf="!articlefromgroup.selected"
+                              (click)="addtoArticleWishList(articlefromgroup?._id, true)" class="like">favorite_border
+                            </mat-icon>
+                            <mat-icon *ngIf="articlefromgroup.selected"
+                              (click)="deleteArticleWishlist(articlefromgroup?._id, false)">favorite</mat-icon>
+                          </a>
+                        </div>
+                        <div class="articleBody" (click)="getArticeDetails(articlefromgroup?._id)">
+                          <h3>
+                            {{articlefromgroup?.title}}
+                          </h3>
+                          <ul>
+                            <li>
+                              <mat-icon>perm_identity</mat-icon>{{articlefromgroup?.authorName}}
+                            </li>
+                            <!-- <li><mat-icon>av_timer</mat-icon> March 22, 2022</li> -->
+                          </ul>
+                          <p> {{articlefromgroup?.articledescription}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </mat-tab>
+              </ng-container>
+
+              <ng-container *ngIf="loginOrNot">
+                <mat-tab label="Favourites">
+                  <div class="row">
+                    <div class="col-md-4" *ngFor="let favarticle of favArticles">
+                      <div class="articleBox">
+                        <div class="articleImg">
+                          <img *ngIf="!favarticle?.wishlistedId?.banner"
+                            (click)="getArticeDetails(favarticle?.wishlistedId?._id)" class="img"
+                            src="./assets/images/classImg.svg" />
+                          <img *ngIf="favarticle?.wishlistedId?.banner" class="img"
+                            (click)="getArticeDetails(favarticle?.wishlistedId?._id)"
+                            [src]="favarticle?.wishlistedId?.banner" />
+                          <span
+                            (click)="filterBySubject(favarticle.subject)">{{favarticle?.wishlistedId?.subject}}</span>
+                          <a style="cursor: pointer" class="shareIcon" (click)="copyToClipboard(article?._id)">
+                            <img class="catImg" lazyLoad="./assets/images/icons/icon-share.svg" />
+                          </a>
+                          <a style="cursor: pointer;" class="fav">
+                            <mat-icon *ngIf="favarticle?.wishlistedId?.selected"
+                              (click)="addtoArticleWishList(favarticle?.wishlistedId?._id , true)" class="like">
+                              favorite_border</mat-icon>
+                            <mat-icon *ngIf="!favarticle?.wishlistedId?.selected"
+                              (click)="deleteArticleWishlist(favarticle?.wishlistedId?._id, false)">favorite</mat-icon>
+                          </a>
+                        </div>
+                        <div class="articleBody" (click)="getArticeDetails(favarticle?.wishlistedId?._id)">
+                          <h3>{{favarticle?.wishlistedId?.title}}</h3>
+                          <ul>
+                            <li>
+                              <mat-icon>perm_identity</mat-icon>{{favarticle?.wishlistedId?.authorName}}
+                            </li>
+                            <!-- <li><mat-icon>av_timer</mat-icon> March 22, 2022</li> -->
+                          </ul>
+                          <p>{{favarticle?.wishlistedId?.authordescription}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </mat-tab>
+              </ng-container>
+            </mat-tab-group>
+          </div>
+
+          <div class="col-md-3 display-show-mobile">
+            <mat-accordion class="faqList">
+
+              <div class="menuList">
+                <mat-expansion-panel expanded="false" (opened)="panelOpenState = true"
+                  (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <div class="title2">
+                      <h2 *ngIf="!tagvalue && isTagShow">Tags</h2>
+                      <h2 *ngIf="types === 'tags'">Tag</h2>
+                      <h2 *ngIf="types === 'groups'">Group</h2>
+                      <h2 *ngIf="types === 'subjects'">Subject</h2>
+                      <h2 *ngIf="!isTagShow">Subject</h2>
+                    </div>
+                  </mat-expansion-panel-header>
+                  <ul *ngIf="!tagvalue && isTagShow">
+                    <input type="text" placeholder="Search" [(ngModel)]="searchArticles"
+                      (ngModelChange)="searchByTags()" class="form-control formTagSearch" />
+                    <a style="cursor: pointer mt-3" *ngIf="!tagvalue && isTagShow" class="reset"
+                      (click)="resetbyTag()">Reset filter</a>
+                    <li class="alltags" *ngFor="let tag of Repetedtags" (click)="articleFilterbyTags(tag, false)"><a
+                        [class.active]="tagsValue === tag" style="cursor: pointer">{{tag | uppercase}}</a>
+                    </li>
+                  </ul>
+                  <ul *ngIf="!isTagShow">
+                    <a style="cursor: pointer mt-3" class="reset" (click)="resetbyTag()">Reset filter</a>
+                    <li><a style="cursor: pointer;">{{subjectName}}</a>
+                    </li>
+                  </ul>
+                  <ul *ngIf="tagvalue">
+                    <a style="cursor: pointer mt-3" class="reset" routerLink="/articles/">Reset filter</a>
+                    <li><a style="cursor: pointer;">{{tagvalue}}</a>
+                    </li>
+                  </ul>
+                </mat-expansion-panel>
+
+              </div>
+            </mat-accordion>
+          </div>
+
+          <div class="col-md-3 display-show-desktop">
+            <mat-accordion class="faqList">
+
+              <div class="menuList">
+                <a style="cursor: pointer mt-3" *ngIf="!tagvalue && isTagShow" class="reset"
+                  (click)="resetbyTag()">Reset
+                  filter</a>
+                <mat-expansion-panel expanded="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <div class="title2">
+                      <h2 *ngIf="!tagvalue && isTagShow">Tags</h2>
+                      <h2 *ngIf="types === 'tags'">Tag</h2>
+                      <h2 *ngIf="types === 'groups'">Group</h2>
+                      <h2 *ngIf="types === 'subjects'">Subject</h2>
+                      <h2 *ngIf="!isTagShow">Subject</h2>
+                    </div>
+                  </mat-expansion-panel-header>
+                  <ul *ngIf="!tagvalue && isTagShow">
+                    <input type="text" placeholder="Search" [(ngModel)]="searchArticles"
+                      (ngModelChange)="searchByTags()" class="form-control formTagSearch" />
+                    <!-- <a style="cursor: pointer mt-3" *ngIf = "!tagvalue && isTagShow" class="reset display-show-mobile" (click) = "resetbyTag()">Reset filter</a> -->
+                    <li class="alltags" *ngFor="let tag of Repetedtags" (click)="articleFilterbyTags(tag, false)"><a
+                        [class.active]="tagsValue === tag" style="cursor: pointer">{{tag | uppercase}}</a>
+                    </li>
+                  </ul>
+                  <ul *ngIf="!isTagShow">
+                    <a style="cursor: pointer mt-3" class="reset" (click)="resetbyTag()">Reset filter</a>
+                    <li><a style="cursor: pointer;">{{subjectName}}</a>
+                    </li>
+                  </ul>
+                  <ul *ngIf="tagvalue">
+                    <a style="cursor: pointer mt-3" class="reset" routerLink="/articles/">Reset filter</a>
+                    <li><a style="cursor: pointer;">{{tagvalue}}</a>
+                    </li>
+                  </ul>
+                </mat-expansion-panel>
+
+              </div>
+            </mat-accordion>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+<app-bottom-bar></app-bottom-bar>

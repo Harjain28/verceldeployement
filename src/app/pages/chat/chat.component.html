@@ -1,0 +1,138 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+
+    <div class="container chatDesktop">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow display-show-mobile">
+            <img style="height: 18px ;" class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 *ngIf="Data?.branchName" class="pgTitle">{{classData?.businessName}}<br>
+            <small>branch: {{Data?.branchName}}</small><br>
+            <small>Online 15 min ago</small>
+          </h5>
+          <h5 *ngIf="!Data?.branchName" class="pgTitle">{{Data?.businessName}}<br>
+            <small>{{Data?.name}}</small>
+            <br>
+            <!-- <small ngIf = "branchName">branch: {{branchName}}</small><br ngIf = "branchName"> -->
+            <small>Online 15 min ago</small>
+          </h5>
+        </div>
+        <div class="col-3 text-end">
+        </div>
+      </div>
+      <div class="space">
+
+        <!-- <div class="producT" *ngIf = "type === 'productId'">
+    <img class="catImg" lazyLoad="./assets/images/c1.svg" />
+    <div class="producTBody">
+      <h5>{{this.allProductData?.title}}</h5>
+      <p *ngIf = "this.allProductData?.price !== 'forfree'">${{this.allProductData?.price}}</p>
+      <p *ngIf = "this.allProductData?.price === 'forfree'">Free</p>
+    </div>
+  </div> -->
+
+
+        <div class="userchat_body scroll">
+          <!-- <a class="deleteIcon" (click)="openToggle()">
+              <mat-icon>delete</mat-icon>
+          </a> -->
+          <div *ngFor="let chatData of allchatData; let i = index">
+            <div *ngIf="isDifferentDay(i)" class="date"><span>{{ getMessageDate(i)}}</span></div>
+            <div class="chat_message" [ngClass]="chatData.user_id !== userId ? 'chat_left' : 'chat_right'">
+              <img class="profileimage" [lazyLoad]="Data?.image" *ngIf="chatData.user_id !== userId && Data?.image">
+              <img class="profileimage" lazyLoad="./assets/images/user.png"
+                *ngIf="chatData.user_id !== userId && !Data?.image">
+              <div style="display: block;">
+                <p *ngIf="chatData.message">
+                  {{chatData.message}}
+                  <time>{{chatData.time | date: 'shortTime'}}</time>
+                </p>
+                <div *ngIf="chatData.image">
+                  <img class="chatImg" (click)="openModal(chatData.image)" [lazyLoad]="chatData.image">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--     
+    <div class="date"><span>3-2-2022</span></div>
+    <div class="chat_message chat_left">
+      <img lazyLoad="./assets/images/profileImg.svg"> 
+      <p>
+        Great!
+        <time>8:40 am</time>
+      </p>
+    </div>
+    <div class="chat_message chat_left">
+      <img lazyLoad="./assets/images/profileImg.svg"> 
+      <p>
+        Can you send me some video of your product?
+        <time>8:40 am</time>
+      </p>
+    </div> -->
+
+        </div>
+
+
+        <div class="col-md-12 sendMessage">
+          <div class="uploadedImages" *ngIf="imageBox">
+            <ul *ngIf="!loading">
+              <li *ngFor="let image of image; let i = index">
+                <img class="img" [hidden]="loading" (click)="openModal(image)" [lazyLoad]="image">
+                <mat-icon class="closeIcon" (click)="deleteImage(i)">close</mat-icon>
+              </li>
+            </ul>
+            <ul *ngIf="loading">
+              <li>
+                <img src="./assets/Preloader/loader.gif" alt="loading" />
+                <!-- <mat-icon class="closeIcon" (click)="deleteImage(i)" >close</mat-icon> -->
+              </li>
+            </ul>
+          </div>
+          <div class="input-group">
+            <input type="text" class="form-control" (keyup.enter)="submitChat(submitchat)" [(ngModel)]="submitchat"
+              placeholder="Send a message..." />
+            <button class="uploadCamera">
+              <div class="uploadBox">
+                <mat-icon>camera_enhance</mat-icon>
+                <input type="file" [id]="'upLoader' + index" accept="image/*" (change)="onFileChange($event)" />
+              </div>
+            </button>
+            <button class="submit" [disabled]="loading" (click)="submitChat(submitchat)">
+              <img lazyLoad="./assets/images/Send.svg">
+            </button>
+          </div>
+        </div>
+
+        <div id="imgModal" class="slide-modal">
+          <span class="close cursor" (click)="closeModal()">&times;</span>
+          <div class="slide-modal-content">
+
+            <div class="img-slides">
+              <img class="image" src="{{pipupImage}}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- <div class="popupBox" *ngIf="leaveGroup">
+    <div class="bg">
+
+        <div class="popupBody">
+            <h5>Are you sure you want to Delete All chats?</h5>
+            <p>You will loose all data.</p>
+            <div class="bottom">
+                <a class="btn theme_color" (click)="openToggle()">Cancel</a>
+                <a class="btn"  (click)="chatVisibility()">Yes</a>
+            </div>
+        </div>
+    </div>
+</div> -->

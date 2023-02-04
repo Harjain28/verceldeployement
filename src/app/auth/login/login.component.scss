@@ -1,0 +1,110 @@
+.loginSignup {
+
+    .forgotPassword {
+        color: var(--main4);
+        display: inline-block;
+        position: relative;
+        top: -5px;
+        text-decoration: none;
+    }
+    .submitBtn {
+        background-color: var(--main1);
+        color: #fff;
+        display: block;
+        width: 100%;
+        padding: 0px 10px;
+        height: 52px;
+        line-height: 52px;
+        border-radius: 5px;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .or {
+        border-top: 1px solid #7F8699;
+        position: relative;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 0px 10px;
+            margin-top: -2px;
+            color: #7F8699;
+        }
+    }
+    .socialBox {
+        display: block;
+        background: #f9560f;
+        text-align: center;
+        color: #fff;
+        margin-top: 12px;
+        text-decoration: none;
+        border-radius: 4px;
+        padding: 0px 10px;
+        height: 52px;
+        line-height: 52px;
+        position: relative;
+        font-size: 16px;
+        font-weight: 500;
+
+        .icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translate(-0%, -50%);
+            text-align: center;
+            width: 35px;
+
+        }
+        &.facebook {
+            background-color: #1A77F2;
+            cursor: pointer;
+        }
+        &.apple {
+            background-color: #000000;
+            cursor: pointer;
+        }
+        &.google {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #cbcbcb;
+            cursor: pointer;
+        }
+    }
+    .policyLink {
+        text-align: center;
+        padding: 0px 15px;
+        color: var(--main4);
+        font-size: 13px;
+        margin: 15px 0px 15px 0px;
+
+        a {
+            color: var(--main4);
+
+            &:hover {
+                color:var(--main1);
+            }
+        }
+    }
+    .error {
+        color: red;
+        margin-bottom: 5px;
+        font-size: 12px;
+        position: relative;
+        top: -8px;
+    }
+}
+
+.actionAction {
+    height: 22px;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}

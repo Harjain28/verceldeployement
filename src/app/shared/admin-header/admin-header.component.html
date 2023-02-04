@@ -1,0 +1,62 @@
+<header class="mainHeader">
+  <div class="container">
+    <div class="mainRow">
+      <a class="logo">
+        <img class="logoImg" lazyLoad="./assets/images/logo-web.svg" />
+      </a>
+      <div class="searchBoxInner">
+        <div class="searchbox">
+          <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Search Everything on Klassbook"
+          />
+        </div>
+      </div>
+      <!-- <div class="btns_box" *ngIf="!(event.isLogin | async)">
+        <button class="btn" routerLink="/register">For Business Owner</button>
+        <button class="btn" routerLink="/login/student">Sign Up & Login</button>
+      </div> -->
+
+      <div class="profileAction">
+        <!-- <button class="btn" routerLink="/profile"> Profile </button> -->
+        <button mat-button [matMenuTriggerFor]="menu">
+          <img *ngIf="!image" class="logoImg" lazyLoad="./assets/images/defalutimg.svg" />
+          <img *ngIf="image"  class="logoImg" lazyLoad="{{image}}" />
+          <div class="body">
+            <h4>{{ name }}</h4>
+            <span class="email">{{ email }}</span>
+          </div>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="profilepageRedirect()">
+            My Profile
+          </button>
+          <button mat-menu-item>Inbox</button>
+          <button mat-menu-item>Logout</button>
+        </mat-menu>
+        <!-- <button class="btn" (click) = "logout()">Logout</button> -->
+      </div>
+    </div>
+    <ul class="mobileMenu">
+      <li><a>Home</a></li>
+      <li>
+        <a>Events/Camps</a>
+      </li>
+      <li>
+        <a>Articles</a>
+      </li>
+      <!-- <li>
+        <a>Groups</a>
+      </li> -->
+     
+      <!-- <li>
+        <a>Topics</a>
+      </li>
+      <li>
+        <a>Marketplace</a>
+      </li> -->
+    </ul>
+  </div>
+</header>

@@ -1,0 +1,142 @@
+.articleDetails {
+  .post {
+    font-size: 13px;
+    color: var(--main4);
+  }
+  .catImg {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+  p {
+    color: var(--main4);
+  }
+}
+
+.articlesSlider {
+  display: block;
+  margin: 0px -5px;
+  margin-top: 10px;
+
+  .classSection {
+    position: relative;
+    margin: 0px 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: none;
+
+    img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      color: #fff;
+      text-decoration: none;
+
+      .sg {
+        top: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+
+        h4 {
+          margin-bottom: 0px;
+        }
+        p {
+          margin: 0;
+        }
+      }
+    }
+    .classSectionBody {
+      padding: 10px 0px 0px 0px;
+
+      .titleName {
+        -webkit-line-clamp: 2;
+        font-size: 14px;
+        color: var(--main4);
+      }
+    }
+  }
+}
+
+.author {
+  display: flex;
+
+  .catImg {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .authorBody {
+    padding-left: 15px;
+
+    p {
+      font-size: 12px;
+      color: var(--main4);
+      margin: 0;
+    }
+  }
+}
+.tagsBox {
+  margin-top: 20px;
+
+  h5 {
+    font-size: 15px;
+  }
+  p {
+    margin: 0;
+
+    a {
+      display: inline-block;
+      border: 1px solid #cecdcd;
+      text-decoration: none;
+      color: #797676;
+      padding: 5px 15px;
+      border-radius: 50px;
+      margin-right: 5px;
+      font-size: 14px;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .articleDetailsDesktop {
+    padding: 50px 0px;
+  }
+  .articlesSlider {
+    display: block;
+    margin: 0px -5px;
+    margin-top: 10px;
+
+    .classSection {
+      img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
+  .author {
+    .authorBody {
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .articlesSlider .classSection img {
+    width: 100%;
+    height: 160px;
+  }
+}

@@ -1,0 +1,159 @@
+.mobileMenuList {
+    padding: 15px 15px;
+}
+
+.menuList {
+    list-style: none;
+    margin:0;
+    padding:0;
+
+    li {
+
+        a {
+            color: #000;
+            width: 100%;
+            text-decoration: none;
+            padding: 15px 0px;
+            border-bottom: 1px solid #d9d9d9;
+            display: block;
+            font-size: 16px;
+
+            .mat-icon {
+                float: right;
+                color: #7F8699;
+            }
+        }
+
+        &:last-child {
+
+            a {
+                border-bottom: 1px solid #fff;
+    
+                .mat-icon {
+                    float: right;
+                    color: #7F8699;
+                }
+
+                .logout {
+                    float: right;
+                    color: #7F8699;
+                }
+            }
+        }
+    }
+
+}
+.profileBox {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    .profileImg {
+        width:74px;
+        height: 74px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .body {
+        padding: 0px 10px;
+
+        p {
+            margin:0;
+            font-size: 15px;
+            padding-left: 3px;
+        }
+        h3 {
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            margin:3px 0px 0px 0px;
+
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+    .category {
+        font-size: 15px;
+        color: #868c9e;
+        display: inline-block;
+        width: auto;
+        padding: 0px;
+        margin-right: 5px;
+    }
+
+    .profile_section {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .popupBox {
+
+        .bg {
+
+            .popupBody {
+                width: 400px;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+
+.popupBox {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50%, -0%);
+    z-index: 9999;
+
+    .bg {
+        padding: 0px 30px;
+        position: absolute;
+        z-index: 99999;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+
+        .popupBody {
+            background: #fff;
+            width: 100%;
+            border-radius: 8px;
+            padding-top: 20px;
+
+            h5 {
+                text-align: center;
+                font-size: 18px;
+                font-weight: 500;
+            }
+
+            p {
+                text-align: center;
+                margin: 5px 0px 20px 0px;
+                color: var(--main4);
+            }
+
+            .btn {
+                width: 50%;
+                border-top: 1px solid #d9d9d9;
+                border-radius: 0px;
+                padding: 15px 15px;
+                font-size: 15px;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &:nth-child(1) {
+                    border-right: 1px solid #d9d9d9;
+                }
+            }
+        }
+    }
+}

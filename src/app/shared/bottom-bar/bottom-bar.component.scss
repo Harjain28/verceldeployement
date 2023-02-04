@@ -1,0 +1,48 @@
+@media  (max-width: 767px)  {
+    .toggleMenu{
+        padding: 5px 10px;
+        position: relative;
+
+        .btMenu {
+            text-decoration: none;
+            color: #222;
+            padding: 5px 8px;
+            display: block;
+            text-align: center;
+        }
+    }
+
+    ::ng-deep .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button {
+        margin: 0;
+        min-width: 30px;
+        line-height: 36px;
+        padding: 0 4px;
+    }
+    
+    ::ng-deep .mat-menu-content:not(:empty) {
+        display: flex;
+        padding: 0px;
+    }
+    ::ng-deep .mat-menu-panel {
+        box-shadow: none;
+        border: 1px solid #cecbcb;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .mat-button{
+        line-height: 30px !important;
+    }
+
+    ::ng-deep .cdk-overlay-connected-position-bounding-box {
+        position: absolute;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        min-width: 1px;
+        min-height: 1px;
+        left: 50% !important;
+        transform: translate(-50%, -0%);
+    }
+}
+

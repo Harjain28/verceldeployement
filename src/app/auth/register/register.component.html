@@ -1,0 +1,442 @@
+<div class="loginSignInTab">
+  <mat-tab-group [(selectedIndex)]="selectedIndex" #tabs>
+    <!-- ========BUSINESS REGISTER=========== -->
+    <ng-container *ngIf="types === 'business'">
+      <mat-tab>
+        <form [formGroup]="bform">
+          <div class="loginSignup space businessBox">
+            <div *ngIf="suggetionBool" class="sentMessage">
+              <p [innerHTML]="claimMessage | sanitizeHtml"></p>
+            </div>
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-business.svg" style="height: 19px" />
+              <input type="text" class="form-control" name="businessName" [matAutocomplete]="auto"
+                formControlName="businessName" [(ngModel)]="searchKey" placeholder="Class/Business/Institute Name"
+                (input)="getBusinessNames()" />
+            </div>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getAutocompleteValue($event.option.value)'>
+              <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion">
+                {{suggestion}}
+              </mat-option>
+            </mat-autocomplete>
+            <div class="error" *ngIf="
+            bform.controls.businessName.touched &&
+            bform.controls.businessName.hasError('required')
+            ">
+              Please Enter Class/Business/Institute Name
+            </div>
+
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-user.svg" style="height: 19px" />
+              <input type="text" class="form-control" name="name" formControlName="name"
+                placeholder="Contact Person Name" />
+            </div>
+
+            <div class="error" *ngIf="
+                bform.controls.name.touched &&
+                bform.controls.name.hasError('required')
+              ">
+              Business username is required.
+            </div>
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-email.svg" />
+              <input type="email" class="form-control" name="email" formControlName="email"
+                placeholder="Business Email" />
+            </div>
+            <div class="error" *ngIf="
+                bform.controls.email.touched &&
+                bform.controls.email.hasError('required')
+              ">
+              Email address is required.
+            </div>
+            <div class="error" *ngIf="
+                bform.controls.email.dirty &&
+                bform.controls.email.hasError('pattern')
+              ">
+              Enter valid email address.
+            </div>
+
+
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-phone.svg" style="height: 19px" />
+              <span class="staticCode"> +65 </span>
+              <input type="text" class="form-control" style="padding-left:87px" name="phone"
+                (keypress)="numberOnly($event, 'mobile')" formControlName="phone" placeholder="Mobile Number" />
+            </div>
+            <div class="error" *ngIf="
+                bform.controls.phone.touched &&
+                bform.controls.phone.hasError('required')
+              ">
+              Mobile Number is required.
+            </div>
+            <div class="error" *ngIf="
+                bform.controls.phone.dirty &&
+                bform.controls.phone.hasError('pattern')
+              ">
+              Please enter valid mobile number
+            </div>
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-password.svg" style="height: 19px" />
+              <input type="password" class="form-control" (input)="validation()" name="password" (blur)="
+                  matchinputValue(
+                    bform?.controls?.password,
+                    bform?.controls?.confirm_password
+                  )" formControlName="password" placeholder="Password" [type]="bpvisibility ? 'text' : 'password'" />
+
+              <div>
+                <img src="./assets/images/icons/password-show.svg" class="actionAction" *ngIf="bpvisibility"
+                  (click)="bpvisibility = false" />
+              </div>
+              <div>
+                <img src="./assets/images/icons/password-hide.svg" class="actionAction" *ngIf="!bpvisibility"
+                  (click)="bpvisibility = true" />
+              </div>
+            </div>
+            <div class="error" *ngIf="
+            bform.controls.password.touched &&
+            bform.controls.password.hasError('required')
+          ">
+              Password is required.
+            </div>
+            <div class="passwordError" *ngIf="bform.controls?.password.value !== '' && !bformIsValid">
+              <label
+                [ngClass]="bform.controls['password'].hasError('required') || bform.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ bform.controls['password'].hasError('required') ||
+                  bform.controls['password'].hasError('minlength') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must be at least 8 characters!
+              </label>
+
+              <label class="col"
+                [ngClass]="bform.controls['password'].hasError('required') || bform.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ bform.controls['password'].hasError('required') ||
+                  bform.controls['password'].hasError('hasNumber') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 number!
+              </label>
+
+              <label class="col"
+                [ngClass]="bform.controls['password'].hasError('required') || bform.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ bform.controls['password'].hasError('required') ||
+                  bform.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 in Capital Case!
+              </label>
+
+              <label class="col"
+                [ngClass]="bform.controls['password'].hasError('required') || bform.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ bform.controls['password'].hasError('required') ||
+                  bform.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 Letter in Small Case!
+              </label>
+
+              <label class="col"
+                [ngClass]="bform.controls['password'].hasError('required') || bform.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ bform.controls['password'].hasError('required') ||
+                  bform.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 Special Character!
+              </label>
+            </div>
+
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-password.svg" style="height: 19px" />
+              <input type="password" class="form-control" (blur)="
+                  matchinputValue(
+                    bform?.controls?.password,
+                    bform?.controls?.confirm_password
+                  )
+                " name="confirm_password" formControlName="confirm_password" placeholder="Confirm password"
+                [type]="bpcvisibility ? 'text' : 'password'" />
+
+              <div>
+                <img src="./assets/images/icons/password-show.svg" class="actionAction" *ngIf="bpcvisibility"
+                  (click)="bpcvisibility = false" />
+              </div>
+              <div>
+                <img src="./assets/images/icons/password-hide.svg" class="actionAction" *ngIf="!bpcvisibility"
+                  (click)="bpcvisibility = true" />
+              </div>
+            </div>
+
+            <div class="error" *ngIf="
+                bform.controls.confirm_password.touched &&
+                bform.controls.confirm_password.hasError('noMatch')
+              ">
+              Password do not match.
+            </div>
+            <div class="space businessBox">
+              <div *ngIf="showClaimErr" class="sentMessage">
+                <p >You are clamining buisiness which is already associated with another user account . 
+                  <br/><br/> Please contact supprt@klassbook.com 
+                  <br/>or <a class="clickHere" routerLink="/view/contact">click here</a> for further assitance </p>
+              </div>
+            </div>
+            <label class="formCmg checkbox labelForm terms">
+              <input type="checkbox" formControlName="privacy" />
+              <span class="checkmark"></span>
+              By continuing, you agree to Klassbook’s
+              <a>Business Terms</a> and acknowledge our
+              <a>Privacy Policy</a>. We may email you
+              about Klassbook’s products, services, and local events. You can
+              unsubscribe at any time.
+            </label>
+            <div class="error" *ngIf="
+            bform.controls.privacy.touched &&
+            bform.controls.privacy.hasError('required')
+          ">
+              Please accept terms and conditions.
+            </div>
+            <div class="formCmg">
+              <button (click)="submitBusinessForm()" [disabled]="IsSubmitBool" type="submit" class="btn submitBtn">
+                Sign up
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+    </ng-container>
+
+
+    <!-- ========STUDENT REGISTER=========== -->
+    <ng-container container *ngIf="types === 'student'">
+      <mat-tab>
+        <form [formGroup]="form">
+          <div class="loginSignup space">
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-user.svg" style="height: 19px" />
+              <input type="text" class="form-control" name="name" formControlName="name" placeholder="Name" />
+            </div>
+            <div class="error" *ngIf="
+              form.controls.name.touched &&
+              form.controls.name.hasError('required')
+            ">
+              Name is required.
+            </div>
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-email.svg" />
+              <input type="email" class="form-control" name="email" formControlName="email" placeholder="Email" />
+            </div>
+            <ng-container>
+              <div class="error" *ngIf="
+                form.controls.email.touched &&
+                form.controls.email.hasError('required')
+              ">
+                Email address is required.
+              </div>
+              <div class="error" *ngIf="
+                (form.controls.email.dirty || form.controls.email.touched) &&
+                form.controls.email.hasError('pattern')
+              ">
+                Enter valid email address.
+              </div>
+            </ng-container>
+
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-phone.svg" style="height: 19px" />
+              <!-- <label>{{phoneDetails?.dialCode}}</label>   -->
+              <input type="text" ng2TelInput (ng2TelOutput)="getNumber($event)"
+                [ng2TelInputOptions]="{initialCountry: 'in' , separateDialCode:true}"
+                (intlTelInputObject)="telInputObject($event)" (countryChange)="onCountryChange($event)"
+                (hasError)="hasError($event)" (keypress)="numberOnly($event, 'mobile')" class="form-control"
+                name="phone" formControlName="phone" placeholder="Mobile Number" />
+            </div>
+            <!-- <div class="error" *ngIf="
+              form.controls.phone.touched &&
+              form.controls.phone.hasError('required') &&  errorPhone
+            ">
+              Mobile Number is required.
+            </div> -->
+            <div class="error" *ngIf="!errorPhone">
+              Please enter valid mobile number
+            </div>
+
+            <div class="formCmg">
+              <img class="icon" src="./assets/images/icons/icon-password.svg" style="height: 19px" />
+              <input type="password" class="form-control" (input)="validation()" (blur)="
+                matchinputValue(
+                  form?.controls?.password,
+                  form?.controls?.confirm_password
+                )
+              " name="password" formControlName="password" placeholder="Password"
+                [type]="pvisibility ? 'text' : 'password'" />
+
+              <div>
+                <img src="./assets/images/icons/password-show.svg" class="actionAction" *ngIf="pvisibility"
+                  (click)="pvisibility = false" />
+              </div>
+              <div>
+                <img src="./assets/images/icons/password-hide.svg" class="actionAction" *ngIf="!pvisibility"
+                  (click)="pvisibility = true" />
+              </div>
+            </div>
+            <div class="error" *ngIf="
+              form.controls.password.touched &&
+              form.controls.password.hasError('required')
+            ">
+              Password is required.
+            </div>
+            <div class="passwordError" *ngIf="form.controls?.password.value !== '' && !formIsValid">
+              <label
+                [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ form.controls['password'].hasError('required') ||
+                  form.controls['password'].hasError('minlength') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must be at least 8 characters!
+              </label>
+
+              <label class="col"
+                [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ form.controls['password'].hasError('required') ||
+                  form.controls['password'].hasError('hasNumber') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 number!
+              </label>
+
+              <label class="col"
+                [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ form.controls['password'].hasError('required') ||
+                  form.controls['password'].hasError('hasCapitalCase') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 in Capital Case!
+              </label>
+
+              <label class="col"
+                [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ form.controls['password'].hasError('required') ||
+                  form.controls['password'].hasError('hasSmallCase') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 Letter in Small Case!
+              </label>
+
+              <label class="col"
+                [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                <i class="material-icons">
+                  {{ form.controls['password'].hasError('required') ||
+                  form.controls['password'].hasError('hasSpecialCharacters') ? 'cancel' :
+                  'check_circle' }}
+                </i>
+                Must contain at least 1 Special Character!
+              </label>
+            </div>
+
+            <div class="formCmg mt-3">
+              <img class="icon" src="./assets/images/icons/icon-password.svg" style="height: 19px" />
+              <input type="password" class="form-control" (blur)="
+                matchinputValue(
+                  form?.controls?.password,
+                  form?.controls?.confirm_password
+                )
+              " name="confirm_password" formControlName="confirm_password" placeholder="Confirm password"
+                [type]="pcvisibility ? 'text' : 'password'" />
+
+              <div>
+                <img src="./assets/images/icons/password-show.svg" class="actionAction" *ngIf="pcvisibility"
+                  (click)="pcvisibility = false" />
+              </div>
+              <div>
+                <img src="./assets/images/icons/password-hide.svg" class="actionAction" *ngIf="!pcvisibility"
+                  (click)="pcvisibility = true" />
+              </div>
+            </div>
+            <div class="error" *ngIf="
+              form.controls.confirm_password.touched &&
+              form.controls.confirm_password.hasError('noMatch')
+            ">
+              Password do not match.
+            </div>
+
+            <div class="formCmg">
+              <re-captcha formControlName="reCaptcha"></re-captcha>
+            </div>
+            <div class="error" *ngIf="form.controls.reCaptcha.touched && form.controls.reCaptcha.hasError('required')">
+              reCaptcha verification failed
+            </div>
+
+            <div class="formCmg">
+              <button (click)="submitStudentForm()" [disabled]="IsSubmitBool" type="submit" class="btn submitBtn">
+                Sign up
+              </button>
+            </div>
+            <div class="or">
+              <span>or</span>
+            </div>
+
+
+            <!-- <div *ngIf="auth.user$ | async; then authenticated else guest"> -->
+            <!-- template will replace this div -->
+            <!-- </div>  -->
+            <!-- User NOT logged in -->
+            <!-- <ng-template #guest>
+          <button (click)="auth.googleSignin()">
+            <i class="fa fa-google"></i> Connect Google
+          </button> 
+          </ng-template>  -->
+            <!-- User logged in -->
+            <!-- <ng-template #authenticated>
+          <div *ngIf="auth.user$ | async as user">
+            <h3>{{ user.displayName }}</h3>
+            <img  [src]="user.photoURL">
+            <p>UID: {{ user.uid }}</p>
+            <button (click)="auth.signOut()">Logout</button>
+          </div>
+          </ng-template> -->
+
+            <!-- <div *ngIf="auth.user$ | async; then authenticated else guest">
+          </div>  -->
+            <a class="socialBox google" (click)="googleSignIn()">
+              <span class="icon"><img src="./assets/images/icons/icon-google.png" /></span>
+              Log in with Google
+            </a>
+            <!-- <button (click)="auth.signOut()">Logout</button> -->
+            <!-- <ng-template #authenticated>
+            <div *ngIf="auth.user$ | async as user">
+              <h3>{{ user.displayName }}</h3>
+              <img  [src]="user.photoURL">
+              <p>UID: {{ user.uid }}</p>
+              <button (click)="auth.signOut()">Logout</button>
+            </div>
+            </ng-template> -->
+
+            <!-- <a class="socialBox facebook" (click)="facebookSignin()">
+              <span class="icon"><img src="./assets/images/icons/facebook.svg" /></span>
+              Log in with Facebook
+            </a>
+            <a class="socialBox apple" (click)="appleSignin()">
+              <span class="icon"><img src="./assets/images/icons/apple.svg" /></span>
+              Log in with Apple
+            </a> -->
+
+            <p class="policyLink">
+              By joining I agree with
+              <a>Terms of services</a> <br />and
+              <a>Privacy Policy</a>
+            </p>
+          </div>
+        </form>
+      </mat-tab>
+    </ng-container>
+
+  </mat-tab-group>
+</div>
+
+<router-outlet></router-outlet>

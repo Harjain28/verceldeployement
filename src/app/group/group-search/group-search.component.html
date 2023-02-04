@@ -1,0 +1,166 @@
+<div class="mainBody bottomSpace">
+
+    <div class="container groupSection">
+
+        <div class="bridTitle display-show-desktop">
+            <h3 class="bridT">Groups</h3>
+        </div>
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3">
+                    <a  (click) = "back()" class="backArrow">
+                      <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                  </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Groups</h5>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+        </div>
+
+        <div class="space">
+            <div class="topBar">
+                <div class="topSearch">
+                    <div class="searchbox">
+                             <mat-icon *ngIf="clearIcon" class="icon crossIcons" (click)='clearData()'>close</mat-icon>
+                        <img class="icon" src="./assets/images/icons/icon-search.svg" />
+                        <input type="search" class="form-control"  (keyup)="onSearchGrouopsbyName()" [(ngModel)]="searchvalue" placeholder="Search for a group" />
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="space pt-0  pb-0" *ngIf = "!searchvalue">
+
+            <div *ngFor="let section of sectionData | slice:0:3">
+                <ng-container *ngIf="section.sectionname === 'Group'">
+                    <div class="row">
+                        <div class="col-md-12 title mt-4 mb-0">
+                            <h3 class="mb-0">{{section.title}}</h3>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3" *ngFor="let group of section.section | slice:0:4">
+                            <div class="classSection groupBox">
+                                <div class="classSectionImg">
+                                    <a (click)="getGroupDetails(group._id)"><img class="
+                                        catImg" src="{{group.image}}" /></a>
+                                    <!-- <div class="groupIcon" (click)="getGroupDetails(group._id)">
+                                        <img class=" icon" src="./assets/images/icons/icon-group.svg" />
+                                        {{group.memberCount}}
+                                        members
+                                    </div> -->
+                                    <!-- <a (click) = "checkLoginorNot()" class="fav">
+                                        <mat-icon class="like">favorite_border</mat-icon>
+                                    </a> -->
+                                </div>
+                                <div class="classSectionBody">
+                                    <div class="groupBody">
+                                        <div class="groupBodyConent"  (click)="getGroupDetails(group._id)">
+                                            <h3><a 
+                                                   >{{group.groups}}</a>
+                                            </h3>
+                                            <!-- <p class="textLimit1" [innerHTML]="group.groupDescription | sanitizeHtml"></p> -->
+                                        </div>
+                                        <button *ngIf = "!group.selected && loginOrNot" [disabled] = "!isJoingroup"  class= "btn joinGroup" (click) = "joinGroup(group)">
+                                            Join
+                                        </button>
+                                        <button *ngIf = "!loginOrNot" (click) = "checkLoginorNot()"  class="btn joinGroup">
+                                            Join
+                                        </button>
+                                        <button  *ngIf = "group.selected && loginOrNot" (click)="getGroupDetails(group._id);" class="btn joinGroup">
+                                            Joined
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div *ngFor="let section of sectionData | slice:3:4">
+                <ng-container *ngIf="section.sectionname === 'Group'">
+                    <div class="row">
+                        <div class="col-md-12 title mt-4 mb-0">
+                            <h3 class="mb-0">{{section.title}}</h3>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-3" *ngFor="let group of section.section">
+                            <div class="classSection groupBox">
+                                <div class="classSectionImg">
+                                    <a  (click)="getGroupDetails(group._id)"><img class="
+                                        catImg" src="{{group.image}}" /></a>
+                                    <!-- <div class="groupIcon" (click)="getGroupDetails(group._id)">
+                                        <img class=" icon" src="./assets/images/icons/icon-group.svg" />
+                                        {{group.memberCount}}
+                                        members
+                                    </div> -->
+                                </div>
+                                <div class="classSectionBody">
+                                    <div class="groupBody">
+                                        <div class="groupBodyConent" (click)="getGroupDetails(group._id)">
+                                            <h3><a
+                                                    >{{group.groups}}</a>
+                                            </h3>
+                                        </div>
+                                        <button *ngIf = "!group.selected && loginOrNot"  [disabled] = "!isJoingroup"  class="btn joinGroup" (click) = "joinGroup(group)">
+                                            Join
+                                        </button>
+                                        <button *ngIf = "!loginOrNot" (click) = "checkLoginorNot()" class="btn joinGroup">
+                                            Join
+                                        </button>
+                                        <button  *ngIf = "group.selected && loginOrNot"  class="btn joinGroup">
+                                            Joined
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+        <div class="space pt-0  pb-0"  *ngIf = "searchvalue">
+            <div>
+                <ng-container>
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-lg-3" *ngFor="let group of groupsearchData">
+                            <div class="classSection groupBox">
+                                <div class="classSectionImg">
+                                    <a  (click)="getGroupDetails(group._id)"><img class="
+                                        catImg" src="{{group.image}}" /></a>
+                                    <!-- <div class="groupIcon" (click)="getGroupDetails(group._id)">
+                                        <img class=" icon" src="./assets/images/icons/icon-group.svg" />
+                                        {{group.memberCount}}
+                                        members
+                                    </div> -->
+                                </div>
+                                <div class="classSectionBody">
+                                    <div class="groupBody">
+                                        <div class="groupBodyConent"  (click)="getGroupDetails(group._id)">
+                                            <h3><a
+                                                   >{{group.groups}}</a>
+                                            </h3>
+                                        </div>
+                                        <button *ngIf = "!group.selected && loginOrNot" [disabled] = "!isJoingroup"   class="btn joinGroup" (click) = "joinGroup(group)">
+                                            Join
+                                        </button>
+                                        <button *ngIf = "!loginOrNot" (click) = "checkLoginorNot()" class="btn joinGroup">
+                                            Join
+                                        </button>
+                                        <button  *ngIf = "group.selected && loginOrNot"  class="btn joinGroup">
+                                            Joined
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+    <app-bottom-bar></app-bottom-bar>
+</div>

@@ -1,0 +1,78 @@
+<div class="pageMarginTop">
+  <section class="loginSection">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7 imgBox p-0 display-show-desktop">
+          <img lazyLoad="./assets/images/loginImg5.svg">
+        </div>
+
+        <div class="col-md-5 contentBox">
+          <div class="backgound display-show-desktop">
+            <img lazyLoad="./assets/images/shape1.svg" class="shape1">
+            <img lazyLoad="./assets/images/shape2.svg" class="shape2">
+            <img lazyLoad="./assets/images/shape3.svg" class="shape3">
+          </div>
+
+          <div class="mainBody">
+            <div class="pageTopBar row">
+              <div class="col-2">
+                <a class="backArrow" (click)="back()">
+                  <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                </a>
+              </div>
+              <div class="col-8 text-center">
+                <h5 class="pgTitle">Add New Class</h5>
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+            <div class="loginSignup space businessBox">
+              <div class="formCmg labelForm">
+                <label class="form-label theme1">Define your class</label>
+              </div>
+              <div class="formCmg labelForm">
+                <label class="form-label">Class Name*</label>
+                <input type="text" class="form-control" placeholder="Name" value="Class Name" required />
+              </div>
+              <div class="formCmg labelForm">
+                <label class="form-label">About Class</label>
+                <textarea type="text" class="form-control"
+                  placeholder="Define your class in upto 500 characters"></textarea>
+              </div>
+              <div class="formCmg labelForm">
+                <label class="form-label">Class Category</label>
+                <select class="form-control form-select" placeholder="">
+                  <option>---Select---</option>
+                </select>
+              </div>
+              <!-- <div class="formCmg labelForm">
+          <label class="form-label">Class Sub Category</label>
+          <select class="form-control form-select" placeholder="" >
+              <option>---Select---</option>
+          </select>
+        </div> -->
+              <div class="formCmg labelForm">
+                <label class="form-label">Web Address (Optional)</label>
+                <input type="text" class="form-control" placeholder="https://yoursite..." />
+              </div>
+
+              <!-- <div class="formCmg labelForm">
+      <label class="form-label d-block mb-1">Your Email Address</label>
+      <small class="mb-2 d-block" style="color:#7F8699;">We’ll send you an email to verify your address</small>
+      <input type="enail" class="form-control" placeholder="Your Email" value="totalmathamatics@gmail.com" />
+    </div>
+    <div class="formCmg labelForm">
+        <label class="form-label">Phone</label>
+        <input type="text" class="form-control" placeholder="Your Phone" value="9876543210" />
+      </div> -->
+
+              <div class="formCmg labelForm">
+                <button [routerLink]="['/business-location']" type="button" class="btn submitBtn">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

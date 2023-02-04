@@ -1,0 +1,31 @@
+<div class="mainBody">
+    <div class="pageTopBar row border-0">
+        <div class="col-3">
+            <a  [routerLink]="['/email-verify']" class="backArrow">
+              <img class="catImg" src="./assets/images/icons/back.svg" />
+            </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle"></h5>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    
+    <div class="space emailSuccessfull">
+        <p>You have successfully verified the <br>account.</p>
+        <h5>Abc Math Academy</h5>
+        <img class="catImg" src="./assets/images/icons/icon-success.svg" />
+
+        <div class="logoUpload">
+            <input type="file" />
+            <div class="text">Your Logo</div>
+        </div>
+<!-- 
+        <div class="cts">You'll now be able to access your business page and upload/edit your business information on our website below.</div>
+     -->
+        <div class="formCmg mb-0 mt-5">
+            <button type="button" [routerLink]="['/business-about']" class="btn submitBtn">Uplod Business Information</button>
+        </div>
+    </div>
+
+</div>

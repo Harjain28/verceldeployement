@@ -1,0 +1,302 @@
+.secondToolbar {
+  position: fixed;
+  background: #eee;
+  top: 0;
+  height: 0;
+  transition: opacity 0.25s ease-out, height 0.15s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.mainHeadersticky {
+  padding: 15px 0px;
+  position: fixed;
+  background: #eee;
+  top: 0;
+  width: 100%;
+  opacity: 1;
+  z-index: 1000;
+  box-shadow: 0 6px 8px -12px black;
+  background: #fff;
+  display: block;
+}
+.mainHeadersticky .mainRow {
+  display: flex;
+  align-items: center;
+}
+.mainHeadersticky .mainRow .logo {
+  color: var(--main1);
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 15px;
+  width: 15%;
+}
+.mainHeadersticky .mainRow .logo .logoImg {
+  width: 100px;
+  position: absolute;
+  top: 15px;
+}
+.mainHeadersticky .mainRow .searchBoxInner {
+  width: 45%;
+  padding-right: 15px;
+}
+.mainHeadersticky .mainRow .searchBoxInner .searchbox {
+  position: relative;
+}
+.mainHeadersticky .mainRow .searchBoxInner .searchbox .icon {
+  position: absolute;
+  top: 50%;
+  right: 0 !important;
+  transform: translate(0%, -50%);
+  cursor: pointer;
+  color: var(--main1);
+  padding: 8px 12px;
+}
+.mainHeadersticky .mainRow .searchBoxInner .searchbox .form-control {
+  background-color: var(--main5);
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 8px -8px #939090;
+  padding: 0px 15px 0px 15px;
+  color: var(--main4);
+  font-size: 15px;
+}
+.mainHeadersticky .mainRow .searchBoxInner .searchbox .form-control:focus {
+  background-color: #F3F4F9;
+  box-shadow: 0 5px 8px -8px #939090;
+}
+.mainHeadersticky .mainRow .btns_box {
+  text-align: right;
+  width: 40%;
+  display: flex;
+}
+.mainHeadersticky .mainRow .btns_box .btn {
+  border: 1px solid var(--main1);
+  height: 48px;
+  width: 50%;
+  font-weight: 500;
+  margin-left: 15px;
+  border-radius: 6px;
+}
+.mainHeadersticky .mobileMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.mainHeadersticky .mobileMenu li {
+  position: relative;
+}
+.mainHeadersticky .mobileMenu li.active {
+  color: var(--main1);
+}
+.mainHeadersticky .mobileMenu li a {
+  color: #000;
+  text-decoration: none;
+  padding: 0px 50px;
+  transition: 0.5s;
+  font-weight: 500;
+}
+.mainHeadersticky .mobileMenu li a:hover {
+  color: var(--main1);
+}
+.mainHeadersticky .mobileMenu li a.active {
+  color: var(--main1);
+}
+.mainHeadersticky .mobileMenu li::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--main1);
+  position: relative;
+  top: -1px;
+}
+.mainHeadersticky .mobileMenu li:last-child::after {
+  display: none;
+}
+
+.mainHeader {
+  padding: 15px 0px;
+  box-shadow: 0 6px 8px -12px black;
+  background: #fff;
+  display: block;
+}
+.mainHeader .mainRow {
+  display: flex;
+  align-items: center;
+}
+.mainHeader .mainRow .logo {
+  color: var(--main1);
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 15px;
+  width: 15%;
+}
+.mainHeader .mainRow .logo .logoImg {
+  width: 100px;
+  position: absolute;
+  top: 15px;
+}
+.mainHeader .mainRow .searchBoxInner {
+  width: 45%;
+  padding-right: 15px;
+}
+.mainHeader .mainRow .searchBoxInner .searchbox {
+  position: relative;
+}
+.mainHeader .mainRow .searchBoxInner .searchbox .icon {
+  position: absolute;
+  top: 50%;
+  right: 0 !important;
+  transform: translate(0%, -50%);
+  cursor: pointer;
+  color: var(--main1);
+  padding: 8px 12px;
+}
+.mainHeader .mainRow .searchBoxInner .searchbox .form-control {
+  background-color: var(--main5);
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 8px -8px #939090;
+  padding: 0px 15px 0px 15px;
+  color: var(--main4);
+  font-size: 15px;
+}
+.mainHeader .mainRow .searchBoxInner .searchbox .form-control:focus {
+  background-color: #F3F4F9;
+  box-shadow: 0 5px 8px -8px #939090;
+}
+.mainHeader .mainRow .btns_box {
+  text-align: right;
+  width: 40%;
+  display: flex;
+}
+.mainHeader .mainRow .btns_box .btn {
+  border: 1px solid var(--main1);
+  height: 48px;
+  width: 50%;
+  font-weight: 500;
+  margin-left: 15px;
+  border-radius: 6px;
+}
+.mainHeader .mobileMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.mainHeader .mobileMenu li {
+  position: relative;
+}
+.mainHeader .mobileMenu li.active {
+  color: var(--main1);
+}
+.mainHeader .mobileMenu li a {
+  color: #000;
+  text-decoration: none;
+  padding: 0px 50px;
+  transition: 0.5s;
+  font-weight: 500;
+}
+.mainHeader .mobileMenu li a:hover {
+  color: var(--main1);
+}
+.mainHeader .mobileMenu li a.active {
+  color: var(--main1);
+}
+.mainHeader .mobileMenu li::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--main1);
+  position: relative;
+  top: -1px;
+}
+.mainHeader .mobileMenu li:last-child::after {
+  display: none;
+}
+
+.profileAction {
+  text-align: right;
+  width: 40%;
+  justify-content: right;
+}
+.profileAction .logoImg {
+  width: 45px;
+  margin-right: 8px;
+  height: 45px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.profileAction .email {
+  display: block;
+  text-transform: lowercase;
+  color: #888a90;
+}
+.profileAction ::ng-deep .mat-button-wrapper {
+  display: flex;
+  line-height: 0px;
+  text-align: left;
+}
+.profileAction h4 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.profileAction .mat-menu-trigger {
+  text-transform: uppercase;
+  align-items: center;
+  background: transparent;
+  padding: 0px;
+  position: relative;
+  top: 2px;
+}
+.profileAction .mat-menu-trigger:hover {
+  background: transparent !important;
+}
+.profileAction ::ng-deep .mat-button-focus-overlay {
+  display: none;
+}
+
+.hide-autocomplete {
+  display: none;
+}
+
+/*=======================================================
+//////////////RESPONSIVE MEDIA QUERY START///////////////
+=======================================================*/
+@media (max-width: 767px) {
+  .mainHeader {
+    display: none;
+  }
+
+  .mainHeadersticky {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .mainHeader .mobileMenu li a {
+    padding: 0px 25px;
+  }
+
+  .mainHeader .mobileMenu {
+    justify-content: right;
+  }
+}

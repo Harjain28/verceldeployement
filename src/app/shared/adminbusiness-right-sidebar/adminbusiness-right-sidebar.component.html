@@ -1,0 +1,58 @@
+<div class="">
+    <button class="btn previewBtn" (click)="getClassDetails()">
+        Preview
+    </button>
+
+    <button class="btn statusBtns">
+        {{verifiedbuttonName}} </button>
+
+    <div class="modal DeletePopup" [ngClass]="{'d-block' : showDeleteModal}" id="DeleteCategoriesData">
+        <div class="bg_popup"></div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <p>{{showMessageDynamically}}</p>
+                                <button type="button" class="btn btn-danger CancelBtn" (click)="hideModal()">OK</button>
+                                <!-- <button type="submit" class="btn btn-ok" (click)="deleteTeacherDetails()">Ok</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainAddressBox" *ngIf="businessDetails && showSidebar">
+        <h4>Business info <mat-icon class="editIcon" routerLink="/admin/add-business-main-address">edit</mat-icon>
+        </h4>
+        <iframe
+            lazyLoad="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.38256348536!2d75.65047013538644!3d26.88544791745257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1648622697989!5m2!1sen!2sin"
+            class="googlemap" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        <ul>
+            <li *ngIf="businessDetails?.postalCode">
+                <h5>Address</h5>
+                <p>{{businessDetails?.address1}} {{businessDetails?.postalCode}}, {{businessDetails?.country}}</p>
+            </li>
+            <li *ngIf="businessDetails?.mobileNo">
+                <h5>Call</h5>
+                <p>65{{businessDetails?.mobileNo.toString().slice(2)}}</p>
+            </li>
+            <li *ngIf="businessDetails?.webAddress">
+                <h5>Website</h5>
+                <p>{{businessDetails?.webAddress}}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="infor">
+        <div class="alert top">
+            <!-- <h5>Update Your Profile</h5> -->
+            <p [innerHTML]="infoTextData | sanitizeHtml"></p>
+
+        </div>
+    </div>
+</div>

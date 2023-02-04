@@ -1,0 +1,129 @@
+.profileN {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    padding-bottom: 5px;
+
+    .profileName {
+        display: flex;
+        color: #7F8699;
+        font-size: 12px;
+        width: 100%;
+
+        .catImg {
+            width: 22px;
+            height: 22px;
+            box-shadow: 0 5px 12px -1px #d6d6d6;
+            border-radius: 50px;
+            margin-right: 6px;
+        }
+    }
+    h5 {
+        margin: 0px;
+        font-weight: 500;
+    }
+}
+
+.sellBtnBox {
+    background: #fff;
+    padding: 15px 15px;
+    margin-top: 15px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 0;
+    width: 400px;
+    transform: translate(-50%, -0%);
+    border-top: 1px solid #e9e9e9;
+
+    .sellBtn {
+        background: var(--main1);
+        color: #fff;
+        width: 100%;
+        padding: 10px 10px;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+}
+
+.status {
+    position: absolute;
+    top: 8px;
+    z-index: 1;
+    left: 8px;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    min-width: 80px;
+    text-align: center;
+
+    &.sellItem {
+        background: #f9560f;
+    }
+    &.soldOut {
+        background: #ab1f23;
+    }
+}
+
+
+.businessInbox_section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+@media (max-width: 767px) {
+    
+    .sellBtnBox {
+        width: 100%;
+    
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+   .listingDesktop {
+       padding: 50px 0px;
+
+       .sellDesktop {
+            float: right;
+            position: relative;
+            z-index: 1;
+            top: -6px;
+            background: #fff;
+            padding-left: 15px;
+
+            .sellBtn {
+                background: var(--main1);
+                color: #fff;
+                padding: 5px 20px;
+            }
+       }
+   }
+   .classSection {
+        margin-bottom: 10px;
+    }
+}
+
+
+
+.branchesList {
+
+    h2 {
+
+        .btnAddbranch {
+            background-color: #f9560f;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 0px 15px;
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+            border-radius: 50px;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+.gallery_section {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.branchesList {
+
+    h2 {
+
+        .btnAddbranch {
+            background-color: #f9560f;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 0px 15px;
+            display: inline-block;
+            float: right;
+            border-radius: 50px;
+        }
+    }
+}
+
+.branchBox {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ada6a3;
+    border-radius: 5px;
+    padding: 10px 10px;
+    position: relative;
+    margin-bottom: 15px;
+
+    .action {
+        margin-bottom: 10px;
+        text-align: right;
+
+        .editIcon {
+            font-size: 19px;
+            color: #919090;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+    }
+
+    .profileImg {
+        width: 100%;
+        height: 130px;
+        background: #fff;
+        border: 1px solid #d7d1d1;
+        padding: 4px;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+    .branchBoxBody {
+        color: #6e7072;
+        width: 100%;
+        padding-top: 8px;
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 0px;
+            color: #000;
+            line-height: 25px;
+        }
+        p {
+            margin-bottom: 5px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .branchesList1 {
+
+        display: flex;
+        margin-top: 10px;
+    
+        .banchbtnMob {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin: 0 0 0px;
+        }
+    
+        h2 {
+    
+            .btnAddbranch {
+                background-color: #f9560f;
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+                padding: 0px 15px;
+                display: inline-block;
+                border-radius: 50px;
+            }
+        }
+    
+    }
+}

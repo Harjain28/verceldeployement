@@ -1,0 +1,187 @@
+.mainHeader {
+    padding: 15px 0px;
+    box-shadow: 0 6px 8px -12px black;
+    background: #fff;
+    display: block;
+
+    .mainRow {
+        display: flex;
+        align-items: center;
+
+        .logo {
+            color: var(--main1);
+            font-size: 26px;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-right: 15px;
+            width: 15%;
+
+            .logoImg {
+                width: 100px;
+                position: absolute;
+                top: 15px;
+            }
+        }
+        .searchBoxInner {
+            width: 45%;
+            padding-right: 15px;
+
+            .searchbox {
+                position: relative;
+            
+                .icon {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translate(-0%, -50%);
+                    cursor: pointer;
+                    padding: 8px 12px;
+                }
+                .form-control {
+                    background-color: var(--main5);
+                    height: 48px;
+                    border: none;
+                    border-radius: 8px;
+                    box-shadow: 0 5px 8px -8px #939090;
+                    padding: 0px 15px 0px 42px;
+                    color: var(--main4);
+                    font-size: 15px;
+            
+                    &:focus {
+                        background-color: #F3F4F9;
+                        box-shadow: 0 5px 8px -8px #939090;
+                    }
+                }
+            }
+
+        }
+            
+    
+        .btns_box {
+            text-align: right;
+            width: 40%;
+            display: flex;
+
+            .btn {
+                border: 1px solid var(--main1);
+                height: 48px;
+                width: 50%;
+                font-weight: 500;
+                margin-left: 15px;
+                border-radius: 6px;
+            }
+        }
+    }
+
+    .mobileMenu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+
+        li {
+            position: relative;
+
+            a {
+                color: #000;
+                text-decoration: none;
+                padding: 0px 50px;
+                transition: 0.5s;
+                font-weight: 500;
+
+                &:hover , &.active{
+                    color:var(--main1);
+                }
+            }
+
+            &::after {
+                content: "";
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background-color: var(--main1);
+                position: relative;
+                top: -1px;
+            }
+
+            &:last-child {
+                
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.profileAction {
+    text-align: right;
+    width: 40%;
+    justify-content: right;
+
+    .logoImg {
+        width: 45px;
+        margin-right: 8px;
+        height: 45px;
+        border-radius: 50%;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+    .email {
+        display: block;
+        text-transform: lowercase;
+        color: #888a90;
+    }
+    ::ng-deep .mat-button-wrapper {
+        display: flex;
+        line-height: 0px;
+        text-align: left;
+    }
+    h4 {
+        font-size: 15px;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    .mat-menu-trigger {
+        text-transform: uppercase;
+        align-items: center;
+        background: transparent;
+        padding: 0px;
+        position: relative;
+        top: 2px;
+
+        &:hover {
+            background: transparent !important;
+        }
+    }
+    ::ng-deep .mat-button-focus-overlay {
+        display: none;
+    }
+}
+
+
+/*=======================================================
+//////////////RESPONSIVE MEDIA QUERY START///////////////
+=======================================================*/
+@media (max-width: 767px) {
+
+    .mainHeader {
+        display: none;
+    }
+    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .mainHeader .mobileMenu li a {
+        padding: 0px 25px;
+    }
+    .mainHeader .mobileMenu {
+        justify-content: right;
+    }
+}

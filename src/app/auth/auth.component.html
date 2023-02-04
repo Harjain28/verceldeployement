@@ -1,0 +1,59 @@
+<section class="loginSection">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-7 imgBox p-0 display-show-desktop" routerLink="" style="cursor:pointer;">
+        <img src="./assets/images/loginImg.png">
+      </div>
+
+      <div class="col-md-5 contentBox">
+        <div class="backgound display-show-desktop">
+          <img src="./assets/images/shape1.svg" class="shape1">
+          <img src="./assets/images/shape2.svg" class="shape2">
+          <img src="./assets/images/shape3.svg" class="shape3">
+        </div>
+
+        <div class="mainBody">
+          <div class="pageTopBar row">
+            <div class="col-2">
+              <a *ngIf="backArrow && currentURL !== '/claim'" (click)="back()" class="backArrow">
+                <img class="catImg" src="./assets/images/icons/back.svg" />
+              </a>
+              <a *ngIf="showOnClaim && currentURL === '/claim'" (click)="back()" class="backArrow">
+                <img class="catImg" src="./assets/images/icons/back.svg" />
+              </a>
+            </div>
+            <div class="col-8 text-center">
+              <h5 class="pgTitle" *ngIf="currentURL !== '/email-verify' && currentURL !== '/reset-password'">Klassbook
+              </h5>
+              <h5 class="pgTitle" *ngIf="currentURL == '/email-verify'">Verification</h5>
+              <!-- <h5 class="pgTitle" *ngIf = "currentURL == '/change-password'">Change Password</h5> -->
+              <!-- <h5 class="pgTitle" *ngIf = "currentURL == '/profile-setup'">Me</h5> -->
+            </div>
+            <div class="col-2"></div>
+          </div>
+
+          <ul class="loginSignTab" *ngIf="currentURL !== '/reset-password' && currentURL !== '/email-verify'">
+            <li *ngIf="currentURL === '/register/student'  ||  currentURL === '/login/student'">
+              <a routerLink="/login/student" routerLinkActive="active">Log in</a>
+            </li>
+            <li *ngIf="currentURL === '/login/student' || currentURL === '/register/student'">
+              <a routerLink="/register/student" routerLinkActive="active">User Sign up</a>
+            </li>
+            <li *ngIf="currentURL === '/register/business' || currentURL === '/login/business'">
+              <a routerLink="/login/business" routerLinkActive="active">Log in</a>
+            </li>
+            <li *ngIf="currentURL === '/register/business' || currentURL === '/login/business'">
+              <a routerLink="/register/business" routerLinkActive="active">Business Sign up</a>
+            </li>
+
+          </ul>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</section>

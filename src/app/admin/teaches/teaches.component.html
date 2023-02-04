@@ -1,0 +1,93 @@
+<div class="mainBody">
+    <app-admin-header></app-admin-header>
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+
+            <div class="col-3">
+                <a class="backArrow" (click)="back()">
+                    <img class="catImg" src="./assets/images/icons/back.svg" />
+                </a>
+            </div>
+            <div class="col-6 text-center">
+                <h5 class="pgTitle">Teachers</h5>
+            </div>
+            <div class="col-3">
+
+                <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" src="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+            </div>
+        </div>
+    </div>
+    <div class="container teachers_section mainSpaceN">
+
+        <div class="row">
+            <app-adminbusiness-left-sidebar class="businessLeft"></app-adminbusiness-left-sidebar>
+
+
+            <div class="bussinessCenter">
+                <div class="branchesList">
+                    <h2>
+                        Teachers
+                        <a class="btnAddbranch" (click)="handleadminroute('add-teacher')">
+                            Add New Teacher
+                        </a>
+                    </h2>
+                    <div class="branchBox" *ngFor="let teacher of teacherData">
+                        <img class="profileImg" *ngIf="teacher.image &&  teacher.image !== 'undefined'"
+                            lazyLoad="{{teacher.image}}" />
+                        <img class="profileImg" *ngIf="!teacher.image || teacher.image === 'undefined'"
+                            lazyLoad="./assets/images/user.png" />
+
+                        <div class="branchBoxBody">
+                            <h3>{{teacher.teachersName}}
+                                <mat-icon class="editIcon" (click)="deleteItem(teacher.id)">
+                                    delete</mat-icon>
+                                <mat-icon class="editIcon" (click)="editTeacherDetails(teacher.id)">edit</mat-icon>
+                            </h3>
+                            <ul class="mb-2">
+                                <li *ngIf="teacher.branchName">Branch :
+                                    <label>{{teacher.branchName}}</label>
+                                </li>
+                                <li *ngIf="teacher.teacherbybranchAdmin">
+                                    CreatedBy:
+                                    <label>{{teacher.teacherbybranchAdmin}} Branch</label>
+                                </li>
+                                <li *ngIf="!teacher.teacherbybranchAdmin && userName">
+                                    CreatedBy:
+                                    <label>{{userName}}</label>
+                                </li>
+                            </ul>
+                            <p class="ellipses" [innerHTML]="teacher.description | sanitizeHtml"></p>
+                        </div>
+                    </div>
+                    <div class="modal DeletePopup" [ngClass]="{'d-block' : showDeleteModal}" id="DeleteCategoriesData">
+                        <div class="bg_popup"></div>
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="">
+                                                <p>Do you want to delete this Teacher listing?</p>
+                                                <button type="button" class="btn btn-danger CancelBtn"
+                                                    (click)="hideModal()">Cancel</button>
+                                                <button type="submit" class="btn btn-ok"
+                                                    (click)="deleteTeacherDetails()">Ok</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <app-adminbusiness-right-sidebar class="businessRight"></app-adminbusiness-right-sidebar>
+        </div>
+
+    </div>
+
+</div>

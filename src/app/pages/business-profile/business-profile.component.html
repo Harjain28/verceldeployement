@@ -1,0 +1,117 @@
+<div class="pageMarginTop">
+    <div class="mainBody">
+
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3">
+                    <a class="backArrow" (click)="back()">
+                        <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Home</h5>
+                </div>
+                <div class="col-3">
+
+                    <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container profile_section mainSpaceN">
+
+            <div class="row">
+                <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+                <div class="bussinessCenter">
+                    <div class="infor">
+                        <div class="alert">
+                            <!-- <h5>Update Your Profile</h5> -->
+                            <p [innerHTML]="infoTextData | sanitizeHtml"></p>
+                        </div>
+                    </div>
+                    <div class="loginDetails">
+                        <h2>Hello , {{name}}</h2>
+                        <p>Here's what's going on with your business today</p>
+
+                        <app-business-right-sidebar class="businessRight display-show-mobile">
+                        </app-business-right-sidebar>
+                    </div>
+
+
+                    <div class="profileBoxEdit cardBox mt-4">
+                        <ul class="imgUpload">
+                            <li class="camera">
+                                <img *ngIf="image === 'blankimage' || !image" class="icon2" src="./assets/images/user.png" />
+                                <img *ngIf="image !== 'blankimage' && image" class="icon2" src="{{image}}" />
+                                <input type="file" name="images" />
+                            </li>
+                            <button class="btn editProfile" routerLink="/pages/business-edit-profile">Edit
+                                Profile</button>
+                        </ul>
+                        <ul>
+                            <li class="bold">{{name}}</li>
+                            <li>{{email}}</li>
+                            <li>65{{phone.toString().slice(2)}}</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+            </div>
+
+        </div>
+
+        <!-- <mat-toolbar class="toolbarNav bottomBar">
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-search.svg" />
+                <h5>Explore</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu active" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-group.svg" />
+                <h5>Groups</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-category.svg" style="height: 18px;" />
+                <h5>Categories</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-shortlist.svg" />
+                <h5>Shortlist</h5>
+            </a>
+        </mat-icon>
+        <mat-icon class="material-icons color_blue">
+            <a class="btMenu" href="javascript:void(0);">
+                <img class="catImg" lazyLoad="./assets/images/icons/bottombar-more.svg" style="height: 24px;" />
+                <h5>More</h5>
+            </a>
+        </mat-icon>
+    </mat-toolbar> -->
+    </div>
+</div>
+
+<div class="popupBox" *ngIf="leaveGroup">
+    <div class="bg">
+
+        <div class="popupBody">
+            <h5>Are you sure you want to logout?</h5>
+            <p>We will miss you here...</p>
+            <div class="bottom">
+                <a class="btn theme_color" (click)="openToggle()">Cancel</a>
+                <a routerLink="/" class="btn" (click)="openToggle()">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>

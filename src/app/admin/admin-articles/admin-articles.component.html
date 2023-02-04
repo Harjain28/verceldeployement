@@ -1,0 +1,131 @@
+<div class="mainBody">
+  <app-admin-header></app-admin-header>
+  <div class="display-show-mobile">
+    <div class="pageTopBar row">
+      <div class="col-3">
+        <a (click)="back()" class="backArrow">
+          <img class="catImg" src="./assets/images/icons/back.svg" />
+        </a>
+      </div>
+      <div class="col-6 text-center">
+        <h5 class="pgTitle">Articles Details</h5>
+      </div>
+      <div class="col-3 text-end">
+        <a href="javascript:void(0);" class="shareBox">
+          <img class="catImg" src="./assets/images/icons/icon-share.svg" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container articleDetailsDesktop">
+    <div class="bridTitle display-show-desktop">
+      <h3 class="bridT">Article Details</h3>
+    </div>
+    <div class="space articleDetails">
+      <div class="title m-0 d-block">
+        <h3>{{ title }}</h3>
+        <p class="post">
+          Posted on {{ createdDate | date }} <span>|</span> By {{ authorName }}
+        </p>
+        <img class="catImg" src="{{ bannerImage }}" />
+        <p [innerHTML]="description | sanitizeHtml"></p>
+      </div>
+
+      <div class="tagsBox">
+        <h5>Tags</h5>
+        <p>
+          <a href="#">Class</a>
+          <a href="#">School</a>
+          <a href="#">Chinese School</a>
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="space pt-0 pb-0">
+      <div class="author">
+        <img class="catImg" src="{{ authorimage }}" />
+        <div class="authorBody">
+          <p>
+            {{ authordescription }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <!-- <div class="space pt-0">
+      <div class="title m-0">
+        <h3>You may also like</h3>
+        <a class="link" href="javascript:void(0);">More</a>
+      </div>
+      <div class="articlesSlider">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template style="width: 10px" carouselSlide>
+            <div class="classSection">
+              <div class="classSectionImg">
+                <img class="catImg" src="./assets/images/art1.svg" />
+                <a href="javascript:void(0);" class="fav"
+                  ><mat-icon class="like">favorite_border</mat-icon></a
+                >
+              </div>
+              <div class="classSectionBody">
+                <a href="javascript:void(0);" class="titleName">
+                  The headline will be displayed here
+                </a>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template style="width: 10px" carouselSlide>
+            <div class="classSection">
+              <div class="classSectionImg">
+                <img class="catImg" src="./assets/images/art2.svg" />
+                <a href="javascript:void(0);" class="fav"
+                  ><mat-icon class="like">favorite_border</mat-icon></a
+                >
+              </div>
+              <div class="classSectionBody">
+                <a href="javascript:void(0);" class="titleName">
+                  The headline will be displayed here
+                </a>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template style="width: 10px" carouselSlide>
+            <div class="classSection">
+              <div class="classSectionImg">
+                <img class="catImg" src="./assets/images/art1.svg" />
+                <a href="javascript:void(0);" class="fav"
+                  ><mat-icon class="like">favorite_border</mat-icon></a
+                >
+              </div>
+              <div class="classSectionBody">
+                <a href="javascript:void(0);" class="titleName">
+                  The headline will be displayed here
+                </a>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template style="width: 10px" carouselSlide>
+            <div class="classSection">
+              <div class="classSectionImg">
+                <img class="catImg" src="./assets/images/art2.svg" />
+                <a href="javascript:void(0);" class="fav"
+                  ><mat-icon class="like">favorite_border</mat-icon></a
+                >
+              </div>
+              <div class="classSectionBody">
+                <a href="javascript:void(0);" class="titleName">
+                  The headline will be displayed here
+                </a>
+              </div>
+            </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div> -->
+  </div>
+
+</div>

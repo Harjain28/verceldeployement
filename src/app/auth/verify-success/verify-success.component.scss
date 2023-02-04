@@ -1,0 +1,51 @@
+.emailSuccessfull {
+    text-align: center;
+
+    p {
+        font-weight: 500;
+    }
+
+    h5 {
+        font-size: 18px;
+        font-weight: 500;
+        margin: 30px 0px 30px 0px;
+    }
+
+    .logoUpload {
+        border: 1px solid var(--main1); 
+        width: 220px;
+        margin: 0 auto;
+        padding: 15px 15px;
+        position: relative;
+        border-radius: 5px;
+        margin-top: 30px;
+        height: 220px;
+
+        input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 1;
+            cursor: pointer;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            color: var(--main4);
+            font-weight: 500;
+        }
+
+    }
+    .cts {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--main4);
+        margin: 40px 0px 40px 0px;
+    }
+}

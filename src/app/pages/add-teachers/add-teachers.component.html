@@ -1,0 +1,127 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 *ngIf="id" class="pgTitle">Edit Teacher</h5>
+          <h5 *ngIf="!id" class="pgTitle">Add Teacher</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <div class="container addTeacher_section mainSpaceN">
+
+      <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+        <div class="bussinessCenter">
+          <div class="branchesList">
+            <h2 *ngIf="id" class="display-show-desktop">
+              Edit Teacher
+            </h2>
+            <h2 *ngIf="!id" class="display-show-desktop">
+              Add Teacher
+            </h2>
+
+            <form [formGroup]="myForm">
+              <div class="loginSignup businessBox">
+                <!-- <div class="formCmg labelForm">
+                <label class="form-label theme1">Add Teachers</label>
+              </div> -->
+
+                <div class="formCmg labelForm TeacherForm">
+                  <ul class="imgUpload">
+                    <li class="camera">
+                      <img class="icon2" lazyLoad="./assets/images/icons/icon-camera.svg" />
+                      <input id="deleteimg" type="file" accept="image/*" name="images" (change)="onFileChange($event)"
+                        formControlName="image" />
+
+                    </li>
+                    <div class="uploadedImages" *ngIf="images" style="width: 22%; height: 100px;">
+                      <img class="img" lazyLoad="{{images}}" style="width: 100%; height: 100%;" />
+                      <mat-icon *ngIf="images" class="closeIcon"
+                        style="color:'red';position: relative; bottom: 6rem; left: 5.2rem;" (click)="deleteImage()">
+                        close
+                      </mat-icon>
+                    </div>
+
+                  </ul>
+                  <div class="error" *ngIf="
+                      myForm.controls.image.touched &&
+                      myForm.controls.image.hasError('required')
+                      ">
+                    Image is required.
+                  </div>
+
+                  <input #firstName type="text" class="form-control" formControlName="teachername" placeholder="Teacher Name"
+                    [(ngModel)]="teacherName" />
+                  <div class="error" *ngIf="
+                myForm.controls.teachername.touched &&
+                myForm.controls.teachername.hasError('required')
+              ">
+                    Teacher Name is required.
+                  </div>
+                  <div class="formCmg labelForm">
+                    <label class="form-label">Teacher Description</label>
+                    <angular-editor formControlName="description" [(ngModel)]="description" placeholder="Add brief Profile of Teachers"
+                      [config]="editorConfig">
+                    </angular-editor>
+                    <div class="error" *ngIf="
+                            myForm.controls.description.touched &&
+                myForm.controls.description.hasError('required')
+                            ">
+                      Description is required.
+                    </div>
+                  </div>
+                  <!-- <textarea class="form-control" formControlName="description" placeholder="Description"
+                  [(ngModel)]="description"></textarea>
+                <div class="error" *ngIf="
+                myForm.controls.description.touched &&
+                myForm.controls.description.hasError('required')
+              ">
+                  Description is required.
+                </div> -->
+
+
+                  <div class="mt-4" *ngIf="!diabledFeilds">
+                    <label class="form-label">Assign Branches</label>
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select'" [errorMsg]="errorMessage"
+                      [showErrorMsg]="showError" [options]="options" [display]="'display'" [value]="'value'"
+                      [multiple]="true" [labelCount]="2" [selectedOptions]="selectedOptions"
+                      (selectionChange)="getSelectedOptions($event)" ngDefaultControl [formControl]="myForm.controls['Selected']">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                myForm.controls.Selected.touched &&
+                myForm.controls.Selected.hasError('required')
+              ">
+                      Select at least one branch.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="formCmg labelForm">
+                  <button type="submit" (click)="submit()" [disabled] = "iisSubmitBool" class="btn submitBtn">
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+      </div>
+    </div>
+
+
+  </div>
+</div>

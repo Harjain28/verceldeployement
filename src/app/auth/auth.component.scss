@@ -1,0 +1,133 @@
+.loginSignTab {
+    list-style: none;
+    margin: 0;
+    padding: 0px 15px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    li {
+        width: 50%;
+
+        a {
+            border: 1px solid #dcdcdf;
+            display: block;
+            margin: 0px 2px;
+            text-align: center;
+            text-decoration: none;
+            padding: 13px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: var(--main3);
+
+            &.active {
+                background-color:var(--main1) ;
+                border: 1px solid var(--main1);
+                color: #fff;
+            }
+        }
+    }
+    .pageTopBar .pgTitle {
+        margin: 0 !important;
+        font-weight: 500 !important;
+        font-size: 18px !important;
+    }
+}
+
+.contentBox {
+    padding: 0;
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+    ::ng-deep .mat-tab-header {
+        margin: 0px 0px !important;
+        margin-bottom: 10px !important;
+    }
+    .mat-tab-header {
+        margin: 0px 0px;
+        margin-bottom: 10px;
+    }
+    .loginSignTab {
+        padding: 0px 0px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .pageTopBar {
+        border-bottom: none;
+    }
+    .mainBody {
+        width: 360px;
+        margin: 0 auto;
+    }
+    .loginSection {
+        height: 100%;
+
+        .container-fluid , .row{
+            height: 100% !important;
+        }
+
+        .imgBox {
+    
+            img {
+                width: 58.33333333%;
+                position: fixed;
+                left: 0;
+                top: 0;
+            }
+        }
+        .contentBox {
+            padding:70px 10px 70px 10px;
+            position: relative;
+            width: 41.66666667%;
+            box-shadow: 0 3px 6px 1px #cfcfcf;
+    
+            .backgound {
+    
+                .shape1 {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 110px;
+                }
+                .shape2 {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 170px;
+                }
+                .shape3 {
+                    position: absolute;
+                    right: 30px;
+                    bottom: 50px;
+                    width: 50px;
+                }
+            }
+        }
+    }
+    
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .mainBody {
+        width: 100%;
+        padding: 0px 15px;
+    }
+    .loginSection .contentBox {
+        padding: 70px 0px 70px 0px;
+    }
+    .otp-input {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .loginSection .imgBox img {
+        width: 100%;
+        position: relative;
+        left: 0;
+    }
+}

@@ -1,0 +1,80 @@
+<div class="pageMarginTop">
+    <div class="mainBody">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+
+                <div class="col-3">
+                    <a class="backArrow" (click)="back()">
+                        <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Inbox</h5>
+                </div>
+                <div class="col-3">
+
+                    <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+                </div>
+            </div>
+        </div>
+        <div class="container businessNotes_section mainSpaceN">
+
+            <div class="row">
+                <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+                <div class="bussinessCenter">
+                    <div class="branchesList">
+                        <h2>
+                            Notes
+                        </h2>
+
+                        <div class="businessNotesList">
+                            <div class="notesForm">
+                                <textarea class="form-control" placeholder="Notes"></textarea>
+                            </div>
+
+                            <button class="btn">Submit</button>
+                        </div>
+
+                        <div class="branchBox">
+                            <div class="branchBoxBody">
+                                <h3>Notes 1 <mat-icon class="editIcon" routerLink="/pages/add-new-branch">delete
+                                    </mat-icon>
+                                </h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                <ul class="mt-2">
+                                    <li>04-04-2022
+                                        <label></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="branchBox">
+                            <div class="branchBoxBody">
+                                <h3>Notes 1 <mat-icon class="editIcon" routerLink="/pages/add-new-branch">delete
+                                    </mat-icon>
+                                </h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                <ul class="mt-2">
+                                    <li>04-04-2022
+                                        <label></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <app-business-right-sidebar class="businessRight"></app-business-right-sidebar>
+            </div>
+
+        </div>
+
+    </div>
+</div>

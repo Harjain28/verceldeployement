@@ -1,0 +1,255 @@
+<div class="mainBody bottomSpace">
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+            <div class="col-3">
+                <!-- <a routerLink="/profile/profile" class="backArrow">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a> -->
+            </div>
+            <div class="col-6 text-center">
+                <h5 class="pgTitle">Marketplace</h5>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <div class="container articleSectionDesktop" infiniteScroll 
+    [infiniteScrollDistance]="4" (scrolled)="onScroll($event)">
+        <div class="col-md-12">
+            <div class="bridTitle display-show-desktop">
+                <h3 class="bridT">Marketplace
+                </h3>
+                <div class="sellBtnBox">
+                    <button class="btn sellBtn" routerLink="/pages/sell">
+                        + Sell
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="space pb-0">
+            <div class="topBar">
+                <div class="topSearch">
+                    <div class="searchbox">
+                        <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+                        <input type="search" class="form-control" [(ngModel)]="searchvalue"
+                            (keyup)="searchAllproducts()" placeholder="Search for an Marketplace" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mainRow">
+                <div class="col-md-9 articlesLeftBox">
+                    <mat-tab-group (selectedTabChange)="onTabClick($event)">
+                        <mat-tab label="All Products">
+
+                            <div class="row">
+                                <div class="col-6 col-md-6 col-lg-3"
+                                    *ngFor="let allproduct of newProducts; let i = index">
+                                    <div class="classSection">
+                                        <div class="classSectionImg">
+                                            <a (click)="redirectToMarketplaceDetails(allproduct._id)">
+                                                <img class="catImg" *ngIf="!allproduct?.image[0]"
+                                                    lazyLoad="./assets/images/list1.svg" />
+                                                <img class="catImg" *ngIf="allproduct?.image[0]"
+                                                    [lazyLoad]="allproduct?.image[0]" />
+                                            </a>
+                                            <a style="cursor: pointer;" class="fav">
+                                                <mat-icon *ngIf="!allproduct.selected"
+                                                    (click)="addtoProductWishList(allproduct?._id)" class="like">
+                                                    favorite_border</mat-icon>
+                                                <mat-icon *ngIf="allproduct.selected"
+                                                    (click)="deleteProductWishlist(allproduct?._id)">favorite</mat-icon>
+                                            </a>
+                                        </div>
+                                        <div class="classSectionBody"
+                                            (click)="redirectToMarketplaceDetails(allproduct._id)">
+                                            <a class="titleName">
+                                                {{allproduct?.title}}
+                                            </a>
+                                            <div class="profileN">
+                                                <div class="profileName">
+                                                    <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                                    <span>{{allproduct?.userId?.name}}</span>
+                                                </div>
+                                                <h5 *ngIf="allproduct.price !== 'forfree'">${{allproduct?.price}}</h5>
+                                                <h5 *ngIf="allproduct.price === 'forfree'">Free</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
+
+
+                        <mat-tab label="Used Products">
+                            <div class="row">
+                                <div class="col-6 col-md-6 col-lg-3" *ngFor="let usedProduct of newUsedProductdata">
+                                    <div class="classSection">
+                                        <div class="classSectionImg">
+                                            <a (click)="redirectToMarketplaceDetails(usedProduct._id)">
+                                                <img class="catImg" *ngIf="!usedProduct?.image[0]"
+                                                    lazyLoad="./assets/images/list1.svg" />
+                                                <img class="catImg" *ngIf="usedProduct?.image[0]"
+                                                    [lazyLoad]="usedProduct?.image[0]" />
+                                            </a>
+                                            <a style="cursor: pointer;" class="fav">
+                                                <mat-icon *ngIf="!usedProduct.selected"
+                                                    (click)="addtoProductWishList(usedProduct?._id)" class="like">
+                                                    favorite_border</mat-icon>
+                                                <mat-icon *ngIf="usedProduct.selected"
+                                                    (click)="deleteProductWishlist(usedProduct?._id)">favorite
+                                                </mat-icon>
+                                            </a>
+                                        </div>
+                                        <div class="classSectionBody"
+                                            (click)="redirectToMarketplaceDetails(usedProduct._id)">
+                                            <a class="titleName">
+                                                {{usedProduct?.title}}
+                                            </a>
+                                            <div class="profileN">
+                                                <div class="profileName">
+                                                    <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                                    <span>{{usedProduct?.userId?.name}}</span>
+                                                </div>
+                                                <h5 *ngIf="usedProduct.price !== 'forfree'">${{usedProduct?.price}}</h5>
+                                                <h5 *ngIf="usedProduct.price === 'forfree'">Free</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                        <mat-tab label="New Products">
+                            <div class="row">
+                                <div class="col-6 col-md-6 col-lg-3" *ngFor="let newproduct of newNewProduct">
+                                    <div class="classSection">
+                                        <div class="classSectionImg">
+                                            <a (click)="redirectToMarketplaceDetails(newproduct._id)">
+                                                <img class="catImg" *ngIf="!newproduct?.image[0]"
+                                                    lazyLoad="./assets/images/list1.svg" />
+                                                <img class="catImg" *ngIf="newproduct?.image[0]"
+                                                    [lazyLoad]="newproduct?.image[0]" />
+                                            </a>
+                                            <a style="cursor: pointer;" class="fav">
+                                                <mat-icon *ngIf="!newproduct.selected"
+                                                    (click)="addtoProductWishList(newproduct?._id)" class="like">
+                                                    favorite_border</mat-icon>
+                                                <mat-icon *ngIf="newproduct.selected"
+                                                    (click)="deleteProductWishlist(newproduct?._id)">favorite</mat-icon>
+                                            </a>
+                                        </div>
+                                        <div class="classSectionBody"
+                                            (click)="redirectToMarketplaceDetails(newproduct._id)">
+                                            <a class="titleName">
+                                                {{newproduct?.title}}
+                                            </a>
+                                            <div class="profileN">
+                                                <div class="profileName">
+                                                    <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                                    <span>{{newproduct?.userId?.name}}</span>
+                                                </div>
+                                                <h5 *ngIf="newproduct.price !== 'forfree'">${{newproduct?.price}}</h5>
+                                                <h5 *ngIf="newproduct.price === 'forfree'">Free</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </mat-tab>
+
+
+
+                        <mat-tab label="Free Products">
+
+                            <div class="row">
+                                <div class="col-6 col-md-6 col-lg-3" *ngFor="let freeProduct of newFreeProductdata">
+                                    <div class="classSection">
+                                        <div class="classSectionImg">
+                                            <a (click)="redirectToMarketplaceDetails(freeProduct._id)">
+                                                <img class="catImg" *ngIf="!freeProduct?.image[0]"
+                                                    lazyLoad="./assets/images/list1.svg" />
+                                                <img class="catImg" *ngIf="freeProduct?.image[0]"
+                                                    [lazyLoad]="freeProduct?.image[0]" />
+                                            </a>
+                                            <a style="cursor: pointer;" class="fav">
+                                                <mat-icon *ngIf="!freeProduct.selected"
+                                                    (click)="addtoProductWishList(freeProduct._id)" class="like">
+                                                    favorite_border</mat-icon>
+                                                <mat-icon *ngIf="freeProduct.selected"
+                                                    (click)="deleteProductWishlist(freeProduct?._id)">favorite
+                                                </mat-icon>
+                                            </a>
+                                        </div>
+                                        <div class="classSectionBody"
+                                            (click)="redirectToMarketplaceDetails(freeProduct._id)">
+                                            <a class="titleName">
+                                                {{freeProduct?.title}}
+                                            </a>
+                                            <div class="profileN">
+                                                <div class="profileName">
+                                                    <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                                    <span>{{freeProduct?.userId?.name}}</span>
+                                                </div>
+                                                <h5 *ngIf="freeProduct.price !== 'forfree'">${{freeProduct?.price}}</h5>
+                                                <h5 *ngIf="freeProduct.price === 'forfree'">Free</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </mat-tab>
+
+                    </mat-tab-group>
+                </div>
+                <div class="col-md-3">
+                    <mat-accordion class="faqList">
+
+                        <div class="menuList">
+                            <mat-expansion-panel expanded (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <div class="title2">
+                                        <h2>Categories</h2>
+                                    </div>
+                                </mat-expansion-panel-header>
+                                <ul>
+                                    <a style="cursor: pointer mt-3" class="reset" (click)="resetbyTag()">Reset
+                                        filter</a>
+                                    <div *ngIf="!category">
+                                        <input type="text" placeholder="Search"  [(ngModel)]="searchCategoryByName" (ngModelChange) = "searchCategoryByKey()"  class="form-control formTagSearch" />
+                                        <li *ngFor="let productcategory of RepetedCategory" style="cursor: pointer;"
+                                            (click)="SearchbyCategory(productcategory)">
+                                            <a [class.active] = "productcategory === subcategoryValue">{{productcategory}}</a></li>
+                                    </div>
+                                    <li *ngIf="category"><a style="cursor: pointer;">
+                                            {{category}}</a></li>
+                                </ul>
+                            </mat-expansion-panel>
+
+                        </div>
+                    </mat-accordion>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <app-bottom-bar></app-bottom-bar>
+
+</div>

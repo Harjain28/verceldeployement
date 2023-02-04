@@ -1,0 +1,95 @@
+.teachers_section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.branchesList {
+
+    h2 {
+
+        .btnAddbranch {
+            background-color: #f9560f;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 0px 15px;
+            display: inline-block;
+            float: right;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.branchBox {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ada6a3;
+    border-radius: 5px;
+    padding: 15px 20px;
+    position: relative;
+    margin-bottom: 15px;
+    display: flex;
+
+    .profileImg {
+        width: 130px;
+        height: 130px;
+        background: #fff;
+        border: 1px solid #d7d1d1;
+        padding: 4px;
+        border-radius: 5px;
+        margin-right: 15px;
+        object-fit: cover;
+    }
+
+    .branchBoxBody {
+        color: #6e7072;
+        width: 100%;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #000;
+
+            .editIcon {
+                font-size: 19px;
+                float: right;
+                color: #919090;
+                cursor: pointer;
+            }
+        }
+        p {
+            margin-bottom: 5px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .branchBox .profileImg {
+        width: 60px;
+        height: 60px;
+        padding: 2px;
+    }
+
+}
+.ellipses{
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

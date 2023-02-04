@@ -1,0 +1,158 @@
+.groupSlider {
+  display: block;
+  margin: 0px -5px;
+  margin-top: 10px;
+}
+.groupSlider .groupBox {
+  position: relative;
+  margin: 0px 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 15px;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.groupSlider .groupBox img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+.groupSlider .groupBox .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: #fff;
+  text-decoration: none;
+}
+.groupSlider .groupBox .overlay .sg {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+.groupSlider .groupBox .overlay .sg h4 {
+  margin-bottom: 0px;
+}
+.groupSlider .groupBox .overlay .sg p {
+  margin: 0;
+}
+
+.groupBox {
+  position: relative;
+  margin: 0px 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 15px;
+  cursor: pointer;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.groupBox .classSectionImg .catImg {
+  height: 140px;
+}
+.groupBox .classSectionImg .groupIcon {
+  position: absolute;
+  bottom: 8px;
+  left: 11px;
+  display: flex;
+  color: #fff;
+}
+.groupBox .classSectionImg .groupIcon .icon {
+  height: 17px;
+  width: auto;
+  border-radius: 0px;
+  margin-right: 6px;
+}
+.groupBox .classSectionBody {
+  padding: 0;
+  margin-top: 10px;
+}
+.groupBox .classSectionBody .groupBody {
+  display: flex;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent {
+  width: 100%;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 6px;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent h3 a {
+  text-decoration: none;
+  color: #000;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent p {
+  margin: 0;
+  font-size: 15px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.groupBox .classSectionBody .groupBody .joinGroup {
+  background: var(--main1);
+  color: #fff;
+  height: 35px;
+  padding: 5px 29px;
+  margin: 0px 6px;
+}
+
+.cateSliderDesktop {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.cateSliderDesktop li {
+  width: 17%;
+}
+.cateSliderDesktop li .catImg {
+  height: 96px;
+}
+
+.categoryBoxDesktop .catImg {
+  height: 90px !important;
+}
+
+.textlimit ::ng-deep span {
+  margin: 0;
+  font-size: 15px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .groupSection {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .groupSection .topSearch {
+    display: block;
+    right: 0;
+    width: 40%;
+    top: 0;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+}

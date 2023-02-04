@@ -1,0 +1,70 @@
+<div class="mainBody">
+    
+    <app-admin-header></app-admin-header>
+
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+            <div class="col-3">
+                <a (click)="back()" class="backArrow">
+                <img class="catImg" src="./assets/images/icons/back.svg" />
+                </a>
+            </div>
+            <div class="col-6 text-center">
+            <h5 class="pgTitle">Bussiness Update</h5>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+
+    <div class="space">
+    <div class="container businessUpdate">
+      <div class="col-md-12 col-lg-10 col-xl-10 mx-auto">
+        <div class="bridTitle display-show-desktop">
+          <h3 class="bridT">Class Update</h3>
+        </div>
+        
+        <div class="row mainBusinessRow">
+        <div class="formCmg labelForm col-md-6">
+            <label class="form-label">Class Name*</label>
+            <input type="text" class="form-control" placeholder="Name" value="Total Mathamatics" required />
+          </div>
+          <div class="formCmg labelForm col-md-6">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" placeholder="email" value="totalmathamatics@gmail.com" />
+          </div>  
+          <div class="formCmg labelForm businessBox col-md-12">
+            <label class="form-label">About Class</label>
+            <textarea type="text" class="form-control" placeholder="Define your business in upto 500 characters">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id vitae lacus enim ultricies. Sit blandit senectus vitae magna platea arcu vitae. Maecenas sit a aenean placerat vestibulum sollicitudin urna, mi quis</textarea>
+          </div>
+          <div class="formCmg labelForm col-md-4">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" placeholder="Phone Number" value="9876543210" />
+          </div>
+          
+          <div class="formCmg labelForm col-md-4">
+            <label class="form-label">Web Address (Optional)</label>
+            <input type="text" class="form-control" placeholder="https://yoursite..." />
+          </div>
+          <div class="formCmg labelForm col-md-4">
+              <label class="form-label">Class Category</label>
+              <select class="form-control form-select" placeholder="" >
+                  <option>---Select---</option>
+              </select>
+            </div>
+            <!-- <div class="formCmg labelForm col-md-6">
+                <label class="form-label">Class Sub Category</label>
+                <select class="form-control form-select" placeholder="" >
+                    <option>---Select---</option>
+                </select>
+              </div> -->
+
+            
+    <div class="formCmg labelForm col-md-6" style="margin: 0 auto;">
+      <button [routerLink]="['/pages/business-details']" type="button" class="btn submitBtn">Update Details</button>
+    </div>
+        </div>
+    </div>
+  </div>
+    </div>
+
+</div>

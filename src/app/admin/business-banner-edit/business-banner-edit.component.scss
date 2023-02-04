@@ -1,0 +1,142 @@
+
+
+.imgBox {
+  border-style: dotted;
+  border-width: 2px;
+  border-color: #878d9f;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 120px;
+  line-height: 90px;
+  text-align: center;
+  position: relative;
+  margin: 10px 0px;
+
+  .icon2 {
+      height: 50px;
+  }
+
+  input[type="file"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+  }
+  span {
+      display: block;
+      width: 100%;
+      line-height: 0px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: 30px;
+      color: #7f8699;
+      font-weight: 500;
+      transform: translate(-50%, -50%);
+  }
+  .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+  .closeIcon {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: #fff;
+      font-size: 16px;
+      border-radius: 50px;
+      line-height: 25px;
+      cursor: pointer;
+  }
+}
+
+.btn {
+  background: var(--main1);
+  color: #fff;
+  padding: 13px 15px;
+  margin-top: 15px;
+  min-width: 100%;
+}
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .imgBox {
+        height: 200px !important;
+        line-height: 150px !important;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+  .businessBannerEdit {
+      padding-top: 50px;
+      padding-bottom: 50px;
+ 
+ }
+
+  .imgBox {
+      border-style: dotted;
+      border-width: 2px;
+      border-color: #878d9f;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px;
+      line-height: 200px;
+      text-align: center;
+      position: relative;
+      margin: 10px 0px;
+  
+      .icon2 {
+          height: 70px;
+      }
+      span {
+          display: block;
+          width: 100%;
+          line-height: 0px;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-top: 35px;
+          color: #7f8699;
+          font-weight: 500;
+          transform: translate(-50%, -50%);
+      }
+      input[type="file"] {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+      }
+      .image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+      .closeIcon {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          background: #fff;
+          font-size: 16px;
+          border-radius: 50px;
+          line-height: 25px;
+          cursor: pointer;
+      }
+   }
+
+   .btn {
+      min-width: 240px;
+   }
+  
+}

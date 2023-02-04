@@ -1,0 +1,135 @@
+<header class="mainHeadersticky"
+  *ngIf="currentURL !== '/email-verify' && currentURL !== '/change-password' && currentURL !== '/reset-password' && currentURL !== '/claim' && currentURL !== '/view/contact-successfully' && currentURL !== '/login/subbusiness'  && currentURL !== '/register/subbusiness'
+&& currentURL !== '/login/student' && currentURL !== '/login/business'  && currentURL !== '/register/student'  && currentURL !== '/register/business'  && currentURL !== '/register'    && currentURL !== '/view/contact'">
+  <div class="container">
+    <div class="mainRow">
+      <a class="logo mobileHide tabHideLogo" routerLink="/">
+        <img class="logoImg" (click)="resetfromsearch()" lazyLoad="./assets/images/logo-web.svg" />
+      </a>
+      <!-- [ngClass]="isSticky ? 'mainHeadersticky' : 'mainHeader'" -->
+      <div class="searchBoxInner">
+        <div class="searchbox">
+
+          <div class="input-group">
+            <div class="position-relative searchInput">
+            <input type="search" id="inputElement" [matAutocomplete]="auto" #inputElement="ngModel"
+            [(ngModel)]="searchKey" (keyup.enter)='searchData()' (keyup)="clearIconBool()" (input)="getSuggestions()"
+            (click)="getRecent()" class="form-control" [(placeholder)]='searchMsg' />
+            
+          <mat-icon *ngIf="clearIcon" class="iconClose" (click)='clearData()'>close</mat-icon>
+        </div>
+          <select class="form-control form-select menuSelect mobileHide" [ngModelOptions]="{standalone: true}"   [(ngModel)]="searchType" (ngModelChange)="changesiteType()">
+            <option value="Classes">Classes</option>
+            <option value="event">Events/Camps</option>
+            <option value="article">Articles</option>
+          </select>
+          
+          <select class="form-control form-select menuSelect desktopHide" [ngModelOptions]="{standalone: true}"   [(ngModel)]="searchType" (ngModelChange)="changesiteType()">
+            <option value="Classes">Class</option>
+            <option value="event">Event</option>
+            <option value="article">Article</option>
+          </select>
+          </div>
+          <button class="searchBtn" (click)='searchData()' style="cursor: pointer;">
+            <mat-icon>search</mat-icon>
+          </button>
+         
+          <!-- <img class="icon" (click)='searchData()' style="cursor: pointer;"
+          lazyLoad="./assets/images/icons/icon-search.svg" /> -->
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getAutocompleteValue($event.option.value)'>
+            <mat-option *ngFor="let suggestion of newSuggestionsArray" [value]="suggestion">
+              {{suggestion}}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+      </div>
+      <div class="btns_box mobileHide" *ngIf="!loginShowHeader">
+        <button class="btnbusiness" (click)="redirection('business')">For Business Owner</button>
+        <button class="btnstudent" (click)="redirection('student')"> Sign Up & Login</button>
+      </div>
+
+      <div class="profileAction mobileHide" *ngIf="loginShowHeader">
+        <!-- <button class="btn" routerLink="/profile"> Profile </button> -->
+        <button mat-button [matMenuTriggerFor]="menu" (click)="editProfile()">
+          <img *ngIf="image === 'blankimage' || !image" class="logoImg" src="./assets/images/defalutimg.svg" />
+          <img *ngIf="image !== 'blankimage' && image" class="logoImg" src="{{image}}" />
+          <div class="body">
+            <h4 *ngIf="!userName && name">{{ name }}</h4>
+            <h4 *ngIf="userName">{{ userName }}</h4>
+            <span class="email">{{ email }}</span>
+          </div>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="profilepageRedirect()">
+            My Profile
+          </button>
+          <button mat-menu-item (click)="inboxPageRedirect()">Inbox</button>
+          <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+        <!-- <button class="btn" (click) = "logout()">Logout</button> -->
+      </div>
+    </div>
+    <ul class="mobileMenu mobileHide">
+      <li>
+        <a [class.active]="router.url ==='/'" (click)="resetfromsearch()" style="cursor: pointer;"
+          [routerLink]="['/']">Home</a>
+      </li>
+
+      <!-- <li>
+        <a [class.active]="router.url ==='/view/category'" (click)="resetfromsearch()" style="cursor: pointer;"
+          [routerLink]="['/view/category']">Classes</a>
+      </li> -->
+      <!-- <li>
+        <a [class.active]="router.url ==='/group/group'" (click)="resetfromsearch()" style="cursor: pointer;"
+          [routerLink]="['/group/group']">Groups</a>
+      </li> -->
+      <li>
+        <a [class.active]="router.url ==='/view/events'" (click)="resetfromsearch()" style="cursor: pointer;"
+          [routerLink]="['/view/events']">Events/Camps</a>
+      </li>
+      <li>
+        <a [class.active]="router.url ==='/articles'" (click)="resetfromsearch()" style="cursor: pointer;"
+          [routerLink]="['/articles']">Articles</a>
+      </li>
+      <!-- <li>
+        <a [class.active]="router.url ==='/view/marketplace'" style="cursor: pointer;"
+          [routerLink]="['/view/marketplace']">Marketplace</a>
+      </li> -->
+    </ul>
+  </div>
+</header>
+
+<!-- <div class="topBar my-2  display-show-mobile"
+  *ngIf="router.url === '/' || router.url ==='/group/articles' || router.url === '/view/events' || router.url === '/pages/business-profle-mobile' || router.url === '/profile/profile' || router.url ==='/view/category' || router.url ==='/group/group' || router.url === '/view/search/classes'">
+  <div class="topSearch">
+    <div class="searchbox">
+      <img class="icon" (click)='searchData()' style="cursor: pointer;"
+        lazyLoad="./assets/images/icons/icon-search.svg" />
+      <mat-icon *ngIf="clearIcon" class="icon" (click)='clearData()' style="cursor: pointer;
+            width: 38px;
+            right: 35px !important;
+            bottom: 11px; 
+            top: 12px; color: var(--main1);">close</mat-icon>
+      <input type="search" id="inputElement" [matAutocomplete]="auto" #inputElement="ngModel" [(ngModel)]="searchKey"
+        (keyup.enter)='searchData()' (keyup)="clearIconBool()" (input)="getSuggestions()" (click)="getRecent()"
+        class="form-control" placeholder="Search On Klassbook" />
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)='getAutocompleteValue($event.option.value)'>
+        <mat-option *ngFor="let suggestion of newSuggestionsArray" [value]="suggestion">
+          {{suggestion}}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <a style="cursor: pointer" class="chat" (click)="mobileChatRedirect()">
+      <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+      <span>5</span>
+    </a>
+  </div>
+</div> -->
+
+    <!-- <div class="searchbox">
+        <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+        <input [(ngModel)]="searchKey" (keyup.enter)='searchData()' type="search" class="form-control" placeholder="Search Klassbook" />
+      </div>
+    <a style="cursor: pointer" class="chat" (click)="mobilepageRedirect()">
+        <img class="icon" lazyLoad="./assets/images/icons/bottombar-shortlist.svg" />
+      </a> -->

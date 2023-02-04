@@ -1,0 +1,126 @@
+::ng-deep .mat-tab-label {
+    min-width:50% !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 15px;
+    letter-spacing: 0;
+    opacity: 1 !important;
+}
+::ng-deep .mat-tab-header {
+    margin-bottom: 10px;
+}
+::ng-deep mat-ink-bar {
+    background-color: var(--main1) !important;
+}
+::ng-deep .mat-tab-body-content {
+    height: 100vh !important;
+}
+
+.eventList {
+    display: flex;
+    box-shadow:0 2px 11px -2px #d6d6d6;
+    border-radius: 5px;
+    margin: 15px 0px 0px 0px;
+    cursor: pointer;
+
+    .eventDate {
+        color: var(--main1);
+        width: 130px;
+        text-align: center;
+        border-radius: 6px;
+
+        .box {
+            padding:13px 10px 7px 10px;
+
+            h3 {
+                font-size: 40px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            h5 {
+                font-size: 16px;
+                margin: 0px;
+            }
+        }
+        
+        p {
+            margin: 0;
+            border-top: 1px solid #EBECEF;
+            padding: 5px 10px;
+        }
+    }
+    .eventBody {
+        width: 100%;
+        padding: 10px 10px;
+        position: relative;
+        border-left: 1px solid #EBECEF;
+
+        .tt {
+            color:#000;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .location {
+            margin: 5px 0px 0px 0px;
+            color: var(--main4);
+            font-size: 13px;
+
+            .icon {
+                margin-right: 3px;
+            }
+        }
+        .profile {
+            margin: 5px 0px 0px 0px;
+            color: var(--main4);
+            font-size: 13px;
+
+            .icon {
+                margin-right: 3px;
+                width: 20px;
+                height: 19px;
+                border-radius: 50px;
+                object-fit: cover;
+            }
+        }
+        .fav {
+            color: var(--main1);
+            display: block;
+            position: absolute;
+            right: 0px;
+            bottom: 0;
+        }
+    }
+}
+
+
+
+@media (max-width: 767px) {
+    
+    .eventRow {
+        margin:0;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+.BookingDesktop {
+    padding: 50px 0px;
+}
+
+.eventRow {
+    margin:0px -10px;
+}
+
+
+::ng-deep .mat-tab-label {
+    font-size: 16px !important;
+    color:#000 !important;
+ }
+ ::ng-deep .mat-tab-label-active {
+    color: var(--main1) !important;
+}
+::ng-deep .mat-tab-body-content {
+    overflow: hidden !important;
+}
+
+
+}

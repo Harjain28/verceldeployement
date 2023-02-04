@@ -1,0 +1,76 @@
+<div class="space loginSignup">
+  <form [formGroup]="loginform">
+    <div class="formCmg">
+      <img class="icon" src="./assets/images/icons/icon-email.svg" />
+      <input type="email" name="email" formControlName="email" class="form-control" placeholder="Email / User ID" />
+    </div>
+    <div class="error" *ngIf="
+        loginform.controls.email.touched &&
+        loginform.controls.email.hasError('required')
+      ">
+      Email address or UniqueId is required.
+    </div>
+    <!-- <div
+      class="error"
+      *ngIf="
+        loginform.controls.email.dirty &&
+        loginform.controls.email.hasError('pattern')
+      "
+    >
+      Enter valid email address.
+    </div> -->
+    <div class="formCmg">
+      <img class="icon" src="./assets/images/icons/icon-password.svg" style="height: 19px" />
+      <input type="password" name="password" formControlName="password" class="form-control" placeholder="Password"
+        [type]="pvisibility ? 'text' : 'password'" />
+      <div>
+        <img src="./assets/images/icons/password-show.svg" *ngIf="pvisibility" (click)="pvisibility = false"
+          class="actionAction" />
+      </div>
+      <div>
+        <img src="./assets/images/icons/password-hide.svg" *ngIf="!pvisibility" (click)="pvisibility = true"
+          class="actionAction" />
+      </div>
+    </div>
+    <div class="error" *ngIf="
+        loginform.controls.password.touched &&
+        loginform.controls.password.hasError('required')
+      ">
+      Password is required.
+    </div>
+    <div class="error" *ngIf="
+        loginform.controls.password.dirty &&
+        loginform.controls.password.hasError('minlength')
+      ">
+      Password field should be minimum 6 characters.
+    </div>
+
+    <a class="forgotPassword" (click) = "ClearLocalStorage()" [routerLink]="['/reset-password']">Forgot your password?</a>
+    <div class="formCmg"> 
+      <button (click)="submitForm()" type="submit" [disabled] = "IsSubmitBool" class="btn submitBtn">
+        Login
+      </button>
+    </div>
+  </form>
+  <div class="or">
+    <span>or</span>
+  </div>
+
+  <a class="socialBox google" (click)="auth.googleSignin()">
+    <span class="icon"><img src="./assets/images/icons/icon-google.png" /></span>
+    Log in with Google
+  </a>
+  <!-- <a class="socialBox facebook" (click)="auth.facebookSignin()">
+    <span class="icon"><img src="./assets/images/icons/facebook.svg" /></span>
+    Log in with Facebook
+  </a>
+  <a class="socialBox apple" (click) = "auth.appleSignin()">
+    <span class="icon"><img src="./assets/images/icons/apple.svg" /></span>
+    Log in with Apple
+  </a> -->
+
+  <p class="policyLink">
+    By joining I agree with <a>Terms of services</a>
+    <br />and <a>Privacy Policy</a>
+  </p>
+</div>

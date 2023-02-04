@@ -1,0 +1,64 @@
+.branches_section {
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+.branchesList {
+
+    h2 {
+
+        .btnAddbranch {
+            background-color: #f9560f;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 0px 15px;
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+    }
+}
+
+.branchBox {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #ada6a3;
+    border-radius: 5px;
+    padding: 15px 20px;
+    position: relative;
+    margin-bottom: 15px;
+
+    .branchBoxBody {
+        color: #6e7072;
+
+        h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: #000;
+
+            .editIcon {
+                font-size: 19px;
+                float: right;
+                color: #919090;
+                cursor: pointer;
+            }
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin-top: 5px;
+            }
+        }
+    }
+}

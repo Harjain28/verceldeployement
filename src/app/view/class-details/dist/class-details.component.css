@@ -1,0 +1,724 @@
+@charset "UTF-8";
+.classDetailsDesktop ::ng-deep mat-form-field {
+  width: 100%;
+}
+.classDetailsDesktop ::ng-deep mat-form-field .mat-form-field-flex {
+  background-color: var(--main5) !important;
+  border-color: var(--main5);
+  /* height: 50px; */
+  border-radius: 6px;
+  box-shadow: 0 3px 0px -1px #ccc !important;
+  padding: 0 15px 0 15px !important;
+  /* font-family: "Open Sans", sans-serif !important; */
+}
+.classDetailsDesktop ::ng-deep mat-form-field .mat-form-field-underline {
+  display: none;
+}
+.classDetailsDesktop .profileN {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  padding-bottom: 5px;
+}
+.classDetailsDesktop .profileN .profileName {
+  display: flex;
+  color: #7F8699;
+  font-size: 12px;
+  width: 100%;
+}
+.classDetailsDesktop .profileN .profileName .catImg {
+  width: 22px;
+  height: 22px;
+  box-shadow: 0 5px 12px -1px #d6d6d6;
+  border-radius: 50px;
+  margin-right: 6px;
+}
+.classDetailsDesktop .profileN h5 {
+  margin: 0px;
+  font-weight: 500;
+}
+.classDetailsDesktop .classSlider {
+  position: relative;
+}
+.classDetailsDesktop .classSlider .catImg {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.classDetailsDesktop .classSlider .editImages {
+  background: var(--main1);
+  color: #fff;
+  height: 30px;
+  line-height: 0px;
+  padding: 0px 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+  border: none;
+  border-radius: 5px;
+}
+.classDetailsDesktop .classSection .classSectionImg img {
+  height: 150px;
+}
+.classDetailsDesktop .classDetails .title {
+  position: relative;
+}
+.classDetailsDesktop .classDetails .title h3 {
+  margin-bottom: 2px;
+}
+.classDetailsDesktop .classDetails .title h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--main4);
+  margin: 0;
+}
+.classDetailsDesktop .classDetails .title .rightPostion {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  gap: 5px;
+}
+.classDetailsDesktop .classDetails .title .rightPostion a {
+  display: block;
+  color: var(--main1);
+  margin-bottom: 4px;
+  text-align: center;
+}
+.classDetailsDesktop .classDetails .title.about {
+  margin-bottom: 15px;
+}
+.classDetailsDesktop .classDetails .title.about p {
+  margin: 0;
+  color: var(--main4);
+}
+.classDetailsDesktop .classDetails .title.about p a {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--main4);
+}
+.classDetailsDesktop .listBox {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.classDetailsDesktop .listBox ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-right: 15px;
+}
+.classDetailsDesktop .listBox ul li {
+  margin: 5px 0px 0px 0px;
+  font-size: 13px;
+  color: var(--main4);
+}
+.classDetailsDesktop .listBox ul li a {
+  color: var(--main4);
+  text-decoration: none;
+}
+.classDetailsDesktop .listBox ul li span {
+  display: inline-block;
+  width: 22px;
+  text-align: center;
+  margin-right: 2px;
+}
+.classDetailsDesktop .listBox ul li span img {
+  height: 16px;
+  display: inline-flex;
+}
+.classDetailsDesktop .listBox .btn {
+  background: var(--main1);
+  color: #fff;
+  height: 38px;
+  line-height: 0px;
+  padding: 0px 10px;
+  min-width: 130px;
+}
+.classDetailsDesktop .mapbox {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 12px -1px #d6d6d6;
+  margin-top: 20px;
+}
+.classDetailsDesktop .mapbox .map {
+  width: 100%;
+  border: none;
+  display: block;
+}
+.classDetailsDesktop .mapbox .mapbody {
+  display: flex;
+  position: relative;
+  padding: 10px 12px;
+}
+.classDetailsDesktop .mapbox .mapbody.mapbodyNew {
+  padding: 15px 12px 15px 12px;
+  border-bottom: 1px solid #d4d4d4;
+}
+.classDetailsDesktop .mapbox .mapbody .icon {
+  width: 16px;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+.classDetailsDesktop .mapbox .mapbody .mapbodyin {
+  width: 100%;
+  padding-left: 15px;
+  position: relative;
+}
+.classDetailsDesktop .mapbox .mapbody .mapbodyin h5 {
+  margin: 0;
+  font-size: 15px;
+  padding: 0px 10px;
+  color: var(--main4);
+}
+.classDetailsDesktop ::ng-deep .mat-tab-label {
+  min-width: 25% !important;
+  padding: 0px 0px !important;
+  font-family: "Open Sans", sans-serif !important;
+  opacity: 1 !important;
+  color: var(--main4) !important;
+}
+.classDetailsDesktop ::ng-deep .mat-elevation-z4 {
+  box-shadow: none;
+}
+.classDetailsDesktop ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: var(--main1);
+}
+.classDetailsDesktop ::ng-deep .mat-tab-label-active {
+  color: var(--main1) !important;
+}
+.classDetailsDesktop ::ng-deep .mat-menu-item {
+  line-height: 40px !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+}
+.classDetailsDesktop ::ng-deep .mat-menu-panel {
+  min-height: 40px !important;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-panel {
+  box-shadow: none !important;
+  border-radius: 5px !important;
+  border: 1px solid #dddddd;
+  padding: 0px 0px;
+  margin-top: 10px !important;
+}
+.classDetailsDesktop .mat-expansion-panel-spacing {
+  margin-top: 10px !important;
+}
+.classDetailsDesktop .mat-expansion-panel-header.mat-expanded, .classDetailsDesktop .mat-expansion-panel-header.mat-expanded:hover, .classDetailsDesktop .mat-expansion-panel-header.mat-expanded:focus {
+  height: auto;
+  background: #f2f2f2;
+  padding: 15px 15px !important;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-indicator::after {
+  color: #f9560f;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-panel-header {
+  padding: 0px 15px !important;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 500;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-panel-body {
+  padding: 10px 15px 0px 15px !important;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+  background: #fff !important;
+}
+.classDetailsDesktop ::ng-deep .mat-content {
+  padding-right: 15px !important;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-panel-spacing {
+  margin: 0 !important;
+}
+.classDetailsDesktop ::ng-deep .mat-expansion-panel-header.mat-expanded {
+  height: auto;
+}
+.classDetailsDesktop .replyBtn {
+  color: #0549cb !important;
+  margin-top: 10px !important;
+  display: inline-block;
+  text-decoration: underline !important;
+}
+.classDetailsDesktop .replayBox {
+  margin: 15px 15px;
+}
+.classDetailsDesktop .replayBox .sendBtn {
+  background: #f9560f;
+  color: #fff;
+  min-width: 100px;
+  padding: 8px 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.classDetailsDesktop .reviewList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.classDetailsDesktop .reviewList li {
+  display: block;
+  padding: 10px 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.classDetailsDesktop .reviewList li .rating-list li {
+  border: none;
+  margin: 0;
+}
+.classDetailsDesktop .reviewList li h5 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.classDetailsDesktop .reviewList li p {
+  font-size: 14px;
+  color: var(--main4);
+  margin: 0;
+}
+.classDetailsDesktop .reviewList li p a {
+  text-decoration: none;
+  color: var(--main4);
+  font-weight: 500;
+}
+.classDetailsDesktop .reviewList li:last-child {
+  border: none;
+}
+.classDetailsDesktop .reviewList.programs li {
+  display: block;
+  padding: 10px 0px;
+  border-bottom: none;
+}
+.classDetailsDesktop .reviewList.programs li h5 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.classDetailsDesktop .reviewList.programs li:last-child {
+  border: none;
+}
+.classDetailsDesktop .addReview {
+  text-decoration: none;
+  color: var(--main4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.classDetailsDesktop .addReview .catImg {
+  margin-right: 5px;
+}
+.classDetailsDesktop .review-rating {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+.classDetailsDesktop .review-rating .review-stars {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  vertical-align: middle;
+  font-size: 20px;
+  color: #d7d7d7;
+}
+.classDetailsDesktop .review-rating .review-stars:before {
+  content: "★★★★★";
+  font-weight: 600;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+.classDetailsDesktop .review-rating .review-stars .review-stars-range {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+.classDetailsDesktop .review-rating .review-stars .review-stars-range:before {
+  content: "★★★★★";
+  font-weight: 600;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  line-height: 1;
+  color: var(--main1);
+  position: absolute;
+}
+.classDetailsDesktop .review-rating .rating-total {
+  font-size: 12px;
+  position: relative;
+  top: -1px;
+  margin-left: 8px;
+  color: var(--main4);
+}
+.classDetailsDesktop .classSection {
+  box-shadow: none;
+}
+.classDetailsDesktop .classSection .classSectionBody {
+  padding: 10px 2px 0px 2px;
+}
+.classDetailsDesktop .reviewImg {
+  display: flex;
+}
+.classDetailsDesktop .reviewImg .catImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+.classDetailsDesktop .tearcherList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.classDetailsDesktop .tearcherList li {
+  display: flex;
+  padding: 10px 10px;
+  align-items: center;
+  border: 1px solid #dddddd;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+.classDetailsDesktop .tearcherList li .catImg {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.classDetailsDesktop .tearcherList li .tearcherListBody {
+  padding-left: 10px;
+}
+.classDetailsDesktop .tearcherList li .tearcherListBody h5 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.classDetailsDesktop .tearcherList li .tearcherListBody p {
+  font-size: 14px;
+  color: var(--main4);
+  margin: 0;
+}
+.classDetailsDesktop .tearcherList li .tearcherListBody p a {
+  text-decoration: none;
+  color: var(--main4);
+  font-weight: 500;
+}
+.classDetailsDesktop .tearcherList li .tearcherListBody:last-child {
+  border: none;
+}
+.classDetailsDesktop .rating-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.classDetailsDesktop .rating-list li {
+  color: #ddd;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.classDetailsDesktop .rating-list li.selected {
+  color: var(--main1);
+}
+.classDetailsDesktop .editbranch {
+  background: #f9560f;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 15px;
+  min-width: 105px;
+}
+.classDetailsDesktop .editIcon {
+  margin-left: 5px;
+}
+.classDetailsDesktop .editIcon .editN {
+  height: 14px;
+  position: relative;
+  top: -2px;
+}
+.classDetailsDesktop .editGallery .editIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #fff;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 27px;
+  border-radius: 50px;
+}
+.classDetailsDesktop .editGallery .editIcon .editN {
+  width: auto;
+  border-radius: 0;
+}
+.classDetailsDesktop .tagListing {
+  margin-top: 25px;
+}
+.classDetailsDesktop .tagListing .example-chip-list {
+  width: 100%;
+}
+.classDetailsDesktop .tagListing .example-chip-list ::ng-deep .mat-form-field-flex {
+  background-color: #fff;
+  padding: 0;
+}
+.classDetailsDesktop .tagListing .example-chip-list ::ng-deep .mat-form-field-flex .mat-form-field-label-wrapper {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  top: -18px;
+}
+.classDetailsDesktop .tagsBox {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.classDetailsDesktop .tagsBox h5 {
+  font-size: 15px;
+}
+.classDetailsDesktop .tagsBox p a {
+  display: inline-block;
+  border: 1px solid #cecdcd;
+  text-decoration: none;
+  color: #797676;
+  padding: 5px 15px;
+  border-radius: 50px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+.classDetailsDesktop .branchTT {
+  font-size: 18px !important;
+}
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .classDetailsDesktop ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0px;
+  }
+  .classDetailsDesktop ::ng-deep .mat-tab-label {
+    min-width: 25% !important;
+    max-width: 25% !important;
+    padding: 0px 0px !important;
+    font-family: "Open Sans", sans-serif !important;
+    opacity: 1 !important;
+    color: var(--main4) !important;
+  }
+  .classDetailsDesktop .classSlider .catImg {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .classDetailsDesktop .businessDetails {
+    background: #fff;
+    z-index: 1;
+    position: relative;
+    margin: 0px 15px;
+    margin-top: -50px;
+    padding: 15px 15px;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 3px 7px -5px black;
+    margin-bottom: 20px;
+  }
+  .classDetailsDesktop .businessDetails .title.ttN {
+    margin-top: 0;
+  }
+  .classDetailsDesktop .businessDetails .about {
+    margin-bottom: 0px !important;
+  }
+  .classDetailsDesktop .listBox {
+    display: block;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .classDetailsDesktop .listBox ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-right: 15px;
+  }
+  .classDetailsDesktop .listBox ul li {
+    float: left;
+    width: 100%;
+    font-size: 16px !important;
+    margin-top: 10px !important;
+  }
+  .classDetailsDesktop .listBox ul li a {
+    color: var(--main4);
+  }
+  .classDetailsDesktop .listBox .btn {
+    margin-top: 20px;
+  }
+  .classDetailsDesktop .classDetails .title h3 {
+    margin-bottom: 8px;
+    padding-right: 60px;
+  }
+  .classDetailsDesktop .classDetails .title h5 {
+    padding-right: 8px;
+  }
+  .classDetailsDesktop .branchTabListing {
+    position: relative;
+    margin-top: 15px;
+    padding: 0px 15px;
+  }
+  .classDetailsDesktop .branchTabListing select.form-control {
+    height: 48px;
+    width: 4%;
+    position: absolute;
+    left: 0px;
+    z-index: 999;
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+    color: var(--main4) !important;
+    cursor: pointer;
+    background-position: right 22px center;
+  }
+  .classDetailsDesktop .branchTabListing select.form-control:focus {
+    box-shadow: none;
+    border-color: none;
+  }
+  .classDetailsDesktop .map {
+    height: 150px;
+  }
+  .classDetailsDesktop .mapbody .listBox {
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+    width: 100%;
+  }
+  .classDetailsDesktop .mapbody .listBox ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-right: 15px;
+  }
+  .classDetailsDesktop .mapbody .listBox ul li {
+    float: left;
+    width: 50%;
+    font-size: 16px !important;
+    margin: 5px 0px !important;
+  }
+  .classDetailsDesktop ::ng-deep .mat-tab-label {
+    font-size: 15px;
+  }
+  .classDetailsDesktop .mapbox {
+    border: 1px solid #d6d6d6;
+    box-shadow: none;
+  }
+  .classDetailsDesktop .classSpaceBody {
+    padding-right: 15px !important;
+  }
+  .classDetailsDesktop .addReview {
+    text-decoration: none;
+    color: var(--main4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .classDetailsDesktop .addReview .catImg {
+    margin-right: 5px;
+    height: 16px;
+  }
+  .classDetailsDesktop .classSlider .editImages {
+    bottom: 65px;
+    right: 18px;
+  }
+  .classDetailsDesktop ::ng-deep .mat-tab-label {
+    font-size: 16px !important;
+    color: #000 !important;
+  }
+  .classDetailsDesktop ::ng-deep .mat-tab-label-active {
+    color: var(--main1) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .logoImg {
+    width: 16px;
+    margin-left: 48px;
+  }
+
+  ::ng-deep .mat-tab-label .mat-tab-label-content {
+    min-width: 65px;
+  }
+
+  .listBox {
+    margin-bottom: 20px;
+  }
+
+  .branchTT {
+    margin-top: 15px;
+  }
+
+  .classDetails .title h5 {
+    padding-right: 8px !important;
+  }
+
+  .classDetails .title h3 {
+    padding-right: 30px;
+  }
+
+  ::ng-deep .mat-tab-label {
+    min-width: 100px !important;
+  }
+
+  .tagListing {
+    padding: 0px 15px;
+  }
+
+  .tagsBox {
+    padding: 0px 5px;
+  }
+
+  .mapbody .listBox {
+    margin-top: 0px;
+    width: 100%;
+  }
+  .mapbody .listBox ul li {
+    margin: 5px 0px !important;
+  }
+
+  .addReview {
+    margin-bottom: 10px;
+  }
+}
+agm-map {
+  height: 200px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .classDetailsDesktop .col-md-3.display-show-desktop {
+    display: none !important;
+  }
+
+  .classSpaceBody {
+    padding-right: 0px !important;
+  }
+}
+.categoryListN h5 {
+  display: inline-block;
+}

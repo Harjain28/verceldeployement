@@ -1,0 +1,177 @@
+<div class="mainBody">
+    <div class="display-show-mobile">
+        <div class="pageTopBar row">
+            
+            <div class="col-3">
+                <a class="backArrow" (click)="back()">
+                  <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                </a>
+            </div>
+            <div class="col-6 text-center">
+            <h5 class="pgTitle">Marketplace</h5>
+            </div>
+            <div class="col-3">
+                
+            <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+            </div>
+        </div>
+    </div>
+<div class="container businessInbox_section mainSpaceN">
+   
+    <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+  
+
+        <div class="bussinessCenter">
+            <div class="branchesList">
+                <h2>
+                    Marketplace
+
+                              
+                    <a class="btnAddbranch" routerLink="/pages/sell">
+                        + Sell
+                    </a>
+                </h2>
+
+                <div class="emptySection" style="display: none;">
+                    <img lazyLoad="./assets/images/mylisting.svg" class="icon" />
+                    <p>Your list is empty. Start selling!</p>
+                </div>
+            
+                <div class="space myListing">
+                    <!-- <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar> -->
+                    <div class="row">
+                      
+                        <div class="col-6 col-md-4 col-lg-4" *ngFor = "let product of allProducts">
+                            <div class="classSection">
+                                <div class="classSectionImg">
+                                    <a (click)= "redirectToMarketplaceDetails(product._id)">
+                                    <img class="catImg" [lazyLoad] = "product?.image[0]"/>
+                                </a>
+                                    <!-- <a class="fav"><mat-icon class="like">favorite_border</mat-icon></a> -->
+                                    <!-- <span  class="status sellItem">Edit</span> -->
+                                </div>
+                                <div class="classSectionBody"  (click)= "redirectToMarketplaceDetails(product._id)">
+                                <a  class="titleName">
+                                    {{product.title}}
+                                </a>
+                                <div class="profileN">
+                                    <div class="profileName">
+                                        <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                        <span>{{product.userId.name}}</span>
+                                    </div>
+                                    <h5 *ngIf = "product.price !== 'forfree'">${{product?.price}}</h5>
+                                    <h5 *ngIf = "product.price === 'forfree'">Free</h5>
+                                </div>
+                                
+                                <!-- <div class="profileName">
+                                    <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                    <span>{{product?.userId?.name}}</span>
+                                </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-6 col-md-4 col-lg-3">
+                            <div class="classSection">
+                                <div class="classSectionImg">
+                                    <a href="javascript:void(0);">
+                                    <img class="catImg" lazyLoad="./assets/images/list2.svg" />	
+                                    </a>
+                                    <a  class="fav"><mat-icon class="like">favorite</mat-icon></a>
+                                    <span routerLink="/pages/sell" class="status sellItem">Edit</span>
+                                </div>
+                                <div class="classSectionBody">
+                                <a href="javascript:void(0);" class="titleName">
+                                    Makeup kit
+                                </a>
+                                <div class="profileN">
+                                    <div class="profileName">
+                                        <img class="catImg" lazyLoad="./assets/images/profile2.svg" />
+                                        <span>Willow K.</span>
+                                    </div>
+                                    <h5>$40</h5>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="classSection">
+                                <div class="classSectionImg">
+                                    <a href="javascript:void(0);" routerLink = "/marketplace-details">
+                                    <img class="catImg" lazyLoad="./assets/images/list1.svg" />
+                                    </a>	
+                                    <span class="status soldOut">Sold</span>
+                                    <a href="javascript:void(0);" class="fav"><mat-icon class="like">favorite_border</mat-icon></a>
+                                </div>
+                                <div class="classSectionBody">
+                                <a href="javascript:void(0);" routerLink = "/marketplace-details" class="titleName">
+                                    Teapot stand for flow...
+                                </a>
+                                <div class="profileN">
+                                    <div class="profileName">
+                                        <img class="catImg" lazyLoad="./assets/images/userDefault.svg" />
+                                        <span>Charlie L.</span>
+                                    </div>
+                                    <h5>$40</h5>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="classSection">
+                                <div class="classSectionImg">
+                                    <a href="javascript:void(0);" routerLink = "/marketplace-details">
+                                    <img class="catImg" lazyLoad="./assets/images/list2.svg" />	
+                                    </a>
+                                    <span class="status soldOut">Sold</span>
+                                    <a href="javascript:void(0);" class="fav"><mat-icon class="like">favorite</mat-icon></a>
+                                </div>
+                                <div class="classSectionBody">
+                                <a href="javascript:void(0);" routerLink = "/marketplace-details" class="titleName">
+                                    Makeup kit
+                                </a>
+                                <div class="profileN">
+                                    <div class="profileName">
+                                        <img class="catImg" lazyLoad="./assets/images/profile2.svg" />
+                                        <span>Willow K.</span>
+                                    </div>
+                                    <h5>$40</h5>
+                                </div>
+                                </div>
+                            </div>
+                        </div> -->
+                       
+                        
+                        <div class="col-md-12 sellBtnBox display-show-mobile">
+                            <button class="btn sellBtn" routerLink = "/group/sell">
+                                + Sell
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-business-right-sidebar class="businessRight"></app-business-right-sidebar>
+    </div>
+
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Branch Update</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <div class="space">
+      <div class="container businessUpdate">
+        <div class="col-md-10 mx-auto">
+          <div class="bridTitle display-show-desktop">
+            <h3 class="bridT">Edit Branch</h3>
+          </div>
+
+          <div class="row mainBusinessRow">
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Branch Name</label>
+              <input type="text" class="form-control" placeholder="Name" value="Postal Code" value="Jaipur" required />
+            </div>
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Postal Code</label>
+              <input type="text" class="form-control" placeholder="Name" value="Postal Code" [value]="302012"
+                required />
+            </div>
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Address 1</label>
+              <input type="text" class="form-control" placeholder="Address 1"
+                value="Lorem Ipsum is simply dummy text" />
+            </div>
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Address 2</label>
+              <input type="text" class="form-control" placeholder="Address 2"
+                value="Lorem Ipsum is simply dummy text" />
+            </div>
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Country</label>
+              <input type="text" class="form-control" placeholder="Address 2" value="Singapore" disabled />
+            </div>
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input type="text" class="form-control" placeholder="Phone Number" value="9876543210" />
+            </div>
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" placeholder="Email" value="test@gmail.com" />
+            </div>
+
+            <div class="formCmg labelForm col-md-6">
+              <label class="form-label">Web Address (Optional)</label>
+              <input type="text" class="form-control" placeholder="https://yoursite..." />
+            </div>
+
+            <div class="formCmg labelForm col-md-6" style="margin: 0 auto;">
+              <button [routerLink]="['/pages/business-details']" type="button" class="btn submitBtn">Update
+                Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

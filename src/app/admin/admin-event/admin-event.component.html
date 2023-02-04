@@ -1,0 +1,364 @@
+<div class="mainBody">
+  <app-admin-header></app-admin-header>
+
+  <div class="container eventDetails">
+    <div class="bridTitle display-show-desktop">
+      <h3 class="bridT">Event Details</h3>
+    </div>
+    <div class="row m-0">
+      <div class="col-md-12 col-lg-9 col-xl-9 p-0 enentspaceBody">
+        <div class="position-relative">
+          <div class="pageTopBar row">
+            <div class="col-3">
+              <a (click)="back()" class="backArrow display-show-mobile">
+                <img class="catImg" src="./assets/images/icons/back.svg" />
+              </a>
+            </div>
+            <div class="col-6 text-center">
+              <h5 class="pgTitle"></h5>
+            </div>
+            <div class="col-3 text-end">
+              <a style="cursor: pointer" class="shareBox">
+                <img class="catImg" src="./assets/images/icons/icon-share.svg" />
+              </a>
+            </div>
+          </div>
+          <div class="detailsImg">
+            <owl-carousel-o [options]="customOptions2">
+              <ng-container *ngFor="let img of image">
+                <ng-template carouselSlide>
+                  <img class="catImg" src="{{ img }}" />
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div>
+        </div>
+
+        <div class="eventBoxDesktop">
+          <div class="space detailsBox pb-0">
+            <div class="
+             mt-0">
+              <h3>{{ title }}</h3>
+            </div>
+            <div class="listing">
+              <ul>
+                <li>
+                  <p class="post" *ngFor = "let groupsName of groupsName">
+                    Groups : 
+                    <a style="cursor: pointer;" class="groupName">{{groupsName}}</a> 
+                  </p>
+                </li>
+                <li>
+                  <span><img class="" src="./assets/images/icons/icon-date.svg" /></span>
+                  Date: {{ Date | date }} ({{ dayName }})
+                </li>
+                <li>
+                  <span><img class="" src="./assets/images/icons/icon-date.svg" /></span>
+                  Time: {{ startTime }} - {{ endTime }}
+                </li>
+                <li>
+                  <span><img class="" src="./assets/images/icons/icon-dollor.svg" /></span>
+                  Price: {{ price }}
+                </li>
+                <li>
+                  Type : {{seteventtype}}
+                </li>
+                <li *ngIf = "contactName">
+                  By : {{contactName}}
+                </li>
+              </ul>
+              <!-- <button class="btn">Sign up</button> -->
+            </div>
+            <div class="title mb-0 mt-2 d-block description">
+              <h3>Description</h3>
+              <p class="ellipses mt-2 mb-0">
+                {{eventsList?.smallDescription}}...
+                <!-- Lorem Ipsum is simply dummy text of the printing and.... -->
+                <!-- <a style="cursor: pointer; color: rgb(78, 78, 245);">Read more</a> -->
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="display-show-mobile">
+          <hr />
+        </div>
+
+        <div class="space pt-0 pb-0">
+          <div class="title">
+            <h3>Event location</h3>
+          </div>
+
+          <div class="mapbox">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227748.38256348536!2d75.65047013538644!3d26.88544791745257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c4adf4c57e281%3A0xce1c63a0cf22e09!2sJaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1643878190532!5m2!1sen!2sin"
+              class="map"></iframe>
+            <div class="mapbody mapbodyNew border-0">
+              <div class="mapbodyin">
+                <img class="icon" src="./assets/images/icons/icon-location.svg" />
+                <h5>{{ address1 }}, {{ country }}</h5>
+              </div>
+              <img class="iconarrow" src="./assets/images/icons/icon-arrowright.svg" />
+            </div>
+          </div>
+        </div>
+        <div class="tagsBox title d-block">
+          <h3 class="mb-2">Tags</h3>
+          <p *ngFor="let tag of tagName; let index = i">
+            <a style="cursor: pointer;">{{tag}}</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-lg-3 col-xl-3 display-show-desktop">
+        <div class="eventSection">
+          <div class="title mt-0">
+            <h3>Related article</h3>
+          </div>
+          <div class="classSection owlSLiderSpace">
+            <div class="classSectionImg" routerLink="/articles-details">
+              <img class="catImg" src="./assets/images/classImg3.svg" />
+              <span>PARENTING</span>
+              <a style="cursor: pointer" class="fav">
+                <mat-icon class="like">favorite_border</mat-icon>
+              </a>
+            </div>
+            <div class="classSectionBody">
+              <a style="cursor: pointer" routerLink="/articles-details" class="titleName">
+                Sed ut perspiciatis unde omnis iste natus error sit
+              </a>
+              <p>1 h ago</p>
+            </div>
+          </div>
+
+          <div class="classSection owlSLiderSpace">
+            <div class="classSectionImg" routerLink="/group/articles-details">
+              <img class="catImg" src="./assets/images/classImg3.svg" />
+              <span>PARENTING</span>
+              <a style="cursor: pointer" class="fav">
+                <mat-icon class="like">favorite_border</mat-icon>
+              </a>
+            </div>
+            <div class="classSectionBody">
+              <a style="cursor: pointer" routerLink="/articles-details" class="titleName">
+                Sed ut perspiciatis unde omnis iste natus error sit
+              </a>
+              <p>1 h ago</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventSection">
+          <div class="title mt-0">
+            <h3>Related events</h3>
+          </div>
+          <div class="classSection owlSLiderSpace">
+            <div class="classSectionImg" routerLink="/event-details">
+              <img class="catImg" src="./assets/images/classImg3.svg" />
+              <span>PARENTING</span>
+              <a style="cursor: pointer" class="fav">
+                <mat-icon class="like">favorite_border</mat-icon>
+              </a>
+            </div>
+            <div class="classSectionBody">
+              <a style="cursor: pointer" routerLink="/event-details" class="titleName">
+                Sed ut perspiciatis unde omnis iste natus error sit
+              </a>
+              <p>1 h ago</p>
+            </div>
+          </div>
+
+          <div class="classSection owlSLiderSpace">
+            <div class="classSectionImg" routerLink="/event-details">
+              <img class="catImg" src="./assets/images/classImg3.svg" />
+              <span>PARENTING</span>
+              <a style="cursor: pointer" class="fav">
+                <mat-icon class="like">favorite_border</mat-icon>
+              </a>
+            </div>
+            <div class="classSectionBody">
+              <a style="cursor: pointer" routerLink="/event-details" class="titleName">
+                Sed ut perspiciatis unde omnis iste natus error sit
+              </a>
+              <p>1 h ago</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-md-12 p-0">
+        <hr />
+        <div class="space pt-0">
+          <div class="title m-0">
+            <h3>You may also like</h3>
+            <a class="link" style="cursor: pointer">More</a>
+          </div>
+          <div class="articlesSlider">
+            <owl-carousel-o [options]="customOptions">
+              <ng-template style="width: 10px" carouselSlide>
+                <div
+                  class="classSection groupBox"
+                  routerLink="/group/event-details"
+                >
+                  <div class="classSectionImg">
+                    <a style="cursor: pointer"
+                      ><img class="catImg" src="./assets/images/group4.svg"
+                    /></a>
+                    <div class="groupIcon">
+                      <img
+                        class="icon"
+                        src="./assets/images/icons/icon-location.svg"
+                      />
+                      Knyazya Romana Street, 28, Lviv...
+                    </div>
+                    <a style="cursor: pointer" class="fav"
+                      ><mat-icon class="like">favorite_border</mat-icon></a
+                    >
+                  </div>
+                  <div class="classSectionBody">
+                    <div class="groupBody">
+                      <div class="groupBodyConent">
+                        <div class="time">Sat, Mar 14, 8:00 PM GMT+2</div>
+                        <h3><a style="cursor: pointer">Swimming</a></h3>
+                        <p>Here will be the description of the group</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template style="width: 10px" carouselSlide>
+                <div
+                  class="classSection groupBox"
+                  routerLink="/group/event-details"
+                >
+                  <div class="classSectionImg">
+                    <a style="cursor: pointer" routerLink="/group/group-details"
+                      ><img class="catImg" src="./assets/images/group4.svg"
+                    /></a>
+                    <div class="groupIcon">
+                      <img
+                        class="icon"
+                        src="./assets/images/icons/icon-location.svg"
+                      />
+                      Knyazya Romana Street, 28, Lviv...
+                    </div>
+                    <a style="cursor: pointer" class="fav"
+                      ><mat-icon class="like">favorite_border</mat-icon></a
+                    >
+                  </div>
+                  <div class="classSectionBody">
+                    <div class="groupBody">
+                      <div class="groupBodyConent">
+                        <div class="time">Sat, Mar 14, 8:00 PM GMT+2</div>
+                        <h3><a style="cursor: pointer">Swimming</a></h3>
+                        <p>Here will be the description of the group</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template style="width: 10px" carouselSlide>
+                <div
+                  class="classSection groupBox"
+                  routerLink="/group/event-details"
+                >
+                  <div class="classSectionImg">
+                    <a style="cursor: pointer"
+                      ><img class="catImg" src="./assets/images/group4.svg"
+                    /></a>
+                    <div class="groupIcon">
+                      <img
+                        class="icon"
+                        src="./assets/images/icons/icon-location.svg"
+                      />
+                      Knyazya Romana Street, 28, Lviv...
+                    </div>
+                    <a style="cursor: pointer" class="fav"
+                      ><mat-icon class="like">favorite_border</mat-icon></a
+                    >
+                  </div>
+                  <div class="classSectionBody">
+                    <div class="groupBody">
+                      <div class="groupBodyConent">
+                        <div class="time">Sat, Mar 14, 8:00 PM GMT+2</div>
+                        <h3><a style="cursor: pointer">Swimming</a></h3>
+                        <p>Here will be the description of the group</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template style="width: 10px" carouselSlide>
+                <div
+                  class="classSection groupBox"
+                  routerLink="/group/event-details"
+                >
+                  <div class="classSectionImg">
+                    <a style="cursor: pointer"
+                      ><img class="catImg" src="./assets/images/group4.svg"
+                    /></a>
+                    <div class="groupIcon">
+                      <img
+                        class="icon"
+                        src="./assets/images/icons/icon-location.svg"
+                      />
+                      Knyazya Romana Street, 28, Lviv...
+                    </div>
+                    <a style="cursor: pointer" class="fav"
+                      ><mat-icon class="like">favorite_border</mat-icon></a
+                    >
+                  </div>
+                  <div class="classSectionBody">
+                    <div class="groupBody">
+                      <div class="groupBodyConent">
+                        <div class="time">Sat, Mar 14, 8:00 PM GMT+2</div>
+                        <h3><a style="cursor: pointer">Swimming</a></h3>
+                        <p>Here will be the description of the group</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template style="width: 10px" carouselSlide>
+                <div
+                  class="classSection groupBox"
+                  routerLink="/group/event-details"
+                >
+                  <div class="classSectionImg">
+                    <a style="cursor: pointer"
+                      ><img class="catImg" src="./assets/images/group4.svg"
+                    /></a>
+                    <div class="groupIcon">
+                      <img
+                        class="icon"
+                        src="./assets/images/icons/icon-location.svg"
+                      />
+                      Knyazya Romana Street, 28, Lviv...
+                    </div>
+                    <a style="cursor: pointer" class="fav"
+                      ><mat-icon class="like">favorite_border</mat-icon></a
+                    >
+                  </div>
+                  <div class="classSectionBody">
+                    <div class="groupBody">
+                      <div class="groupBodyConent">
+                        <div class="time">Sat, Mar 14, 8:00 PM GMT+2</div>
+                        <h3><a style="cursor: pointer">Swimming</a></h3>
+                        <p>Here will be the description of the group</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+</div>

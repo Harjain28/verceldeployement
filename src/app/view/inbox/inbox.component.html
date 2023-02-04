@@ -1,0 +1,88 @@
+<div class="pageMarginTop">
+    <div class="mainBody bottomSpace">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3">
+                    <a (click)="back()" class="backArrow">
+                        <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Inbox</h5>
+                </div>
+                <div class="col-3 text-end">
+                    <a href="javascript:void(0);">
+                        <img class="edit" lazyLoad="./assets/images/icons/icon-edit.svg">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container inboxSection">
+            <div class="bridTitle display-show-desktop">
+                <h3 class="bridT">Inbox</h3>
+            </div>
+
+            <ul class="actionIcons" *ngIf="allchatData.length > 0">
+                <!-- <li>
+                    <a>
+                        <mat-icon>delete</mat-icon>
+                    </a>
+                </li> -->
+                <!-- <li>
+            <a href="javascript:void(0);">
+                <img class="edit" lazyLoad="./assets/images/icons/icon-edit.svg"> 
+            </a>
+        </li> -->
+            </ul>
+            <ul class="inboxMenu">
+                <li class="active" *ngFor="let chatdata of allchatData">
+                    <label class="checkbox">
+                        <input type="checkbox" />
+                        <span class="checkmark"></span>
+                    </label>
+                    <!-- <img class="profileImg" [lazyLoad]="chatdata?.receiverUserImage[0]"> -->
+                    <img class="profileImg" *ngIf="chatdata?.userImage" [lazyLoad]="chatdata?.userImage">
+                    <img class="profileImg" *ngIf="!chatdata?.userImage" lazyLoad="./assets/images/user.png">
+                    <div class="inboxMenuBody" (click)="redirectTochat(chatdata)">
+                        <h5>{{chatdata?.userName}}</h5>
+                        <p>{{chatdata?.message}}</p>
+                        <!-- <h6>Thanks!</h6> -->
+                    </div>
+                    <div class="inboxMenuTime" (click)="redirectTochat(chatdata)">
+                        <time>{{chatdata.time | date: 'short'}}</time>
+                        <div class="inboxImg" *ngIf="chatdata?.image">
+                            <img class="" [lazyLoad]="chatdata?.image">
+                        </div>
+                           
+                        <!-- chatdata?.receiver_id,chatdata?.user_id -->
+                    </div>
+                    <a class="actionIcons" (click)="openToggle(chatdata?.receiver_id)">
+                        <mat-icon>delete</mat-icon>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="col-md-12 deleteBtn display-show-mobile" *ngIf="allchatData.length > 0">
+                <button class="btn">
+                    Delete
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="popupBox" *ngIf="leaveGroup">
+    <div class="bg">
+
+        <div class="popupBody">
+            <h5>Are you sure you want to Delete All chats?</h5>
+            <!-- <p>You will loose all data.</p> -->
+            <div class="bottom">
+                <a class="btn theme_color" (click)="openToggle(false)">Cancel</a>
+                <a class="btn"  (click)="chatHeadVisibility()">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>

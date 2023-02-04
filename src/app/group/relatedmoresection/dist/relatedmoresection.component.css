@@ -1,0 +1,488 @@
+.eventList {
+  display: flex;
+  box-shadow: 0 2px 11px -2px #d6d6d6;
+  padding: 8px 8px;
+  border-radius: 5px;
+  margin: 10px 0px 0px 0px;
+  cursor: pointer;
+}
+.eventList .eventDate {
+  color: var(--main1);
+  border: 1px solid #7F8699;
+  width: 130px;
+  text-align: center;
+  padding: 15px 10px;
+  border-radius: 6px;
+}
+.eventList .eventDate h3 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.eventList .eventDate h5 {
+  font-size: 16px;
+  margin: 0px;
+}
+.eventList .eventBody {
+  width: 100%;
+  padding: 0px 10px;
+  position: relative;
+}
+.eventList .eventBody .tt {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+}
+.eventList .eventBody p {
+  margin: 10px 0px 0px 0px;
+  color: var(--main4);
+}
+.eventList .eventBody p .icon {
+  margin-right: 3px;
+}
+.eventList .eventBody .fav {
+  color: var(--main1);
+  display: block;
+  position: absolute;
+  right: 0px;
+  bottom: 0;
+}
+
+.topicList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 18px;
+  margin-bottom: 50px;
+}
+.topicList li {
+  display: flex;
+  background: #fff;
+  position: relative;
+  margin-top: 10px;
+}
+.topicList li .tpsImg {
+  width: 120px;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.topicList li .trendingBody {
+  padding-left: 10px;
+  padding-right: 5px;
+}
+.topicList li .trendingBody .titleName {
+  font-size: 16px;
+  color: var(--main3);
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.topicList li .trendingBody .fav {
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  color: var(--main1);
+}
+.topicList li .trendingBody p {
+  margin: 5px 0px 0px 0px;
+  color: var(--main4);
+}
+.topicList li .trendingBody p a {
+  font-weight: 500;
+  color: var(--main4);
+  text-decoration: none;
+}
+.topicList li .trendingBody .time {
+  margin-top: 8px;
+}
+.topicList li .trendingBody .time span {
+  font-size: 14px;
+  color: var(--main4);
+}
+
+::ng-deep .owl-nav {
+  position: absolute;
+  top: -30px;
+  margin: 0;
+  left: 50%;
+  margin: 0px !important;
+  transform: translate(-50%, 0%);
+}
+::ng-deep .owl-nav .owl-prev, ::ng-deep .owl-nav .owl-next {
+  background: transparent !important;
+  color: var(--main4) !important;
+  font-size: 20px !important;
+  font-weight: bold;
+  margin: 0 !important;
+  padding: 0px 15px !important;
+}
+
+.downloadSection {
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.downloadSection .backgroundImg {
+  width: 100%;
+}
+.downloadSection .containerBox {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  transform: translate(0%, -50%);
+  padding: 0px 150px;
+}
+.downloadSection .containerBox .leftContent h2 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  background-image: linear-gradient(45deg, #ECA363, #E05E80);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+.downloadSection .containerBox .leftContent p {
+  color: #fff;
+  font-size: 18px;
+  line-height: 32px;
+  margin-bottom: 25px;
+}
+.downloadSection .containerBox .leftContent ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.downloadSection .containerBox .leftContent ul li a img {
+  height: 65px;
+}
+.downloadSection .containerBox .mobileImg {
+  width: 100%;
+  margin-top: 0px;
+  padding: 0px 20px;
+}
+
+.topBar .logoN {
+  height: 35px;
+  margin-right: 10px;
+  margin-left: 2px;
+}
+.topBar.affix {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 99;
+  height: 75px;
+  width: 100%;
+  left: 0;
+  padding: 14px 15px;
+  border-bottom: 1px solid #dfd8d8;
+}
+
+.chat {
+  float: right;
+  position: relative;
+  display: inline-block;
+}
+.chat span {
+  position: absolute;
+  right: -2px;
+  background: #f9560f;
+  color: #fff;
+  font-size: 12px;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  text-align: center;
+  border-radius: 50px;
+  bottom: 2px;
+}
+
+.category {
+  font-size: 15px;
+  color: #868c9e;
+  display: inline-block;
+  width: auto;
+  padding: 0px;
+  margin-right: 5px;
+}
+
+.cateSliderDesktop {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.cateSliderDesktop li {
+  width: 10%;
+}
+.cateSliderDesktop li .catImg {
+  height: 90px;
+}
+
+.categoryBoxDesktop .catImg {
+  height: 90px !important;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .downloadSection .containerBox {
+    padding: 0px 50px;
+  }
+
+  .downloadSection .containerBox .leftContent h2 {
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+
+  .downloadSection .containerBox .leftContent p {
+    color: #fff;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 25px;
+  }
+
+  .downloadSection .containerBox .leftContent ul li a img {
+    height: 55px;
+  }
+
+  .aboutSection {
+    padding: 0px 80px;
+  }
+}
+.groupSlider {
+  display: block;
+  margin: 0px -5px;
+  margin-top: 10px;
+}
+.groupSlider .groupBox {
+  position: relative;
+  margin: 0px 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.groupSlider .groupBox img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+.groupSlider .groupBox .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  color: #fff;
+  text-decoration: none;
+}
+.groupSlider .groupBox .overlay .sg {
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+}
+.groupSlider .groupBox .overlay .sg h4 {
+  margin-bottom: 0px;
+}
+.groupSlider .groupBox .overlay .sg p {
+  margin: 0;
+}
+
+.groupBox {
+  box-shadow: none;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 15px;
+}
+.groupBox .classSectionImg .catImg {
+  height: 140px;
+}
+.groupBox .classSectionImg .groupIcon {
+  position: absolute;
+  bottom: 8px;
+  left: 11px;
+  display: flex;
+  color: #fff;
+}
+.groupBox .classSectionImg .groupIcon .icon {
+  height: 17px;
+  width: auto;
+  border-radius: 0px;
+  margin-right: 6px;
+}
+.groupBox .classSectionBody {
+  padding: 0 !important;
+  margin-top: 10px;
+}
+.groupBox .classSectionBody .groupBody {
+  display: flex;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent {
+  width: 100%;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent h3 a {
+  text-decoration: none;
+  color: #000;
+}
+.groupBox .classSectionBody .groupBody .groupBodyConent p {
+  margin: 0;
+  font-size: 15px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.groupBox .classSectionBody .groupBody .joinGroup {
+  background: var(--main1);
+  color: #fff;
+  height: 38px;
+  padding: 5px 30px;
+  margin-left: 15px;
+}
+
+.cateSliderDesktop {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.cateSliderDesktop li {
+  width: 17%;
+}
+.cateSliderDesktop li .catImg {
+  height: 96px;
+}
+
+.categoryBoxDesktop .catImg {
+  height: 90px !important;
+}
+
+.textlimit ::ng-deep span {
+  margin: 0;
+  font-size: 15px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .aboutSection {
+    position: relative;
+    margin-bottom: 100px;
+  }
+  .aboutSection .pol1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 34px;
+  }
+  .aboutSection .pol2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotate(180deg);
+    height: 34px;
+  }
+  .aboutSection .title {
+    display: block;
+  }
+  .aboutSection .title h3 {
+    font-size: 34px;
+  }
+  .aboutSection .title p {
+    position: relative;
+    padding-left: 80px;
+    line-height: 32px;
+    color: #7F8699;
+    margin-top: 35px;
+    font-size: 19px;
+    margin-bottom: 0;
+  }
+  .aboutSection .title p .drops {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 40px;
+  }
+  .aboutSection .title p a {
+    font-weight: 500;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--main4);
+  }
+}
+.ellipses {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsesTitle {
+  font-size: 16px;
+  color: var(--main3);
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.ellipsesTitle2 {
+  font-size: 16px;
+  color: var(--main3);
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+@mediaclass ="classSectionBody" (max-width: 767px) {
+  .category {
+    font-size: 13px;
+  }
+
+  .topicList {
+    margin-bottom: 10px;
+  }
+
+  .categoryList {
+    margin-bottom: 15px;
+  }
+}

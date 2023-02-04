@@ -1,0 +1,283 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a class="backArrow" (click)="back()">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Edit Profile</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+
+
+    <div class="container businessProfile_section mainSpaceN">
+
+      <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+        <div class="bussinessCenter">
+          <div class="branchesList">
+            <h2 class="display-show-desktop">
+              Edit Profile
+            </h2>
+
+            <div class="infor">
+              <!-- <div class="alert">
+                <h5>Update Your Profile</h5>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text eve.</p>
+                <button class="close">✖</button>
+              </div> -->
+            </div>
+
+            <div class="editProfile space">
+              <form [formGroup]="editProfileForm">
+
+                <div class="formCmg">
+                  <div class="profileImg">
+                    <mat-icon *ngIf="images !== 'blankimage' && images" class="closeIcon" (click)="deleteProfile()">close</mat-icon>
+                    <img *ngIf="images === 'blankimage' || !images" class="catImg" lazyLoad="./assets/images/profile.svg" />
+                    <img *ngIf="images !== 'blankimage' && images" class="catImg" lazyLoad="{{images}}" />
+                    <div class="uploadIcon">
+                      <input type="file" id = "upLoader" (change)="onFileChange($event)" accept="image/*" name="images"
+                        formControlName="image" />
+                      <img  *ngIf="images === 'blankimage' || !images"class="" lazyLoad="./assets/images/icons/icon-plus.svg" />
+
+                    </div>
+                  </div>
+                  <div style="top: -15px;" class="error text-center" *ngIf="
+                        editProfileForm.controls.image.touched &&
+                        editProfileForm.controls.image.hasError('required')
+                      ">
+                    Image is Required.
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="formCmg labelForm col-md-12 mb-4">
+                    <label class="form-label">Name</label>
+                    <input #firstName type="text" class="form-control" formControlName="name" [(ngModel)]='name'
+                      placeholder="Name*" />
+                  </div>
+                  <div class="error" *ngIf="
+                          editProfileForm.controls.name.touched &&
+                          editProfileForm.controls.name.hasError('required')
+                        ">
+                    Name is required.
+                  </div>
+                  <div class="formCmg labelForm col-md-12 mb-4" *ngIf="!diabledFeilds">
+                    <label class="form-label">Unique Id</label>
+                    <input type="text" class="form-control" placeholder="Unique Id" value='{{uniqueId}}' disabled />
+                  </div>
+                  <!--<div class="formCmg labelForm col-md-12 mb-4">
+                       <label class="form-label">User Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="userName"
+                          placeholder="User Name*"
+                          value="John Doe"
+                        />
+                      </div>
+                      <div
+                        class="error"
+                        *ngIf="
+                          editProfileForm.controls.userName.touched &&
+                          editProfileForm.controls.userName.hasError('required')
+                        "
+                      >
+                      User Name is required.
+                      </div>-->
+                  <!-- <div class="formCmg labelForm col-md-6">
+                  <input type="text" class="form-control" placeholder="Username (recommended for joining groups) *" required />
+                   </div> -->
+                  <div class="formCmg labelForm col-md-12 mb-4">
+                    <label class="form-label">Email</label>
+                    <div class="input-group">
+                      <input type="email" class="form-control" [(ngModel)]="businessemail"
+                        (ngModelChange)="onEmailChange($event)" [readonly]="showEmailfield" formControlName="email"
+                        placeholder="Email*" />
+                      <button class="editBtn btn" *ngIf="showEdit" (click)="editEmail()">Edit</button>
+                      <button class="editBtn btn" *ngIf="!showEdit" (click)="submitEmail()">Submit</button>
+                    </div>
+                    <div class="error mt-3" *ngIf="
+                        editProfileForm.controls.email.touched &&
+                        editProfileForm.controls.email.hasError('required')
+                                      ">
+                      Email address is required.
+                    </div>
+                    <div class="error mt-3" *ngIf="
+                                        editProfileForm.controls.email.dirty &&
+                                        editProfileForm.controls.email.hasError('pattern')
+                                      ">
+                      Enter valid email address.
+                    </div>
+
+                  </div>
+
+
+                  <div class="formCmg labelForm col-md-12 mb-4" *ngIf="showEmailOTPforVarification">
+                    <label class="form-label">OTP</label>
+                    <div class="input-group mt-2">
+                      <input type="text" class="form-control" (keypress)="numberOnly($event, 'price')"
+                        formControlName="emailOTP" placeholder="Otp" />
+                      <button class="editBtn btn" (click)="verifyEditEmailOtp()">Verify</button>
+                    </div>
+                    <div class="error mt-3" *ngIf="
+                                                                        editProfileForm.controls.emailOTP.dirty &&
+                                                                        editProfileForm.controls.emailOTP.hasError('pattern')
+                                                                      ">
+                      OTP should be of 4 characters.
+                    </div>
+                  </div>
+
+                  <div class="formCmg checkboxFrom">
+                    <div class="tt">Gender</div>
+                    <label class="radio">
+                      <input type="radio" name="gender" value="male" formControlName="gender" checked />
+                      <span class="checkmark"></span>
+                      Male
+                    </label>
+                    <label class="radio">
+                      <input type="radio" value="female" formControlName="gender" name="gender" />
+                      <span class="checkmark"></span>
+                      Female
+                    </label>
+                  </div>
+                  <div class="error" *ngIf="
+                          editProfileForm.controls.gender.touched &&
+                          editProfileForm.controls.gender.hasError('required')
+                        ">
+                    Gender is required.
+                  </div>
+                  <div class="formCmg labelForm col-md-12 mt-2">
+                    <label class="form-label">Mobile Number</label>
+                    <div class="input-group">
+                      <span class="staticCode"> +65 </span>
+                      <input type="text" style="padding-left: 58px;" formControlName="phone"
+                        (ngModelChange)="onMobileChange($event)" [readonly]="showMobilefield" class="form-control"
+                        placeholder="Mobile Number" (keypress)="numberOnly($event, 'price')" />
+                      <button class="editBtn btn" *ngIf="showEditPhone" (click)="editPhoneNumber()">Edit</button>
+                      <button class="editBtn btn" *ngIf="!showEditPhone" (click)="submitPhoneNumber()">Submit</button>
+                    </div>
+
+
+                    <div class="error mt-3" *ngIf="
+                    editProfileForm.controls.phone.touched &&
+                    editProfileForm.controls.phone.hasError('required')
+                  ">
+                      Mobile Number is required.
+                    </div>
+                    <div class="error mt-3" *ngIf="
+                      editProfileForm.controls.phone.dirty &&
+                      editProfileForm.controls.phone.hasError('pattern')
+                    ">
+                    Please enter valid mobile number.
+                    </div>
+                  </div>
+
+                  <div class="formCmg labelForm col-md-12 mb-4" *ngIf="showMobileOTPforVarification">
+                    <label class="form-label">OTP</label>
+                    <div class="input-group mt-2">
+                      <input type="number" class="form-control" formControlName="mobileOTP" placeholder="Otp" />
+                      <button class="editBtn btn" (click)="verifyEditPhoneOtp()">Verify</button>
+                    </div>
+                    <div class="error mt-3" *ngIf="
+                                    editProfileForm.controls.mobileOTP.dirty &&
+                                    editProfileForm.controls.mobileOTP.hasError('pattern')
+                                  ">
+                      OTP should be of 4 characters.
+                    </div>
+                  </div>
+
+                  <div class="formCmg labelForm col-md-12 mb-4">
+                    <label class="form-label">Date Of Birth</label>
+                    <input type="date" formControlName="date" max="{{currentDate()}}" class="form-control"
+                      name="date" />
+                  </div>
+                  <div class="error" *ngIf="
+                          editProfileForm.controls.date.touched &&
+                          editProfileForm.controls.date.hasError('required')
+                        ">
+                    Date is required.
+                  </div>
+
+                  <div class="formCmg labelForm col-md-12 mt-4">
+                    <!-- <input type="password" class="form-control" name="password" value="********" disabled /> -->
+                    <a routerLink="/view/change-password" class="changePassword">Change password</a>
+                  </div>
+
+                  <!-- <div class="children pt-3" *ngIf="addchild">
+                        <div class="formCmg labelForm">
+                          <label class="form-label"><strong>Child 1</strong> </label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Child name*"
+                          />
+                        </div>
+                        <div class="formCmg checkboxFrom">
+                          <div class="tt">Gender</div>
+                          <label class="radio">
+                            <input type="radio" name="gender" checked />
+                            <span class="checkmark"></span>
+                            Male
+                          </label>
+                          <label class="radio">
+                            <input type="radio" name="gender" />
+                            <span class="checkmark"></span>
+                            Female
+                          </label>
+                        </div>
+                        <div class="formCmg labelForm">
+                          <input type="date" class="form-control" />
+                        </div>
+                        <div class="formCmg labelForm">
+                          <input type="text" placeholder="School" class="form-control" />
+                          <a
+                            href="javascript:void(0);"
+                            class="changePassword text-end d-block"
+                            style="text-decoration: none"
+                            >+ Add children</a
+                          >
+                        </div>
+                      </div> -->
+                </div>
+
+                <!-- <div class="formCmg labelForm">
+                      <a
+                        href="javascript:void(0);"
+                        class="addChildren"
+                        (click)="openToggle()"
+                        >Add children</a
+                      >
+                    </div> -->
+
+                <div class="formCmg updatePasswordBtn">
+                  <button (click)="submitEditProfileForm()" [disabled]="DisableSubmitbutton" type="button"
+                    class="btn submitBtn">
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+
+
+          </div>
+        </div>
+
+        <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,66 @@
+
+.mainFooter {
+    background-color: #2D3436;
+    padding: 40px 0px 30px 0px;
+    display: block;
+
+    .footerMenu {
+        list-style: none;
+        margin:0;
+        padding: 0;
+
+        h5 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            a {
+                text-decoration: none;
+                color: #fff;
+                line-height: 36px;
+                font-size: 16px;
+                display: block;
+            }
+        }
+    }
+
+    .copyright {
+        text-align: center;
+        color: #fff;
+        margin-top: 30px;
+    }
+
+    .socialsLinks {
+       list-style: none;
+       margin: 0;
+       padding: 0;
+       display: flex;
+       margin-top: 20px;
+
+       li {
+
+           a {
+               margin-right: 10px;
+
+              img {
+                  height: 40px;
+              }
+           }
+       }
+
+    }
+}
+
+
+/*=======================================================
+//////////////RESPONSIVE MEDIA QUERY START///////////////
+=======================================================*/
+@media (max-width: 767px) {
+
+    .mainFooter {
+        display: none;
+    }
+    
+}

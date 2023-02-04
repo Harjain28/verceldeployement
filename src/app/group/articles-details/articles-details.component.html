@@ -1,0 +1,421 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" src="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Articles Details</h5>
+        </div>
+        <div class="col-3">
+          <a class="logo" routerLink="/">
+            <img class="logoImg" lazyLoad="/assets/images/logo.svg" />
+          </a>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="container articleDetailsDesktop">
+      <div class="row articleDetailsMobile">
+        <div class="col-md-9">
+          <div class="bridTitle display-show-desktop">
+            <h3 class="bridT">Article Details</h3>
+          </div>
+          <div class="space articleDetails">
+            <div class="title m-0 d-block position-relative">
+              <h3>{{ ArticleList?.title }}</h3>
+              <p class="post postDataInMobile mb-1">
+                Posted on {{ ArticleList?.createdDate | date }} <span>|</span> By {{ ArticleList?.authorName }}
+                <span>|</span> <a class="groupName" *ngIf="ArticleList?.subject.length > 0"
+                  (click)="searchbySubject(ArticleList.subject)">{{ArticleList?.subject}}</a>
+              </p>
+              <!-- <p class="post  info-div overflow-auto" *ngIf="ArticleList?.groups_Id.length > 0">
+              <span>Groups :</span><a   *ngFor = "let groups of ArticleList?.groups_Id" class="groupName" (click) = "searchbyGroup(groups?.id)">{{groups.grpName}}</a> 
+            </p> -->
+              <div class="rightPostion">
+                <a style="cursor: pointer" (click)="checkLoginorNot()">
+                  <img class="" (click)="copyToClipboard()" lazyLoad="./assets/images/icons/icon-share.svg" />
+                </a>
+                <a style="cursor: pointer;" class="fav">
+                  <mat-icon *ngIf="!favItem" (click)="addtoArticlesWishList(ArticleList?._id);" class="like">
+                    favorite_border</mat-icon>
+                  <mat-icon *ngIf="favItem" (click)="deleteArticlesWishlist(ArticleList?._id)">favorite
+                  </mat-icon>
+                </a>
+
+
+              </div>
+
+              <img class="catImg" src="{{ ArticleList?.banner }}" />
+              <p class="text-justify images-set" *ngIf="ArticleList?.description"
+                [innerHTML]="ArticleList?.description | sanitizeHtml"></p>
+            </div>
+
+            <div class="tagsBox" *ngIf="articleTags.length > 0">
+              <h5>Tags</h5>
+              <p>
+                <a style="cursor: pointer;" *ngFor="let tags of articleTags" (click)=searchbyTag(tags)>{{tags}}</a>
+              </p>
+            </div>
+          </div>
+          <hr />
+          <div class="space pt-0 pb-0">
+            <div class="author">
+              <img class="catImg" src="{{ ArticleList?.authorimage }}" />
+              <div class="authorBody">
+                <p>
+                  {{ ArticleList?.authordescription }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Sections-->
+
+        <div class="col-md-3 display-show-desktop">
+          <div *ngFor="let section of sectionData | slice:0:2">
+            <div class="eventSection" *ngIf="section.section.length > 0 && section.sectionname === 'Articles'">
+              <div class="title mt-0">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+                  (click)="showMoreData(section.title)">More</a>
+              </div>
+              <div class="classSection owlSLiderSpace" *ngFor="let article of section.section | slice:0:4">
+                <div class="classSectionImg">
+                  <img (click)="getArticeDetails(article._id)" class="catImg" src="{{ article.banner }}" />
+                  <span (click)="getArticeDetails(article._id)">{{ article.title }}</span>
+                  <!-- <a style="cursor: pointer" class="fav">
+                  <mat-icon class="like">favorite_border</mat-icon>
+                </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a (click)="getArticeDetails(article._id)" style="cursor: pointer" class="titleName textLimit2">
+                    {{ article.articledescription }}
+                  </a>
+                  <p>{{ article.updatedAt | dateAgo }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="eventSection" *ngIf="section.section.length > 0 && section.sectionname === 'Event'">
+              <div class="title mt-0">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+                  (click)="showMoreData(section.title)">More</a>
+              </div>
+              <div class="classSection owlSLiderSpace" *ngFor="let event of section.section | slice:0:4">
+                <div class="classSectionImg">
+                  <img (click)="getEventsDetails(event._id)" class="catImg" src="{{ event.image[0] }}" />
+                  <span (click)="getEventsDetails(event._id)">{{ event.title }}</span>
+                  <!-- <a style="cursor: pointer" class="fav">
+                  <mat-icon class="like">favorite_border</mat-icon>
+                </a> -->
+                </div>
+                <div class="classSectionBody" (click)="getEventsDetails(event._id)">
+                  <p class="ellipses" style="cursor: pointer">{{event?.smallDescription}}</p>
+
+                  <p (click)="getEventsDetails(event._id)">{{ event.Date |dateAgo }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="eventSection" *ngIf="section.section.length > 0 && section.sectionname === 'Classes'">
+              <div class="title mt-0">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+                  (click)="showMoreData(section.title)">More</a>
+              </div>
+              <div class="classSection owlSLiderSpace" *ngFor="let class of section.section | slice:0:4"
+                (click)="getClassDetails(class?._id)">
+                <div class="classSectionImg">
+                  <img *ngIf="class.image" class="catImg" src="{{ class.image[0] }}" />
+                  <img *ngIf="!class.image" class="catImg" src="./assets/images/classImg.svg" />
+                  <!-- <a style="cursor: pointer" class="fav">
+                  <mat-icon class="like">favorite_border</mat-icon>
+                </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ class.businessName }}
+                  </a>
+                  <!-- <p>
+                  <span><img class="catImg" src="./assets/images/icons/class2.svg" /></span>
+                  {{class?.admin_id?.address1}}
+                </p> -->
+                  <div class="row m-0 mt-2">
+                    <div class="col-md-2 category"
+                      *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last">
+                      {{category.subCategory}}{{isLast ? '' : ', '}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="eventSection" *ngIf="section.section.length > 0 && section.sectionname === 'Group'">
+              <div class="title mt-0">
+                <h3>{{section.title}}</h3>
+                <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+                  (click)="showMoreData(section.title)">More</a>
+              </div>
+              <div class="classSection owlSLiderSpace" *ngFor="let group of section.section | slice:0:4"
+                (click)="getGroupDetails(group?._id)">
+                <div class="classSectionImg">
+                  <img *ngIf="group.image" class="catImg" src="{{ group.image}}" />
+                  <img *ngIf="!group.image" class="catImg" src="./assets/images/classImg.svg" />
+                  <!-- <a style="cursor: pointer" class="fav">
+                  <mat-icon class="like">favorite_border</mat-icon>
+                </a> -->
+                </div>
+                <div class="classSectionBody">
+                  <a style="cursor: pointer" class="titleName">
+                    {{ group.groups }}
+                  </a>
+                  <p class="ellipses" style="cursor: pointer" [innerHTML]="group?.groupDescription"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div *ngFor="let section of sectionData | slice:2:3">
+        <div class="space pt-0" *ngIf="section.section.length > 0 && section.sectionname === 'Group'">
+          <div class="title m-0">
+            <h3>{{section.title}}</h3>
+            <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+              (click)="showMoreData(section.title)">More</a>
+          </div>
+          <div class="row eventSection" *ngIf="section.section.length < 5">
+            <ng-container *ngFor="let group of section.section">
+              <div class="col-md-3" (click)="getGroupDetails(group._id)">
+                <div class="classSection">
+                  <div class="classSectionImg">
+                    <img class="catImg" src="{{ group.image }}" />
+                    <!-- <a href="javascript:void(0);" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a (click)="getGroupDetails(group?._id)" class="titleName">
+                      {{ group.groups }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- <div class="articlesSlider" *ngIf="section.section.length >= 5">
+            <owl-carousel-o [options]="customOptions">
+              <ng-container *ngFor="let group of section.section">
+                <ng-template style="width: 10px" carouselSlide>
+                  <div class="classSection" (click)="getGroupDetails(group?._id)">
+                    <div class="classSectionImg">
+                      <img class="catImg" src="{{ group.banner }}" /> -->
+          <!-- <a href="javascript:void(0);" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+          <!-- </div>
+                    <div class="classSectionBody">
+                      <a (click)="getGroupDetails(group._id)" class="titleName">
+                        {{ group.groups }}
+                      </a>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div> -->
+        </div>
+
+        <div class="space pt-0" *ngIf="section.section.length > 0 && section.sectionname === 'Classes'">
+          <div class="title m-0">
+            <h3>{{section.title}}</h3>
+            <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+              (click)="showMoreData(section.title)">More</a>
+          </div>
+          <div class="row eventSection">
+            <ng-container *ngFor="let class of section.section | slice:0:4">
+              <div class="col-md-3 sectionWidthMobile">
+                <div class="classSection owlSLiderSpace" (click)="getClassDetails(class?._id)">
+                  <div class="classSectionImg">
+                    <img *ngIf="class.image" class="catImg imgHtMobile" src="{{ class.image }}" />
+                    <img *ngIf="!class.image" class="catImg imgHtMobile" src="./assets/images/classImg.svg" />
+                    <!-- <a style="cursor: pointer" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a style="cursor: pointer" class="titleName">
+                      {{ class.businessName }}
+                    </a>
+                    <!-- <p>
+                      <span><img class="catImg" src="./assets/images/icons/class2.svg" /></span>
+                      {{class.location}}
+                    </p> -->
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- <div class="owlSLider" *ngIf="section.section.length >= 5">
+            <owl-carousel-o [options]="customOptions2">
+              <ng-template style="width: 10px" *ngFor="let class of section.section" carouselSlide>
+                <div class="classSection owlSLiderSpace" (click)="getClassDetails(class?._id)">
+                  <div class="classSectionImg">
+                    <img *ngIf="class.image" class="catImg" src="{{ class.image }}" />
+                    <img *ngIf="!class.image" class="catImg" src="./assets/images/classImg.svg" /> -->
+          <!-- <a
+                    style="cursor: pointer" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+          <!-- </div>
+                  <div class="classSectionBody">
+                    <a style="cursor: pointer" class="titleName">
+                      {{ class.businessName }}
+                    </a>
+                    <p>
+                      <span><img class="catImg" src="./assets/images/icons/class2.svg" /></span>
+                      {{class.location}}
+                    </p>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div> -->
+        </div>
+
+        <div class="space pt-0" *ngIf="section.section.length > 0 && section.sectionname === 'Event'">
+          <div class="title m-0">
+            <h3>{{section.title}}</h3>
+            <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+              (click)="showMoreData(section.title)">More</a>
+          </div>
+
+          <div class="row eventSection" *ngIf="section.section.length < 5">
+            <ng-container *ngFor="let event of section.section">
+              <div class="col-md-3">
+                <div class="classSection owlSLiderSpace">
+                  <div class="classSectionImg">
+                    <img class="catImg" [src]="event.image[0]" />
+                    <span (click)="getEventsDetails(event?._id)">{{
+                      event.title
+                      }}</span>
+                    <!-- <a style="cursor: pointer" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a (click)="getEventsDetails(event._id)" style="cursor: pointer" class="titleName">
+                      {{ event?.smallDescription }}
+                    </a>
+                    <p (click)="getEventsDetails(event?._id)">
+                      {{ event.Date | date }}
+                    </p>
+                    <!-- <p>
+                      <span><img class="catImg" src="./assets/images/icons/class2.svg" /></span>
+                      {{ event.address1 }}
+                    </p> -->
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- <div class="owlSLider eventSection" *ngIf="section.section.length >= 5">
+            <owl-carousel-o [options]="customOptions5">
+              <ng-container *ngFor="let event of section.section">
+                <ng-template style="width: 10px" [id]="event._id" carouselSlide>
+                  <div class="classSection owlSLiderSpace">
+                    <div class="classSectionImg">
+                      <img class="catImg" [src]="event.image[0]" />
+                      <span (click)="getEventsDetails(event._id)">{{
+                        event.title
+                        }}</span> -->
+          <!-- <a style="cursor: pointer" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+          <!-- </div>
+                    <div class="classSectionBody">
+                      <a (click)="getEventsDetails(event._id)" style="cursor: pointer" class="titleName textLimit2">
+                        {{ event?.smallDescription }}
+                      </a>
+                      <p (click)="getEventsDetails(event._id)">
+                        {{ event.Date | date }}
+                      </p>
+                      <p>
+                        <span><img class="catImg" src="./assets/images/icons/class2.svg" /></span>
+                        {{ event.address1 }}
+                      </p>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div> -->
+
+        </div>
+
+        <div class="space pt-0" *ngIf="section.section.length > 0 && section.sectionname === 'Articles'">
+          <div class="title m-0">
+            <h3>{{section.title}}</h3>
+            <a class="link" style="cursor: pointer;" *ngIf="section.section.length >= 5"
+              (click)="showMoreData(section.title)">More</a>
+          </div>
+
+          <div class="row eventSection" *ngIf="section.section.length < 5">
+            <ng-container *ngFor="let article of section.section">
+              <div class="col-md-3">
+                <div class="classSection">
+                  <div class="classSectionImg">
+                    <img class="catImg" (click)="getArticeDetails(article?._id)" src="{{ article.banner }}" />
+                    <!-- <a href="javascript:void(0);" class="fav">
+                    <mat-icon class="like">favorite_border</mat-icon>
+                  </a> -->
+                  </div>
+                  <div class="classSectionBody">
+                    <a href="javascript:void(0);" (click)="getArticeDetails(article._id)" class="titleName">
+                      {{ article.title }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- <div class="articlesSlider" *ngIf="section.section.length >= 5">
+            <owl-carousel-o [options]="customOptions">
+              <ng-container *ngFor="let article of section.section">
+                <ng-template style="width: 10px" carouselSlide>
+                  <div class="classSection">
+                    <div class="classSectionImg">
+                      <img class="catImg" (click)="getArticeDetails(article?._id)" src="{{ article.banner }}" /> -->
+          <!-- <a href="javascript:void(0);" class="fav">
+                      <mat-icon class="like">favorite_border</mat-icon>
+                    </a> -->
+          <!-- </div>
+                    <div class="classSectionBody">
+                      <a href="javascript:void(0);" (click)="getArticeDetails(article?._id)" class="titleName">
+                        {{ article.title }}
+                      </a>
+                    </div>
+                  </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

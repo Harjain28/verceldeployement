@@ -1,0 +1,141 @@
+<div class="pageMarginTop">
+    <div class="pageMarginTop">
+        <div class="mainBody bottomSpace">
+            <div class="display-show-mobile">
+                <div class="pageTopBar row">
+
+                    <div class="col-3">
+                        <a class="backArrow" (click)="back()">
+                            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                        </a>
+                    </div>
+                    <div class="col-6 text-center">
+                        <h5 class="pgTitle">Branches</h5>
+                    </div>
+                    <div class="col-3">
+
+                        <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+                    </div>
+                </div>
+            </div>
+            <div class="container branches_section mainSpaceN">
+
+                <div class="row">
+
+                    <app-business-right-sidebar class="businessRight display-show-mobile"></app-business-right-sidebar>
+
+                    <div class="branchesList display-show-mobile">
+                        <h2 class="addbtnsMob">
+                            <a *ngIf="!diabledFeilds" class="btnAddbranch" routerLink="/pages/add-new-branch/offline">
+                                Add Offile Branch     
+                            </a>
+                           
+                            <a *ngIf="!diabledFeilds" class="btnAddbranch" routerLink="/pages/add-new-branch/online">
+                                Add Online Branch
+                            </a>
+                        </h2>
+                    </div>
+                    <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+                    <div class="bussinessCenter">
+                        <div class="branchesList">
+                            <h2 class="display-show-desktop">
+                                Branches
+
+                                <!-- <a *ngIf="!diabledFeilds" class="btnAddbranch"
+                                    routerLink="/pages/add-new-branch/offline">
+                                    Branch with address
+                                </a> -->
+                                <a *ngIf="!diabledFeilds"  routerLink="/pages/add-new-branch/offline" class="btnAddbranch">
+                            Add Offline Branch
+                        </a>
+                                <!-- <a *ngIf="!diabledFeilds" class="btnAddbranch"
+                                    routerLink="/pages/add-new-branch/online">
+                                    Classes with no address/online Branch
+                                </a> -->
+                                <a *ngIf="!diabledFeilds" routerLink="/pages/add-new-branch/online" class="btnAddbranch">
+                            Add Online Branch
+                        </a>
+                            </h2>
+
+                            <div class="branchBox" *ngFor="let branch of branchDetails">
+
+                                <div class="branchBoxBody">
+                                    <h3>{{branch.branchName | titlecase }} Branch
+                                        <mat-icon class="editIcon" *ngIf="!diabledFeilds"
+                                            (click)="deleteItem(branch._id)">
+                                            delete</mat-icon>
+                                        <mat-icon class="editIcon" *ngIf="!diabledFeilds"
+                                            (click)="editBranchDetails(branch._id,branch.branchstatus)">edit</mat-icon>
+                                        <mat-icon class="editIcon" *ngIf="diabledFeilds"
+                                            (click)="editBranchDetails(branch._id,branch.branchstatus)">edit</mat-icon>
+                                    </h3>
+                                    <p *ngIf="branch.branchstatus !== 'online'">Address : {{branch.address1}} ,
+                                        {{branch.country}} , {{branch.postalCode}}</p>
+                                    <p *ngIf="branch.branchstatus === 'online'">Address : Online, {{branch.country}}</p>
+                                    <ul>
+                                        <li *ngIf="branch.branchstatus === 'online'">Type :
+                                            <label>Online</label>
+                                        </li>
+                                        <li *ngIf="branch.branchstatus !== 'online'">Type :
+                                            <label>Offline</label>
+                                        </li>
+                                        <li *ngIf="branch.businessmobileNo">Phone :
+                                            <label>{{branch.businessmobileNo}}</label>
+                                        </li>
+                                        <li *ngIf="branch.businessemail">Email :
+                                            <label>{{branch.businessemail}}</label>
+                                        </li>
+                                        <li *ngIf="branch.webAddress">Website :
+                                            <label>{{branch.webAddress}}</label>
+                                        </li>
+                                        <li *ngIf="branch.name">Branch Admin Name :
+                                            <label>{{branch.name}}</label>
+                                        </li>
+                                        <li *ngIf="branch.email">Branch Admin Email:
+                                            <label>{{branch.email}}</label>
+                                        </li>
+                                        <li *ngIf="branch.mobileNo">Branch Admin MobileNo:
+                                            <label>{{branch.mobileNo}}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="modal DeletePopup" [ngClass]="{'d-block' : showDeleteModal}"
+                                id="DeleteCategoriesData">
+                                <div class="bg_popup"></div>
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="">
+                                                        <p>Do you want to delete this Branch listing?</p>
+                                                        <button type="button" class="btn btn-danger CancelBtn"
+                                                            (click)="hideModal()">Cancel</button>
+                                                        <button type="submit" class="btn btn-ok"
+                                                            (click)="deleteBranchDetails()">Ok</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

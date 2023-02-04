@@ -1,0 +1,308 @@
+.classListingSection ::ng-deep .mat-tab-label {
+  min-width: 100px !important;
+  padding: 0px 15px !important;
+  font-family: "Open Sans", sans-serif !important;
+  opacity: 1 !important;
+  color: var(--main4) !important;
+}
+.classListingSection ::ng-deep .mat-tab-header {
+  margin-top: 10px;
+}
+.classListingSection ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: var(--main1);
+}
+.classListingSection ::ng-deep .mat-tab-label-active {
+  color: var(--main1) !important;
+}
+.classListingSection ::ng-deep .mat-menu-item {
+  line-height: 40px !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+}
+.classListingSection ::ng-deep .mat-menu-panel {
+  min-height: 40px !important;
+}
+.classListingSection ::ng-deep .mat-expansion-panel {
+  box-shadow: none !important;
+  border-radius: 0px !important;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 0px;
+}
+.classListingSection ::ng-deep .mat-expansion-panel-header {
+  padding: 0px 15px !important;
+  font-family: "Open Sans", sans-serif !important;
+  font-weight: 500;
+}
+.classListingSection ::ng-deep .mat-expansion-panel-body {
+  padding: 10px 15px 0px 15px !important;
+}
+.classListingSection ::ng-deep .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+  background: #fff !important;
+}
+.classListingSection ::ng-deep .mat-content {
+  padding-right: 15px !important;
+}
+.classListingSection ::ng-deep .mat-expansion-panel-spacing {
+  margin: 0 !important;
+}
+.classListingSection ::ng-deep .mat-expansion-panel-header.mat-expanded {
+  height: auto;
+}
+.classListingSection .classSection {
+  margin-top: 20px;
+}
+.classListingSection .filterListing {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 100px;
+}
+.classListingSection .filterListing .form-control {
+  background-color: #F5F6FA;
+  width: 125px;
+  height: 46px;
+  margin-right: 15px;
+  box-shadow: 0 3px 7px -1px #cccccc;
+  border: none;
+  border-radius: 5px;
+}
+.classListingSection .filterListing .form-control_otherfilter {
+  background-color: #F5F6FA;
+  width: 150px;
+  height: 46px;
+  margin-right: 10px;
+  box-shadow: 0 3px 7px -1px #cccccc;
+  border: none;
+  border-radius: 5px;
+}
+.classListingSection .filterListing .topBar .topSearch {
+  display: block;
+}
+.classListingSection .filterListing .topBar .topSearch .icon {
+  color: var(--main1);
+}
+.classListingSection .filterListing .topBar .topSearch .form-control {
+  width: 100%;
+}
+.classListingSection .filterListing .reset {
+  color: var(--main1);
+  text-decoration: none;
+  font-weight: 500;
+}
+.classListingSection .menuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+  display: flex;
+}
+.classListingSection .menuList form {
+  display: flex;
+}
+.classListingSection .menuList li {
+  float: left;
+}
+.classListingSection .menuList li a {
+  text-decoration: none;
+  background: #F3F4F9;
+  box-shadow: 0 3px 5px -1px #d6d6d6;
+  color: #7F8699;
+  padding: 0px 10px;
+  line-height: 35px;
+  display: block;
+  border-radius: 10px;
+  margin-right: 12px;
+  margin-top: 11px;
+  min-width: 80px;
+  text-align: center;
+}
+.classListingSection .menuList li a.active {
+  background: var(--main1);
+  color: #fff;
+}
+.classListingSection .menuList li .form-control {
+  text-decoration: none;
+  background-color: #F3F4F9;
+  box-shadow: 0 3px 5px -1px #d6d6d6;
+  color: #7F8699;
+  padding: 0px 10px;
+  line-height: 35px;
+  display: block;
+  border-radius: 10px;
+  margin-right: 12px;
+  margin-top: 11px;
+  width: 120px;
+  text-align: left;
+  border: none;
+}
+.classListingSection .menuList li .form-control.active {
+  background: var(--main1);
+  color: #fff;
+}
+.classListingSection .reset {
+  position: relative;
+  top: 18px;
+  color: var(--main1);
+  text-decoration: none;
+  font-weight: 500;
+}
+.classListingSection .category {
+  font-size: 15px;
+  color: #868c9e;
+  display: inline-block;
+  width: auto;
+  padding: 0px;
+  margin-right: 5px;
+}
+.classListingSection .classBoxNew {
+  margin-bottom: 15px;
+}
+.classListingSection .classBoxNew .classSectionImg .catImg {
+  border-radius: 8px 8px 0px 0px;
+  height: 150px;
+}
+.classListingSection .classBoxNew .classSectionBody .titleName {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.classListingSection .classBoxNew .classSectionBody p {
+  margin: 5px 0px 0px 0px;
+}
+.classListingSection .classBoxNew .classSectionBody p span {
+  display: inline-block;
+  width: 19px;
+  text-align: center;
+  margin-right: 2px;
+}
+.classListingSection .classBoxNew .classSectionBody .branchs {
+  display: flex;
+  margin: 0px -3px;
+  margin-bottom: 5px;
+}
+.classListingSection .classBoxNew .classSectionBody .branchs .btn {
+  border: 1px solid #f9560f;
+  margin: 0px 2px;
+  width: 40%;
+  padding: 5px 5px;
+  font-size: 13px;
+  color: #f9560f;
+}
+.classListingSection .classBoxNew .classSectionBody .branchs .btnmore {
+  border: 1px solid #f9560f;
+  margin: 0px 2px;
+  width: 20%;
+  padding: 5px 5px;
+  font-size: 13px;
+  color: #f9560f;
+}
+.classListingSection ::ng-deep .mat-form-field-flex {
+  background-color: var(--main5) !important;
+  border-color: var(--main5);
+  height: 35px;
+  border-radius: 6px;
+  box-shadow: 0 3px 7px -1px #ccc !important;
+  padding: 0 15px 0 15px !important;
+  font-family: "Open Sans", sans-serif !important;
+  margin-top: 11px;
+}
+.classListingSection ::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.classListingSection ::ng-deep .mat-form-field-infix {
+  padding: 9px 0px;
+  border: 0;
+}
+
+.example-input {
+  background: #ffffff;
+  width: 100%;
+  height: 44px;
+  position: relative;
+  top: 1px;
+  padding: 0px 15px;
+  border: 1.5px solid #c5c5c5 !important;
+}
+
+.checkboxFrom .tt {
+  margin-right: 15px;
+  display: inline-block;
+  font-weight: 500;
+}
+.checkboxFrom .radio {
+  margin-right: 15px;
+  color: var(--main4);
+}
+
+.searchDropdown .icon {
+  position: absolute;
+  right: 5px;
+  top: 12px;
+  font-size: 18px;
+}
+
+.searchDropdown .checkDrop {
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  font-size: 22px;
+  color: #3f51b5;
+}
+
+.searchDropdown input {
+  padding-left: 40px !important;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  border: none !important;
+  height: 38px;
+}
+
+.searchDropdown {
+  padding: 10px 15px !important;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  ::ng-deep .mat-tab-label {
+    min-width: 180px !important;
+  }
+
+  .classListingSection {
+    padding: 50px 0px;
+    position: relative;
+  }
+  .classListingSection .topBar {
+    display: flex;
+  }
+  .classListingSection .topSearch {
+    display: block;
+    position: absolute;
+    right: 0;
+    width: 30%;
+  }
+
+  ::ng-deep .mat-tab-header {
+    margin-top: 0px !important;
+    margin-bottom: 20px;
+  }
+
+  ::ng-deep .mat-tab-label {
+    font-size: 16px !important;
+    color: #000 !important;
+  }
+
+  ::ng-deep .mat-tab-label-active {
+    color: var(--main1) !important;
+  }
+
+  ::ng-deep .mat-tab-header {
+    width: 60%;
+  }
+
+  ::ng-deep .mat-tab-body-content .row {
+    margin-right: calc(-.5 * var(--bs-gutter-x)) !important;
+    margin-left: calc(-.5 * var(--bs-gutter-x)) !important;
+  }
+
+  ::ng-deep .mat-tab-body-content {
+    overflow: hidden !important;
+  }
+}

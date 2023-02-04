@@ -1,0 +1,258 @@
+::ng-deep mat-form-field {
+    width: 100%;
+    margin-top: 10px;
+  
+    .mat-form-field-flex {
+      background-color: var(--main5) !important;
+      border-color: var(--main5);
+      height: 50px;
+      border-radius: 6px;
+      box-shadow: 0 3px 7px -1px #ccc !important;
+      padding:0 15px 0 15px !important;
+      font-family: "Open Sans", sans-serif !important;
+    }
+    .mat-form-field-underline {
+      display: none;
+    }
+    .mat-form-field-infix {
+        border-top: 8px solid transparent;
+    }
+  }
+
+.imgUpload {
+    list-style: none;
+    margin:0;
+    padding: 0;
+    display: flex;
+    margin: 0px -10px;
+    width: 100%;
+    margin-bottom: 10px;
+
+
+    li {
+         flex: 25% 0 auto;
+         width: 20%;
+         margin: 0px 10px;
+         border-style: dotted;
+         border-width: 2px;
+         border-color: #878d9f;
+         border-radius: 5px;
+         height: 110px;
+         line-height: 95px;
+         text-align: center;
+         position: relative;
+
+         img {
+             height: 37px;
+         }
+
+         input[type="file"] {
+             position: absolute;
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             opacity: 0;
+             cursor: pointer;
+         }
+
+    }
+
+ }
+
+ .TeacherForm {
+    border: 1px solid #d7d6d6;
+    padding: 15px 15px;
+    border-radius: 10px;
+
+    .form-control {
+        margin-bottom: 10px;
+    }
+    textarea {
+        padding: 10px 12px;
+        height: 80px;
+        margin:0 !important;
+    }
+ }
+
+ .addChildren {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border-style: dotted;
+    border-width: 2px;
+    text-decoration: none;
+    color: var(--main4);
+    border-radius: 10px;
+    padding: 14px 15px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+
+.loginSignTab {
+    list-style: none;
+    margin: 0;
+    padding: 0px 15px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+    li {
+        width: 50%;
+
+        a {
+            border: 1px solid #dcdcdf;
+            display: block;
+            margin: 0px 2px;
+            text-align: center;
+            text-decoration: none;
+            padding: 13px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: var(--main3);
+
+            &.active {
+                background-color:var(--main1) ;
+                border: 1px solid var(--main1);
+                color: #fff;
+            }
+        }
+    }
+}
+
+.contentBox {
+    padding: 0;
+}
+
+.addTeacher_section {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+
+.uploadedImages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+
+    mat-icon{
+        .closeIcon {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: #fff;
+            font-size: 16px;
+            border-radius: 50px;
+            line-height: 25px;
+            cursor: pointer;
+            text-align: center;
+        }
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .imgUpload li {
+        width: 40%;
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+    ::ng-deep .mat-tab-header {
+        margin: 0px 0px !important;
+        margin-bottom: 10px !important;
+    }
+    .mat-tab-header {
+        margin: 0px 0px;
+        margin-bottom: 10px;
+    }
+    .loginSignTab {
+        padding: 0px 0px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .pageTopBar {
+        border-bottom: none;
+    }
+    .loginSection {
+        height: 100%;
+
+        .container-fluid , .row{
+            height: 100%;
+        }
+
+        .imgBox {
+    
+            img {
+                width: 58.33333333%;
+                position: fixed;
+                left: 0;
+                top: 0;
+            }
+        }
+        .contentBox {
+            padding:70px 100px 70px 100px;
+            position: relative;
+            width: 41.66666667%;
+            box-shadow: 0 3px 6px 1px #cfcfcf;
+    
+            .backgound {
+    
+                .shape1 {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 110px;
+                }
+                .shape2 {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 170px;
+                }
+                .shape3 {
+                    position: absolute;
+                    right: 30px;
+                    bottom: 50px;
+                    width: 50px;
+                }
+            }
+        }
+    }
+    
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .mainBody {
+        width: 100%;
+        padding: 0px 15px;
+    }
+    .loginSection .contentBox {
+        padding: 70px 0px 70px 0px;
+    }
+    .otp-input {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .loginSection .imgBox img {
+        width: 100%;
+        position: relative;
+        left: 0;
+        top: 0%;
+    }
+}
+
+.error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 12px;
+    position: relative;
+    top: 0px;
+}

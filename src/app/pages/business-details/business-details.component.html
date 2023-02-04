@@ -1,0 +1,295 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="classDetailsDesktop">
+      <div class="display-show-mobile">
+        <div class="pageTopBar row">
+
+          <div class="col-2">
+            <a class="backArrow" routerLink="/pages/business-profle-mobile">
+              <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+            </a>
+          </div>
+          <div class="col-8 text-center">
+            <h5 class="pgTitle">Business Information</h5>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+      <div class="container businessInformation mainSpaceN">
+        <div class="row">
+          <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+          <div class="bussinessCenter">
+            <div class="infor">
+              <div class="alert">
+                <!-- <h5>Update Your Profile</h5> -->
+                <p [innerHTML]="infoTextData | sanitizeHtml"></p>
+                <!-- <button class="close">✖</button> -->
+              </div>
+            </div>
+            <form [formGroup]="myForm">
+              <div class="loginDetails">
+                <div>
+                  <h2>{{headerClass}}</h2>
+                </div>
+                <p>Here's what's going on with your business today</p>
+
+                <app-business-right-sidebar *xsHide="false" class="businessRight"></app-business-right-sidebar>
+              </div>
+              <div class="businessInformationTab">
+                <a class="addBanner">
+                  <span><svg width="24" height="24" class="icon_svg">
+                      <path
+                        d="M16 2a1 1 0 011 .68L17.72 5H20a3 3 0 013 3v11a3 3 0 01-3 3H4a3 3 0 01-3-3V8a3 3 0 013-3h2.28L7 2.68A1 1 0 018 2zm-.72 2H8.72L8 6.32A1 1 0 017 7H4a1 1 0 00-1 1v11a1 1 0 001 1h16a1 1 0 001-1V8a1 1 0 00-1-1h-3a1 1 0 01-.95-.68L15.28 4zM12 9a1 1 0 011 1v2.5h2.5a1 1 0 110 2H13V17a1 1 0 11-2 0v-2.5H8.5a1 1 0 110-2H11V10a1 1 0 011-1z">
+                      </path>
+                    </svg></span>
+                    Add Banner Images ( one or more) 
+                  <input [id]="'upLoader' + index" accept="image/*" [attr.disabled]="diabledFeilds ? '' : null"
+                    type="file" multiple="multiple" formControlName="file" name="file" accept="image/*"
+                    (change)="onFileChange($event)" />
+                </a>
+                <div class="error" *ngIf="
+              myForm.controls.file.touched &&
+              myForm.controls.file.hasError('required')
+            ">
+                  Enter Banner Image
+                </div>
+
+                <ul class="uploadedImages">
+                  <li *ngFor="let url of imagesDefault; let i = index">
+                    <img class="img" [lazyLoad]="url" />
+                    <mat-icon class="closeIcon" *ngIf="!diabledFeilds" (click)="deleteEditImage(i)">close</mat-icon>
+                    <mat-icon class="closeIcon" *ngIf="diabledFeilds">close</mat-icon>
+                  </li>
+
+                  <li *ngFor="let url of images; let i = index">
+                    <img class="img" [lazyLoad]="url" />
+                    <mat-icon class="closeIcon" (click)="deleteImage(i)">close</mat-icon>
+                  </li>
+                </ul>
+                <hr />
+
+                <div class="row">
+                  <div class="col-md-12 formBox">
+                    <label class="form-label">Class/Business/Institute Name</label>
+                    <input #firstName type="text" class="form-control" [readonly]="diabledFeilds"
+                      placeholder="Class/Business/Institute Name" formControlName="class" [(ngModel)]="class">
+                    <div class="error" *ngIf="
+                    myForm.controls.class.touched &&
+                    myForm.controls.class.hasError('required')
+                  ">
+                      Enter Class/Business/Institute Name
+                    </div>
+                  </div>
+                  <!-- 
+                <div class="col-md-6 formBox">
+                  <label class="form-label">Phone</label>
+                  <input type="number" class="form-control" [readonly]="diabledFeilds" formControlName="phonenumber"
+                    [(ngModel)]="mobileNo" placeholder="Phone">
+                  <div class="error" *ngIf="
+                    myForm.controls.phonenumber.touched &&
+                    myForm.controls.phonenumber.hasError('required')
+                  ">
+                    Phone Number is required.
+                  </div>
+                  <div class="error" *ngIf="
+                    myForm.controls.phonenumber.dirty &&
+                    myForm.controls.phonenumber.hasError('pattern')
+                  ">
+                    Phone Number should be of 8 characters.
+                  </div>
+                </div>
+
+                <div class="col-md-6 formBox">
+                  <label class="form-label">Email</label>
+                  <input type="text" class="form-control" formControlName="email" [readonly]="diabledFeilds"
+                    [(ngModel)]="email" placeholder="Email">
+                  <div class="error" *ngIf="
+                      myForm.controls.email.touched &&
+                      myForm.controls.email.hasError('required')
+                    ">
+                    Email address is required.
+                  </div>
+                  <div class="error" *ngIf="
+                      myForm.controls.email.dirty &&
+                      myForm.controls.email.hasError('pattern')
+                    ">
+                    Enter valid email address.
+                  </div>
+                </div> -->
+
+                  <div class="formCmg checkboxFrom">
+                    <div class="tt">Select Class Type</div>
+
+                    <label class="checkbox me-3" *ngFor="let data of Data; let i=index">
+                      <input type="checkbox" [value]="data.value" [checked]="data.checkedSiteType"
+                        (change)="onCheckboxChange($event)" [disabled]="diabledFeilds" />
+                      {{data.name}}
+                      <span class="checkmark"></span>
+                    </label>
+                    <p class="error" *ngIf=" myForm.controls.checkArray.touched &&
+                      myForm.controls.checkArray.hasError('required')">
+                      Checkbox is required, select atleast one value.
+                    </p>
+                    <!-- <label class="checkbox me-3">
+                    <input type="checkbox" name="classType" value="online" formControlName="classType" checked />
+                    <span class="checkmark"></span>
+                    On-Line
+                  </label> -->
+                    <!-- <label class="checkbox">
+                    <input type="checkbox" value="offline" formControlName="classType" name="classType" />
+                    <span class="checkmark"></span>
+                    Face to Face
+                  </label> -->
+                  </div>
+
+                  <div class="col-md-12 formBox">
+                    <label class="form-label">Website</label>
+                    <input type="text" class="form-control" [readonly]="diabledFeilds" formControlName="Website"
+                      [(ngModel)]="webaddress" placeholder="Website">
+                    <!-- <div class="error" *ngIf="
+                    myForm.controls.Website.touched &&
+                    myForm.controls.Website.hasError('required')
+                  ">
+                    Enter Website
+                  </div> -->
+                  </div>
+
+
+                  <div class="col-md-6 formBox mb-0">
+                    <label class="form-label">Subjects</label>
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Subjects'"
+                      [errorMsg]="errorMessageCategories" [showErrorMsg]="showErrorCategories"
+                      [options]="optionsCategories" [display]="'display'" [value]="'value'" [multiple]="true"
+                      [labelCount]="2" [selectedOptions]="selectedOptionsCategories" ngDefaultControl
+                      (selectionChange)="getSelectedOptionsCategories($event)"
+                      [formControl]="myForm.controls['SelectedCategories']" [disabled]="diabledFeilds">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                  myForm.controls.SelectedCategories.touched &&
+                  myForm.controls.SelectedCategories.hasError('required')
+                ">
+                      Selct Subjects
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-md-6 formBox mb-0">
+                  <label class="form-label">Assign Groups</label>
+                  <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Groups'"
+                    [errorMsg]="errorMessageGroups" [showErrorMsg]="showErrorGroups" [options]="optionsGroups"
+                    [display]="'display'" [value]="'value'" [multiple]="true" [labelCount]="2"
+                    [selectedOptions]="selectedOptionsGroups" ngDefaultControl
+                    (selectionChange)="getSelectedgroupOptions($event)"
+                    [formControl]="myForm.controls['selectedgroup']">
+                  </mat-select-autocomplete>
+                  <div class="error" *ngIf="
+                  myForm.controls.selectedgroup.touched &&
+                  myForm.controls.selectedgroup.hasError('required')
+                ">
+                    Enter Groups
+                  </div>
+                </div> -->
+                  <div class="col-md-6 formBox mb-0">
+                    <label class="form-label">Category</label>
+                    <mat-form-field>
+                      <mat-select [placeholder]="selectedOptionsLevels.length > 0 ? '' :  'Select Category'"
+                        [(ngModel)]="selectedOptionsLevels" (selectionChange)="getSelectedlevelOptions($event.value)"
+                        [formControl]="myForm.controls['selectedlevel']" multiple>
+                        <div class="searchDropdown">
+                          <div class="position-relative">
+                            <input placeholder="Search Level" [(ngModel)]="searchKey"
+                              [ngModelOptions]="{standalone: true}" type="text"
+                              (keyup)="onKeySearchLevel($event.target.value)" class="example-input">
+                            <mat-icon class="checkDrop" *ngIf="allSelected" (click)="selectAll()">
+                              check_box_outline_blank
+                            </mat-icon>
+                            <mat-icon class="checkDrop" *ngIf="!allSelected" (click)="unselectAll()">check_box
+                            </mat-icon>
+                            <mat-icon class="icon" (click)="clearSearch()" style="cursor: pointer">close</mat-icon>
+                          </div>
+                        </div>
+                        <mat-option *ngFor="let data of optionsLevels"
+                          [value]="data._id">{{data.level}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <div class="error" *ngIf="
+                  myForm.controls.selectedlevel.touched &&
+                  myForm.controls.selectedlevel.hasError('required')
+                ">
+                      Select category
+                    </div>
+                  </div>
+
+
+                  <div class="col-md-3 formBox mt-2">
+                    <label class="form-label">Age From</label>
+                    <!-- <mat-form-field appearance="fill">
+                    <select matNativeControl (change)="selectBranch($event.target.value)">
+                      <option value="0">Age</option>
+                      <option *ngFor="let select of selectsFrom" [value]="select.value">
+                        {{ option.value }}
+                      </option>
+                    <l/select>
+                  </mat-form-field> -->
+                    <select class="form-control form-select" (change)="selectFromAge($event.target.value)">
+                      <option value="1">Age</option>
+                      <option *ngFor="let select of agefromselect" [selected]="select.value === +specificFromAge"
+                        [value]="select.value">{{select.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3 formBox mt-2">
+                    <label class="form-label">Age To</label>
+                    <select class="form-control form-select" (change)="selectToAge($event.target.value)">
+                      <option value="18">Age</option>
+                      <option *ngFor="let select of agetoselect" [selected]="select.name === +specificToAge"
+                        [value]="select.value">{{select.name}}</option>
+                    </select>
+
+                  </div>
+
+                  <div class="col-md-12 formBox">
+                    <label class="form-label">Tags</label>
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select Tags'" [errorMsg]="errorMessage"
+                      [showErrorMsg]="showError" [options]="options" [display]="'display'" [value]="'display'"
+                      [multiple]="true" [labelCount]="2" [selectedOptions]="selectedOptions" ngDefaultControl
+                      (selectionChange)="getSelectedOptions($event)" [formControl]="myForm.controls['Selected']"
+                      [disabled]="diabledFeilds">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                  myForm.controls['Selected'].touched &&
+                  myForm.controls['Selected'].hasError('required')
+                ">
+                      Select Tags
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 textBox">
+                    <label class="form-label">About Class</label>
+                    <angular-editor formControlName="aboutclass" [(ngModel)]="editorData" [config]="editorConfig">
+                    </angular-editor>
+                    <div class="error" *ngIf="
+                  myForm.controls.aboutclass.touched &&
+                  myForm.controls.aboutclass.hasError('required')
+                ">
+                      Enter About Class
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 formBox">
+                    <button type="button" (click)="editbusinessInformation()" *ngIf="!diabledFeilds"
+                      class="btn btnSubmit">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <app-business-right-sidebar *xsShow="false" class="businessRight"></app-business-right-sidebar>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<footer class="mainFooter"   *ngIf = "currentURL !== '/email-verify' && currentURL !== '/change-password' && currentURL !== '/reset-password'  && currentURL !== '/claim' && currentURL !== '/login/subbusiness' && currentURL !== '/register/subbusiness'
+&& currentURL !== '/login/student' &&  currentURL !== '/login/business' && currentURL !== '/register' && currentURL !== '/view/contact'  && currentURL !== '/register/student'  && currentURL !== '/register/business'
+&& currentURL !== '/view/contact-successfully' ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <ul class="footerMenu">
+            <!-- <h5>Help</h5> -->
+            <li><a style="cursor: pointer;" *ngIf = "terms?.status == true" [routerLink]= "['/view/terms&condition/']" [state]="{data: terms}">{{terms?.section}} </a></li>
+            <li><a style="cursor: pointer;" *ngIf = "contentPolicy?.status == true" [routerLink] = "['/view/contentPolicy/']" [state]="{data: contentPolicy}">{{contentPolicy?.section}}</a></li>
+            <li><a style="cursor: pointer;" *ngIf = "privacyPolicy?.status == true" [routerLink] = "['/view/privacyPolicy/']" [state]="{data: privacyPolicy}">{{privacyPolicy?.section}}</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="footerMenu">
+            <!-- <h5>More</h5> -->
+            <li><a style="cursor: pointer;" *ngIf = "communities?.status == true" [routerLink] = "['/view/communinty/']" [state]="{data: communities}">{{communities?.section}}</a></li>
+            <li><a style="cursor: pointer;" *ngIf = "aboutUs?.status == true" [routerLink] = "['/view/about/']" [state]="{data: aboutUs}">{{aboutUs?.section}}</a></li>
+            <li><a style="cursor: pointer;" *ngIf = "contactUs?.status == true" [routerLink] = "['/view/contact/']" [state]="{data: contactUs}">{{contactUs?.section}}</a></li>
+            <li><a style="cursor: pointer;" *ngIf = "help?.status == true" [routerLink] = "['/view/help/']" [state]="{data: help}">{{help?.section}}</a></li>
+            <li><a style="cursor: pointer;" *ngIf = "Faqs?.status == true" [routerLink] = "['/view/faq/']"[state]="{data: Faqs}">{{Faqs?.section}}</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="footerMenu">
+            <h5>Follow us</h5>
+          </ul>
+          <ul class="socialsLinks">
+            <li *ngIf = "faceBookLink?.status == true">
+              <a style="cursor: pointer;" href="{{faceBookLink?.Link}}" target="_blank">
+                <img lazyLoad="./assets/images/facebook.svg">
+              </a>
+            </li>
+            <li *ngIf = "twitterLink?.status == true">
+              <a style="cursor: pointer;" href="{{twitterLink?.Link}}" target="_blank">
+                <img lazyLoad="./assets/images/twitter.svg">
+              </a>
+            </li>
+            <li *ngIf = "instagramLink?.status == true">
+              <a style="cursor: pointer;" href="{{instagramLink?.Link}}" target="_blank">
+                <img lazyLoad="./assets/images/instagram.svg">
+              </a>
+            </li>
+            <li *ngIf = "googleLink?.status == true">
+              <a style="cursor: pointer;" href="{{googleLink?.Link}}" target="_blank">
+                <img lazyLoad="./assets/images/google.svg">
+              </a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="col-md-12 copyright">
+          Copyright © Klassbook Pte. Ltd. All Rights Reserved
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  

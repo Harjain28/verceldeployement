@@ -1,0 +1,82 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 *ngIf="id" class="pgTitle">Edit Programme</h5>
+          <h5 *ngIf="!id" class="pgTitle">Add Programme</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+    <div class="container addProgram_section mainSpaceN">
+      <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+        <div class="bussinessCenter">
+          <div class="branchesList">
+            <h2 *ngIf="id" class="display-show-desktop">
+              Edit Programme
+            </h2>
+
+            <h2 *ngIf="!id" class="display-show-desktop">
+              Add Programme
+            </h2>
+
+            <div class="loginSignup businessBox">
+              <form [formGroup]="addProgram">
+                <div class="formCmg labelForm TeacherForm">
+                  <label class="form-label">Programme Name</label>
+                  <input type="text" class="form-control" placeholder="Programme Name" formControlName="name"
+                    [(ngModel)]="programmName" />
+                  <div class="error" *ngIf="
+                addProgram.controls.name.touched &&
+                addProgram.controls.name.hasError('required')
+              ">
+                    Programme Name is required.
+                  </div>
+                  <div class="formCmg labelForm">
+                    <label class="form-label">Programme Description</label>
+                    <angular-editor formControlName="htmlContent" [(ngModel)]="editorData" [config]="editorConfig">
+                    </angular-editor>
+                    <div class="error" *ngIf="
+              addProgram.controls.htmlContent.touched &&
+              addProgram.controls.htmlContent.hasError('required')
+            ">
+                      Programme Description is required.
+                    </div>
+                  </div>
+
+                  <div class="" *ngIf="!diabledFeilds">
+                    <label class="form-label">Assign Branches</label>
+                    <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select'" [errorMsg]="errorMessage"
+                      [showErrorMsg]="showError" [options]="options" [display]="'display'" [value]="'value'"
+                      [multiple]="true" [labelCount]="2" [selectedOptions]="selectedOptions"
+                      (selectionChange)="getSelectedOptions($event)" ngDefaultControl [formControl]="addProgram.controls['Selected']">
+                    </mat-select-autocomplete>
+                    <div class="error" *ngIf="
+                  addProgram.controls.Selected.touched &&
+                  addProgram.controls.Selected.hasError('required')
+                ">
+                      Select at least one branch.
+                    </div>
+                  </div>
+                </div>
+                <div class="formCmg labelForm">
+                  <button type="submit" [disabled] = "isSubmitbool" (click)="submitaddProgramData()" class="btn submitBtn">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+          <div class="col-3">
+            <a class="backArrow" (click)="back()">
+              <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+            </a>
+          </div>
+          <div class="col-6 text-center">
+            <h5 class="pgTitle">About Klassbook</h5>
+          </div>
+          <div class="col-3"></div>
+      </div>
+    </div>
+  
+   <div class="container aboutSection"> 
+    <div class="bridTitle display-show-desktop">
+      <h3 class="bridT">Content-Policy</h3>
+    </div>
+    
+      <div class="space aboutUs" *ngIf = "contentpolicy?.status == true">
+          <div class="title mt-0 d-block">
+            <p [innerHTML]="contentpolicy?.description | sanitizeHtml"></p>
+          </div>
+      </div>
+    </div>
+  
+<!--     
+  <section class="downloadSection display-show-desktop">
+    <img lazyLoad="./assets/images/download-bg.png" class="backgroundImg">
+    <div class="containerBox">
+    <div class="container-fluid">
+            <div class="row align-items-center">
+                 <div class="col-md-6 leftContent">
+                <h2>Download <span>Our</span> App</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <ul>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <img lazyLoad="./assets/images/google-play.svg">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <img lazyLoad="./assets/images/app-store.svg">
+                        </a>
+                    </li>
+                </ul>
+                 </div>
+                 <div class="col-md-6">
+                       <img lazyLoad="./assets/images/download-img.svg" class="mobileImg">
+                 </div>
+            </div>
+        </div>
+    </div>
+  </section>
+   -->
+  
+
+  </div>
+  
+  
+  
+  
+  

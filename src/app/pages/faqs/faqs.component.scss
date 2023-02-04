@@ -1,0 +1,166 @@
+.businessfaQs_section {
+    padding-top: 20px;
+    padding-bottom: 60px;
+}
+.FaqBody {
+    color: var(--main4);
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 16px;
+    line-height: 22px;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+
+::ng-deep .mat-tab-label {
+    min-width: 25% !important;
+    padding: 0px 0px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    opacity: 1 !important;
+    color: var(--main4) !important;
+ }
+
+ ::ng-deep .mat-tab-header-pagination {
+    display: none !important;
+ }
+ ::ng-deep .mat-tab-header {
+    border-top: 1px solid rgba(0,0,0,.12);
+    margin-top: 15px;
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: var(--main1);
+}
+::ng-deep .mat-tab-label-active {
+    color: var(--main1) !important;
+}
+
+::ng-deep .mat-menu-item {
+    line-height: 40px !important;
+    height: 40px !important;
+    padding: 0 16px !important;
+}
+::ng-deep .mat-menu-panel {
+    min-height: 40px !important;
+}
+
+::ng-deep .mat-expansion-panel {
+    box-shadow: none !important;
+    border-radius: 0px !important;
+    border-bottom: 1px solid #dddddd;
+    padding: 10px 0px;
+}
+::ng-deep .mat-expansion-panel-header {
+    padding: 0px 15px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 500;
+    font-size: 16px;
+}
+::ng-deep .mat-expansion-panel-body {
+    padding: 10px 15px 0px 15px !important;
+}
+::ng-deep .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+    background: #fff !important;
+}
+::ng-deep .mat-content {
+    padding-right: 15px !important;
+}
+::ng-deep .mat-expansion-panel-spacing {
+   margin: 0 !important;
+}
+::ng-deep .mat-expansion-panel-header.mat-expanded {
+    height: auto;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+    border-style: solid !important;
+    border-width: 0px !important;
+    content: "";
+    display: inline-block !important;
+    padding: 0px !important;
+    transform: none !important;
+    vertical-align: middle !important;
+    width: 3px !important;
+    height: 18px !important;
+    border-radius: 50px !important;
+    background: var(--main1) !important;
+    position: relative;
+    right: 10px;
+}
+.editIcon {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #919090;
+    cursor: pointer;
+}
+.actionFaq {
+    display: block;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+}
+
+
+::ng-deep .mat-expanded .mat-expansion-indicator::after {
+    display: none !important;
+}
+
+::ng-deep .mat-expansion-indicator::before {
+    border-style: solid !important;
+    border-width: 0px !important;
+    content: "";
+    display: inline-block !important;
+    padding: 0px !important;
+    transform: none !important;
+    vertical-align: middle !important;
+    width: 18px !important;
+    height: 3px !important;
+    border-radius: 50px !important;
+    background: var(--main1) !important;
+}
+
+
+
+.branchesList {
+
+    h2 {
+
+        .btnAddbranch {
+            background-color: #f9560f;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 0px 15px;
+            display: inline-block;
+            float: right;
+            border-radius: 50px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .branchesList1 {
+
+        display: flex;
+        margin-top: 10px;
+    
+        .banchbtnMob {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            margin: 0 0 0px;
+        }
+    
+        h2 {
+    
+            .btnAddbranch {
+                background-color: #f9560f;
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+                padding: 0px 15px;
+                display: inline-block;
+                border-radius: 50px;
+            }
+        }
+    
+    }
+}

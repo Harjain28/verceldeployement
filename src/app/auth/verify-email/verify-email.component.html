@@ -1,0 +1,112 @@
+<form [formGroup]="verifyform">
+    <div class="space verifyEmail">
+        <div class="formCmg labelForm">
+            <label class="form-label theme1">Verify Your Phone and Email</label>
+            <div class="formCmg labelForm terms">
+                Your business page will appear in search results only after its been verified by our team. After
+                verification, you will receive an email to claim your business page on Klassbook.
+            </div>
+        </div>
+
+        <ul>
+            <li class="active action">
+                <a class="selectAction" href="javascript:void(9);">
+                    <span><img class="icon" src="./assets/images/icons/icon-phone2.svg" /></span>
+                    <div class="body">
+                        <h5>Text Me</h5>
+                        <p>{{phone}}</p>
+                        <div class="otpBox">
+                            <ng-otp-input #ngmobileOtpInput (onInputChange)="onOtpChange($event);" [config]="config">
+                            </ng-otp-input>
+                            <div *ngIf = "rightmobileOTP" class="otpaction success">
+                                <mat-icon>check</mat-icon>
+                            </div>
+                            <div *ngIf = "wrongmobileOTP" class="otpaction cancel">
+                                <mat-icon>warning</mat-icon>
+                            </div>
+                        </div>
+                        <!-- <div class="otpBox">
+                        <input type="number" class="number"  name="mobileotp" formControlName="mobileotp" >
+                        <input type="number" class="number"  name="mobileotp" formControlName="mobileotp">
+                        <input type="number" class="number"  name="mobileotp" formControlName="mobileotp">
+                        <input type="number" class="number"   name="mobileotp" formControlName="mobileotp">
+                        <div class="otpaction success">
+                            <mat-icon>check</mat-icon>
+                        </div>
+                    </div> -->
+                        <!-- <div class="error"
+                    *ngIf="verifyform.controls.mobileotp.touched && verifyform.controls.mobileotp.hasError('required')">
+                    Please enter mobile otp.
+                  </div> -->
+                        <p *ngIf = "showResendMobOtp" class="resendOtp">Didn’t received verification code? <a (click)=resendMobileOTP()>Resend</a>
+                        </p>
+                        <p *ngIf = "showMobOtpTimer"  class="resendOtp">Didn’t received ? Resend in<a>
+                            {{transform(counter)}} </a>seconds.</p>
+                    </div>
+                </a>
+                <!-- <small class="verifyDetails">We’ll send you an text to verify your details</small> -->
+            </li>
+            <li class="active action">
+                <a class="selectAction">
+                    <span><img class="icon" src="./assets/images/icons/icon-email2.svg" /></span>
+                    <div class="body">
+                        <h5>Email Me</h5>
+                        <p>{{email}}</p>
+                        <div class="otpBox">
+                            <ng-otp-input  #ngemailOtpInput (onInputChange)="onemailOtpChange($event);" [config]="config">
+                            </ng-otp-input>
+                            <div *ngIf = "rightemailOTP" class="otpaction success">
+                                <mat-icon>check</mat-icon>
+                            </div>
+                            <div *ngIf = "wrongemaileOTP" class="otpaction cancel">
+                                <mat-icon>warning</mat-icon>
+                            </div>
+                            <!-- <div class="otpaction cancel">
+                                <mat-icon>warning</mat-icon>
+                            </div> -->
+                        </div>
+                        <!-- <div class="otpBox">
+                        <input type="number" class="number"  name="emailotp" formControlName="emailotp">
+                        <input type="number" class="number"  name="emailotp" formControlName="emailotp">
+                        <input type="number" class="number"   name="emailotp" formControlName="emailotp">
+                        <input type="number" class="number"   name="emailotp" formControlName="emailotp">
+                        <div class="otpaction cancel">
+                            <mat-icon>warning</mat-icon>
+                        </div>
+                    </div> -->
+                        <!-- <div class="error"
+                    *ngIf="verifyform.controls.emailotp.touched && verifyform.controls.emailotp.hasError('required')">
+                    Please enter email otp.
+                  </div> -->
+                        <p *ngIf = "showResendMailOtp"  class="resendOtp">Didn’t received verification code? <a (click)=resendEmailOTP()>
+                                Resend</a></p>
+                        <p *ngIf = "showMailOtpTimer"  class="resendOtp">Didn’t received ? Resend in<a>
+                            {{transform(counter)}}</a> seconds.</p>
+                    </div>
+                </a>
+                <!-- <small class="verifyDetails">We’ll send you an email to verify your details</small> -->
+            </li>
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <div class="space verifyEmail">
+        <h2 *ngIf = "showMailOtpTimer || showMobOtpTimer"  class="d-flex justify-content-sm-center mb-2">
+        Resend Otp in {{transform(counter)}} seconds.
+        </h2>
+        <p class="text-center agree theme4">You can go back and Edit Phone Number and Email Id on <a href="#"
+                class="theme1">Business Page</a>.</p>
+
+        <div class="formCmg labelForm terms terms2">
+            By continuing, you agree to Klassbook’s <a>Business Terms</a> and acknowledge our
+            <a>Privacy Policy</a>.
+        </div>
+        <div class="formCmg mb-0">
+            <button type="submit" (click)="verifyOtp()" [disabled] = "IsSubmitBool" class="btn submitBtn desktopContinue">Continue</button>
+            <button type="submit" (click)="verifyOtpmobile()"  [disabled] = "IsSubmitBool" class="btn submitBtn mobileContinue">Continue</button>
+        </div>
+
+    </div>
+</form>

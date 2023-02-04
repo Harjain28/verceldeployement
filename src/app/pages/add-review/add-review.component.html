@@ -1,0 +1,107 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-3">
+          <a (click)="back()" class="backArrow">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle">Add Review</h5>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <div class="container reviewBoxSection">
+      <div class="col-md-10 mx-auto">
+        <div class="bridTitle display-show-desktop">
+          <h3 class="bridT">Add Review</h3>
+        </div>
+
+        <div class="space addReviewBox">
+          <div class="addReviewTop">
+            <!-- <img  *ngIf = "!allClassDetails?.image" class="catImg" lazyLoad="./assets/images/classImg5.svg" /> -->
+            <img *ngIf = "allClassDetails?.image" class="catImg" lazyLoad= "{{allClassDetails?.image[0]}}" />
+            <div class="addReviewTopBody">
+              <h5> {{className}} </h5>
+              <small>(select the branch on class details page)</small>
+              <p>Branch: {{branchName}}</p>
+            </div>
+          </div>
+
+          <form [formGroup]="myForm">
+            <div class="formCmg labelForm">
+              <label class="form-label">Select Your Ratings</label>
+              <ul class="rating-list">
+                <li *ngFor="let star of stars" (click)="countStar(star)"
+                  [ngClass]="{'selected': (star <= selectedValue)}">
+                  <mat-icon>star</mat-icon>
+                </li>
+
+              </ul>
+              <div class="error" *ngIf="!selectedValue && israting">
+                star rating is required.
+              </div>
+            </div>
+            <div class="formCmg labelForm">
+              <label class="form-label">Review Title</label>
+              <input class="form-control" formControlName="title" placeholder="Review Title" />
+              <div class="error" *ngIf="
+          myForm.controls.title.touched &&
+          myForm.controls.title.hasError('required')
+      ">
+                title is required.
+              </div>
+            </div>
+
+            <div class="formCmg labelForm">
+              <label class="form-label">What did you like or dislike?</label>
+              <textarea class="form-control" formControlName="reviewDescription" maxlength="5000"
+                placeholder="Write something here..."></textarea>
+              <small>Only 5000 Characters ({{myForm.controls.reviewDescription.value.length}})</small>
+              <!-- <div class="error" *ngIf="
+            myForm.controls.reviewDescription.touched  &&
+            myForm.controls.reviewDescription.hasError('required') 
+            
+          ">
+            Description is required.
+          </div> -->
+            </div>
+
+            <div class="formCmg labelForm">
+              <label class="form-label">Add Photo (Optional) </label>
+              <ul class="imgUpload">
+                <li class="camera">
+                  <img class="icon2" lazyLoad="./assets/images/icons/icon-camera.svg" />
+                  <input [id]="'upLoader' + index" type="file" name="images" accept="image/*"
+                    (change)="onFileChange($event)" formControlName="image" />
+
+                </li>
+                <li *ngFor="let url of images; let i = index" style="width: 22%; height: 100px;">
+                  <img class="img" [lazyLoad]="url" style="width: 100%; height: 100%;" />
+                  <mat-icon class="closeIcon" style="background: #fff; font-size: 16px;border-radius: 50px; line-height: 25px;
+                    cursor: pointer; position: relative; bottom: 7.9rem; left: 6rem;" (click)="deleteImage(i)">close
+                  </mat-icon>
+                </li>
+
+              </ul>
+            </div>
+            <div class="formCmg labelForm terms">
+              By continuing, you agree to Our Guidelines, Read our <a>Review Guidelines.</a>
+            </div>
+
+            <div class="formCmg labelForm">
+              <button type="submit" class="btn submitBtn" [disabled]="!isReviewSubmit" (click)="submitReview()">Post
+                Review</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

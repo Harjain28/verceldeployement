@@ -1,0 +1,394 @@
+.discussionCard {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+.discussionCard .discussionHead {
+  display: flex;
+}
+.discussionCard .discussionHead .profileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.discussionCard .discussionHead .discussionHeadBody {
+  padding: 0px 10px;
+  width: 100%;
+}
+.discussionCard .discussionHead .discussionHeadBody h3 {
+  margin-bottom: 0px;
+}
+.discussionCard .discussionHead .discussionHeadBody p {
+  margin: 0;
+  color: var(--main4);
+}
+.discussionCard .discussionCardBody {
+  padding-top: 10px;
+}
+.discussionCard .discussionCardBody h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+}
+.discussionCard .discussionCardBody p {
+  color: var(--main4);
+  font-size: 14px;
+}
+.discussionCard .discussionCardBody p a {
+  text-decoration: none;
+  color: var(--main4);
+  font-weight: 500;
+}
+.discussionCard .discussionCardBody .uploadedImg {
+  list-style: none;
+  margin: 0px -5px;
+  padding: 0;
+  display: flex;
+}
+.discussionCard .discussionCardBody .uploadedImg li {
+  flex: 0 0 auto;
+  width: 20%;
+  margin: 0px 5px;
+}
+.discussionCard .discussionCardBody .uploadedImg li img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.discussionCard .discussionCardBody .action {
+  margin-top: 8px;
+}
+.discussionCard .discussionCardBody .action a {
+  color: var(--main4);
+  text-decoration: none;
+  margin-right: 15px;
+}
+.discussionCard .discussionCardBody .action a .mat-icon {
+  font-size: 21px;
+  position: relative;
+  right: 5px;
+  top: 5px;
+  color: #f9560f;
+}
+.discussionCard .discussionCardBody .action a img {
+  height: 16px;
+  margin-right: 3px;
+}
+
+.replyCard {
+  padding-left: 20px;
+}
+.replyCard .discussionCard {
+  margin-top: 0px;
+  padding-bottom: 20px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+}
+.replyCard .discussionCard .discussionHead {
+  display: flex;
+}
+.replyCard .discussionCard .discussionHead .profileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.replyCard .discussionCard .discussionHead .discussionHeadBody {
+  padding: 10px 15px;
+  background: whitesmoke;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.replyCard .discussionCard .discussionHead .discussionHeadBody h3 {
+  margin-bottom: 0px;
+}
+.replyCard .discussionCard .discussionHead .discussionHeadBody p {
+  margin: 0;
+  color: var(--main4);
+}
+.replyCard .discussionCard .discussionCardBody {
+  padding-top: 10px;
+}
+.replyCard .discussionCard .discussionCardBody h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 18px;
+}
+.replyCard .discussionCard .discussionCardBody p {
+  color: var(--main4);
+  font-size: 14px;
+}
+.replyCard .discussionCard .discussionCardBody p a {
+  text-decoration: none;
+  color: var(--main4);
+  font-weight: 500;
+}
+.replyCard .discussionCard .discussionCardBody .uploadedImg {
+  list-style: none;
+  margin: 0px -5px;
+  padding: 0;
+  display: flex;
+}
+.replyCard .discussionCard .discussionCardBody .uploadedImg li {
+  flex: 0 0 auto;
+  width: 40px;
+  margin: 0px 5px;
+  height: 40px;
+}
+.replyCard .discussionCard .discussionCardBody .uploadedImg li img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  height: 100%;
+}
+.replyCard .discussionCard .discussionCardBody .action {
+  margin-top: 8px;
+}
+.replyCard .discussionCard .discussionCardBody .action a {
+  color: var(--main4);
+  text-decoration: none;
+  margin-right: 15px;
+}
+.replyCard .discussionCard .discussionCardBody .action a .mat-icon {
+  font-size: 21px;
+  position: relative;
+  right: 5px;
+  top: 5px;
+  color: #f9560f;
+}
+.replyCard .discussionCard .discussionCardBody .action a img {
+  height: 16px;
+  margin-right: 3px;
+  width: auto;
+  border-radius: 0px;
+}
+
+.commentsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.commentsList li {
+  display: flex;
+  margin-top: 15px;
+}
+.commentsList li .profileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.commentsList li .discussionHeadBody {
+  padding: 0px 10px;
+  width: 100%;
+  position: relative;
+}
+.commentsList li .discussionHeadBody h3 {
+  margin-bottom: 0px;
+  padding-right: 15px;
+}
+.commentsList li .discussionHeadBody p {
+  margin: 0;
+  color: var(--main4);
+}
+.commentsList li .discussionHeadBody time {
+  position: absolute;
+  right: 0;
+  top: 4px;
+  color: var(--main4);
+}
+
+.replyMessage {
+  margin-top: 15px;
+  width: 100%;
+}
+.replyMessage .input-group .form-control {
+  background-color: #fff;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid #dcd6d6;
+}
+.replyMessage .input-group .form-control:focus {
+  box-shadow: none;
+}
+.replyMessage .input-group .camera {
+  border: none;
+  padding: 0px;
+  margin-left: 15px !important;
+  width: 40px;
+  background: #dedede;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50px !important;
+  position: relative;
+  overflow: hidden;
+}
+.replyMessage .input-group .camera input {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.replyMessage .input-group .camera mat-icon {
+  color: #7f8699;
+  line-height: 40px !important;
+}
+.replyMessage .input-group .submit {
+  border: none;
+  padding: 0px;
+  margin-left: 15px !important;
+  width: 40px;
+  background: var(--main1);
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50px !important;
+}
+.replyMessage .input-group .submit mat-icon {
+  color: #fff;
+  line-height: 40px !important;
+  width: 17px;
+}
+.replyMessage .error {
+  color: red;
+  margin-bottom: 5px;
+  font-size: 14px;
+  position: relative;
+}
+
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-row > .image-column {
+  padding: 5px 10px;
+}
+
+.image-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.image-column {
+  float: left;
+  width: 25%;
+}
+
+img {
+  width: 100%;
+}
+
+.slide-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 10px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #000000d1;
+}
+
+.slide-modal-content {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.slide-modal-content .image-column {
+  padding: 0;
+}
+
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #888888;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+mat-tab-header.mat-tab-header {
+  display: none;
+  position: relative;
+}
+
+.img-slides {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 50%);
+}
+.img-slides .image {
+  display: block;
+  width: auto;
+  height: 350px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.like {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #f9560f;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 600px) and (max-width: 991px) {
+  .sellBtnBox {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+  .discussionMainSection {
+    padding: 0px 0px;
+  }
+
+  .sendMessage {
+    padding: 20px 0px;
+    margin-top: 30px;
+    position: relative;
+    left: 50%;
+    width: 100%;
+  }
+
+  .discussionCard .discussionCardBody .uploadedImg li {
+    width: 8%;
+  }
+
+  .enentspaceBody {
+    position: relative;
+    padding-right: 15px !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .discussionMainSection .col-md-3.display-show-desktop {
+    display: none !important;
+  }
+}

@@ -1,0 +1,118 @@
+.businessInbox_section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.inboxMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.inboxMenu li {
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 15px 15px;
+  margin: 15px 0px;
+  cursor: pointer;
+}
+.inboxMenu li .profileImg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  object-fit: cover;
+}
+.inboxMenu li .inboxMenuBody {
+  padding-left: 10px;
+  width: 100%;
+}
+.inboxMenu li .inboxMenuBody h5 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.inboxMenu li .inboxMenuBody p {
+  margin: 8px 0px 8px 0px;
+  color: var(--main4);
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.inboxMenu li .inboxMenuBody h6 {
+  margin: 0;
+  font-size: 16px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.inboxMenu li .inboxMenuTime {
+  text-align: right;
+  width: 100%;
+}
+.inboxMenu li .inboxMenuTime time {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+  color: var(--main4);
+}
+.inboxMenu li .inboxMenuTime .inboxImg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  float: right;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.inboxMenu li .inboxMenuTime .inboxImg img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.inboxMenu li .inboxMenuTime .inboxImg span {
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  display: block;
+  width: 100%;
+  background: #7F8699;
+  color: #efefef;
+  font-size: 10px;
+  line-height: 18px;
+}
+.inboxMenu li.active {
+  background: #EBECEF;
+}
+.inboxMenu .checkbox {
+  margin-top: 15px;
+  padding-left: 30px;
+}
+.inboxMenu .checkbox .checkmark {
+  border-radius: 50px;
+}
+
+.actionIcons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 15px;
+  margin-right: 5px;
+}
+.actionIcons li a {
+  color: #bc0404;
+  margin-left: 15px;
+}

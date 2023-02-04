@@ -1,0 +1,77 @@
+<div class="pageMarginTop">
+    <div class="bottomSpace" *xsHide="false">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3">
+                    <a (click)="back()" class="backArrow">
+                        <img class="catImg" src="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center">
+                    <h5 class="pgTitle">Business Profile</h5>
+                </div>
+                <div class="col-3">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="mobileMenuList">
+            <div class="title mt-0">
+                <h3>My Profile</h3>
+                <a class="link" routerLink="/pages/business-edit-profile">
+                    <img class="catImg" lazyLoad="./assets/images/icons/icon-edit.svg" />
+                </a>
+            </div>
+            <div class="profileBox">
+                <img class="profileImg" lazyLoad="{{image}}" />
+                <div class="body">
+                    <p>{{userName}}</p>
+                    <h3>{{name}}</h3>
+                    <p>{{email}}</p>
+                </div>
+            </div>
+
+            <app-business-left-sidebar></app-business-left-sidebar>
+
+            <ul class="menuList display-show-mobile">
+                <li>
+                    <a routerLink="/view/change-password/">
+                        Change Password <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/view/about">
+                        About us <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                    </a>
+                </li>
+                <li>
+                    <a routerLink="/view/contact">
+                        Contact us <mat-icon class="like">keyboard_arrow_right</mat-icon>
+                    </a>
+                </li>
+                <li (click)="openToggle()">
+                    <a class="pb-0">
+                        Logout <img class="logout" lazyLoad="./assets/images/icons/logout.svg" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <app-bottom-bar></app-bottom-bar>
+
+    </div>
+</div>
+
+<div class="popupBox" *ngIf="leaveGroup">
+    <div class="bg">
+
+        <div class="popupBody">
+            <h5>Are you sure you want to logout?</h5>
+            <div class="bottom">
+                <a class="btn theme_color" (click)="openToggle()">Cancel</a>
+                <a routerLink="/" class="btn" (click)="logout()">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>

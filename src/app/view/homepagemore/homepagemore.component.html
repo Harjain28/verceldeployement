@@ -1,0 +1,279 @@
+<div class="pageMarginTop">
+    <div class="mainBody homepagemore">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3">
+                    <a class="backArrow" (click)="back()">
+                        <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div *ngFor="let section of sections" class="col-6 text-center">
+                    <h5 class="pgTitle">{{section.sectionname}}</h5>
+                </div>
+                <!-- <div class="col-3">
+            </div> -->
+            </div>
+        </div>
+        <div class="container homeSearchDesktop">
+
+
+
+            <ng-container class="mt-4">
+                <div *ngFor="let section of sections" class="container">
+                    <div class="bridTitle mb-4 mt-4 display-show-desktop">
+                        <h3 class="bridT">{{section.sectionname}}</h3>
+                    </div>
+                    <div class="space pt-0" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Group'">
+                        <div class="title m-0">
+                            <h3>{{section.title}}</h3>
+                        </div>
+                        <div class="row eventSection">
+                            <div class="col-12 col-md-4 col-6 col-lg-3" *ngFor="let group of section.sectionValue">
+                                <div class="classSection groupBox">
+                                    <div class="classSectionImg">
+                                        <a (click)="getGroupDetails(group._id)"><img class="
+                                        catImg" src="{{group.image}}" /></a>
+                                        <div class="groupIcon" (click)="getGroupDetails(group._id)">
+                                            <img class=" icon" src="./assets/images/icons/icon-group.svg" />
+                                            {{group.memberCount}}
+                                            members
+                                        </div>
+                                        <!-- <a href="javascript:void(0);" class="fav">
+                                        <mat-icon class="like">favorite_border</mat-icon>
+                                    </a> -->
+                                    </div>
+                                    <div class="classSectionBody">
+                                        <div class="groupBody">
+                                            <div class="groupBodyConent">
+                                                <h3> <a (click)="getGroupDetails(group._id)">{{group.groups}}</a>
+                                                </h3>
+                                                <!-- <p class="textLimit1" [innerHTML]="group.groupDescription | sanitizeHtml"></p> -->
+                                            </div>
+                                            <!-- <button class="btn joinGroup" routerLink="/login">
+                                            Join
+                                        </button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="articlesSlider display-show-mobile">
+                        <owl-carousel-o [options]="customOptions">
+                            <ng-container *ngFor="let group of section.sectionValue">
+                                <ng-template style="width: 10px" carouselSlide>
+                                    <div class="classSection">
+                                        <div class="classSectionImg">
+                                            <img class="catImg" (click)="getGroupDetails(group._id)"
+                                                lazyLoad="{{ group.banner }}" /> -->
+                        <!-- <a (click)="checkLoginorNot()" class="fav">
+                                                <mat-icon class="like">favorite_border</mat-icon>
+                                            </a> -->
+                        <!-- </div>
+                                        <div class="classSectionBody">
+                                            <a (click)="getGroupDetails(group._id)" class="titleName">
+                                                {{ group.groups }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div> -->
+                    </div>
+
+                    <div class="space pt-0"
+                        *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Classes'">
+                        <div class="title m-0">
+                            <h3>{{section.title}}</h3>
+                        </div>
+                        <div class="row eventSection">
+                            <ng-container *ngFor="let class of section.sectionValue">
+                                <div class="col-md-3 col-6">
+                                    <div class="classSection owlSLiderSpace">
+                                        <div class="classSectionImg">
+                                            <img *ngIf="class.image" (click)="getClassDetails(class._id)" class="catImg"
+                                                lazyLoad="{{ class.image[0] }}" />
+                                            <img *ngIf="!class.image" (click)="getClassDetails(class._id)"
+                                                class="catImg" lazyLoad="./assets/images/classImg.svg" />
+                                            <!-- <a style="cursor: pointer" class="fav" (click)="checkLoginorNot()">
+                                            <mat-icon class="like">favorite_border</mat-icon>
+                                        </a> -->
+                                        </div>
+                                        <div class="classSectionBody" (click)="getClassDetails(class._id)">
+                                            <a style="cursor: pointer" class="titleName">
+                                                {{ class.businessName }}
+                                            </a>
+                                            <div class="row m-0 mt-2">
+                                                <div class="category"
+                                                    *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last">
+                                                    <!-- {{category.subCategory}}{{i === class.businesssubCategory.length - 2 ? '' : ', '}} -->
+                                                    {{category.subCategory}}{{isLast ? '' : ', '}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- <div class="owlSLider display-show-mobile">
+                        <owl-carousel-o [options]="customOptions2">
+                            <ng-template style="width: 10px" *ngFor="let class of section.sectionValue" carouselSlide>
+                                <div class="classSection owlSLiderSpace">
+                                    <div class="classSectionImg">
+                                        <img *ngIf="class.image" (click)="getClassDetails(class._id)" class="catImg"
+                                            lazyLoad="{{ class.image[0] }}" />
+                                        <img *ngIf="!class.image" (click)="getClassDetails(class._id)" class="catImg"
+                                            lazyLoad="./assets/images/classImg.svg" />  -->
+                        <!-- <a style="cursor: pointer"
+                                            (click)="checkLoginorNot()" class="fav">
+                                            <mat-icon class="like">favorite_border</mat-icon>
+                                        </a> -->
+                        <!-- </div>
+                                    <div class="classSectionBody" (click)="getClassDetails(class._id)">
+                                        <a style="cursor: pointer" class="titleName">
+                                            {{ class.businessName }}
+                                        </a>
+                                        <div class="row m-0 mt-2">
+                                            <div class="category"
+                                                *ngFor="let category of class.businesssubCategory | slice:0:2 let isLast=last"> -->
+                        <!-- {{category.subCategory}}{{i === class.businesssubCategory.length - 2 ? '' : ', '}} -->
+                        <!-- {{category.subCategory}}{{isLast ? '' : ', '}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </owl-carousel-o>
+                    </div> -->
+                    </div>
+
+                    <div class="space pt-0" *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Event'">
+                        <div class="title m-0">
+                            <h3>{{section.title}}</h3>
+                        </div>
+
+                        <div class="row eventSection">
+                            <ng-container *ngFor="let event of section.sectionValue">
+                                <div class="col-md-3 col-6 mt-3">
+                                    <div class="classSection owlSLiderSpace" (click)="getEventsDetails(event._id)">
+                                        <div class="classSectionImg">
+                                            <img class="catImg" [lazyLoad]="event.image[0]" />
+                                            <!-- <span (click)="getEventsDetails(event._id)">{{
+                                            event.title
+                                            }}</span> -->
+                                            <!-- <a style="cursor: pointer" class="fav" (click)="checkLoginorNot()">
+                                            <mat-icon class="like">favorite_border</mat-icon>
+                                        </a> -->
+                                        </div>
+                                        <div class="classSectionBody">
+                                            <a  style="cursor: pointer"
+                                                class="titleName">
+                                                {{ event?.title }}
+                                            </a>
+                                            <p>
+                                                {{ event.Date | date }}
+                                            </p>
+                                            <!-- <p>
+                          <span><img class="catImg" lazyLoad="./assets/images/icons/class2.svg" /></span>
+                          {{ event.address1 }}
+                        </p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- <div class="owlSLider eventSection display-show-mobile" *ngIf="section.sectionValue.length >= 5">
+                        <owl-carousel-o [options]="customOptions5">
+                            <ng-container *ngFor="let event of section.sectionValue">
+                                <ng-template style="width: 10px" [id]="event._id" carouselSlide>
+                                    <div class="classSection owlSLiderSpace">
+                                        <div class="classSectionImg">
+                                            <img class="catImg" [lazyLoad]="event.image[0]" /> -->
+                        <!-- <span (click)="getEventsDetails(event._id)">{{
+                                                event.title
+                                                }}</span> -->
+                        <!-- <a style="cursor: pointer" (click)="checkLoginorNot()" class="fav">
+                                                <mat-icon class="like">favorite_border</mat-icon>
+                                            </a> -->
+                        <!-- </div>
+                                        <div class="classSectionBody">
+                                            <a (click)="getEventsDetails(event._id)" style="cursor: pointer"
+                                                class="titleName">
+                                                {{ event?.title }}
+                                            </a>
+                                            <p (click)="getEventsDetails(event._id)">
+                                                {{ event.Date | date }}
+                                            </p> -->
+                        <!-- <p>
+                            <span><img class="catImg" lazyLoad="./assets/images/icons/class2.svg" /></span>
+                            {{ event.address1 }}
+                          </p> -->
+                        <!-- </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div> -->
+
+                    </div>
+
+                    <div class="space pt-2 mt-1"
+                        *ngIf="section.sectionValue.length > 0 && section.sectionname === 'Articles'">
+                        <div class="title m-0">
+                            <h3>{{section.title}}</h3>
+                        </div>
+
+                        <div class="row eventSection">
+                            <ng-container *ngFor="let article of section.sectionValue">
+                                <div class="col-md-3 col-6">
+                                    <div class="classSection">
+                                        <div class="classSectionImg">
+                                            <img class="catImg" (click)="getArticeDetails(article._id)"
+                                                lazyLoad="{{ article.banner }}" />
+                                            <!-- <a (click)="checkLoginorNot()" class="fav">
+                                            <mat-icon class="like">favorite_border</mat-icon>
+                                        </a> -->
+                                        </div>
+                                        <div class="classSectionBody">
+                                            <a (click)="getArticeDetails(article._id)" class="ellipsesTitle2">
+                                                {{ article.title }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+
+                        <!-- <div class="articlesSlider owlSLider display-show-mobile">
+                        <owl-carousel-o [options]="customOptions2">
+                            <ng-container *ngFor="let article of section.sectionValue">
+                                <ng-template style="width: 10px" carouselSlide>
+                                    <div class="classSection owlSLiderSpace">
+                                        <div class="classSectionImg">
+                                            <img class="catImg" (click)="getArticeDetails(article._id)"
+                                                lazyLoad="{{ article.banner }}" /> -->
+                        <!-- <a (click)="checkLoginorNot()" class="fav">
+                                                <mat-icon class="like">favorite_border</mat-icon>
+                                            </a> -->
+                        <!-- </div>
+                                        <div class="classSectionBody">
+                                            <a (click)="getArticeDetails(article._id)" class="ellipsesTitle2">
+                                                {{ article.title }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-container>
+                        </owl-carousel-o>
+                    </div> -->
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,337 @@
+<div class="pageMarginTop">
+  <div class="display-show-mobile">
+    <div class="pageTopBar row">
+      <div class="col-3">
+        <a (click)="back()" class="backArrow">
+          <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+        </a>
+      </div>
+      <div class="col-6 text-center">
+        <h5 class="pgTitle">Events/Camps</h5>
+      </div>
+      <div>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+  <section class="eventSetion">
+    <div class="space">
+      <div class="container" infiniteScroll [infiniteScrollDistance]="4" (scrolled)="onScroll($event)">
+        <div class="container display-show-desktop">
+          <div class="bridTitle ">
+            <h3 class="bridT">Events/Camps</h3>
+          </div>
+          <div class="col-md-12 d-flex justify-content-center">
+            <div class="mt-3  mb-4" style="width: 46%;">
+
+              <div class="searchbox">
+                <mat-icon *ngIf="clearIcon" class="icon" (click)='clearData()' style="cursor: pointer;
+          width: 38px; right: 35px !important;top: 16px;color: var(--main1)">close</mat-icon>
+                <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+                <input type="search" class="form-control" [(ngModel)]="searchvalue" (keyup)="getEventbytags()"
+                  placeholder="Search Event/Camp by Name" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col-md-12 col-lg-3 col-xl-3">
+            <div class="display-show-mobile">
+              <div class="filterListing">
+                <div class="topBar">
+                  <div class="topSearch">
+                    <div class="searchbox">
+                      <mat-icon *ngIf="clearIcon" class="icon" (click)='clearData()' style="cursor: pointer;
+                    width: 38px; right: 35px !important;top: 12px;color: var(--main1)">close</mat-icon>
+                      <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+                      <input type="search" class="form-control" [(ngModel)]="searchvalue" (keyup)="getEventbytags()"
+                        placeholder="Search Events/Camps" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="display-show-desktop">
+              <mat-card class="demo-inline-calendar-card">
+                <mat-calendar #calendar [(selected)]="selected" (selectedChange)="onSelect($event)"></mat-calendar>
+              </mat-card>
+            </div>
+            <div class="display-show-mobile">
+              <ul class="mobileBtnsFilter">
+                <li (click)="showCalender()"> <img class="catImg" src="./assets/images/icons/icons8-calendar-96.png"
+                    style="height: 20px; margin-right: 10px;" />Calendar</li>
+
+                <li (click)="showAllfilters()">
+                  <mat-icon class="material-icons filterIcon">filter_alt</mat-icon>Filter
+                </li>
+
+              </ul>
+            </div>
+
+            <div *ngIf="showDatepicker" class="display-show-mobile">
+              <mat-card class="demo-inline-calendar-card">
+                <mat-calendar [(selected)]="selected" activeDate (selectedChange)="onSelect($event)"></mat-calendar>
+              </mat-card>
+            </div>
+
+            <div *ngIf="showFilter" class="display-show-mobile">
+              <div class="filterListing">
+                <select class="form-control form-select" value="upcoming" [(ngModel)]="timeType"
+                  (ngModelChange)="changeSortOrder()">
+                  <!-- <option value = "allevent">Event period</option> -->
+                  <option value="upcoming">Upcoming</option>
+                  <option value="Past">Past</option>
+                </select>
+                <select class="form-control form-select" [(ngModel)]="sort" (ngModelChange)="changeSortOrder()">
+                  <!-- <option selected value = "">Sort By</option> -->
+                  <option value="Name"> <span *ngIf="sort === 'Name'">Sort By:</span>Name</option>
+                  <option value="Distance"> <span *ngIf="sort === 'Distance'">Sort By:</span>Distance</option>
+                  <option selected value="Date"><span *ngIf="sort === 'Date'">Sort By:</span>Date</option>
+                </select>
+                <select class="form-control form-select" [(ngModel)]="eventType" (ngModelChange)="changeSortOrder()">
+                  <option value="">Type</option>
+                  <option value="Online"> <span *ngIf="eventType === 'Online'" class="ms-2">Type:</span>Online</option>
+                  <option value="Inperson"> <span *ngIf="eventType === 'Inperson'" class="ms-2">Type:</span>In-Person
+                  </option>
+                </select>
+                <!--will show  after Login -->
+                <ng-container *ngIf="loginOrNot">
+                  <select class="form-control form-select" [(ngModel)]="otherType" (ngModelChange)="changeSortOrder()">
+                    <option value="">Other Filter</option>
+                    <option value="liked">Liked events</option>
+                    <option value="group">Events(group)</option>
+                  </select>
+                </ng-container>
+
+                <!-- <div class="topBar">
+                <div class="topSearch">
+                  <div class="searchbox" routerLink="pages/search">
+                    <mat-icon *ngIf="clearIcon" class="icon" (click)='clearData()' style="cursor: pointer;
+                    width: 38px; right: 35px !important;top: 16px;color: var(--main1)">close</mat-icon>
+                    <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+                    <input type="search" class="form-control"[(ngModel)] = "searchvalue" 
+                    (keyup) = "getEventbytags()"  
+                    placeholder="Search Events" />
+                  </div>
+                </div>
+              </div> -->
+
+                <a style="cursor: pointer" class="reset" (click)="resetFilter() "> Reset filter </a>
+              </div>
+            </div>
+
+
+
+
+            <!-- <div class="title">
+            <h3>{{eventTitle1}}</h3>
+            <a class="link" style="cursor: pointer" style="width: 100px; text-align: right"
+              *ngIf="events1.length >= 8">See All</a>
+          </div>
+
+          <ul class="groupJoined">
+            <li *ngFor="let event of events1">
+              <img lazyLoad="{{event.image}}" class="groupImg" />
+              <div class="body">
+                <p class="time">{{event.eventTime}}</p>
+                <h5>{{event.title}}</h5>
+                <div class="groupIcon">
+                  <img class="icon" lazyLoad="./assets/images/icons/icon-location.svg" />
+                  {{event.location}}
+                </div>
+              </div>
+            </li>
+          </ul> -->
+          </div>
+
+
+          <div class="col-md-12 col-lg-9 col-xl-9 eventSectionBox">
+            <div class="display-show-desktop">
+
+
+              <div class="filterListing">
+                <select class="form-control form-select" value="upcoming" [(ngModel)]="timeType"
+                  (ngModelChange)="changeSortOrder()">
+                  <option disabled value="">Event period</option>
+                  <option value="upcoming">Upcoming</option>
+                  <option value="Past">Past</option>
+                </select>
+                <select class="form-control form-select" [(ngModel)]="sort" (ngModelChange)="changeSortOrder()">
+                  <option selected disabled value="">Sort By</option>
+                  <option value="Name"> <span *ngIf="sort === 'Name'">Sort By:</span>Name</option>
+                  <option value="Distance"> <span *ngIf="sort === 'Distance'">Sort By:</span>Distance</option>
+                  <option value="Date"><span *ngIf="sort === 'Date'">Sort By:</span>Date</option>
+                </select>
+                <select class="form-control form-select" [(ngModel)]="eventType" (ngModelChange)="changeSortOrder()">
+                  <option value="">Type</option>
+                  <option value="Online"> <span *ngIf="eventType === 'Online'" class="ms-2">Type:</span>Online</option>
+                  <option value="Inperson"> <span *ngIf="eventType === 'Inperson'" class="ms-2">Type:</span>In-Person
+                  </option>
+                </select>
+                <!--will show  after Login -->
+                <ng-container *ngIf="loginOrNot">
+                  <select class="form-control form-select" [(ngModel)]="otherType" (ngModelChange)="changeSortOrder()">
+                    <option value="">Other Filter</option>
+                    <option value="liked">Liked events</option>
+                    <option value="group">Events(group)</option>
+                  </select>
+
+                </ng-container>
+                <a style="cursor: pointer" class="reset" (click)="resetFilter()"> Reset filter </a>
+                <!-- <div class="topBar">
+                <div class="topSearch">
+                
+                </div>
+              </div> -->
+
+              </div>
+            </div>
+
+
+            <div class="title mobile_tt" *ngIf="newEventdata.length > 0">
+              <h3>Popular Events/Camps </h3>
+              <h3 style="color: var(--main1)" *ngIf="tagvalue">Tags: {{tagvalue}}</h3>
+            </div>
+
+
+            <ul class="eventList mt-3" *ngIf="newEventdata.length > 0">
+              <li *ngFor="let event of newEventdata" class="position-relative">
+                <div class="ImgBox">
+                  <img (click)="getEventsDetails(event._id)" class="catImg" [lazyLoad]="event.image[0]" />
+                </div>
+                <div class="body" (click)="getEventsDetails(event._id)">
+                  <h5 (click)="getEventsDetails(event._id)">{{event.title}}</h5>
+
+                  <div class="d-flex">
+                    <p class="" *ngIf="event.price !== 'free' && event.price !== ''"><b>Price : ${{event?.price}}</b>
+                    </p>
+                    <p class="" *ngIf="event.price === 'free' || event.price === ''"><b>Price : Free</b> </p>
+
+                    <p> <b class="ms-3" *ngIf="event?.seteventtype === 'Online'">Type : Online</b></p>
+                    <p> <b class="ms-3" *ngIf="event?.seteventtype === 'Inperson'">Type : In-person</b></p>
+                  </div>
+
+                  <!-- <p class="time" (click)="getEventsDetails(event._id)">{{event.eventTime}}</p> -->
+
+                  <div (click)="getEventsDetails(event._id)" class="location" *ngIf="event?.Date">
+                    <img class="" src="./assets/images/icons/icon-date.svg" />
+                    <p class="time" (click)="getEventsDetails(event._id)">Date : {{ event?.Date | date }} to {{
+                      event?.endDate | date }}, <span class="ms-1">{{event?.startTime}} - {{event?.endTime}}</span></p>
+                  </div>
+                  <div (click)="getEventsDetails(event._id)" class="location"
+                    *ngIf="event?.seteventtype === 'Inperson'">
+                    <img class="" lazyLoad="./assets/images/icons/icon-location.svg" />
+                    {{event?.address1}}, {{event?.country}}
+                  </div>
+                  <div (click)="getEventsDetails(event._id)" class="location"
+                    *ngIf="event?.seteventtype !== 'Inperson'">
+                    <img class="" lazyLoad="./assets/images/icons/icon-location.svg" />
+                    Online, {{event?.country}}
+                  </div>
+
+                  <p class="ellipses mt-2 mb-0">
+                    {{event?.smallDescription}}...
+                    <!-- Lorem Ipsum is simply dummy text of the printing and.... -->
+                    <!-- <a style="cursor: pointer; color: rgb(78, 78, 245);">Read more</a> -->
+                  </p>
+                </div>
+                <div class="action">
+                  <a style="cursor: pointer">
+                    <img class="catImg" (click)="copyToClipboard(event?._id)" lazyLoad="./assets/images/icons/icon-share.svg" />
+                  </a>
+                  <a style="cursor: pointer;" class="fav">
+                    <mat-icon *ngIf="!event.selected" (click)="addtoEventWishList(event?._id , true)" class="like">
+                      favorite_border</mat-icon>
+                    <mat-icon *ngIf="event.selected" (click)="deleteEventWishlist(event?._id)">favorite</mat-icon>
+                  </a>
+
+                </div>
+              </li>
+            </ul>
+
+            <!-- <div class="title">
+            <h3>{{eventTitle2}}</h3>
+            <a class="link" style="cursor: pointer" *ngIf="events2.length >= 4">More</a>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-4 col-lg-4"  *ngFor="let event of events2|slice:0:3">
+              <div
+                class="classSection groupBox"
+                (click)="getEventsDetails(event._id)"
+              >
+                <div class="classSectionImg">
+                  <a style="cursor: pointer" (click)="getEventsDetails(event._id)"
+                    ><img class="catImg" lazyLoad="{{event?.image}}"
+                  /></a>
+                  <div class="groupIcon" (click)="getEventsDetails(event._id)">
+                    <img
+                      class="icon"
+                      lazyLoad="./assets/images/icons/icon-location.svg"
+                    />
+                   {{event.location}}
+                  </div>
+                  <a style="cursor: pointer" class="fav"
+                    ><mat-icon class="like">favorite_border</mat-icon></a
+                  >
+                </div>
+                <div class="classSectionBody">
+                  <div class="groupBody">
+                    <div class="groupBodyConent">
+                      <div class="time" (click)="getEventsDetails(event._id)">{{event.eventTime}}</div>
+                      <h3 (click)="getEventsDetails(event._id)"><a style="cursor: pointer">{{event.title}}</a></h3>
+                      <p (click)="getEventsDetails(event._id)" class="ellipses">{{event?.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+
+          <div class="title">
+            <h3>{{eventTitle3}}</h3>
+            <a class="link" style="cursor: pointer" *ngIf="events3.length >= 5">More</a>
+          </div>
+
+          <ul class="eventList suggestedList">
+            <li *ngFor="let event of events3">
+              <div class="ImgBox">
+                <img (click)="getEventsDetails(event._id)" class="catImg" lazyLoad="{{event.image}}" />
+              </div>
+              <div class="body">
+                <div class="action">
+                  <a style="cursor: pointer">
+                    <img
+                      class="catImg"
+                      lazyLoad="./assets/images/icons/icon-share.svg"
+                    />
+                  </a>
+                  <a style="cursor: pointer" class="fav"
+                    ><mat-icon class="like">favorite_border</mat-icon></a
+                  >
+                </div>
+                <p (click)="getEventsDetails(event._id)" class="time">{{event.eventTime}}</p>
+                <h5 (click)="getEventsDetails(event._id)">{{event.title}}</h5>
+                <p class="ellipses">
+                {{event?.description}}<a style="cursor: pointer"
+                    >Read more</a
+                  >
+                </p>
+                <div (click)="getEventsDetails(event._id)" class="location">
+                  <img class="" lazyLoad="./assets/images/icons/icon-location.svg" />
+                  {{event.location}} 
+                </div>
+              </div>
+            </li>
+          </ul> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-bottom-bar></app-bottom-bar>

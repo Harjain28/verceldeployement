@@ -1,0 +1,70 @@
+<mat-toolbar class="toolbarNav bottomBar">
+    <mat-icon class="material-icons color_blue">
+        <a class="btMenu" routerLink="/" [class.active]="router.url ==='/'">
+            <img class="catImg" src="./assets/images/icons/bottombar-search.svg" />
+            <h5>Home</h5>
+        </a>
+    </mat-icon>
+    <!-- <mat-icon class="material-icons color_blue">
+        <a class="btMenu" [class.active]="router.url ==='/group/group'">
+            <img class="catImg" lazyLoad="./assets/images/icons/bottombar-group.svg" />
+            <h5>Groups</h5>
+        </a>
+    </mat-icon> -->
+    <mat-icon class="material-icons color_blue">
+        <a class="btMenu" routerLink="/view/events" [class.active]="router.url ==='/view/events'">
+            <img class="catImg" src="./assets/images/icons/planner.png" style="filter: none;" />
+            <h5>Events</h5>
+        </a>
+    </mat-icon>
+    <mat-icon class="material-icons color_blue">
+        <a class="btMenu" routerLink="/view/category" [class.active]="router.url ==='/view/category'">
+            <img class="catImg" src="./assets/images/logo.svg" style="height: 25px;filter: none;" />
+            <h5>Classes</h5>
+        </a>
+    </mat-icon>
+    <!-- <mat-icon class="material-icons color_blue">
+        <a class="btMenu" mat-button [matMenuTriggerFor]="menu" routerLinkActive="active" [class.active]="router.url ==='/group/articles' || router.url === '/view/events'">
+            <img class="catImg" lazyLoad="./assets/images/icons/bottombar-menu.png" style="height: 27px; filter:  opacity(0.5)" />
+            <h5>More</h5>
+        </a>
+
+        <mat-menu #menu="matMenu" class="bottomPopup" >
+
+            <div class="toggleMenu">
+                <a class="btMenu" routerLink="/view/events">
+                    <img class="catImg" src="./assets/images/icons/planner.png" style="height: 24px;" />
+                    <h5 style="margin: 3px 0 0px;">Events</h5>
+                </a>
+            </div> -->
+            <!-- <div class="toggleMenu">
+                <a class="btMenu">
+                    <img class="catImg" src="./assets/images/icons/blog.png" style="height: 24px;" />
+                    <h5 style="margin: 3px 0 0px;">Blog</h5>
+                </a>
+            </div> -->
+            <!-- <div class="toggleMenu">
+                <a class="btMenu" routerLink="/articles">
+                    <img class="catImg" src="./assets/images/icons/bottombar-shortlist.svg" style="height: 24px;" />
+                    <h5 style="margin: 3px 0 0px;">Articles</h5>
+                </a>
+            </div>
+        </mat-menu>
+    </mat-icon> -->
+    <mat-icon class="material-icons color_blue">
+        <a class="btMenu" routerLink="/articles" [class.active]="router.url ==='/articles'">
+            <img class="catImg" src="./assets/images/icons/bottombar-shortlist.svg" />
+            <h5>Articles</h5>
+        </a>
+    </mat-icon>
+
+    <mat-icon class="material-icons color_blue">
+        <a class="btMenu" routerLinkActive="active"
+            [class.active]="router.url === '/pages/business-profle-mobile' || router.url === '/profile/profile'"
+            (click)="profilepageRedirect()">
+            <img class="catImg" src="./assets/images/icons/bottombar-more.svg" style="height: 27px;" />
+            <h5>Profile</h5>
+        </a>
+    </mat-icon>
+
+</mat-toolbar>

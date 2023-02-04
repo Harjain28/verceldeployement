@@ -1,0 +1,116 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+
+
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+        <div class="col-2">
+          <a class="backArrow" (click)="back()">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-8 text-center">
+          <h5 class="pgTitle">Add Business Address</h5>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+    <div class="container addBusinessMain_section mainSpaceN">
+      <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+        <div class="bussinessCenter">
+          <div class="infor">
+            <div class="alert">
+              <!-- <h5>Update Your Profile</h5> -->
+              <p [innerHTML]="infoTextData | sanitizeHtml"></p>
+              <!-- <button class="close">✖</button> -->
+            </div>
+          </div>
+          <div class="branchesList">
+            <h2 class="display-show-desktop">
+              Main Business Address
+            </h2>
+            <div class="row">
+              <form [formGroup]="locationform">
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Postal Code</label>
+                  <input type="text" class="form-control" maxlength="6" [readonly]="diabledFeilds"
+                    (keyup.enter)="geocodeAddress()" (input)="geocodeAddress()" formControlName="postalcode"
+                    [(ngModel)]="postalcode" placeholder="Postal Code" />
+                </div>
+                <div class="error" *ngIf="
+                locationform.controls.postalcode.dirty &&
+                locationform.controls.postalcode.hasError('pattern')
+                  ">
+                  Postal Code should be of 6 characters.
+                </div>
+                <div class="error" *ngIf="
+                    locationform.controls.postalcode.touched &&
+                    locationform.controls.postalcode.hasError('required')
+                  ">
+                  Postal Code is required.
+                </div>
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Address 1</label>
+                  <input type="text" class="form-control"  formControlName="address1" (input)="geocodeAddressByName()" [(ngModel)]="address1" [readonly]="diabledFeilds"
+                    placeholder="Address 1" />
+                </div>
+                <div class="error" *ngIf="
+                    locationform.controls.address1.touched &&
+                    locationform.controls.address1.hasError('required')
+                  ">
+                  Address 1 is required.
+                </div>
+
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Address 2</label>
+                  <input type="text" class="form-control" [readonly]="diabledFeilds" formControlName="address2"
+                    placeholder="Address 2" />
+                </div>
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Country</label>
+                  <input type="text" class="form-control" [readonly]="diabledFeilds" placeholder="Country"
+                    value="Singapore" disabled />
+                </div>
+
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Phone Number</label>
+                  <div class = "position-relative">
+                  <span class="staticCode"> +65 </span> 
+                  <input type="number" class="form-control" style="padding-left: 58px;" formControlName="phonenumber" placeholder="Phone Number">
+                </div>
+                </div>
+                <div class="error" *ngIf="
+              locationform.controls.phonenumber.touched &&
+              locationform.controls.phonenumber.hasError('required')
+            ">
+                  Phone Number is required.
+                </div>
+                <div class="error" *ngIf="
+          locationform.controls.phonenumber.dirty &&
+          locationform.controls.phonenumber.hasError('pattern')
+            ">
+                  Phone Number should be of 8 characters.
+                </div>
+                <!-- <div class="col-md-12 formBox">
+                <label class="form-label">Website</label>
+                <input type="text" class="form-control" formControlName="Website"  placeholder="Website">
+              </div> -->
+                <div class="col-md-12 formBox">
+                  <button type="submit" (click)="submitbusinessLocaion()" *ngIf="!diabledFeilds"
+                    class="btn btnSubmit">Submit</button>
+                  <!-- <button type="submit" *ngIf="diabledFeilds" class="btn btnSubmit">Submit</button> -->
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        <div *ngIf="showDetails">
+          <app-business-right-sidebar [ngClass]="{'disabled':isDisabled}" class="businessRight">
+          </app-business-right-sidebar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

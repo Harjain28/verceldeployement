@@ -1,0 +1,181 @@
+
+.contacttUs {
+    
+    .connect {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+
+        h5 {
+            font-size: 16px;
+            font-weight: 500;
+            margin:0;
+        }
+
+        .catImg {
+            height: 30px;
+        }
+        a {
+            margin-left: 10px;
+            display: inline-block;
+            color: var(--main4);
+        }
+
+    }
+
+    .or {
+        border-top: 1px solid #7F8699;
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 30px;
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 0px 10px;
+            margin-top: -2px;
+            color: #7F8699;
+        }
+    }
+    .formCmg {
+        
+        textarea {
+            height: 140px;
+            padding: 10px 12px;
+        }
+    }
+   
+}
+.sellBtnBox {
+    background: #fff;
+    padding: 15px 15px;
+    margin-top: 15px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    transform: translate(-50%, -0%);
+    border-top: 1px solid #e9e9e9;
+
+    .sellBtn {
+        background: var(--main1);
+        color: #fff;
+        width: 100%;
+        padding: 10px 10px;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+::ng-deep .iti {
+    width: 100% !important;
+}
+
+.error {
+    color: red;
+    margin-bottom: 5px;
+    font-size: 12px;
+    position: relative;
+    top: -8px;
+}
+
+@media (max-width: 767px) {
+    .sellBtnBox {
+        width: 100%;
+    
+    }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 6000px) {
+
+    .pageTopBar {
+        border:none;
+    }
+    .sellBtnBox {
+        padding: 15px 0px;
+        position: relative;
+    }
+    .contactDesktop {
+        padding: 50px 0px;
+    }
+
+    .loginSection {
+        height: 100%;
+
+        .container-fluid , .row{
+            height: 100%;
+        }
+
+        .imgBox {
+    
+            img {
+                width: 58.33333333%;
+                position: fixed;
+                left: 0;
+                top: 0;
+            }
+        }
+        .contentBox {
+            padding:70px 100px 70px 100px;
+            position: relative;
+            width: 41.66666667%;
+            box-shadow: 0 3px 6px 1px #cfcfcf;
+    
+            .backgound {
+    
+                .shape1 {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 110px;
+                }
+                .shape2 {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 170px;
+                }
+                .shape3 {
+                    position: absolute;
+                    right: 30px;
+                    bottom: 50px;
+                    width: 50px;
+                }
+            }
+        }
+    }
+
+
+}
+
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .mainBody {
+        width: 100%;
+        padding: 0px 15px;
+    }
+    .loginSection .contentBox {
+        padding: 70px 0px 70px 0px;
+    }
+    .otp-input {
+        width: 38px !important;
+        height: 38px !important;
+    }
+    .loginSection .imgBox img {
+        width: 100%;
+        position: relative;
+        left: 0;
+        top: 30%;
+        transform: translate(-0%, -50%);
+    }
+}

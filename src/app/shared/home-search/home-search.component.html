@@ -1,0 +1,473 @@
+<div class="pageMarginTop">
+    <div class="mainBody" infiniteScroll [infiniteScrollDistance]="5" (scrolled)="onScroll($event)">
+        <div class="display-show-mobile">
+            <div class="pageTopBar row">
+                <div class="col-3" style="width: 10%;">
+                    <a class="backArrow" (click)="back()">
+                        <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+                    </a>
+                </div>
+                <div class="col-6 text-center homeSearchMobileHead">
+                    <h5 class="pgTitle">{{headingVal}}</h5>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+        </div>
+        <!-- <div class="alert text-center alert-warning" role="alert" *ngIf="this.showLocationEnable">
+        To use the "Near Me" feature kindly allow access to your Location. Change your browser setting and refresh this
+        page.
+    </div> -->
+        <div class="container homeSearchDesktop">
+            <div class="bridTitle display-show-desktop mb-0">
+                <h3 class="bridT">{{headingVal}}</h3>
+            </div>
+            <!-- <div class="bridTitle display-show-desktop mb-0"  *ngIf = "selectype === 'location'">
+            <h3 class="bridT">Search Result of {{searchKey.name}} {{searchType}}</h3>
+        </div> -->
+
+            <div class="space">
+                <div class="topBar display-show-desktop">
+                    <div class="topSearch">
+                        <div class="searchbox">
+                            <img class="icon" lazyLoad="./assets/images/icons/icon-search.svg" />
+                            <input type="search" [(ngModel)]="searchKey" class="form-control" placeholder="Search" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <a style="cursor: pointer" *xsHide="false" class="reset" (click)="resetFilter()"> Reset filter </a> -->
+                <div *ngIf="filterBarShowBool" style="display: flex;">
+                    <div class="resetFilter">
+                        <div style="cursor: pointer" (click)="resetFilter()">
+                            <a style="color: #F9560F !important" class="reset"> Reset </a>
+                            <mat-icon style="color: #F9560F;">settings_backup_restore</mat-icon>
+                        </div>
+                        <button class="btn searchBtn" [disabled]="applyFilterbuttonDisabled"
+                            (click)="applyfilter()">Apply Filter</button>
+                    </div>
+
+                    <div class="d-flex mobileScroll"
+                        style="justify-content:start; align-items: center;">
+
+                        <ul class="menuList1">
+                            <label class="radiolg" *ngIf="locations" style="min-width: 110px;">
+                                <input type="checkbox" [(ngModel)]="nearme" (change)="checkValue('nearme')"
+                                    [checked]="filternear" name="location" />
+                                <span class="checkmark">Near Me</span>
+                            </label>
+                        </ul>
+
+                        <div class="location">
+                            <!-- <div class="title mb-2">
+                    <h3>Search by Location</h3>
+                </div> -->
+                            <div class="topSearch desktopLocationSearch">
+                                <div class="searchbox">
+                                    <img class="icon" lazyLoad="./assets/images/icons/icon-searchn.svg"
+                                        style="height: 37px;" />
+                                    <input ngx-google-places-autocomplete [(ngModel)]="locationKey"
+                                        (input)="locationInput()" (onAddressChange)="handleAddressChange($event)"
+                                        [options]='options' type="search" class="form-control"
+                                        style="height: 38px; width: 200px;" placeholder="Search by Location" />
+                                    <!-- <p>Address: {{ userAddress }}</p> -->
+                                    <!-- <p>Latitude: {{ userLatitude }}</p>
+                                              <p>Longitude: {{ userLongitude }}</p> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <form [formGroup]="myForm">
+                            <div class="classesIf=">
+                                <ul class="menuList">
+                                    <label for="">Category
+                                        <li>
+                                            <div class="formBox" style="margin-right: 12px;">
+                                                <mat-form-field>
+                                                    <mat-select
+                                                        [placeholder]="selectedOptionsLevels.length > 0 ? '' :  'Select Category'"
+                                                        (selectionChange)="getSelectedlevelOptions($event.value)"
+                                                        [(ngModel)]="selectedOptionsLevels"
+                                                        [formControl]="myForm.controls['selectedlevel']"
+                                                        [(value)]="selectedOptionsLevels">
+                                                        <div class="searchDropdown">
+                                                            <div class="position-relative">
+                                                                <input placeholder="Search Level"
+                                                                    [(ngModel)]="searchKey2"
+                                                                    [ngModelOptions]="{standalone: true}" type="text"
+                                                                    (keyup)="onKeySearchLevel($event.target.value)"
+                                                                    class="example-input">
+                                                                <mat-icon class="icon" (click)="clearSearch()"
+                                                                    style="cursor: pointer; top: 11px;">close
+                                                                </mat-icon>
+                                                            </div>
+                                                        </div>
+                                                        <mat-option *ngFor="let data of optionsLevels"
+                                                             [value]="data?._id">
+                                                            {{data?.level}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+
+                                        </li>
+                                    </label>
+                                    <label for="">Subjects
+                                        <li>
+                                            <div class="formBox" style="margin-right: 12px;">
+                                                <mat-form-field>
+                                                    <mat-select
+                                                        [placeholder]="selectedCategoryLevel.length > 0 ? '' :  'Select Subjects'"
+                                                        (selectionChange)="getSelectedCategory($event.value)"
+                                                        [(ngModel)]="selectedCategoryLevel"
+                                                        [formControl]="myClassForm.controls['selectedCategory']"
+                                                        multiple>
+                                                        <div class="searchDropdown">
+                                                            <div class="position-relative">
+                                                                <input placeholder="Search Category"
+                                                                    [(ngModel)]="catSearchKey"
+                                                                    [ngModelOptions]="{standalone: true}" type="text"
+                                                                    (keyup)="onKeySearchCategory()"
+                                                                    class="example-input">
+                                                                <!-- <mat-icon *ngIf="!allCatSelectBool" class="checkDrop"
+                                                                    (click)="selectAllCategory()">
+                                                                    check_box_outline_blank</mat-icon>
+                                                                <mat-icon *ngIf="allCatSelectBool" class="checkDrop"
+                                                                    (click)="unSelectAllCategory()">check_box</mat-icon> -->
+                                                                <mat-icon class="icon" (click)="clearCategorySearch()"
+                                                                    style="cursor: pointer; top: 11px;">close
+                                                                </mat-icon>
+                                                            </div>
+                                                        </div>
+                                                        <mat-option *ngFor="let data of optionsClasses"
+                                                            [value]="data?.subcategoryId">{{data?.subcategoryName}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+
+                                            </div>
+
+                                        </li>
+                                    </label>
+                                    
+                                    <label *ngIf="showExtraFilters">Online/F2F
+                                        <li>
+                                            <select class="form-control form-select" [(ngModel)]="types"
+                                                [ngModelOptions]="{standalone: true}"
+                                                (ngModelChange)="changesiteType()">
+                                                <option value="all" [disabled]="siteTypeBool">Type-All</option>
+                                                <option value="Online" [disabled]="siteTypeBool">Online</option>
+                                                <option value="Face to Face" [disabled]="siteTypeBool">In-Person</option>
+                                            </select>
+                                        </li>
+                                    </label>
+                                    <label *ngIf="showExtraFilters">Age
+                                        <div style="display: flex;">
+                                            <li>
+                                                <select class="form-control form-select" style="width: 85px;"
+                                                    (change)="selectFromAge($event.target.value)">
+                                                    <option value="0" [selected]="isfunctionstart">From</option>
+                                                    <option *ngFor="let select of agefromselect"
+                                                        [selected]="!isfunctionstart && select?.name == event.AgeFromSearch"
+                                                        [value]="select.value">{{select.name}}
+                                                    </option>
+                                                </select>
+                                            </li>
+                                            <li>
+                                                <select class="form-control form-select" style="width: 85px;"
+                                                    (change)="selectToAge($event.target.value)">
+                                                    <option value="0" [selected]="isfunctionstart">To</option>
+                                                    <option *ngFor="let select of agetoselect"
+                                                        [selected]="!isfunctionstart && select?.name == event.AgetoSearch"
+                                                        [value]="select.value">{{select.name}}
+                                                    </option>
+                                                </select>
+                                            </li>
+                                        </div>
+                                    </label>
+
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="container errorlogo" *ngIf="showNotFoundMssg && !allowLocation">
+                    <div class="logo text-center">
+                        <img class="logoImg" lazyLoad="./assets/images/logo.svg" />
+                        <p class="errormssg">We're sorry. We cannot find any matches for your search term.</p>
+                    </div>
+                </div>
+                <div class="container errorlogo" *ngIf="allowLocation">
+                    <div class="logo text-center">
+                        <img class="logoImg" lazyLoad="./assets/images/logo.svg" />
+                        <p class="errormssg">Please Allow location to search classes near you</p>
+                    </div>
+                </div>
+
+                <div *ngIf="!showNotFoundMssg && !allowLocation">
+                    <ng-container>
+                        <div class="nearMe">
+                            <div class="title" *ngIf="groupsearchData?.length > 0">
+                                <h3>Groups</h3>
+                                <!-- <a class="link" *ngIf="groupsearchData?.length > 20"
+                            (click)="redirecttoMorepage('groups')">More</a> -->
+                            </div>
+                            <div class="row">
+                                <ng-container>
+                                    <div class="col-md-3" *ngFor="let groupsdata of  groupsearchData | slice:0:8">
+                                        <div class="classSection groupBox">
+                                            <div class="classSectionImg">
+                                                <a (click)="getGroupDetails(groupsdata._id)">
+                                                    <img class="catImg" [lazyLoad]="groupsdata?.image" /></a>
+                                                <!-- <a ><img class="catImg" lazyLoad="./assets/images/group4.svg" /></a> -->
+                                                <div class="groupIcon" (click)="getGroupDetails(groupsdata._id)">
+                                                    <img class="icon" lazyLoad="./assets/images/icons/icon-group.svg" />
+                                                    {{groupsdata.memberCount}} members
+                                                </div>
+                                                <!-- <a href="javascript:void(0);" class="fav">
+                                        <mat-icon class="like">favorite_border</mat-icon>
+                                    </a> -->
+                                            </div>
+                                            <div class="classSectionBody">
+                                                <div class="groupBody">
+                                                    <div class="groupBodyConent"
+                                                        (click)="getGroupDetails(groupsdata._id)">
+                                                        <h3><a>{{groupsdata.groups}}</a></h3>
+                                                        <p class="limit1"
+                                                            [innerHTML]="groupsdata.groupDescription | sanitizeHtml">
+                                                        </p>
+                                                    </div>
+                                                    <button *ngIf="!groupsdata.select && loginOrNot"
+                                                        class="btn joinGroup" (click)="joinGroup(groupsdata)">
+                                                        Join
+                                                    </button>
+                                                    <button *ngIf="!loginOrNot" (click)="checkLoginorNot()"
+                                                        class="btn joinGroup">
+                                                        Join
+                                                    </button>
+                                                    <button *ngIf="groupsdata.select && loginOrNot"
+                                                        (click)="getGroupDetails(groupsdata._id);"
+                                                        class="btn joinGroup">
+                                                        Joined
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <!-- <div class="owlSLider articlesSlider display-show-mobile">
+                            <owl-carousel-o [options]="customOptions5">
+                                <ng-container *ngFor="let groupsdata of groupsearchData; let i = index">
+                                    <ng-template style="width: 10px;" carouselSlide [id]="'link_'+i">
+                                        <div class="classSection groupBox">
+                                            <div class="classSectionImg">
+                                                <a (click)="getGroupDetails(groupsdata._id)">
+                                                    <img class="catImg" [lazyLoad]="groupsdata?.image" /></a>
+                                                <div class="groupIcon" (click)="getGroupDetails(groupsdata._id)">
+                                                    <img class="icon" lazyLoad="./assets/images/icons/icon-group.svg" />
+                                                    {{groupsdata.memberCount}} members
+                                                </div>
+                                            </div>
+                                            <div class="classSectionBody">
+                                                <div class="groupBody">
+                                                    <div class="groupBodyConent"
+                                                        (click)="getGroupDetails(groupsdata._id)">
+                                                        <h3><a>{{groupsdata.groups}}</a></h3>
+                                                        <p [innerHTML]="groupsdata.groupDescription | sanitizeHtml"></p>
+                                                    </div>
+                                                    <button class="btn joinGroup" routerLink="/login/student">
+                                                        Join
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+
+                                </ng-container>
+                            </owl-carousel-o>
+                        </div> -->
+                        </div>
+                    </ng-container>
+
+                    <ng-container>
+                        <div class="nearMe">
+                            <div class="title" *ngIf="classData?.length > 0">
+                                <h3>Classes</h3>
+                                <!-- <a class="link" *ngIf="classData?.length > 20" (click)="redirecttoMorepage('classes')">More</a> -->
+                            </div>
+                            <div class="row">
+                                <ng-container>
+                                    <div class="col-md-3 homeSearchMobile" *ngFor="let classdata of classData">
+                                        <div class="classSection owlSLiderSpace"
+                                            (click)="getClassDetails(classdata._id)">
+                                            <div class="classSectionImg">
+                                                <img class="catImg" [lazyLoad]="classdata.image[0]" />
+                                                <a class="fav">
+                                                    <!-- <mat-icon class="like">favorite_border</mat-icon> -->
+                                                </a>
+                                            </div>
+
+                                            <div class="classSectionBody">
+                                                <a class="titleName" (click)="getClassDetails(classdata._id)">
+                                                    {{classdata.businessName}}
+                                                </a>
+                                                <!-- <div class="row">
+                                            <div class="col-md-4">Branch 1 </div>
+                                            <div class="col-md-4">Branch 1 </div>
+                                            <div class="col-md-4">More </div>
+                                        </div> -->
+                                                <!-- <div class="row m-0 mt-2"  *ngIf = "!tagvalue && !searchvalue">
+                                            <div class="category" *ngFor="let category of item?.subcategory | slice:0:2 let isLast=last">
+                                              {{category?.subCategory}}{{isLast ? '' : ', '}}
+                                            </div>
+                                          </div> -->
+                                                <div class="row m-0 mt-2">
+                                                    <div class="category"
+                                                        *ngFor="let category of classdata?.businesssubCategory | slice:0:2 let isLast=last">
+                                                        {{category?.subCategory}}{{isLast ? '' : ', '}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                            </div>
+
+                            <!-- <div class="owlSLider display-show-mobile">
+                            <owl-carousel-o [options]="customOptions">
+                                <ng-container *ngFor="let classdatas of classData; let i = index">
+                                    <ng-template carouselSlide [id]="'link_'+i">
+                                        <div class="classSection owlSLiderSpace"
+                                            (click)="getClassDetails(classdatas._id)">
+                                            <div class="classSectionImg">
+                                                <img class="catImg" [lazyLoad]="classdatas.image[0]" />
+                                            </div>
+                                            <div class="classSectionBody">
+                                                <a class="titleName">
+                                                    {{classdatas.businessName}}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </owl-carousel-o>
+                        </div> -->
+                        </div>
+                    </ng-container>
+
+                    <ng-container>
+                        <div class="nearMe">
+                            <div class="title" *ngIf="eventsData?.length > 0">
+                                <h3>Events</h3>
+                                <!-- <a class="link" *ngIf="eventsData?.length > 18" (click)="redirecttoMorepage('events')">More</a> -->
+                            </div>
+                            <div class="row">
+                                <ng-container>
+                                    <div class="col-md-4" *ngFor="let eventdata of eventsData">
+                                        <div class="eventList" (click)="getEventsDetails(eventdata._id)">
+                                            <div class="eventDate p-0">
+
+                                                <a><img class="tpsImg" [lazyLoad]="eventdata?.image[0]" /></a>
+                                            </div>
+                                            <div class="eventBody">
+                                                <a class="tt">
+                                                    {{eventdata.Date | date:'fullDate'}}
+                                                </a>
+                                                <p (click)="getEventsDetails(eventdata._id)" class="limit1">
+                                                    {{eventdata.title}}
+                                                </p>
+                                                <p class="limit1"><img
+                                                        lazyLoad="./assets/images/icons/icon-location.svg" class="icon">
+                                                    {{eventdata.address1}}</p>
+                                                <a class="fav">
+                                                    <!-- <mat-icon class="like">favorite_border</mat-icon> -->
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <!-- <div class="owlSLider display-show-mobile">
+                            <owl-carousel-o [options]="customOptions2">
+                                <ng-container *ngFor="let eventData of eventsData; let i = index">
+                                    <ng-template carouselSlide [id]="'link_'+i">
+                                        <div class="classSection owlSLiderSpace"
+                                            (click)="getClassDetails(eventData._id)">
+                                            <div class="classSectionImg">
+                                                <img class="catImg" [lazyLoad]="eventData.image[0]" />
+                                            </div>
+                                            <div class="classSectionBody">
+                                                <a class="titleName">
+                                                    {{eventData.businessName}}
+                                                </a>
+                                                <p><span><img class="catImg"
+                                                            lazyLoad="./assets/images/icons/class2.svg" /></span>
+                                                    Tanglin</p>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </owl-carousel-o>
+                        </div> -->
+                        </div>
+                    </ng-container>
+                    <ng-container>
+                        <div class="nearMe">
+                            <div class="title" *ngIf="articlesData?.length > 0">
+                                <h3>Articles</h3>
+                                <!-- <a class="link" *ngIf="articlesData?.length > 20"
+                            (click)="redirecttoMorepage('articles')">More</a> -->
+                            </div>
+                            <div class="row">
+                                <ng-container>
+                                    <div class="col-md-3" *ngFor="let article of articlesData">
+                                        <div class="classSection">
+                                            <div class="classSectionImg" (click)="getArticeDetails(article._id)">
+                                                <img class="catImg" [lazyLoad]="article?.banner" />
+                                                <!-- <a class="fav">
+                                            <mat-icon class="like">favorite_border</mat-icon>
+                                        </a> -->
+                                            </div>
+                                            <div class="classSectionBody" (click)="getArticeDetails(article._id)">
+                                                <a class="titleName">
+                                                    {{article.title}}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-container>
+                            </div>
+                            <!-- <div class="articlesSlider display-show-mobile">
+                            <owl-carousel-o [options]="customOptions4">
+                                <ng-container *ngFor="let article of articlesData; let i = index">
+                                    <ng-template style="width: 10px;" carouselSlide [id]="'link_'+i">
+                                        <div class="classSection" (click)="getArticeDetails(article._id)">
+                                            <div class="classSectionImg">
+                                                <img class="catImg" [lazyLoad]="article?.banner" />
+                                            </div>
+                                            <div class="classSectionBody">
+                                                <a class="titleName">
+                                                    {{article.title}}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                            </owl-carousel-o>
+                        </div> -->
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

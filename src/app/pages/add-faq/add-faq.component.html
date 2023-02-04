@@ -1,0 +1,101 @@
+<div class="pageMarginTop">
+  <div class="mainBody">
+    <div class="display-show-mobile">
+      <div class="pageTopBar row">
+
+        <div class="col-3">
+          <a class="backArrow" (click)="back()">
+            <img class="catImg" lazyLoad="./assets/images/icons/back.svg" />
+          </a>
+        </div>
+        <div class="col-6 text-center">
+          <h5 class="pgTitle"> Add FAQ</h5>
+        </div>
+        <div class="col-3">
+
+          <!-- <a href="javascript:void(0);" class="chat" routerLink = "pages/inbox">
+                <img class="icon" lazyLoad="./assets/images/icons/chat.svg" />
+                <span>5</span>
+            </a> -->
+        </div>
+      </div>
+    </div>
+    <div class="container addfaQs_section mainSpaceN">
+
+      <div class="row">
+        <app-business-left-sidebar class="businessLeft"></app-business-left-sidebar>
+
+
+        <div class="bussinessCenter">
+          <div class="branchesList">
+            <h2 class="display-show-desktop">
+              Add FAQ
+            </h2>
+            <form [formGroup]="myForm">
+              <div class="row">
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Question</label>
+                  <!-- <angular-editor formControlName="quetions" [(ngModel)]="editorQuestionData"
+                  [config]="editorQuestionConfig">
+                </angular-editor> -->
+                  <input type="text" class="form-control" placeholder="Question" name="quetions"
+                    [(ngModel)]="editorQuestionData" formControlName="quetions">
+                  <div class="error" *ngIf="
+                                            myForm.controls.quetions.touched &&
+                                            myForm.controls.quetions.hasError('required')
+                                          ">
+                    Question is required.
+                  </div>
+                </div>
+
+                <div class="col-md-12 formBox">
+                  <label class="form-label">Answer</label>
+                  <angular-editor formControlName="answers" [(ngModel)]="editorAnswersData" placeholder="Answer"
+                    [config]="editorAnswerConfig">
+                  </angular-editor>
+                  <!-- <textarea class="form-control" 
+                        placeholder="Answer" formControlName="answers" style="height: 200px;border-radius: 30px;"></textarea> -->
+                  <div class="error" *ngIf="
+                                              myForm.controls.answers.touched &&
+                                              myForm.controls.answers.hasError('required')
+                                            ">
+                    Answer is required.
+                  </div>
+                </div>
+
+
+                <div class="mt-4" *ngIf="!diabledFeilds">
+                  <label class="form-label">Assign Branches</label>
+                  <mat-select-autocomplete class="grid-7-11" [placeholder]="'Select'" [errorMsg]="errorMessage"
+                    [showErrorMsg]="showError" [options]="options" [display]="'display'" [value]="'value'"
+                    [multiple]="true" [labelCount]="2" [selectedOptions]="selectedOptions"
+                    (selectionChange)="getSelectedOptions($event)" ngDefaultControl [formControl]="myForm.controls['Selected']">
+                  </mat-select-autocomplete>
+
+
+                </div>
+                <div class="error" *ngIf="
+                    myForm.controls.Selected.touched &&
+                    myForm.controls.Selected.hasError('required')
+                  ">
+                  Select at least one branch.
+                </div>
+                <div class="col-md-12 formBox mt-3">
+                  <button type="submit" (click)="submitFaqs()" [disabled] = "isSubmitbool" class="btn btnSubmit">Submit</button>
+                </div>
+
+              </div>
+
+
+            </form>
+          </div>
+        </div>
+
+        <app-business-right-sidebar class="businessRight display-show-desktop"></app-business-right-sidebar>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
